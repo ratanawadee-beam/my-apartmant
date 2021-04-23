@@ -27,19 +27,10 @@ export class HomeLoginComponent implements OnInit {
   }
 
   onSubmit() {
-    // debugger
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
-
-    alert('SUCCESS!! :-)')
-    // this.router.navigate(['home']).then(() => {
-    //   window.location.reload()
-    // });
-
     const userType = 'user';
     this.homeService.$userType = of(userType);
     this.router.navigate([`${userType}`]);
