@@ -8,11 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomePageComponent
-  },
-  {
+  },{
     path: 'login',
     component: HomeLoginComponent
-  },
+  }
  
 ];
 

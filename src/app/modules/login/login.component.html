@@ -4,16 +4,14 @@
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div class="form-floating">
-            <input type="text" formControlName="username" class="form-control" placeholder="username"
-                [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <input type="text" formControlName="username" class="form-control" placeholder="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
             <label for="username">Username</label>
             <div *ngIf="f.username.errors" class="invalid-feedback">
                 <div *ngIf="submitted && f.username.errors.required">Username is required</div>
             </div>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" formControlName="password" placeholder="Password"
-                [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
             <label for="password">Password</label>
             <div *ngIf="f.username.errors" class="invalid-feedback">
                 <div *ngIf="submitted && f.username.errors.required">Password is required</div>

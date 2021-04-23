@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NgxPermissionsGuard } from 'ngx-permissions';
+import { HomePageComponent } from './modules/home/home-page/home-page.component';
+import { LoginComponent } from './modules/login/login.component';
+
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {
-    path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
-  }, {
-    path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
-  }, {
-    path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
-  },
+//  { path: 'login', component: LoginComponent },
+ { path: '', redirectTo: 'home', pathMatch: 'full' },
+ {
+   path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+   
+ }, {
+   path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
+ }, {
+   path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+ },
 ];
 
 @NgModule({

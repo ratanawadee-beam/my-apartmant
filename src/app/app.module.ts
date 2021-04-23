@@ -4,15 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from'@angular/common/http';
+import { LoginComponent } from './modules/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    NgxPermissionsModule.forRoot(),
+    NgIdleKeepaliveModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
