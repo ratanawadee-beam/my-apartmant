@@ -9,6 +9,7 @@ import { AdminReportsComponent } from './admin-reports/admin-reports.component';
 import { AdminModelComponent } from './admin-model/admin-model.component';
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { AdminRoomeditComponent } from './admin-roomedit/admin-roomedit.component';
+import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.component';
 
 
 
@@ -23,6 +24,7 @@ import { AdminRoomeditComponent } from './admin-roomedit/admin-roomedit.componen
     AdminModelComponent,
     AdminManageComponent,
     AdminRoomeditComponent,
+    AdminRegisroomComponent,
   ],
   imports: [
     CommonModule,

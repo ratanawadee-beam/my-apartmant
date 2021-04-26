@@ -1,3 +1,4 @@
+
 <nav *ngIf="userType === 'home'" class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <a class="navbar-brand" routerLink="">Home Page</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,27 +8,27 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">ข้อมูลอพาร์ตเมนต์</a>
+          <a class="nav-link" routerLink="#">ข้อมูลอพาร์ตเมนต์</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">อัลบั้มรูป</a>
+          <a class="nav-link" routerLink="#">อัลบั้มรูป</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">การเข้าพัก</a>
+          <a class="nav-link" routerLink="#">การเข้าพัก</a>
         </li>
       </ul>
 
     </div>
     <ul *ngIf="!isLogin" class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="home/login">เข้าสู่ระบบ</a>
+        <a class="nav-link" routerLink="home/login">เข้าสู่ระบบ</a>
       </li>
     </ul>
 
 
     <ul *ngIf="isLogin" class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
+        <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
       </li>
     </ul>
   
@@ -63,16 +64,16 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="user">หน้าแรก</a>
+          <a class="nav-link" routerLink="user">หน้าแรก</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ข้อมูลอพาร์ตเมนต์</a>
+          <a class="nav-link" routerLink="#">ข้อมูลอพาร์ตเมนต์</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">อัลบั้มรูป</a>
+          <a class="nav-link" routerLink="#">อัลบั้มรูป</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">การเข้าพัก</a>
+          <a class="nav-link" routerLink="#">การเข้าพัก</a>
         </li>
         
       </ul>
@@ -87,7 +88,7 @@
 
     <ul *ngIf="isLogin" class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
+        <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
       </li>
     </ul>
   
@@ -114,7 +115,7 @@
 </nav>
 
 <nav *ngIf="userType === 'admin'" class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class=" navbar-brand " href="admin">Admin</a>
+  <a class=" navbar-brand " routerLink="admin">Admin</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -122,20 +123,20 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" routerLink="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            จัดการข้อมูล
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="admin/manage">ข้อมูลสมาชิก</a>
+            <a class="dropdown-item" routerLink="admin/manage">ข้อมูลสมาชิก</a>
             <a class="dropdown-item" routerLink="admin/room">ข้อมูลห้องพัก</a>
-            <a class="dropdown-item" href="admin/barangsewa">สัญญาเช่า</a>
-            <a class="dropdown-item" href="admin/reports">ระบบรายงานการชำระ</a>
+            <a class="dropdown-item" routerLink="admin/barangsewa">สัญญาเช่า</a>
+            <a class="dropdown-item" routerLink="admin/reports">ระบบรายงานการชำระ</a>
           </div>
         <li class="nav-item">
-          <a class="nav-link" href="admin/model">ข้อมูลอพาร์ตเมนต์</a>
+          <a class="nav-link" routerLink="admin/model">ข้อมูลอพาร์ตเมนต์</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">อัลบั้มรูป</a>
+          <a class="nav-link" routerLink="">อัลบั้มรูป</a>
         </li>
       </ul>
     </div>
@@ -148,7 +149,7 @@
 
     <ul *ngIf="isLogin" class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
+        <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
       </li>
     </ul>
   
@@ -171,8 +172,9 @@
       </div>
     </div>
   </div>
-  <!-- modal -->
+  <!-- modal --> 
 </nav>
+
 
 
 <div class="bottom-2">
@@ -183,4 +185,77 @@
   <button class="btn btn-outline-success my-2 my-sm-0" (click)="setHome()">HOME</button>
   <button class="btn btn-outline-success my-2 my-sm-0" (click)="setAdmin()">ADMIN</button>
   <button class="btn btn-outline-success my-2 my-sm-0" (click)="setUser()">USER</button>
+
+  <div class="card footer " style="margin-bottom:0">
+    <footer class="bg-light text-center text-white ">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #3b5998;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+            <!-- Twitter -->
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #55acee;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+            <!-- Google -->
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #dd4b39;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #ffccff;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #0082ca;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <!-- Github -->
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #bbf7ff;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgb(93, 5, 255);">
+          © 2020 Apartmant Onlie
+          <!-- <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a> -->
+        </div>
+        <!-- Copyright -->
+      </footer></div>
+
+     
 </div>

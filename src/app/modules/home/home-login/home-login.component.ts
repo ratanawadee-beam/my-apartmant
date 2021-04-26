@@ -31,9 +31,13 @@ export class HomeLoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    const userType = 'user';
+    const userType = 'admin';
     this.homeService.$userType = of(userType);
     this.router.navigate([`${userType}`]);
+
+    // const userType = 'user';
+    // this.homeService.$userType = of(userType);
+    // this.router.navigate([`${userType}`]);
   }
 
   get f() { return this.loginForm.controls; }

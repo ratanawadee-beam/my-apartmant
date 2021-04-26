@@ -4,6 +4,7 @@ import { AdminBarangsewaComponent } from './admin-barangsewa/admin-barangsewa.co
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { AdminModelComponent } from './admin-model/admin-model.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AdminReportsComponent } from './admin-reports/admin-reports.component';
 import { AdminRoomComponent } from './admin-room/admin-room.component';
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'roomedit',
     component: AdminRoomeditComponent
+  },
+  {
+    path: 'regisroom',
+    component: AdminRegisroomComponent
   },
 ];
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
-import { LoginComponent } from './modules/login/login.component';
+
 
 
 const routes: Routes = [
