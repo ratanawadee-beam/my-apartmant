@@ -56,7 +56,7 @@
 
 
 <nav *ngIf="userType === 'user'" class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" >User</a>
+  <a class="navbar-brand"routerLink="user" >User</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -64,16 +64,16 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="user">หน้าแรก</a>
+          <a class="nav-link" routerLink="user/profile">ข้อมูลส่วนตัว</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="#">ข้อมูลอพาร์ตเมนต์</a>
+          <a class="nav-link" routerLink="#">สัญญาเช่า</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="#">อัลบั้มรูป</a>
+          <a class="nav-link" routerLink="#">ประวัติการชำระ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="#">การเข้าพัก</a>
+          <a class="nav-link" routerLink="#">เเจ้งเตือน</a>
         </li>
         
       </ul>
@@ -123,7 +123,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" routerLink="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            จัดการข้อมูล
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

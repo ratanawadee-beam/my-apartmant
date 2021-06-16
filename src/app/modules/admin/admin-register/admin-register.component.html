@@ -13,19 +13,7 @@
             <form class="row g-3 " autocomplete="off">
                 <div class="container " >
                 <div class="form-group" >
-                    <div class="row"> 
-                        
-                        <label  class="col-md-0 control-label">คำนำ</label>   
-                        <div class="form-group ">                                                                
-                          <div class="col-sm-10 ">                                  
-                                <select id="country" class="form-control" >
-                                    <option >-------</option>
-                                    <option>นาย</option>
-                                    <option>นาง</option>
-                                    <option>นางสาว</option>
-                                </select>
-                            </div>
-                        </div> 
+                    <div class="row">                                
                         <label  class="col-md-0 control-label">ชื่อ</label>      
                         <div class="col-md-5">                                   
                             <div class="form-group">                                      
@@ -33,7 +21,7 @@
                             </div>
                         </div>
                         <label  class="col-md-0 control-label">นามสกุล</label>   
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group">                                       
                                <input type="text" class="form-control "  placeholder="กรอกนามสกุล " value=""/>
                             </div>
@@ -42,16 +30,16 @@
 
                         <div class="row"> 
                             <label  class="col-md-0 control-label">เลขบัตรประชาชน</label>   
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="form-group">                                      
                                     <input type="text" class="form-control"  placeholder="เลขบัตรประชาชน" value=""/>
                                 </div>
                             </div>     
-                        <label  class="col-md-0 control-label">เพศ</label>   
-                        <div class="form-group ">                                                                
-                            <div class="col-sm-20 ">                                  
+                        <label  class="col-md-0 control-label">เพศ</label>
+                        <div class="col-md-4 ">     
+                        <div class="form-group ">                                                                                                          
                                   <select id="country" class="form-control" >
-                                      <option >-------</option>
+                                      <option >------------- กรุณาเลือก --------------</option>
                                       <option>ชาย</option>
                                       <option>หญิง</option>                         
                                   </select>
@@ -61,44 +49,46 @@
                         
                         <div class="row "> 
                             <label  class="col-md-0 control-label">วัน/เดือน/ปี</label>   
-                            <div class="col-md-3">
+                            <div class="col-md-5">
                                 <div class="form-group">                                      
                                     <input type="date" name="dob" id="dob" class="form-control">
                                     <span id="error_dob" class="text-danger"></span>
                                 </div>
                             </div> 
                             <label  class="col-md-0 control-label">อายุ</label>   
-                        <div class="col-md-1">
+                        <div class="col-md-5">
                             <div class="form-group">                                      
                                 <input type="text" class="form-control"  placeholder="อายุ" value=""/>
                             </div>
-                        </div>                                                                            
+                        </div> </div>   
+                        <div class="row ">                                                                       
                             <label  class="col-md-0 control-label">เบอร์โทร</label> 
-                            <div class="col-md-2">
+                            <div class="col-md-5">
                             <div class="form-group">                                      
                               <input type="text" class="form-control"  placeholder="เบอร์โทร" value=""/>
                           </div> </div>                                                      
                             <label  class="col-md-0 control-label">อีเมล</label>   
-                            <div class="col-md-3">                            
+                            <div class="col-md-5">                            
                             <div class="form-group">                                      
                                 <input type="text" class="form-control"  placeholder="อีเมล" value=""/>
-                            </div></div></div><br>
+                            </div></div></div>
+                            
+                            
+                            <br>
 
                             <div class="border-bottom"></div> <br>    
-                            <label  class="col-md-0 control-label text-align">สัญญาการเช่าห้องพัก</label> <br>
+                            <label  class="col-md-0 control-label text-align">สัญญาการเช่าห้องพัก</label> <br><br>
+                            <div class="form-group row">                           
+                                <div class="col-md-2">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                    <label class="form-check-label" for="gridCheck1">
+                                      ข้อมูลด้านบน
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
                             <div class="row"> 
-                        
-                                <label  class="col-md-0 control-label">คำนำ</label>   
-                                <div class="form-group ">                                                                
-                                  <div class="col-sm-10 ">                                  
-                                        <select id="country" class="form-control" >
-                                            <option >-------</option>
-                                            <option>นาย</option>
-                                            <option>นาง</option>
-                                            <option>นางสาว</option>
-                                        </select>
-                                    </div>
-                                </div> 
                                 <label  class="col-md-0 control-label">ชื่อ</label>      
                                 <div class="col-md-5">                                   
                                     <div class="form-group">                                      
@@ -106,7 +96,7 @@
                                     </div>
                                 </div>
                                 <label  class="col-md-0 control-label">นามสกุล</label>   
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="form-group">                                       
                                        <input type="text" class="form-control "  placeholder="กรอกนามสกุล " value=""/>
                                     </div>
@@ -115,16 +105,16 @@
         
                                 <div class="row"> 
                                     <label  class="col-md-0 control-label">เลขบัตรประชาชน</label>   
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <div class="form-group">                                      
                                             <input type="text" class="form-control"  placeholder="เลขบัตรประชาชน" value=""/>
                                         </div>
                                     </div>     
-                                <label  class="col-md-0 control-label">เพศ</label>   
-                                <div class="form-group ">                                                                
-                                    <div class="col-sm-20 ">                                  
+                                <label  class="col-md-0 control-label">เพศ</label>
+                                <div class="col-md-4 ">     
+                                <div class="form-group ">                                                                                                          
                                           <select id="country" class="form-control" >
-                                              <option >-------</option>
+                                              <option >------------- กรุณาเลือก --------------</option>
                                               <option>ชาย</option>
                                               <option>หญิง</option>                         
                                           </select>
@@ -134,33 +124,36 @@
                                 
                                 <div class="row "> 
                                     <label  class="col-md-0 control-label">วัน/เดือน/ปี</label>   
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         <div class="form-group">                                      
                                             <input type="date" name="dob" id="dob" class="form-control">
                                             <span id="error_dob" class="text-danger"></span>
                                         </div>
                                     </div> 
                                     <label  class="col-md-0 control-label">อายุ</label>   
-                                <div class="col-md-1">
+                                <div class="col-md-5">
                                     <div class="form-group">                                      
                                         <input type="text" class="form-control"  placeholder="อายุ" value=""/>
                                     </div>
-                                </div>                                                                            
+                                </div> 
+                            </div>   
+                                <div class="row ">                                                                       
                                     <label  class="col-md-0 control-label">เบอร์โทร</label> 
-                                    <div class="col-md-2">
+                                    <div class="col-md-5">
                                     <div class="form-group">                                      
                                       <input type="text" class="form-control"  placeholder="เบอร์โทร" value=""/>
                                   </div> </div>                                                      
                                     <label  class="col-md-0 control-label">อีเมล</label>   
-                                    <div class="col-md-3">                            
+                                    <div class="col-md-5">                            
                                     <div class="form-group">                                      
                                         <input type="text" class="form-control"  placeholder="อีเมล" value=""/>
-                                    </div></div>
+                                    </div></div></div>
+                                    <div class="border-bottom"></div> <br>  
                                     
-                        
+                                    <div class="row ">  
                                         <label  class="col-md-0 control-label">หมายเลขห้อง</label>   
-                                        <div class="form-group ">                                                                
-                                          <div class="col-sm-10 ">                                  
+                                        <div class="col-md-5 ">                      
+                                        <div class="form-group ">                                                                                                                                      
                                                 <select id="country" class="form-control" >
                                                     <option >-------</option>
                                                     <option>A01</option>
@@ -177,46 +170,54 @@
                                             </div>
                                         </div> 
                                         <label  class="col-md-0 control-label">ประเภทห้อง</label>      
-                                        <div class="form-group ">                                                                
-                                            <div class="col-sm-10 ">                                  
+                                        <div class="col-md-5 "> 
+                                        <div class="form-group ">                                                                                                                                            
                                                   <select id="country" class="form-control" >
                                                       <option >-------</option>
                                                       <option>ห้องแอร์</option>
                                                       <option>พัดลม</option>                                                    
                                                   </select>
                                               </div>
-                                          </div>
+                                          </div></div>
+                                          <div class="row "> 
                                           <label  class="col-md-0 control-label">วัน/เดือน/ปี เข้าพัก</label>   
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">                                      
                                             <input type="date" name="dob" id="dob" class="form-control">
                                             <span id="error_dob" class="text-danger"></span>
                                         </div>
                                     </div>
-                                </div>
-                                    <div class="row "> 
+                                
+                                    
                                     <label  class="col-md-0 control-label">มิสเตอร์น้ำตั้งต้น</label> 
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                     <div class="form-group">                                      
                                       <input type="text" class="form-control"  placeholder="xxxxx" value=""/>
                                   </div> </div>
                                   <label  class="col-md-0 control-label">มิสเตอร์ไฟตั้งต้น</label> 
-                                  <div class="col-md-2">
+                                  <div class="col-md-3">
                                   <div class="form-group">                                      
                                     <input type="text" class="form-control"  placeholder="xxxxx" value=""/>
                                     </div> </div>
-                                    <label  class="col-md-0 control-label">ค่ามัดจำค่าห้อง</label> 
-                                  <div class="col-md-1">
-                                  <div class="form-group">                                      
-                                    <input type="text" class="form-control"  placeholder="xxxxx" value=""/>
-                                    </div> </div>
-                                    <label  class="col-md-0 control-label">ราคาห้อง</label> 
-                                    <div class="col-md-1">
+                                  
+                                </div>                                                                                                                        
+                                <div class="row ">
+                                    <label  class="col-md-0 control-label">ค่าประกันห้อง</label> 
+                                    <div class="col-md-3">
                                     <div class="form-group">                                      
                                       <input type="text" class="form-control"  placeholder="xxxxx" value=""/>
                                       </div> </div>
-                                </div>                                                                                                                        
-                                       
+                                    <label  class="col-md-0 control-label">ค่ามัดจำค่าห้อง</label> 
+                                    <div class="col-md-3">
+                                    <div class="form-group">                                      
+                                      <input type="text" class="form-control"  placeholder="xxxxx" value=""/>
+                                      </div> </div>
+                                      <label  class="col-md-0 control-label">ราคาห้อง</label> 
+                                      <div class="col-md-3">
+                                      <div class="form-group">                                      
+                                        <input type="text" class="form-control"  placeholder="xxxxx" value=""/>
+                                        </div> </div>
+                                     </div>      
         
                             
                             
