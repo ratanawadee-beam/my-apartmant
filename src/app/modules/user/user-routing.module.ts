@@ -9,6 +9,10 @@ const routes: Routes = [
     component: UserPageComponent
   },
   {
+    path: 'home',
+    component: UserPageComponent
+  },
+  {
     path: 'profile',
     component: UserProfileComponent
   }
