@@ -10,6 +10,8 @@ import { AdminModelComponent } from './admin-model/admin-model.component';
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { AdminRoomeditComponent } from './admin-roomedit/admin-roomedit.component';
 import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.component';
+import { AdminEdituserComponent } from './admin-edituser/admin-edituser.component';
+import { AdminAlertComponent } from './admin-alert/admin-alert.component';
 
 
 
@@ -25,6 +27,8 @@ import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.compo
     AdminManageComponent,
     AdminRoomeditComponent,
     AdminRegisroomComponent,
+    AdminEdituserComponent,
+    AdminAlertComponent,
   ],
   imports: [
     CommonModule,

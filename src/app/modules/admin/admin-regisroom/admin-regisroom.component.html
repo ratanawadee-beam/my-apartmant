@@ -1,74 +1,81 @@
 <div class="container">
-    <div
-    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h3>เพิ่มข้อมูลห้องพัก</h3>
-    </div>
-    <div class="card   ">
-        <div class="card-body ">
-            
-            <form class="row g-3 " autocomplete="off">
-                <div class="container " >
-                <div class="form-group" >
-                    <div class="row"> 
-                        
-                        <label  class="col-md-0 control-label">หมายเลขห้อง</label> 
-                        <div class="col-md-3">    
-                        <div class="form-group ">                                                                
-                          <div class="col-sm-10 ">                                  
-                                <select id="country" class="form-control" >
-                                    <option >-------</option>
-                                    <option>A01</option>
-                                    <option>A02</option>
-                                    <option>A03</option>
-                                    <option>A04</option>
-                                    <option>A05</option>
-                                    <option>A06</option>
-                                    <option>A07</option>
-                                    <option>A08</option>
-                                    <option>A09</option>
-                                    <option>A10</option>
-                                </select>
-                            </div>
-                        </div></div> 
-                        <label  class="col-md-0 control-label">ประเภทห้อง</label> 
-                        <div class="col-md-3">    
-                        <div class="form-group ">                                                                
-                            <div class="col-sm-10 ">                                  
-                                  <select id="country" class="form-control" >
-                                      <option >-------</option>
-                                      <option>ห้องแอร์</option>
-                                      <option>พัดลม</option>
-                                    
-                                  </select>
-                              </div>
-                          </div></div> 
-                       
-                          <label  class="col-md-0 control-label">ราคา</label> 
-                          <div class="col-md-3">
-                          <div class="form-group">                                      
-                            <input type="text" class="form-control"  placeholder="xxxxx" value=""/>
-                        </div> </div>
+    <br>
+    <div class="box-card mb-4 ">
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="row heading">
+                    <div class="col-12">
+                        <h3><strong>เพิ่มข้อมูลห้องพัก</strong></h3>
                     </div>
-                    <div class="row">
-                        <label  class="col-md-0 control-label">สิ่งอำนวยความสะดวก</label> 
-                        
-                    </div>
-                    <div class="row">
-                        <label  class="col-md-0 control-label">สิ่งอำนวยความสะดวก </label> 
+                    <div class="col-12 px-3">
+                        <div class="border-bottom"></div>
                     </div>
 
-                       
-                            
-                         
-                       <br>
-                    <div style="text-align: center;">
-                    <button type="submit"  class="btnSubmit">บันทึก</button>&nbsp;
-                    <button type="reset" class="btnSubmit">ล้างข้อมูล</button>&nbsp;
-                    <button type="button" class="btnSubmit" routerLink="../room">ย้อนกลับ</button>
-                    </div>
-                
                 </div>
-               </div>
-                </form>
+            </div>
+        </div>
+        <form class="card-body " autocomplete="off">
+            <div class="form-group row content">
+                
+                <div class="col-lg-3">
+                    <label>หมายเลขห้อง<span class="text-danger">*</span></label>
+                    <div class="form-group ">
+                        <select id="country" class="form-control">
+                            <option> กรุณาเลือก </option>
+                            <option>A101</option>
+                            <option>A102</option>
+                            <option>A103</option>
+                            <option>A104</option>
+                            <option>A105</option>
+                            <option>A106</option>
+                            <option>A107</option>
+                            <option>A108</option>
+                            <option>A109</option>
+                            <option>A110</option>
+                        </select>
+                    </div>
 
-</div>
+                </div>
+            
+                <div class="col-lg-3">
+                    <label>ประเภทห้อง<span class="text-danger">*</span></label>
+                    <div class="form-group ">
+                        <select id="country" class="form-control">
+                            <option> กรุณาเลือก </option>
+                            <option>แอร์</option>
+                            <option>พัดลม</option>                       
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <label>สถานะห้อง<span class="text-danger">*</span></label>
+                    <div class="form-group ">
+                        <select id="country" class="form-control">
+                            <option> กรุณาเลือก </option>
+                            <option>ว่าง</option>
+                            <option>ไม่ว่าง</option>                       
+                        </select>
+                    </div>
+                </div>
+          
+            
+                    
+                <div class="col-lg-3">
+                    <label>ราคาห้อง<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " required />
+                    </div>
+
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button type="submit" class="btnSubmit">บันทึก</button>&nbsp;
+                <button type="reset" class="btnSubmit">ล้างข้อมูล</button>&nbsp;
+                <button type="button" class="btnSubmit" routerLink="../room">ย้อนกลับ</button>
+            </div>
+        </form>
+
+
+    </div>
+    

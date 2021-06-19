@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminAlertComponent } from './admin-alert/admin-alert.component';
 import { AdminBarangsewaComponent } from './admin-barangsewa/admin-barangsewa.component';
+import { AdminEdituserComponent } from './admin-edituser/admin-edituser.component';
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { AdminModelComponent } from './admin-model/admin-model.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
@@ -50,6 +52,14 @@ const routes: Routes = [
   {
     path: 'regisroom',
     component: AdminRegisroomComponent
+  },
+  {
+    path: 'edituser',
+    component: AdminEdituserComponent
+  },
+  {
+    path: 'alertadmin',
+    component: AdminAlertComponent
   },
 ];
 

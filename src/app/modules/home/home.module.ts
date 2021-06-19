@@ -4,6 +4,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomeLoginComponent } from './home-login/home-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TestComponent } from './test/test.component';
+
 
 
 
@@ -12,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HomePageComponent,
     HomeLoginComponent,
+    TestComponent,
+    
    
   ],
   imports: [
