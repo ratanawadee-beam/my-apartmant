@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NgxPermissionsGuard } from 'ngx-permissions';
+// import { NgxPermissionsGuard } from 'ngx-permissions';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 
 

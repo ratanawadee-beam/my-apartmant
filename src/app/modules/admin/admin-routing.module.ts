@@ -8,6 +8,7 @@ import { AdminModelComponent } from './admin-model/admin-model.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
+import { AdminRentalComponent } from './admin-rental/admin-rental.component';
 import { AdminReportsComponent } from './admin-reports/admin-reports.component';
 import { AdminRoomComponent } from './admin-room/admin-room.component';
 import { AdminRoomeditComponent } from './admin-roomedit/admin-roomedit.component';
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'alertadmin',
     component: AdminAlertComponent
+  },
+  {
+    path: 'rental',
+    component: AdminRentalComponent
   },
 ];
 
