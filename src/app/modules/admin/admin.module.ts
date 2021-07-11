@@ -14,8 +14,7 @@ import { AdminEdituserComponent } from './admin-edituser/admin-edituser.componen
 import { AdminAlertComponent } from './admin-alert/admin-alert.component';
 import { AdminRentalComponent } from './admin-rental/admin-rental.component';
 import { AdminRegisinvoiceComponent } from './admin-regisinvoice/admin-regisinvoice.component';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,7 +35,8 @@ import { AdminRegisinvoiceComponent } from './admin-regisinvoice/admin-regisinvo
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

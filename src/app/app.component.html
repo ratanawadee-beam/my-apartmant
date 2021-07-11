@@ -1,224 +1,217 @@
 <div *ngIf="userType === 'home'">
-  
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <a class="navbar-brand" routerLink="">Home Page</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position">
+        <a class="navbar-brand" routerLink="">Home Page</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="home/test">ข้อมูลอพาร์ตเมนต์</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">อัลบั้มรูป</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">ติดต่อ</a>
-        </li>
-      </ul>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="home/test">ข้อมูลอพาร์ตเมนต์</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#">อัลบั้มรูป</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#">ติดต่อ</a>
+                </li>
+            </ul>
 
-    </div>
-    <ul *ngIf="!isLogin" class="navbar-nav px-3">
-      <li class="nav-item text-nowrap ">
-        <a class="nav-link" routerLink="home/login">เข้าสู่ระบบ</a>
-      </li>
-    </ul>
-
-
-    <ul *ngIf="isLogin" class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
-      </li>
-    </ul>
-
-    <!-- modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">คุณต้องการออกจากระบบ</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ต้องการออกจากระบบ ใช่ หรือ ไม่ ?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">ยกเลิก</button>
-            <button type="button" class="btn btn-danger" (click)="logOut()">ออกจากระบบ</button>
-          </div>
         </div>
-      </div>
+        <ul *ngIf="!isLogin" class="navbar-nav px-3">
+            <li class="nav-item text-nowrap ">
+                <a class="nav-link" routerLink="home/login">เข้าสู่ระบบ</a>
+            </li>
+        </ul>
+
+
+        <ul *ngIf="isLogin" class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
+            </li>
+        </ul>
+
+        <!-- modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">คุณต้องการออกจากระบบ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ต้องการออกจากระบบ ใช่ หรือ ไม่ ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">ยกเลิก</button>
+                        <button type="button" class="btn btn-danger" (click)="logOut()">ออกจากระบบ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+    </nav>
+    <div class="bottom-2">
+        <router-outlet></router-outlet>
     </div>
-    <!-- modal -->
-  </nav>
-  <div class="bottom-2">
-    <router-outlet></router-outlet>
-  </div>
 </div>
 
 <div *ngIf="userType === 'user'">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="user">User</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position">
+        <a class="navbar-brand" routerLink="user">User</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="user/profile">ข้อมูลส่วนตัว</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="user/contract">สัญญาเช่า</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">ประวัติการชำระ</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">เเจ้งเตือน</a>
-        </li>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="user/profile">ข้อมูลส่วนตัว</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="user/contract">สัญญาเช่า</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#">ประวัติการชำระ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#">เเจ้งเตือน</a>
+                </li>
 
-      </ul>
+            </ul>
 
-    </div>
-
-    <img
-      src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.6435-1/p240x240/208650762_2988071434804553_7573366994741115255_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=7206a8&_nc_eui2=AeEC1EjA_PCw53CUSDIfxTPwo3YeI8rtUYyjdh4jyu1RjK9OtNHkctmSXrGT3Y0Pc1EVAZz7_t1hLd0YScJfTZk7&_nc_ohc=2CynmUlgJsoAX_yf8Wx&_nc_ht=scontent.fbkk10-1.fna&tp=6&oh=db30921f3edef3c3b96f19b957f1f43c&oe=60EDC77A"
-      width="40" height="40" class="rounded-circle">
-
-    <ul *ngIf="!isLogin" class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" (click)="logOut()">ออกจากระบบ</a>
-      </li>
-    </ul>
-
-
-    <ul *ngIf="isLogin" class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
-      </li>
-    </ul>
-
-    <!-- modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">คุณต้องการออกจากระบบ</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ต้องการออกจากระบบ ใช่ หรือ ไม่ ?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">ยกเลิก</button>
-            <button type="button" class="btn btn-danger" (click)="logOut()">ออกจากระบบ</button>
-          </div>
         </div>
-      </div>
-    </div>
-    <!-- modal -->
-  </nav>
 
-  <div class="bottom-2">
-    <router-outlet></router-outlet>
-  </div>
+        <img src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.6435-1/p240x240/208650762_2988071434804553_7573366994741115255_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=7206a8&_nc_eui2=AeEC1EjA_PCw53CUSDIfxTPwo3YeI8rtUYyjdh4jyu1RjK9OtNHkctmSXrGT3Y0Pc1EVAZz7_t1hLd0YScJfTZk7&_nc_ohc=2CynmUlgJsoAX_yf8Wx&_nc_ht=scontent.fbkk10-1.fna&tp=6&oh=db30921f3edef3c3b96f19b957f1f43c&oe=60EDC77A"
+            width="40" height="40" class="rounded-circle">
+
+        <ul *ngIf="!isLogin" class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" (click)="logOut()">ออกจากระบบ</a>
+            </li>
+        </ul>
+
+
+        <ul *ngIf="isLogin" class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
+            </li>
+        </ul>
+
+        <!-- modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">คุณต้องการออกจากระบบ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ต้องการออกจากระบบ ใช่ หรือ ไม่ ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">ยกเลิก</button>
+                        <button type="button" class="btn btn-danger" (click)="logOut()">ออกจากระบบ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+    </nav>
+
+    <div class="bottom-2">
+        <router-outlet></router-outlet>
+    </div>
 </div>
 
 <div *ngIf="userType === 'admin'">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <a class=" navbar-brand ">Admin</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position">
+        <a class=" navbar-brand ">Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             จัดการข้อมูล
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" routerLink="admin/manage">ข้อมูลสมาชิก</a>
-            <a class="dropdown-item" routerLink="admin/room">ข้อมูลห้องพัก</a>
-            <a class="dropdown-item" routerLink="admin/barangsewa">สัญญาเช่า</a>
-            <a class="dropdown-item " routerLink="admin/rental">ใบเเจ้งหนี้</a>
-            <a class="dropdown-item " routerLink="admin/reports">ข้อมูลการชำระเงิน</a>
-          </div>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="admin/model">ข้อมลูส่วนตัว</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="admin/alertadmin">เเจ้งเตือน</a>
-        </li>
-      </ul>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink="admin/manage">ข้อมูลสมาชิก</a>
+                        <a class="dropdown-item" routerLink="admin/room">ข้อมูลห้องพัก</a>
+                        <a class="dropdown-item" routerLink="admin/barangsewa">สัญญาเช่า</a>
+                        <a class="dropdown-item " routerLink="admin/rental">ใบเเจ้งหนี้</a>
+                        <a class="dropdown-item " routerLink="admin/reports">ข้อมูลการชำระเงิน</a>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="admin/model">ข้อมลูส่วนตัว</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="admin/alertadmin">เเจ้งเตือน</a>
+                    </li>
+            </ul>
+        </div>
+        <ul *ngIf="!isLogin" class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" (click)="logOut()">ออกจากระบบ</a>
+            </li>
+        </ul>
+
+        <!-- modal -->
+
+        <ul *ngIf="isLogin" class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="row content ">
+        <div class="col-lg-2 sidenav ">
+            <ul class="nav flex-column ">
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" routerLink="admin">หน้าเเรก</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="admin/manage">ข้อมูลผู้เช่า</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="admin/room">ข้อมูลห้องพัก</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="admin/barangsewa">สัญญาเช่า</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="admin/rental">ใบเเจ้งหนี้</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="admin/reports">ข้อมูลการชำระเงิน</a>
+                </li>
+
+
+            </ul><br>
+        </div>
+        <!-- content -->
+        <div class=" col-10">
+            <router-outlet></router-outlet>
+        </div>
+        <div class=" nav-content col">
+            <footer style="background: #e8e4e4;">
+                <div class="text-center my-auto copyright" style="padding: 0;padding-top: 13px;height: 49.8px;background: #2f2f30;width: 100%;"><span style="font-size: 14px;padding-top: 4px; color: white;">Apartment © Brand 2021</span></div>
+            </footer>
+        </div>
     </div>
-    <ul *ngIf="!isLogin" class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" (click)="logOut()">ออกจากระบบ</a>
-      </li>
-    </ul>
-
-    <!-- modal -->
-
-    <ul *ngIf="isLogin" class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="row content ">
-    <div class="col-lg-2 sidenav ">
-        <ul class="nav flex-column ">
-
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" routerLink="admin">หน้าเเรก</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " routerLink="admin/manage">ข้อมูลผู้เช่า</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " routerLink="admin/room">ข้อมูลห้องพัก</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " routerLink="admin/barangsewa">สัญญาเช่า</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " routerLink="admin/rental">ใบเเจ้งหนี้</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " routerLink="admin/reports">ข้อมูลการชำระเงิน</a>
-          </li>
-
-
-        </ul><br>     
-  </div>
-    <!-- content -->
-    <div class=" col-10">
-      <router-outlet></router-outlet>
-    </div>
-    <div class=" nav-content col">
-      <footer style="background: #e8e4e4;">
-        <div class="text-center my-auto copyright"
-          style="padding: 0;padding-top: 13px;height: 49.8px;background: #2f2f30;width: 100%;"><span
-            style="font-size: 14px;padding-top: 4px; color: white;">Apartment © Brand 2021</span></div>
-      </footer>
-    </div>
-  </div>
 </div>
 
 
 <div class="bottom-2">
-  <button class="btn btn-outline-success my-2 my-sm-0" (click)="setHome()">HOME</button>
-  <button class="btn btn-outline-success my-2 my-sm-0" (click)="setAdmin()">ADMIN</button>
-  <button class="btn btn-outline-success my-2 my-sm-0" (click)="setUser()">USER</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="setHome()">HOME</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="setAdmin()">ADMIN</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="setUser()">USER</button>
 </div>
