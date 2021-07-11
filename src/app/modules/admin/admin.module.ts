@@ -13,6 +13,7 @@ import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.compo
 import { AdminEdituserComponent } from './admin-edituser/admin-edituser.component';
 import { AdminAlertComponent } from './admin-alert/admin-alert.component';
 import { AdminRentalComponent } from './admin-rental/admin-rental.component';
+import { AdminRegisinvoiceComponent } from './admin-regisinvoice/admin-regisinvoice.component';
 
 
 
@@ -31,6 +32,7 @@ import { AdminRentalComponent } from './admin-rental/admin-rental.component';
     AdminEdituserComponent,
     AdminAlertComponent,
     AdminRentalComponent,
+    AdminRegisinvoiceComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
 <div *ngIf="userType === 'home'">
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <a class="navbar-brand" routerLink="">Home Page</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
@@ -9,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="#">ข้อมูลอพาร์ตเมนต์</a>
+          <a class="nav-link" routerLink="home/test">ข้อมูลอพาร์ตเมนต์</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="#">อัลบั้มรูป</a>
@@ -87,7 +88,7 @@
     </div>
 
     <img
-      src="https://scontent.fnak1-1.fna.fbcdn.net/v/t1.6435-9/134796419_2857991794479185_976748194325910755_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeE0ZvTpt1_tki94B7WaDPSxnv4yU2k0tzSe_jJTaTS3NMx_gDFTkg-70hUnywXDNMjdO9ViL5jGC1n9dk-zIxpq&_nc_ohc=kpIjNNps8vwAX_FArkY&_nc_ht=scontent.fnak1-1.fna&oh=35c0247438d0baf60356269a4b3ec440&oe=60D00F5B"
+      src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.6435-1/p240x240/208650762_2988071434804553_7573366994741115255_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=7206a8&_nc_eui2=AeEC1EjA_PCw53CUSDIfxTPwo3YeI8rtUYyjdh4jyu1RjK9OtNHkctmSXrGT3Y0Pc1EVAZz7_t1hLd0YScJfTZk7&_nc_ohc=2CynmUlgJsoAX_yf8Wx&_nc_ht=scontent.fbkk10-1.fna&tp=6&oh=db30921f3edef3c3b96f19b957f1f43c&oe=60EDC77A"
       width="40" height="40" class="rounded-circle">
 
     <ul *ngIf="!isLogin" class="navbar-nav px-3">
