@@ -17,8 +17,6 @@ import { AdminRegisinvoiceComponent } from './admin-regisinvoice/admin-regisinvo
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-
-
 @NgModule({
   declarations: [
     AdminPageComponent,

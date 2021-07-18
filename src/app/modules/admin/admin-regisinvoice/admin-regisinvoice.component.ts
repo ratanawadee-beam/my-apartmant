@@ -8,6 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AdminRegisinvoiceComponent implements OnInit {
   invoiceForm = new FormGroup({
+
     invoice_id: new FormControl(''),
     room_id: new FormControl(''),
     user_name: new FormControl(''),
@@ -23,6 +24,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
     de_totalunit_wa: new FormControl(''),
     de_totalunit_li: new FormControl(''),
     de_total: new FormControl(''),
+
   });
   constructor() { }
 
