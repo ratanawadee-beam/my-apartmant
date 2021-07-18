@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="container col-md-8 ">
-        <form class="card-body " autocomplete="off">
+        <form [formGroup]="edituserForm" class="card-body " autocomplete="off">
             <div class="form-group row content ">       
                 <div class="col-lg-3">
                     <label>หมายเลขห้อง</label>
@@ -28,59 +28,130 @@
             <div class="form-group row content">
                
                 <div class="col-lg-6">
-                    <label>Username</label>
+                    <label>ชื่อใช้งาน</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="A103" required />
+                        <input type="text" class="form-control input-inline"value="A103"  formControlName="user_username" required />
                     </div>
 
                 </div>
                 <div class="col-lg-6">
-                    <label>Password</label>
+                    <label>รหัสผู้ใช้งาน</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="8888" required />
+                        <input type="text" class="form-control input-inline"value="8888" formControlName="user_password" required />
                     </div>
 
                 </div>
             </div>
             <div class="form-group row content">
 
-                <div class="col-lg-6">
-                    <label>ชื่อ</label>
+                <div class="col-lg-4">
+                    <label>คำนำหน้า</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="รัตนาวดี" required />
+                        <input type="text" class="form-control input-inline"value="รัตนาวดี"formControlName="user_title" required />
                     </div>
 
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
+                    <label>ชื่อ</label>
+                    <div>
+                        <input type="text" class="form-control input-inline"value="ศรีคำ"formControlName="user_name" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
                     <label>นามสกุล</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="ศรีคำ" required />
+                        <input type="text" class="form-control input-inline"value="ศรีคำ"formControlName="user_lassname" required />
+                    </div>
+
+                </div>
+            
+            </div>
+            <div class="form-group row content">
+
+                <div class="col-lg-4">
+                    <label>เลขบัตรประชาชน</label>
+                    <div>
+                        <input type="text" class="form-control input-inline"value="รัตนาวดี" formControlName="user_card_id" required />
+                    </div>
+
+                </div>
+                
+                <div class="col-lg-4">
+                    <label>วัน/เดือน/ปีเกิด</label>
+                    <div>
+                        <input type="text" class="form-control input-inline"value="ศรีคำ" formControlName="user_birthday" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <label>เพศ</label>
+                    <div>
+                        <input type="text" class="form-control input-inline"value="ศรีคำ" formControlName="user_gender" required />
                     </div>
 
                 </div>
             
             </div>
             <div class="form-group row content"> 
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label>เบอร์โทร</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="0981401327" required />
+                        <input type="text" class="form-control input-inline"value="0981401327"formControlName="user_phone" required />
+                    </div>
+
+                </div> 
+                <div class="col-lg-4">
+                    <label>อีเมล</label>
+                    <div>
+                        <input type="text" class="form-control input-inline"value="0981401327"formControlName="user_email" required />
                     </div>
 
                 </div>  
                            
-                <div class="col-lg-6">
-                    <label>E-mail</label>
+            </div><br>
+            <div class="form-group row content">
+                <div class="col-lg-3 ">
+                    <label>ที่อยู่</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="beamlove3477@gmail.com" required />
+                        <input type="text" class="form-control input-inline " formControlName="user_address" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <label>ตำบล</label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="District_id"required />
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <label>อำเภอ</label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="Amphur_id" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <label>จังหวัด</label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="Province_id"required />
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row content">
+                <div class="col-lg-3">
+                    <label>รหัสไปรษณีย์</label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="zip_code" required />
                     </div>
 
                 </div>
 
-            </div><br>
+            </div>
             <div style="text-align: center;">
-                <button type="submit" class="btnSubmit">บันทึก</button>&nbsp;
-                <button type="submit" class="btnSubmit">แก้ไข</button>&nbsp;
+                <button type="submit" class="btnSubmit" (click)="save()">บันทึก</button>&nbsp;
                 <button type="reset" class="btnSubmit">ล้างข้อมูล</button>&nbsp;
                 <button type="button" class="btnSubmit" routerLink="../manage">ย้อนกลับ</button>
             </div>

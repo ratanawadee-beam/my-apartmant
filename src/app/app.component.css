@@ -1,6 +1,6 @@
      /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
      .row.content {height: auto}
-    
+     
     /* Set gray background color and 100% height */
     .sidenav {
       background-color: #f1f1f1;
@@ -26,3 +26,9 @@
     
 
  }
+ .position {
+  z-index: 9999;
+  position: fixed;
+  right: 0;
+  left: 0;
+} 

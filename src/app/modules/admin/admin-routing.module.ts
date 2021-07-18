@@ -60,6 +60,10 @@ const routes: Routes = [
     component: AdminEdituserComponent
   },
   {
+    path: 'edituser/:id',
+    component: AdminEdituserComponent
+  },
+  {
     path: 'alertadmin',
     component: AdminAlertComponent
   },

@@ -1,40 +1,20 @@
 
-<div  style="background: rgb(255, 255, 255);">
-<div class="card-body  text-center">
-<img class="mb-4" src="assets/image/n.jpg" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Login</h1>
-    </div>
-<div class="form-signin login-content ">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        
-        <div class="form-floating">
-            <label for="username">Username</label>
-            <input type="text" formControlName="username" class="form-control" placeholder="username"
-                [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-           
-            <div *ngIf="f.username.errors" class="invalid-feedback">
-                <div *ngIf="submitted && f.username.errors.required">Username is required</div>
-            </div>
-        </div>
-        <div class="form-floating">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" formControlName="password" placeholder="Password"
-                [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-            
-            <div *ngIf="f.username.errors" class="invalid-feedback">
-                <div *ngIf="submitted && f.username.errors.required">Password is required</div>
-            </div>
-        </div>
+<div class="container card">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" onsubmit="event.preventDefault()" class="box">
+                    <h1>Login</h1>
+                    <p class="text-muted"> Please enter your login and password!</p>
+                    <input type="text" formControlName="username" class="form-control" placeholder="username"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"> 
+                    <a class="forgot text-muted" href="#">Forgot password?</a>
+                    <input type="submit" name="" value="Login" href="#">
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
+                </form>
+            </div>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">เข้าสู่ระบบ</button>
-        <div class="text-center">
-        <p class="mt-5 mb-3 text-muted">&copy; Apartmant Online</p>
     </div>
-    </form>
-</div>
 </div>

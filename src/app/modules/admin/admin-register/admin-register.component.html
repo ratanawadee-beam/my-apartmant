@@ -15,12 +15,12 @@
                 </div>
             </div>
         </div>
-        <form class="card-body " autocomplete="off">
+        <form [formGroup]="registerForm" class="card-body " autocomplete="off">
             <div class="form-group row content">
-                <div class="col-lg-2">
+                <div class="col-lg-4">
                     <label>คำนำหน้า</label>
                     <div>
-                        <select id="country" class="form-control">
+                        <select id="country" class="form-control  " formControlName="user_title">
                             <option> กรุณาเลือก </option>
                             <option>นาย</option>
                             <option>นาง</option>3
@@ -29,39 +29,39 @@
                     </div>
 
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <label>ชื่อ</label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_name" required />
                     </div>
 
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <label>นามสกุล</label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_lassname" required />
                     </div>
 
                 </div>
             </div>
             <div class="form-group row content">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label>เลขบัตรประชาชน<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_card_id" required />
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>วัน/เดือน/ปีเกิด<span class="text-danger">*</span></label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="user_birthday">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>เพศ<span class="text-danger">*</span></label>
                     <div class="form-group ">
-                        <select id="country" class="form-control">
+                        <select id="country" class="form-control" formControlName="user_gender">
                             <option> กรุณาเลือก </option>
                             <option>ชาย</option>
                             <option>หญิง</option>
@@ -72,31 +72,70 @@
                 <div class="col-lg-2">
                     <label>อายุ<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_old" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-2">
+                    <label>เบอร์โทร<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="user_phone" required />
                     </div>
 
                 </div>
             </div>
-
             <div class="form-group row content">
-                <div class="col-lg-3">
-                    <label>เบอร์โทร<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " required />
-                    </div>
-
-                </div>
-                <div class="col-lg-3 "></div>
                 <div class="col-lg-6">
                     <label>E-mail<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="user_email" required />
                     </div>
 
                 </div>
 
-            </div><br>
-            <div class="border-bottom"></div> <br>
+            </div>
+            <div class="form-group row content">
+                <div class="col-lg-3 ">
+                    <label>ที่อยู่</label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="user_address" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <label>ตำบล<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="District_id" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <label>อำเภอ<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="Amphur_id" required />
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <label>จังหวัด<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="Province_id" required />
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row content">
+                <div class="col-lg-3">
+                    <label>รหัสไปรษณีย์<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="Province_id" required />
+                    </div>
+
+                </div>
+
+            </div>
+            <br>
+            <div class="border-bottom " style="border-top: 1px solid red;"></div> <br>
             <div class="form-group row text-center">
                 <div class="col-12">
                     <div class="row heading">
@@ -121,14 +160,15 @@
                 <div class="col-lg-6">
                     <label>ชื่อ</label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_name1" required />
                     </div>
 
                 </div>
                 <div class="col-lg-6">
                     <label>นามสกุล</label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_lassname1"
+                            required />
                     </div>
 
                 </div>
@@ -137,20 +177,20 @@
                 <div class="col-lg-6">
                     <label>เลขบัตรประชาชน<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_card_id1" required />
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>วัน/เดือน/ปีเกิด<span class="text-danger">*</span></label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="user_birthday1">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>เพศ<span class="text-danger">*</span></label>
                     <div class="form-group ">
-                        <select id="country" class="form-control">
+                        <select id="country" class="form-control" formControlName="user_gender1">
                             <option> กรุณาเลือก </option>
                             <option>ชาย</option>
                             <option>หญิง</option>
@@ -161,7 +201,7 @@
                 <div class="col-lg-2">
                     <label>อายุ<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline" required />
+                        <input type="text" class="form-control input-inline" formControlName="user_old1" required />
                     </div>
 
                 </div>
@@ -171,7 +211,7 @@
                 <div class="col-lg-3 ">
                     <label>เบอร์โทร<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="user_phone1" required />
                     </div>
 
                 </div>
@@ -179,7 +219,7 @@
                 <div class="col-lg-6">
                     <label>E-mail<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="user_email1" required />
                     </div>
 
                 </div>
@@ -189,28 +229,28 @@
                 <div class="col-lg-3 ">
                     <label>ที่อยู่</label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="user_address" required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>ตำบล<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="District_id" required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>อำเภอ<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="Amphur_id" required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>จังหวัด<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="Province_id" required />
                     </div>
 
                 </div>
@@ -220,7 +260,7 @@
                 <div class="col-lg-2">
                     <label>หมายเลขห้อง<span class="text-danger">*</span></label>
                     <div class="form-group ">
-                        <select id="country" class="form-control">
+                        <select id="country" class="form-control" formControlName="room_id">
                             <option> กรุณาเลือก </option>
                             <option>A101</option>
                             <option>A102</option>
@@ -240,21 +280,22 @@
                 <div class="col-lg-2">
                     <label>ประเภทห้อง<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="room_typename"
+                            required />
                     </div>
 
                 </div>
                 <div class="col-lg-2">
                     <label>ราคาห้อง<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="room_price" required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>วันที่เข้าพัก<span class="text-danger">*</span></label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rent_start">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
 
@@ -262,7 +303,7 @@
                 <div class="col-lg-3">
                     <label>วันที่สิ้นสุด</label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rent_end">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
 
@@ -274,7 +315,7 @@
                 <div class="col-lg-3">
                     <label>มิสเตอร์น้ำตั้งต้น</label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="rent_wa" required />
                     </div>
 
                 </div>
@@ -282,7 +323,7 @@
                 <div class="col-lg-3">
                     <label>มิสเตอร์ไฟตั้งต้น</label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="rent_li" required />
                     </div>
 
                 </div>
@@ -291,21 +332,23 @@
                 <div class="col-lg-2">
                     <label>ค่าประกันห้อง<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="rent_insurance"
+                            required />
                     </div>
 
                 </div>
                 <div class="col-lg-2">
                     <label>ค่าส่วนกลาง</label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="rent_other" required />
                     </div>
 
                 </div>
                 <div class="col-lg-2">
                     <label>รวมค่าใช้จ่าย</label>
                     <div>
-                        <input type="text" class="form-control input-inline " required />
+                        <input type="text" class="form-control input-inline " formControlName="rent_totalprice"
+                            required />
                     </div>
 
                 </div>
@@ -313,26 +356,7 @@
 
             </div><br>
             <div style="text-align: center;">
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">บันทึก</button>
-
-                <!-- Modal -->
-                
-                <div class="modal fade" id="myModal" role="dialog">         
-                    <div class="modal-dialog modal-sm ">
-                        <div class="modal-content ">
-                            <div class="modal-header ">
-                                <h4 class="modal-title ">บันทึก</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <p>ต้องการบันทึกหรือไม่ ?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-info btn-lg">บันทึก</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>&nbsp;
+                <button type="button" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
                 <button type="reset" class="btn btn-info btn-lg">ล้างข้อมูล</button>&nbsp;
                 <button type="button" class="btn btn-info btn-lg" routerLink="../manage">ย้อนกลับ</button>
             </div>

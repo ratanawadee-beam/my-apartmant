@@ -4,38 +4,59 @@
       </div><br>
     
       <div class="box-card mb-4 ">
-        <form class="card-body " autocomplete="off">
+        <form [formGroup]="invoiceForm" class="card-body " autocomplete="off">
             
           <div class="form-group row content">
             <div class="col-lg-4">
-                <h6>หมายเลขเเจ้งหนี้ : XXXXXXXXXX </h6>
+                <label>หมายเลขเเจ้งหนี้</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="invoice_id" required />
+                </div>
             </div>
             <div class="col-lg-4">
-                <h6>หมายเลขห้องพัก :XXXX </h6>
+                <label>หมายเลขห้องพัก</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="room_id" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>ชื่อผู้เช่า</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="user_name" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>วันออกใบแจ้ง</label>
+                <div>
+                    <input type="date" class="form-control input-inline " formControlName="invoice_start"  required />
+                </div>
 
             </div>
             <div class="col-lg-4">
-                <h6>ชื่อผู้เช่า :XXXXXXXXX </h6>
+                <label>วันกำหนดจ่าย</label>
+                <div>
+                    <input type="date" class="form-control input-inline " formControlName="invoice_end"  required />
+                </div>
 
             </div>
             <div class="col-lg-4">
                 <label>ค่าห้อง</label>
                 <div>
-                    <input type="text" class="form-control input-inline " required />
+                    <input type="text" class="form-control input-inline " formControlName="de_totalroom"  required />
                 </div>
 
             </div>
             <div class="col-lg-4">
                 <label>มิสเตอร์น้ำตั้งต้น</label>
                 <div>
-                    <input type="text" class="form-control input-inline " required />
+                    <input type="text" class="form-control input-inline "formControlName="de_wa_old"  required />
                 </div>
 
             </div>
             <div class="col-lg-4">
                 <label>มิสเตอร์น้ำ</label>
                 <div>
-                    <input type="text" class="form-control input-inline " required />
+                    <input type="text" class="form-control input-inline " formControlName="de_wa_new"  required />
                 </div>
 
             </div>
@@ -44,21 +65,50 @@
             <div class="col-lg-4">
                 <label>มิสเตอร์ไฟตั้งต้น</label>
                 <div>
-                    <input type="text" class="form-control input-inline " required />
+                    <input type="text" class="form-control input-inline " formControlName="de_li_old"  required />
                 </div>
 
             </div>
             <div class="col-lg-4">
                 <label>มิสเตอร์ไฟ</label>
                 <div>
-                    <input type="text" class="form-control input-inline " required />
+                    <input type="text" class="form-control input-inline " formControlName="de_li_new"  required />
+                </div>
+
+            </div>
+          
+            <div class="col-lg-4">
+                <label>จำนวนน้ำที่ใช้</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="de_totalunit_wa"  required />
                 </div>
 
             </div>
             <div class="col-lg-4">
-                <label>วันออกใบแจ้ง</label>
+                <label>จำนวนไฟที่ใช้</label>
                 <div>
-                    <input type="date" class="form-control input-inline " required />
+                    <input type="text" class="form-control input-inline " formControlName="de_totalunit_li"  required />
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <label>รวมค่าน้ำ</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="de_total_wa"  required />
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <label>รวมค่าไฟ</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="de_total_li"  required />
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <label>รวมยอด</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="de_total"  required />
                 </div>
 
             </div>
@@ -72,7 +122,7 @@
             <!-- Modal -->
             
      
-            <button type="button" class="btn btn-info btn-lg">บันทึก</button>&nbsp; 
+            <button type="button" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp; 
 
             <button type="button" class="btn btn-info btn-lg" routerLink="../rental">ย้อนกลับ</button>
         </div>
