@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-admin-register',
-  templateUrl: './admin-register.component.html',
-  styleUrls: ['./admin-register.component.css']
+  selector: 'app-admin-barangsewaedit',
+  templateUrl: './admin-barangsewaedit.component.html',
+  styleUrls: ['./admin-barangsewaedit.component.css']
 })
-export class AdminRegisterComponent implements OnInit {
+export class AdminBarangsewaeditComponent implements OnInit {
   registerForm = new FormGroup({
     usertitle: new FormControl(''),
     username: new FormControl(''),
@@ -17,19 +17,6 @@ export class AdminRegisterComponent implements OnInit {
     userold: new FormControl(''),
     userphone: new FormControl(''),
     useremail: new FormControl(''),
-    useraddress1: new FormControl(''),
-    Districtid1: new FormControl(''),
-    Amphurid1: new FormControl(''),
-    Provinceid1: new FormControl(''),
-    zipcode1: new FormControl(''),
-    username1: new FormControl(''),
-    userlassname1: new FormControl(''),
-    usercardid1: new FormControl(''),
-    userbirthday1: new FormControl(''),
-    usergender1: new FormControl(''),
-    userold1: new FormControl(''),
-    userphone1: new FormControl(''),
-    useremail1: new FormControl(''),
     useraddress: new FormControl(''),
     Districtid: new FormControl(''),
     Amphurid: new FormControl(''),

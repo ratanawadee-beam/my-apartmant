@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminAlertComponent } from './admin-alert/admin-alert.component';
 import { AdminBarangsewaComponent } from './admin-barangsewa/admin-barangsewa.component';
+import { AdminBarangsewaeditComponent } from './admin-barangsewaedit/admin-barangsewaedit.component';
 import { AdminEdituserComponent } from './admin-edituser/admin-edituser.component';
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { AdminModelComponent } from './admin-model/admin-model.component';
@@ -75,6 +76,11 @@ const routes: Routes = [
     path: 'regisinvoice',
     component: AdminRegisinvoiceComponent
   },
+  {
+    path: 'barangsewaedit',
+    component: AdminBarangsewaeditComponent
+  },
+  
 ];
 
 @NgModule({
