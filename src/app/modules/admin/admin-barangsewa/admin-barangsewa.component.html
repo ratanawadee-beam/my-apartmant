@@ -1,20 +1,23 @@
-<div class="container card ">
+<div class="container col-12">
     <div
     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h3>สัญญาเช่า</h3>
     </div>
 <br> 
-    <form class="form-inline" >
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" arelia-lab="Search">    
-        <button class="nav-link btn  btn-center btn-success" type="submit" routerLink="" >Search</button>
-    </form>
+<form class="form-inline ">
+  <input class="form-control mr-sm-2" placeholder="ค้นหา" aria-label="Search">
+  <button class="nav-link btn btn-success" type="submit" routerLink="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg> ค้นหา</button>
+</form>
 <br> 
 <h5 class="text-center">รายการสัญญาเช่า</h5>
 <br>
 <table class="table text-center table">
     <thead class=" table-info">
       <tr>
-        <th scope="col">เลขสัญญาเช่า</th>
+        <th scope="col">เลขห้อง</th>
         <th scope="col">ชื่อ</th>
         <th scope="col">นามสกุล</th>
         <th scope="col">เบอร์ติดต่อ</th>
@@ -27,7 +30,7 @@
 </thead>
     <tbody class="text-center">
       <tr>
-        <th scope="row">A101</th>
+        <td>A101</td>
         <td>รัตนาวดี</td>
         <td>ศรีคำ</td>
         <td>0981401327</td>
@@ -52,7 +55,8 @@
         
       </tr>
       <tr>
-        <th scope="row">A102</th>
+       
+        <td>A102</td>
         <td>รัตนาวดี</td>
         <td>ศรีคำ</td>
         <td>0981401327</td>
@@ -91,4 +95,5 @@
       </li>
     </ul>
   </nav>
+  
 </div>           

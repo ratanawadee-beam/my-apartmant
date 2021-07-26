@@ -1,138 +1,75 @@
 <div class="container">
     <br>
-    <div class="box-card mb-4 ">
-        <div class="form-group row">
-            <div class="col-12">
-                <div class="row heading">
-                    <div class="col-12">
-                        <h3><strong>เพิ่มข้อมูลห้องพัก</strong></h3>
-                    </div>
-                    <div class="col-12 px-3">
-                        <div class="border-bottom"></div>
-                    </div>
 
+    <div class="form-group row">
+        <div class="col-12">
+            <div class="row heading">
+                <div class="col-12">
+                    <h3><strong>เเก้ไขข้อมูลห้องพัก</strong></h3>
                 </div>
+                <div class="col-12 px-3">
+                    <div class="border-bottom"></div>
+                </div>
+
             </div>
         </div>
-        <form class="card-body " autocomplete="off">
-            <div class="form-group row content">
+    </div>
+
+
+    <form [formGroup]="roomeditForm" class="card-body " autocomplete="off">
+        <div class=" card bg-white shadow-lg " style="max-width: 70rem;">
+            <br>
+            <div class="form-group row ">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-3">
-                    <label>หมายเลขห้อง<span class="text-danger">*</span></label>
-                    <div class="form-group ">
-                        <select id="country" class="form-control">
-                            <option> กรุณาเลือก </option>
-                            <option>A101</option>
-                            <option>A102</option>
-                            <option>A103</option>
-                            <option>A104</option>
-                            <option>A105</option>
-                            <option>A106</option>
-                            <option>A107</option>
-                            <option>A108</option>
-                            <option>A109</option>
-                            <option>A110</option>
-                        </select>
-                    </div>
-
+                    <label>เลขห้อง</label>
+                    <input type="text" class="form-control" formControlName="roomName" required />
                 </div>
-
-                <div class="col-lg-3">
-                    <label>ประเภทห้อง<span class="text-danger">*</span></label>
+                <div class="col-md-3">
+                    <label>ประเภทห้อง</label>
                     <div class="form-group ">
-                        <select id="country" class="form-control">
+                        <select id="country" class="form-control" formControlName="roomTypename">
                             <option> กรุณาเลือก </option>
                             <option>แอร์</option>
                             <option>พัดลม</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <label>สถานะห้อง<span class="text-danger">*</span></label>
+                <div class="col-md-3">
+                    <label>สถานะห้อง</label>
                     <div class="form-group ">
-                        <select id="country" class="form-control">
+                        <select id="country" class="form-control" formControlName="roomStatvs">
                             <option> กรุณาเลือก </option>
                             <option>ว่าง</option>
                             <option>ไม่ว่าง</option>
                         </select>
                     </div>
                 </div>
-
-
-
-
-            </div>
-            <div class="form-group row content">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-3">
-                    <label>ค่าน้ำต่อหน่วย<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " required />
-                    </div>
-
-                </div>
-                <div class="col-lg-3">
-                    <label>ค่าไฟต่อหน่วย<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " required />
-                    </div>
-
-                </div>
-                <div class="col-lg-3">
-                    <label>ราคาห้อง<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " required />
-                    </div>
-
-                </div>
-
             </div>
-            <div class="form-group row content">
+            <div class="form-group row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-3">
-                    <label>เพิ่มรูปภาพ</label>
-                    <div>
-                        <input type="file" class=" input-inline " required />
-                    </div>
-
+                <div class="col-md-3">
+                    <label>ค่าน้ำต่อหน่วย</label>
+                    <input type="text" class="form-control" formControlName="roomWater" required />
                 </div>
-            </div><br>
-
-
-
-            <div class="text-center">
-                <img src="https://www.spu.ac.th/dormitory/wp-content/uploads/2018/03/%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9B%E0%B8%81-65.jpg"
-                    class="rounded ">
-            </div> <br>
-
-
-
+                <div class="col-md-3">
+                    <label>ค่าไฟต่อหน่วย</label>
+                    <input type="text" class="form-control" formControlName="roomLight" required />
+                </div>
+                <div class="col-md-3">
+                    <label>ราคาห้อง</label>
+                    <input type="text" class="form-control" formControlName="roomPrice" required />
+                </div>
+            </div>
+            <br>
 
             <div style="text-align: center;">
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">บันทึก</button>
-
-                <!-- Modal -->
-                
-                <div class="modal fade" id="myModal" role="dialog">         
-                    <div class="modal-dialog modal-sm ">
-                        <div class="modal-content ">
-                            <div class="modal-header ">
-                                <h4 class="modal-title ">บันทึก</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <p>ต้องการบันทึกหรือไม่ ?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-info btn-lg">บันทึก</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>&nbsp;
-                <button type="reset" class="btn btn-info btn-lg">ล้างข้อมูล</button>&nbsp;
-                <button type="button" class="btn btn-info btn-lg" routerLink="../room">ย้อนกลับ</button>
-            </div>
-        </form>
+                <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
+                <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>
+            </div><br>
+        </div>
+    </form>
 
 
-    </div>
+</div>

@@ -1,0 +1,18 @@
+pdf-viewer {
+  display: block;
+  height: 100vh;
+}
+.pdfViewer.removePageBorders .page {
+  margin: 0 auto 10px;
+  border: none;
+  width: 75% !important;
+}
+
+.page {
+  width: 75%;
+  height: 1056px;
+}
+
+::ng-deep .ng2-pdf-viewer-container {
+  max-width: 953px !important;
+}

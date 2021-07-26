@@ -1,15 +1,15 @@
-<div class="container card ">
-  <div class="d-flex justify-content-between   align-items-center pt-3 pb-2 mb-3 ">
+<div class="container col-12 ">
+  <div class="d-flex align-items-center pt-2 pb-1 mb-2 border-bottom ">
     <h3>จัดการข้อมูลห้องพัก</h3>
-    <button type="button" class="btnSubmit " routerLink="../regisroom">เพิ่มข้อมูลห้องพัก</button>
   </div>
-<br>
-
-
+  <div>
+    <button type="button" class="btn btn-primary " (click)="Next()">เพิ่มข้อมูลห้องพัก</button>
+  </div>
+  <br>
   <table class="table text-center table  ">
     <thead>
       <tr>
-        <th scope="col">ชื่อห้องพัก</th>
+        <th scope="col">เลขห้อง</th>
         <th scope="col">ประเภทห้อง</th>
         <th scope="col">สถานะ</th>
         <th scope="col">ราคา</th>
@@ -17,12 +17,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">A101</th>
-        <td>แอร์</td>
-        <td>ว่าง</td>
-        <td>3500</td>
-        <td><button type="button" class="btn btn-warning" routerLink="../roomedit">
+      <tr *ngFor="let data of listRoom">
+        <td>{{data.roomName}}</td>
+        <td>{{data.roomTypename}}</td>
+        <td>{{data.roomStatvs}}</td>
+        <td>{{data.roomPrice}}</td>
+        <td><button type="button" class="btn btn-warning" [routerLink]="['../roomedit', data.roomId]">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-pencil-square" viewBox="0 0 16 16">
               <path
@@ -31,62 +31,10 @@
                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
             </svg> แก้ไข</button> </td>
       </tr>
-      <tr>
-        <th scope="row">A102</th>
-        <td>Jacob</td>
-        <td>ว่าง</td>
-        <td>the Bird</td>
-        <td><button type="button" class="btn btn-warning" routerLink="../roomedit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-              <path fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-            </svg> แก้ไข</button> </td>
-      </tr>
-      <tr>
-        <th scope="row">A103</th>
-        <td>Larry</td>
-        <td>ว่าง</td>
-        <td>the Bird</td>
-        <td><button type="button" class="btn btn-warning" routerLink="../roomedit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-              <path fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-            </svg> แก้ไข</button> </td>
-      </tr>
-      <tr>
-        <th scope="row">A104</th>
-        <td>Larry</td>
-        <td>ว่าง</td>
-        <td>the Bird</td>
-        <td><button type="button" class="btn btn-warning" routerLink="../roomedit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-              <path fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-            </svg> แก้ไข</button> </td>
-      </tr>
-      <tr>
-        <th scope="row">A105</th>
-        <td>แอร์</td>
-        <td>ว่าง</td>
-        <td>3500</td>
-        <td><button type="button" class="btn btn-warning" routerLink="../roomedit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-              <path fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-            </svg> แก้ไข</button> </td>
-      </tr>
+
+
+
+
     </tbody>
   </table>
   <nav aria-label="Page navigation example">

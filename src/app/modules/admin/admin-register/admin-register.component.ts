@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SharedsService } from 'src/app/shared/service/shareds.service';
 
 @Component({
   selector: 'app-admin-register',
@@ -35,7 +37,7 @@ export class AdminRegisterComponent implements OnInit {
     Amphurid: new FormControl(''),
     Provinceid: new FormControl(''),
     zipcode: new FormControl(''),
-    roomid: new FormControl(''),
+    roomflow: new FormControl(''),
     roomtypename: new FormControl(''),
     roomprice: new FormControl(''),
     rentstart: new FormControl(''),
@@ -47,12 +49,14 @@ export class AdminRegisterComponent implements OnInit {
     renttotalprice: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(private sharedsService: SharedsService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
   save() {
-    console.log(this.registerForm.value);
-
+    console.log(this.registerForm.value.username);
+    // this.sharedsService.sregisterData(this.registerForm.value.username);
+    this.router.navigate(['admin/information']);
   }
 }

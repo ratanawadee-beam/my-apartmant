@@ -6,7 +6,6 @@ import { AdminRegisterComponent } from './admin-register/admin-register.componen
 import { AdminRoomComponent } from './admin-room/admin-room.component';
 import { AdminBarangsewaComponent } from './admin-barangsewa/admin-barangsewa.component';
 import { AdminReportsComponent } from './admin-reports/admin-reports.component';
-import { AdminModelComponent } from './admin-model/admin-model.component';
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { AdminRoomeditComponent } from './admin-roomedit/admin-roomedit.component';
 import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.component';
@@ -17,6 +16,7 @@ import { AdminRegisinvoiceComponent } from './admin-regisinvoice/admin-regisinvo
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminBarangsewaeditComponent } from './admin-barangsewaedit/admin-barangsewaedit.component';
 import { AdminInformationComponent } from './admin-information/admin-information.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -26,7 +26,6 @@ import { AdminInformationComponent } from './admin-information/admin-information
     AdminRoomComponent,
     AdminBarangsewaComponent,
     AdminReportsComponent,
-    AdminModelComponent,
     AdminManageComponent,
     AdminRoomeditComponent,
     AdminRegisroomComponent,
@@ -40,7 +39,8 @@ import { AdminInformationComponent } from './admin-information/admin-information
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PdfViewerModule
   ]
 })
 export class AdminModule { }

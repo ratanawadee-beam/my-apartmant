@@ -4,8 +4,8 @@ import { AdminAlertComponent } from './admin-alert/admin-alert.component';
 import { AdminBarangsewaComponent } from './admin-barangsewa/admin-barangsewa.component';
 import { AdminBarangsewaeditComponent } from './admin-barangsewaedit/admin-barangsewaedit.component';
 import { AdminEdituserComponent } from './admin-edituser/admin-edituser.component';
+import { AdminInformationComponent } from './admin-information/admin-information.component';
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
-import { AdminModelComponent } from './admin-model/admin-model.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminRegisinvoiceComponent } from './admin-regisinvoice/admin-regisinvoice.component';
 import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.component';
@@ -45,15 +45,19 @@ const routes: Routes = [
     component: AdminBarangsewaComponent
   },
   {
-    path: 'model',
-    component: AdminModelComponent
-  },
-  {
     path: 'roomedit',
     component: AdminRoomeditComponent
   },
   {
+    path: 'roomedit/:id',
+    component: AdminRoomeditComponent
+  },
+  {
     path: 'regisroom',
+    component: AdminRegisroomComponent
+  },
+  {
+    path: 'regisroom/save',
     component: AdminRegisroomComponent
   },
   {
@@ -80,7 +84,10 @@ const routes: Routes = [
     path: 'barangsewaedit',
     component: AdminBarangsewaeditComponent
   },
-  
+  {
+    path: 'information',
+    component: AdminInformationComponent
+  },
 ];
 
 @NgModule({

@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./admin-barangsewaedit.component.css']
 })
 export class AdminBarangsewaeditComponent implements OnInit {
-  registerForm = new FormGroup({
+  barangForm = new FormGroup({
     usertitle: new FormControl(''),
     username: new FormControl(''),
     userlassname: new FormControl(''),
@@ -22,7 +22,7 @@ export class AdminBarangsewaeditComponent implements OnInit {
     Amphurid: new FormControl(''),
     Provinceid: new FormControl(''),
     zipcode: new FormControl(''),
-    roomid: new FormControl(''),
+    roomflow: new FormControl(''),
     roomtypename: new FormControl(''),
     roomprice: new FormControl(''),
     rentstart: new FormControl(''),
@@ -32,14 +32,16 @@ export class AdminBarangsewaeditComponent implements OnInit {
     rentinsurance: new FormControl(''),
     rentother: new FormControl(''),
     renttotalprice: new FormControl(''),
-  });
 
+  });
+  dataUser: any;
+  dataRoom: any;
   constructor() { }
 
   ngOnInit(): void {
   }
   save() {
-    console.log(this.registerForm.value);
+    console.log(this.barangForm.value);
 
   }
 }

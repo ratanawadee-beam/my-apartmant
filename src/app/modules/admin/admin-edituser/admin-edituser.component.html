@@ -1,12 +1,12 @@
 <div class="container ">
-    <!-- Register -->
+    <!-- fromedituser -->
     <br>
     <div class="box-card mb-4 ">
         <div class="form-group row">
             <div class="col-12">
                 <div class="row heading">
                     <div class="col-12">
-                        <h3><strong>เเก้ไขข้อมูล</strong></h3>
+                        <h3><strong>เเก้ไขข้อมูลผู้เช่า</strong></h3>
                     </div>
                     <div class="col-12 px-3">
                         <div class="border-bottom"></div>
@@ -14,14 +14,14 @@
                 </div>
             </div>
         </div>
-        <div class="container col-md-8 ">
+        <div class="container bg-white shadow-lg col-9 ">
         <form [formGroup]="edituserForm" class="card-body " autocomplete="off">
             <div class="form-group row content ">       
                 <div class="col-lg-3">
                     <label>หมายเลขห้อง</label>
                     <div class="form-group">
                         <input type="text" readonly class="form-control" id="staticDate"
-                            value="A103">
+                        formControlName="roomName" required />
                     </div>
                 </div>
             </div>
@@ -30,14 +30,14 @@
                 <div class="col-lg-6">
                     <label>ชื่อใช้งาน</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="A103"  formControlName="user_username" required />
+                        <input type="text" class="form-control input-inline" formControlName="userUsername" required />
                     </div>
 
                 </div>
                 <div class="col-lg-6">
                     <label>รหัสผู้ใช้งาน</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="8888" formControlName="user_password" required />
+                        <input type="text" class="form-control input-inline"formControlName="userPassword" required />
                     </div>
 
                 </div>
@@ -47,21 +47,21 @@
                 <div class="col-lg-4">
                     <label>คำนำหน้า</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="รัตนาวดี"formControlName="user_title" required />
+                        <input type="text" class="form-control input-inline"formControlName="userTitle" required />
                     </div>
 
                 </div>
                 <div class="col-lg-4">
                     <label>ชื่อ</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="ศรีคำ"formControlName="user_name" required />
+                        <input type="text" class="form-control input-inline"formControlName="userName" required />
                     </div>
 
                 </div>
                 <div class="col-lg-4">
                     <label>นามสกุล</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="ศรีคำ"formControlName="user_lassname" required />
+                        <input type="text" class="form-control input-inline"formControlName="userLassname" required />
                     </div>
 
                 </div>
@@ -72,7 +72,7 @@
                 <div class="col-lg-4">
                     <label>เลขบัตรประชาชน</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="รัตนาวดี" formControlName="user_card_id" required />
+                        <input type="text" class="form-control input-inline" formControlName="userCardId" required />
                     </div>
 
                 </div>
@@ -80,14 +80,14 @@
                 <div class="col-lg-4">
                     <label>วัน/เดือน/ปีเกิด</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="ศรีคำ" formControlName="user_birthday" required />
+                        <input type="text" class="form-control input-inline" formControlName="userBirthday" required />
                     </div>
 
                 </div>
                 <div class="col-lg-4">
                     <label>เพศ</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="ศรีคำ" formControlName="user_gender" required />
+                        <input type="text" class="form-control input-inline"formControlName="userGender" required />
                     </div>
 
                 </div>
@@ -97,14 +97,14 @@
                 <div class="col-lg-4">
                     <label>เบอร์โทร</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="0981401327"formControlName="user_phone" required />
+                        <input type="text" class="form-control input-inline"formControlName="userPhone" required />
                     </div>
 
                 </div> 
                 <div class="col-lg-4">
                     <label>อีเมล</label>
                     <div>
-                        <input type="text" class="form-control input-inline"value="0981401327"formControlName="user_email" required />
+                        <input type="text" class="form-control input-inline"formControlName="userEmail" required />
                     </div>
 
                 </div>  
@@ -114,28 +114,28 @@
                 <div class="col-lg-3 ">
                     <label>ที่อยู่</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="user_address" required />
+                        <input type="text" class="form-control input-inline " formControlName="userAddress" required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>ตำบล</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="District_id"required />
+                        <input type="text" class="form-control input-inline " formControlName="districtNameTh"required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>อำเภอ</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="Amphur_id" required />
+                        <input type="text" class="form-control input-inline " formControlName="amphurNameTh" required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>จังหวัด</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="Province_id"required />
+                        <input type="text" class="form-control input-inline " formControlName="provinceNameTh"required />
                     </div>
 
                 </div>
@@ -144,18 +144,18 @@
                 <div class="col-lg-3">
                     <label>รหัสไปรษณีย์</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="zip_code" required />
+                        <input type="text" class="form-control input-inline " formControlName="zipCode" required />
                     </div>
 
                 </div>
 
             </div>
             <div style="text-align: center;">
-                <button type="submit" class="btnSubmit" (click)="save()">บันทึก</button>&nbsp;
-                <button type="reset" class="btnSubmit">ล้างข้อมูล</button>&nbsp;
-                <button type="button" class="btnSubmit" routerLink="../manage">ย้อนกลับ</button>
+                <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
+                <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>&nbsp;
             </div>
         </form>
+        </div>
     </div>
-    </div>
+    
 </div>
