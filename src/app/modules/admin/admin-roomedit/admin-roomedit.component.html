@@ -1,66 +1,78 @@
 <div class="container">
     <br>
-
-    <div class="form-group row">
-        <div class="col-12">
-            <div class="row heading">
-                <div class="col-12">
-                    <h3><strong>เเก้ไขข้อมูลห้องพัก</strong></h3>
+    <div class="box-card mb-4 ">
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="row heading">
+                    <div class="col-12">
+                        <h3><strong>เเก้ไขข้อมูลห้องพัก</strong></h3>
+                    </div>
+                    <div class="col-12 px-3">
+                        <div class="border-bottom"></div>
+                    </div>
                 </div>
-                <div class="col-12 px-3">
-                    <div class="border-bottom"></div>
-                </div>
-
             </div>
         </div>
-    </div>
 
+        <!-- formeditroom -->
+        <form [formGroup]="roomeditForm" class="card-body shadow-lg " autocomplete="off">
 
-    <form [formGroup]="roomeditForm" class="card-body " autocomplete="off">
-        <div class=" card bg-white shadow-lg " style="max-width: 70rem;">
             <br>
-            <div class="form-group row ">
+            <div class="form-group row content">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-3">
-                    <label>เลขห้อง</label>
-                    <input type="text" class="form-control" formControlName="roomName" required />
-                </div>
-                <div class="col-md-3">
-                    <label>ประเภทห้อง</label>
+                    <label>เลขห้อง<span class="text-danger">*</span></label>
                     <div class="form-group ">
-                        <select id="country" class="form-control" formControlName="roomTypename">
-                            <option> กรุณาเลือก </option>
-                            <option>แอร์</option>
-                            <option>พัดลม</option>
+                        <input type="text" class="form-control input-inline " formControlName="roomName" required />
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3">
+                    <label>ประเภทห้อง<span class="text-danger">*</span></label>
+                    <div>
+                        <select id="inputState" class="form-control input-inline form-select"
+                            formControlName="roomTypename">
+                            <option value="" disabled>เลือกประเภทห้อง</option>
+                            <option *ngFor="let prf of roomTypename" [ngValue]="prf">{{ prf }}</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <label>สถานะห้อง</label>
-                    <div class="form-group ">
-                        <select id="country" class="form-control" formControlName="roomStatvs">
-                            <option> กรุณาเลือก </option>
-                            <option>ว่าง</option>
-                            <option>ไม่ว่าง</option>
+                <div class="col-lg-3">
+                    <label>สถานะห้อง<span class="text-danger">*</span></label>
+                    <div>
+                        <select id="inputState" class="form-control input-inline form-select"
+                            formControlName="roomStatvs">
+                            <option value="" disabled>เลือกสถานะห้อง</option>
+                            <option *ngFor="let prf of roomStatvs" [ngValue]="prf">{{ prf }}</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-2"></div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row content">
                 <div class="col-lg-2"></div>
-                <div class="col-md-3">
-                    <label>ค่าน้ำต่อหน่วย</label>
-                    <input type="text" class="form-control" formControlName="roomWater" required />
+                <div class="col-lg-3">
+                    <label>ค่าน้ำตั้งต้น<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="roomWater" required />
+                    </div>
+
                 </div>
-                <div class="col-md-3">
-                    <label>ค่าไฟต่อหน่วย</label>
-                    <input type="text" class="form-control" formControlName="roomLight" required />
+                <div class="col-lg-3">
+                    <label>ค่าไฟตั้งต้น<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline " formControlName="roomLight" required />
+                    </div>
+
                 </div>
-                <div class="col-md-3">
-                    <label>ราคาห้อง</label>
-                    <input type="text" class="form-control" formControlName="roomPrice" required />
+                <div class="col-lg-3">
+                    <label>ราคาห้อง<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control input-inline  " formControlName="roomPrice" required />
+                    </div>
+
                 </div>
+
             </div>
             <br>
 
@@ -68,8 +80,8 @@
                 <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
                 <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>
             </div><br>
-        </div>
-    </form>
 
+        </form>
+    </div>
 
 </div>

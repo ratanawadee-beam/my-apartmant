@@ -6,18 +6,24 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserContractComponent } from './user-contract/user-contract.component';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { UserAlertComponent } from './user-alert/user-alert.component';
+import { UserPaymentComponent } from './user-payment/user-payment.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     UserPageComponent,
     UserProfileComponent,
-    UserContractComponent
+    UserContractComponent,
+    UserAlertComponent,
+    UserPaymentComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    PdfViewerModule
+    PdfViewerModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

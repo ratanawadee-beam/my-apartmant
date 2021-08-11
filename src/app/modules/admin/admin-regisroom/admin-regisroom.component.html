@@ -25,10 +25,11 @@
 
                 </div>
 
-                <div class="col-lg-3">                  
+                <div class="col-lg-3">
                     <label>ประเภทห้อง<span class="text-danger">*</span></label>
                     <div>
-                        <select id="inputState" class="form-control input-inline form-select" formControlName="roomTypename">
+                        <select id="inputState" class="form-control input-inline form-select"
+                            formControlName="roomTypename">
                             <option value="" disabled>เลือกประเภทห้อง</option>
                             <option *ngFor="let prf of roomTypename" [ngValue]="prf">{{ prf }}</option>
                         </select>
@@ -37,10 +38,11 @@
                 <div class="col-lg-3">
                     <label>สถานะห้อง<span class="text-danger">*</span></label>
                     <div>
-                        <select id="inputState" class="form-control input-inline form-select" formControlName="roomStatvs">
+                        <select id="inputState" class="form-control input-inline form-select"
+                            formControlName="roomStatvs">
                             <option value="" disabled>เลือกสถานะห้อง</option>
                             <option *ngFor="let prf of roomStatvs" [ngValue]="prf">{{ prf }}</option>
-                        </select>               
+                        </select>
                     </div>
                 </div>
             </div>
@@ -69,18 +71,14 @@
                 </div>
 
             </div>
-        <br>
-
-
-
-
-
+            <br>
             <div style="text-align: center;">
-                <button type="submit" class="btn btn-info btn-lg"(click)="save()">บันทึก</button>&nbsp;
+                <button type="submit" class="btn btn-info btn-lg" (click)="roomsave()">บันทึก</button>&nbsp;
                 <button type="reset" class="btn btn-info btn-lg">ล้างข้อมูล</button>&nbsp;
-                <button type="button" class="btn btn-info btn-lg"(click)="back()">ย้อนกลับ</button>
+                <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>
             </div>
         </form>
 
 
     </div>
+</div>

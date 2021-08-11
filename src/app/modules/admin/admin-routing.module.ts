@@ -18,7 +18,7 @@ import { AdminRoomeditComponent } from './admin-roomedit/admin-roomedit.componen
 const routes: Routes = [
   {
     path: '',
-    component: AdminPageComponent, 
+    component: AdminPageComponent,
   },
   {
     path: 'admin',
@@ -82,6 +82,10 @@ const routes: Routes = [
   },
   {
     path: 'barangsewaedit',
+    component: AdminBarangsewaeditComponent
+  },
+  {
+    path: 'barangsewaedit/:id',
     component: AdminBarangsewaeditComponent
   },
   {

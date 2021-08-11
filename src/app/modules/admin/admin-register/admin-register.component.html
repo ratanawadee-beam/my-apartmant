@@ -11,227 +11,191 @@
                     <div class="col-12 px-3">
                         <div class="border-bottom"></div>
                     </div>
-
                 </div>
             </div>
         </div>
         <form [formGroup]="registerForm" class="card-body  " autocomplete="off">
             <div class="form-group row content">
                 <div class="col-lg-4">
-                    <label>คำนำหน้า</label>
+                    <label>คำนำหน้า<span class="text-danger">*</span></label>
                     <div>
-                        <select id="country" class="form-control  " formControlName="usertitle">
-                            <option> กรุณาเลือก </option>
-                            <option>นาย</option>
-                            <option>นาง</option>3
-                            <option>นางสาว</option>
+                        <select id="inputState" class="form-control input-inline " formControlName="userTitle">
+                            <option value="" disabled>--เลือกคำนำหน้า--</option>
+                            <option *ngFor="let prf of  userTitle" [ngValue]="prf">{{ prf }}</option>
                         </select>
                     </div>
-
                 </div>
                 <div class="col-lg-4">
                     <label>ชื่อ</label>
                     <div>
-                        <input type="text" class="form-control input-inline" formControlName="username" required />
+                        <input type="text" class="form-control input-inline" formControlName="userName" required />
                     </div>
-
                 </div>
                 <div class="col-lg-4">
                     <label>นามสกุล</label>
                     <div>
-                        <input type="text" class="form-control input-inline" formControlName="userlassname" required />
+                        <input type="text" class="form-control input-inline" formControlName="userLasname" required />
                     </div>
-
                 </div>
             </div>
             <div class="form-group row content">
                 <div class="col-lg-4">
                     <label>เลขบัตรประชาชน<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline" formControlName="usercardid" required />
+                        <input type="text" class="form-control input-inline" formControlName="userIdcard" required />
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>วัน/เดือน/ปีเกิด<span class="text-danger">*</span></label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control" formControlName="userbirthday">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="userBirthday">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>เพศ<span class="text-danger">*</span></label>
-                    <div class="form-group ">
-                        <select id="country" class="form-control" formControlName="usergender">
-                            <option> กรุณาเลือก </option>
-                            <option>ชาย</option>
-                            <option>หญิง</option>
+                    <div>
+                        <select id="inputState" class="form-control input-inline " formControlName="userGender">
+                            <option value="" disabled>--เลือกเพศ--</option>
+                            <option *ngFor="let prf of userGender" [ngValue]="prf">{{ prf }}</option>
                         </select>
                     </div>
-
                 </div>
-
                 <div class="col-lg-2">
                     <label>เบอร์โทร<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="userphone" required />
+                        <input type="text" class="form-control input-inline " formControlName="userPhone" required />
                     </div>
-
                 </div>
             </div>
             <div class="form-group row content">
                 <div class="col-lg-6">
                     <label>E-mail<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="useremail" required />
+                        <input type="text" class="form-control input-inline " formControlName="userEmail" required />
                     </div>
-
                 </div>
-
             </div>
             <div class="form-group row content">
                 <div class="col-lg-6 ">
                     <label>ที่อยู่</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="useraddress" required />
+                        <textarea type="text" class="form-control input-inline "
+                            formControlName="userAddress"></textarea>
                     </div>
-
-                </div>
-                <div class="col-lg-3">
-                    <label>จังหวัด<span class="text-danger">*</span></label>
-                    <select class="form-control" formControlName="Provinceid">
-                        <option>Default select</option>
-                    </select>
-
-
-                </div>
-                <div class="col-lg-3">
-                    <label>อำเภอ<span class="text-danger">*</span></label>
-                    <select class="form-control" formControlName="Amphurid">
-                        <option>Default select</option>
-                    </select>
-
-                </div>
-
-
-
-            </div>
-            <div class="form-group row content">
-                <div class="col-lg-3">
-
-                    <label>ตำบล<span class="text-danger">*</span></label>
-                    <select class="form-control" formControlName="Districtid">
-                        <option>Default select</option>
-                    </select>
-
-
                 </div>
                 <div class="col-lg-3">
                     <label>รหัสไปรษณีย์<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="zipcode" required />
-                    </div>
-
+                    <input type="tel" class="form-control" id="autoSizingInputGroup" (change)="userZipCode($event)"
+                        placeholder="กรอกรหัสไปรษณีย์" formControlName="zipCode">
                 </div>
-
+                <div class="col-lg-3">
+                    <div>จังหวัด<span class="text-danger">*</span></div>
+                    <select id="inputState" class="form-control" formControlName="province">
+                        <option value="" disabled>--จังหวัด--</option>
+                        <option *ngFor="let pro of Provinces" [ngValue]="pro.provinceNameTh">{{ pro.provinceNameTh }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row content">
+                <div class="col-lg-3">
+                    <div>อำเภอ<span class="text-danger">*</span></div>
+                    <select id="inputState" class="form-control" formControlName="amphur">
+                        <option value="" disabled>--อำเภอ--</option>
+                        <option *ngFor="let amp of Amphurs" [ngValue]="amp.amphurNameTh">{{ amp.amphurNameTh }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <div>ตำบล<span class="text-danger">*</span></div>
+                    <select id="inputState" class="form-control" formControlName="district">
+                        <option value="" disabled>--ตำบล--</option>
+                        <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtNameTh">{{dsNT.districtNameTh}}
+                        </option>
+                    </select>
+                </div>
             </div>
             <br>
             <div class="form-group row content">
                 <div class="col-lg-2">
-                    <label>เลขห้อง<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="roomName" required />
-                    </div>
-
-                </div>
-
-                <div class="col-lg-2">
                     <label>ประเภทห้องพัก<span class="text-danger">*</span></label>
                     <div>
-                        
-                        <div class="form-group ">
-                            <select id="country" class="form-control" formControlName="roomtypename">
-                                <option> กรุณาเลือก </option>
-                                <option>แอร์</option>
-                                <option>พัดลม</option>
-                            </select>
-                        </div>
-
+                        <select id="inputState" class="form-control input-inline " formControlName="roomTypename"
+                            (ngModelChange)="selectType($event)">
+                            <option value="" disabled>--ประเภทห้อง--</option>
+                            <option *ngFor="let prf of roomTypename" [ngValue]="prf">{{ prf }}</option>
+                        </select>
                     </div>
-
                 </div>
                 <div class="col-lg-2">
-                    <label>ราคาห้อง<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="roomprice" required />
-                    </div>
+                    <label>เลขห้อง<span class="text-danger">*</span></label>
+                    <select id="inputState" class="form-control" formControlName="roomName"
+                        (ngModelChange)="selectPrice($event)" (ngModelChange)="selectWater($event)" (ngModelChange)="selectLight($event)" >
+                        <option value="" disabled>--เลขห้อง--</option>
+                        <option *ngFor="let data of roomName" [value]="data.roomName">{{data.roomName}}</option>
+                    </select>
+                </div>
 
+                <div class="col-lg-2">
+                    <label>ราคาห้อง<span class="text-danger">*</span></label>
+                    <div class="form-control">
+                        <option *ngFor="let data of roomPrice" [value]="data.roomPrice">{{data.roomPrice}}</option>
+                    </div>
                 </div>
                 <div class="col-lg-3">
                     <label>วันที่เข้าพัก<span class="text-danger">*</span></label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentstart">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentStart">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
-
                 </div>
                 <div class="col-lg-3">
                     <label>วันที่สิ้นสุด</label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentend">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentEnd">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
-
                 </div>
-
             </div>
-
             <div class="form-group row content">
                 <div class="col-lg-3">
-                    <label>ค่าน้ำต่อหน่วย</label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="rentwa" required />
+                    <label>ค่าน้ำตั้งต้น</label>
+                    <div class="form-control">
+                        <option *ngFor="let data of roomWater" [value]="data.roomWater">{{data.roomWater}}</option>
                     </div>
-
                 </div>
-
                 <div class="col-lg-3">
-                    <label>ค่าไฟต่อหน่วย</label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="rentli" required />
+                    <label>ค่าไฟตั้งต้น</label>
+                    <div class="form-control">
+                        <option *ngFor="let data of roomLight" [value]="data.roomLight">{{data.roomLight}}</option>
                     </div>
-
                 </div>
-
 
                 <div class="col-lg-2">
                     <label>ค่าประกันห้อง</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="rentinsurance"
+                        <input type="text" class="form-control input-inline " formControlName="rentInsurance"
                             required />
                     </div>
-
                 </div>
                 <div class="col-lg-2">
                     <label>ค่าส่วนกลาง</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="rentother" required />
+                        <input type="text" class="form-control input-inline " formControlName="rentOther" required />
                     </div>
-
                 </div>
                 <div class="col-lg-2">
                     <label>รวมค่าใช้จ่าย</label>
                     <div>
-                        <input type="text" class="form-control input-inline " formControlName="renttotalprice"
+                        <input type="text" class="form-control input-inline " formControlName="rentTotalprice"
                             required />
                     </div>
-
                 </div>
-
-
             </div><br>
             <div style="text-align: center;">
-                <button type="button" class="btn btn-info btn-lg" routerLink="../manage">ย้อนกลับ</button>&nbsp;
-                <button type="button" class="btn btn-info btn-lg" (click)="save()">ถัดไป </button>
+                <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>&nbsp;
+                <button type="button" class="btn btn-info btn-lg" (click)="Next()">ถัดไป </button>
             </div>
         </form>
     </div>

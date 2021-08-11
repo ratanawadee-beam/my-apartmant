@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
@@ -35,11 +36,14 @@ export class AdminEdituserComponent implements OnInit {
   constructor(
     private _Activatedroute: ActivatedRoute,
     private userService: UserService,
+    private sharedsService: SharedsService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.userId = this._Activatedroute.snapshot.paramMap.get("id");
     this.getUserById(this.userId);
+    
+
   }
 
   getUserById(userId: any) {
@@ -72,6 +76,7 @@ export class AdminEdituserComponent implements OnInit {
     );
   }
 
+
   save() {
     console.log(this.edituserForm.value.userId,
       this.edituserForm.value.userUsername);
@@ -95,7 +100,7 @@ export class AdminEdituserComponent implements OnInit {
       "provinceNameTh": this.edituserForm.value.provinceNameTh,
       "amphurNameTh": this.edituserForm.value.amphurNameTh,
     }
-    this.userService.saveUser(body).subscribe(
+    this.userService.upDateUser(body).subscribe(
       (error) => console.log(error),
     );
     this.router.navigate(['admin/manage']);
@@ -103,4 +108,35 @@ export class AdminEdituserComponent implements OnInit {
   back() {
     this.router.navigate(['admin/manage']);
   }
+
+  //zipCode
+  userZipCode(event: any) {
+    const zipCode = event.target.value;
+    console.log('zipCode' + zipCode)
+    this.userService.getDistricByZipCode(zipCode).subscribe(
+      res => {
+        console.log(res)
+        if (res) {
+          this.edituserForm.patchValue(
+            {
+              district: res.districtNameTh,
+              amphur: res.amphur.amphurNameTh,
+              province: res.province.provinceNameTh
+            }
+          )
+        }
+      },
+      error => {
+        this.edituserForm.patchValue(
+          {
+            district: '',
+            amphur: '',
+            province: ''
+          }
+        )
+      }
+    );
+  }
+
+
 }

@@ -1,29 +1,115 @@
-<style>
-    img {
-        border-radius: 50%;
-    }
-</style>
-
-<div class="card-body justify-content " style="background: rgb(238, 238, 238);">
-    <div class="row content">
-        <div class="col-2 "></div>
-        <div class="col-2 ">
-            <h4>บัญชีของฉัน</h4>
-            <h1 class="col-lg-0">
-                <label>ชื่อผู้ใช้</label>
-            </h1>
-            <h1 class="col-lg-0">ชื่อ</h1>
-            <h1>นามสกุล</h1>
-            
-        </div>
-        <div class="col-6">
-            <div class="container shadow-lg bg-light ">
-                <h4>บัญชีของฉัน</h4>
-                
+<div class="container">
+    <div class="container bg-white shadow-lg col-9 ">
+    <form [formGroup]="profileuserForm" class="card-body " autocomplete="off">
+        <h5 class="text-center">บัญชีของฉัน</h5><br>
+        <div class="form-group row content">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-3">
+                <img src="https://scontent.fnak1-1.fna.fbcdn.net/v/t1.6435-1/p240x240/208650762_2988071434804553_7573366994741115255_n.jpg?_nc_cat=108&ccb=1-4&_nc_sid=7206a8&_nc_eui2=AeEC1EjA_PCw53CUSDIfxTPwo3YeI8rtUYyjdh4jyu1RjK9OtNHkctmSXrGT3Y0Pc1EVAZz7_t1hLd0YScJfTZk7&_nc_ohc=pu03oDfOEw0AX8dVf14&tn=lbT6KG_LY8qTopYu&_nc_ht=scontent.fnak1-1.fna&oh=8fbb79a8e5c2ce3c3dab389ee35466ee&oe=6138ECFA"
+                    class="rounded-circle" width="150" height="150">
             </div>
         </div>
-        
+        <div class="form-group row content">
+            <div class="col-lg-4">
+                <label>ชื่อผู้ใช้งาน</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userUsername" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group row content">
+            <div class="col-lg-4">
+                <label>คำนำหน้า</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userTitle" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>ชื่อ</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userName" required />
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <label>นามสกุล</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userLassname" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group row content">
+            <div class="col-lg-4">
+                <label>เลขบัตรประชาชน</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userCardId" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>วัน/เดือน/ปีเกิด</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userBirthday" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>เพศ</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userGender" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group row content">
+            <div class="col-lg-4">
+                <label>เบอร์โทร</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userPhone" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>อีเมล</label>
+                <div>
+                    <input type="text" class="form-control input-inline" formControlName="userEmail" required />
+                </div>
+            </div>
+        </div><br>
+        <div class="form-group row content">
+            <div class="col-lg-4">
+                <label>ที่อยู่</label>
+                <div>
+                    <textarea type="text" class="form-control input-inline " formControlName="userAddress"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>ตำบล</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="districtNameTh" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>อำเภอ</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="amphurNameTh" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group row content">
+            <div class="col-lg-4">
+                <label>จังหวัด</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="provinceNameTh" required />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>รหัสไปรษณีย์</label>
+                <div>
+                    <input type="text" class="form-control input-inline " formControlName="zipCode" required />
+                </div>
+            </div>
+        </div><br>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-info btn-lg" (click)="edit()">เเก้ไข</button>&nbsp;
+            <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>
+        </div>
+    </form>
     </div>
-    
-  
 </div>

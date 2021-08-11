@@ -14,12 +14,12 @@
                 </div>
             </div>
         </div>
-        <form [formGroup]=" barangForm" class="card-body " autocomplete="off">
+        <form [formGroup]="barangForm" class="card-body " autocomplete="off">
             <div class="form-group row content">
                 <div class="col-lg-2">
                     <label>เลขห้อง</label>
                     <div>
-                        <input type="text" readonly class="form-control " formControlName="roomflow" required />
+                        <input type="tel"readonly  class="form-control" id="autoSizingInputGroup"  formControlName="roomName">
                     </div>
                 </div>
                 <div class="col-lg-7"></div>               
@@ -31,21 +31,21 @@
                 <div class="col-lg-4">
                     <label>คำนำหน้า</label>
                     <div>
-                        <input type="text" readonly class="form-control "id="staticDate" formControlName="usertitle" required />
+                        <input type="text" readonly class="form-control "id="staticDate" formControlName="userTitle" required />
                     </div>
 
                 </div>
                 <div class="col-lg-4">
                     <label>ชื่อ</label>
                     <div>
-                        <input type="text" readonly class="form-control " formControlName="username" required />
+                        <input type="text" readonly class="form-control " formControlName="userName" required />
                     </div>
 
                 </div>
                 <div class="col-lg-4">
                     <label>นามสกุล</label>
                     <div>
-                        <input type="text" readonly class="form-control " formControlName="userlassname" required />
+                        <input type="text" readonly class="form-control " formControlName="userLassname" required />
                     </div>
 
                 </div>
@@ -54,26 +54,26 @@
                 <div class="col-lg-4">
                     <label>เลขบัตรประชาชน</label>
                     <div>
-                        <input type="text" readonly class="form-control " formControlName="usercardid" required />
+                        <input type="text" readonly class="form-control " formControlName="userCardId" required />
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>วัน/เดือน/ปีเกิด</label>
                     <div >
-                        <input type="text" readonly class="form-control " formControlName="userbirthday" required />
+                        <input type="text" readonly class="form-control " formControlName="userBirthday" required />
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>เพศ</label>
                     <div >
-                        <input type="text" readonly class="form-control "formControlName="usergender" required />
+                        <input type="text" readonly class="form-control "formControlName="userGender" required />
                     </div>
 
                 </div>
                 <div class="col-lg-2">
                     <label>เบอร์โทร</label>
                     <div>
-                        <input type="text" readonly class="form-control  " formControlName="userphone" required />
+                        <input type="text" readonly class="form-control  " formControlName="userPhone" required />
                     </div>
 
                 </div>
@@ -82,7 +82,7 @@
                 <div class="col-lg-6">
                     <label>E-mail</label>
                     <div>
-                        <input type="text" readonly class="form-control  " formControlName="useremail" required />
+                        <input type="text" readonly class="form-control" formControlName="userEmail" required />
                     </div>
 
                 </div>
@@ -92,73 +92,57 @@
                 <div class="col-lg-6 ">
                     <label>ที่อยู่</label>
                     <div>
-                        <input type="text" readonly class="form-control " formControlName="useraddress" required />
+                        <textarea type="text"readonly class="form-control input-inline "
+                            formControlName="userAddress"></textarea>
                     </div>
-
                 </div>
                 <div class="col-lg-3">
-                    <label>ตำบล</label>
-                    <div>
-                        <input type="text" readonly class="form-control  " formControlName="Districtid" required />
-                    </div>
-
+                    <label>รหัสไปรษณีย์<span class="text-danger">*</span></label>
+                    <input type="tel" readonly class="form-control" id="autoSizingInputGroup" (change)="userZipCode($event)"
+                         formControlName="zipCode">
                 </div>
                 <div class="col-lg-3">
-                    <label>อำเภอ</label>
-                    <div>
-                        <input type="text" readonly class="form-control  " formControlName="Amphurid" required />
-                    </div>
-
+                    <div>จังหวัด<span class="text-danger">*</span></div>
+                    <input type="text" readonly class="form-control input-inline" formControlName="provinceNameTh" required />
                 </div>
-               
             </div>
             <div class="form-group row content">
                 <div class="col-lg-3">
-                    <label>จังหวัด</label>
-                    <div>
-                        <input type="text" readonly class="form-control  " formControlName="Provinceid" required />
-                    </div>
-
+                    <div>อำเภอ<span class="text-danger">*</span></div>
+                    <input type="text" readonly class="form-control input-inline" formControlName="amphurNameTh" required />
                 </div>
                 <div class="col-lg-3">
-                    <label>รหัสไปรษณีย์</label>
-                    <div>
-                        <input type="text" readonly class="form-control " formControlName="zipcode" required />
-                    </div>
-
+                    <div>ตำบล<span class="text-danger">*</span></div>
+                    <input type="text"readonly class="form-control input-inline" formControlName="districtNameTh" required />
                 </div>
-
             </div>
             <br>
-           
             <div class="form-group row content">
-                <div class="col-lg-2">
-                    <label>ห้องพัก</label>
-                    <div>
-                        <input type="text" readonly class="form-control " formControlName="roomflow" required />
-    
-                    </div>
-
-                </div>
-
+             
                 <div class="col-lg-2">
                     <label>ประเภทห้อง</label>
                     <div>
-                        <input type="text" readonly class="form-control" formControlName="roomtypename" required />                                              
+                        <input type="text" readonly class="form-control" formControlName="roomTypename" required />                                              
                     </div>
-
                 </div>
+                <div class="col-lg-2">
+                    <label>เลขห้อง</label>
+                    <div>
+                        <input type="text" readonly class="form-control " formControlName="roomName" required />
+                    </div>
+                </div>
+
                 <div class="col-lg-2">
                     <label>ราคาห้อง</label>
                     <div>
-                        <input type="text" readonly class="form-control  " formControlName="roomprice" required />
+                        <input type="text" readonly class="form-control  " formControlName="roomPrice" required />
                     </div>
 
                 </div>
                 <div class="col-lg-3">
                     <label>วันที่เข้าพัก</label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentstart">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentStart">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
 
@@ -166,7 +150,7 @@
                 <div class="col-lg-3">
                     <label>วันที่สิ้นสุด</label>
                     <div class="form-group">
-                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentend">
+                        <input type="date" name="dob" id="dob" class="form-control" formControlName="rentEnd">
                         <span id="error_dob" class="text-danger"></span>
                     </div>
 
@@ -178,7 +162,7 @@
                 <div class="col-lg-3">
                     <label>ค่าน้ำต่อหน่วย</label>
                     <div>
-                        <input type="text" readonly class="form-control " formControlName="rentwa" required />
+                        <input type="text" readonly class="form-control " formControlName="roomWater" required />
                     </div>
 
                 </div>
@@ -186,7 +170,7 @@
                 <div class="col-lg-3">
                     <label>ค่าไฟต่อหน่วย</label>
                     <div>
-                        <input type="text" readonly class="form-control  " formControlName="rentli" required />
+                        <input type="text" readonly class="form-control  " formControlName="roomLight" required />
                     </div>
 
                 </div>
@@ -195,7 +179,7 @@
                 <div class="col-lg-2">
                     <label>ค่าประกันห้อง</label>
                     <div>
-                        <input type="text" readonly class="form-control " formControlName="rentinsurance"
+                        <input type="text" readonly class="form-control " formControlName="rentInsurance"
                             required />
                     </div>
 
@@ -203,15 +187,14 @@
                 <div class="col-lg-2">
                     <label>ค่าส่วนกลาง</label>
                     <div>
-                        <input type="text" readonly class="form-control  " formControlName="rentother" required />
+                        <input type="text" readonly class="form-control  " formControlName="rentOther" required />
                     </div>
 
                 </div>
                 <div class="col-lg-2">
                     <label>รวมค่าใช้จ่าย</label>
                     <div>
-                        <input type="text" readonly class="form-control  " formControlName="renttotalprice"
-                            required />
+                        <input type="text" readonly class="form-control  " formControlName="rentTotalprice" required />
                     </div>
 
                 </div>
@@ -221,9 +204,7 @@
             <div style="text-align: center;">
                 <button type="button" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
                 <button type="button" class="btn btn-info btn-lg">ปริ้นสัญญา</button>&nbsp;
-                <button type="button" class="btn btn-info btn-lg" routerLink="../barangsewa">ย้อนกลับ</button>
-                
-               
+                <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>             
             </div>
         </form>
     </div>

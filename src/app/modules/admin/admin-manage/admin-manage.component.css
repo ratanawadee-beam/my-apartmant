@@ -1,0 +1,38 @@
+.font-sz-14 {
+    font-size: 14px;
+}
+.ant-table-footer {
+    padding-bottom: 10px;
+}
+
+.icon-cr-red {
+    color: rgb(214, 49, 49);
+}
+
+.icon-cr-blue {
+    color: #0098d4;
+}
+
+.icon-cr-green {
+    color: #28a745;
+}
+
+.icon-cr-yellow {
+    color: #ec0;
+}
+
+.icon-cr-navi {
+    color: #175066;
+}
+
+.icon-cr-gray {
+    color: #bbbbbb;
+}
+
+.icon-cr-orange {
+    color: #ff8800;
+}
+
+.color-blue {
+    color: rgb(4, 0, 218);
+}

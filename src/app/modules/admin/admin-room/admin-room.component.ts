@@ -17,10 +17,9 @@ export class AdminRoomComponent implements OnInit {
     this.getRoomData();
     
   }
-
   getRoomData() {
     this.sharedsService.getRoom().subscribe((res) => {
-      console.log('!!!!!!!!!!!!!!!111111!!!!!!!!!', res)
+      console.log('!!!!!!!!!!!!! Room Data !!!!!!!!!!!', res)
       this.listRoom = res;
     },
       (error) => {
@@ -28,8 +27,8 @@ export class AdminRoomComponent implements OnInit {
       }
     );
   }
-  Next(){
-    this.router.navigate(['admin/regisroom']);
-  }
+  // Next(){
+  //   this.router.navigate(['admin/regisroom']);
+  // }
 
 }

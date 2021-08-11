@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-regisinvoice',
@@ -8,25 +9,26 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AdminRegisinvoiceComponent implements OnInit {
   invoiceForm = new FormGroup({
-
-    invoice_id: new FormControl(''),
-    room_id: new FormControl(''),
-    user_name: new FormControl(''),
-    de_totalroom: new FormControl(''),
-    de_wa_old: new FormControl(''),
-    de_wa_new: new FormControl(''),
-    de_li_old: new FormControl(''),
-    de_li_new: new FormControl(''),
-    invoice_start: new FormControl(''),
-    invoice_end: new FormControl(''),
-    de_total_wa: new FormControl(''),
-    de_total_li: new FormControl(''),
-    de_totalunit_wa: new FormControl(''),
-    de_totalunit_li: new FormControl(''),
-    de_total: new FormControl(''),
+    invoiceId: new FormControl(''),
+    roomName: new FormControl(''),
+    userName: new FormControl(''),
+    deTotalroom: new FormControl(''),
+    deWaOld: new FormControl(''),
+    deWaNew: new FormControl(''),
+    deLiOld: new FormControl(''),
+    deLiNew: new FormControl(''),
+    invoiceStart: new FormControl(''),
+    invoiceEnd: new FormControl(''),
+    deTotalWa: new FormControl(''),
+    deTotalLi: new FormControl(''),
+    deTotalunitWa: new FormControl(''),
+    deTotalunitLi: new FormControl(''),
+    deTotal: new FormControl(''),
 
   });
-  constructor() { }
+  constructor(
+    private router: Router 
+  ) { }
 
   ngOnInit(): void {
   }
@@ -34,5 +36,8 @@ export class AdminRegisinvoiceComponent implements OnInit {
   save() {
     console.log(this.invoiceForm.value);
 
+  }
+  back(){
+    this.router.navigate(['admin/rental']);
   }
 }

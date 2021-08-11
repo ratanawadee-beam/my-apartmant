@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 
 @Component({
@@ -8,20 +9,43 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
   styleUrls: ['./admin-information.component.css']
 })
 export class AdminInformationComponent implements OnInit {
-  informForm = new FormGroup({});
+  informForm = new FormGroup({
+    checkFlag: new FormControl(''),
+  });
+
   registerData: any;
   pdfSrc: any;
   constructor(
-    private sharedsService: SharedsService) { }
+    private sharedsService: SharedsService,
+    private router: Router) { }
 
   ngOnInit(): void {
     // this.registerData = this.sharedsService.gregisterData();
     this.pdfSrc = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
-
-    console.log('LOG >>> :: this.registerData', this.registerData);
+    let url = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
+    window.open(url, "_blank");
+    this.informForm = new FormGroup({
+      checkFlag: new FormControl(['', Validators.required]),
+    });
   }
-  save() {
-    console.log(this.informForm.value);
 
+  save(): any {
+    if (this.checkValid()) {
+      // console.log('LOG >>> :if: ');
+      this.router.navigate(['admin/manage']);
+    } else {
+      // console.log('LOG >>> :else: ');
+      return this.informForm.invalid;
+    }
+  }
+
+  checkValid(): any {
+    if (this.informForm.value.checkFlag) {
+      console.log('LOG >>> :if: ', this.informForm.value.checkFlag);
+      this.router.navigate(['admin/manage']);
+    } else {
+      console.log('LOG >>> :else: ', this.informForm.value.checkFlag);
+      return this.informForm.invalid;
+    }
   }
 }

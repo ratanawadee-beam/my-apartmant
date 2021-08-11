@@ -24,7 +24,7 @@
   </div>
   <br>
 
-  <table class="table text-center table ">
+  <table class="table text-center table-hover ">
     <thead>
       <tr>
         <th scope="col ">เลขห้อง</th>
@@ -37,13 +37,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of listUser">
-        <th scope="row">A101</th>
-        <td>{{data.userName}}<i class="fa fa-archive-fill"></i></td>
+      <tr *ngFor="let data of listUser" >
+        <td scope="row">{{data.roomName}}</td>
+        <td>{{data.userName}}</td>
         <td>{{data.userLasname}}</td>
         <td>{{data.userPhone}}</td>
         <td>{{data.userEmail}} </td>
-        <td *ngIf="data.userName !== 'Admin'"><button type="button" class="btn btn-danger  " routerLink="">
+        <td *ngIf="data.userName !== 'Admin'">
+          <button type="button" class="btn btn-danger  " routerLink="">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
               viewBox="0 0 16 16">
               <path
@@ -60,6 +61,57 @@
               <path fill-rule="evenodd"
                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
             </svg>เเก้ไข</button>
+
+
+
+          <!-- <button class="btn p-0" title="ยกเลิก">
+            <span class="fa-stack fa-1x">
+              <i class="fas fa-circle fa-stack-2x {{ data.isPaying? 'icon-cr-gray':'icon-cr-red' }} "></i>
+              <i class="fas fa-trash fa-stack-1x fa-inverse" style="font-size: 16px;" [hidden]="data.isPaying"></i>
+              <i class="fas fa-sync-alt fa-stack-1x fa-inverse fa-spin " style="font-size: 16px;"
+                [hidden]="!data.isPaying"></i>
+            </span>
+          </button>
+
+          <button class="btn p-0" title="แสดงแบบฯ">
+            <span class="fa-stack fa-1x">
+              <i class="fas fa-circle fa-stack-2x {{ data.isPdfLoading? 'icon-cr-gray':'icon-cr-blue' }} "></i>
+              <i class="fas fa-file-pdf fa-stack-1x fa-inverse" style="font-size: 16px;"
+                [hidden]="data.isPdfLoading"></i>
+              <i class="fas fa-sync-alt fa-stack-1x fa-inverse fa-spin " style="font-size: 16px;"
+                [hidden]="!data.isPdfLoading"></i>
+            </span>
+          </button>
+
+          <button title="สามารถ copy ข้อมูลแบบที่ยื่นสำเร็จล่าสุด 2 ฉบับเพื่อยื่นแบบใหม่ได้">
+            <span class="fa-stack fa-1x">
+              <i class="fas fa-circle fa-stack-2x {{ data.isDeleting? 'icon-cr-gray':'icon-cr-yellow' }} "></i>
+              <i class="fas fa-copy fa-stack-1x fa-inverse" style="font-size: 16px;" [hidden]="data.isDeleting"></i>
+              <i class="fas fa-sync-alt fa-stack-1x fa-inverse fa-spin " style="font-size: 16px;"
+                [hidden]="!data.isDeleting"></i>
+            </span>
+          </button>
+
+          <button class="btn p-0" title="ใบเสร็จ และป.2">
+            <span class="fa-stack fa-1x">
+              <i class="fas fa-circle fa-stack-2x {{ data.isReceiptLoading? 'icon-cr-gray':'icon-cr-green' }} "></i>
+              <i class="fas fa-file-contract fa-stack-1x fa-inverse" style="font-size: 16px;"
+                [hidden]="data.isReceiptLoading"></i>
+              <i class="fas fa-sync-alt fa-stack-1x fa-inverse fa-spin " style="font-size: 16px;"
+                [hidden]="!data.isReceiptLoading"></i>
+            </span>
+          </button>
+
+          <button class="btn p-0" title="พิมพ์ภาพแบบ และใบรับ">
+            <span class="fa-stack fa-1x">
+              <i class="fas fa-circle fa-stack-2x {{ data.isDocLoading? 'icon-cr-gray':'icon-cr-green' }} "></i>
+              <i class="fas fa-file-alt fa-stack-1x fa-inverse" style="font-size: 16px;"
+                [hidden]="data.isDocLoading"></i>
+              <i class="fas fa-sync-alt fa-stack-1x fa-inverse fa-spin " style="font-size: 16px;"
+                [hidden]="!data.isDocLoading"></i>
+            </span>
+          </button> -->
+
         </td>
       </tr>
 

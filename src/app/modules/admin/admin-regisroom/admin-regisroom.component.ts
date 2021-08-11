@@ -20,7 +20,6 @@ export class AdminRegisroomComponent implements OnInit {
     private router: Router
 
   ) { }
-  submitted = false;
 
   regisroomForm = this.fb.group({
     roomId: [0],
@@ -35,12 +34,11 @@ export class AdminRegisroomComponent implements OnInit {
 
   }
 
-  save() {
-  this.submitted = true;
-  this.sharedsService.saveRoom(this.regisroomForm.value).subscribe(res => {
-    console.log('Create Room res : ', res)
-  });
-  this.router.navigate(['admin/room']);
+  roomsave() {
+    this.sharedsService.saveRoom(this.regisroomForm.value).subscribe(
+      (error) => console.log(error),
+    );
+    this.router.navigate(['admin/room']);
   }
 
   back() {

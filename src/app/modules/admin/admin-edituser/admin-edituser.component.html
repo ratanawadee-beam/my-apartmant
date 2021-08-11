@@ -15,147 +15,138 @@
             </div>
         </div>
         <div class="container bg-white shadow-lg col-9 ">
-        <form [formGroup]="edituserForm" class="card-body " autocomplete="off">
-            <div class="form-group row content ">       
-                <div class="col-lg-3">
-                    <label>หมายเลขห้อง</label>
-                    <div class="form-group">
-                        <input type="text" readonly class="form-control" id="staticDate"
-                        formControlName="roomName" required />
+            <form [formGroup]="edituserForm" class="card-body " autocomplete="off">
+                <div class="form-group row content ">
+                    <div class="col-lg-3">
+                        <label>เลขห้อง</label>
+                        <div>
+                            <input type="tel"readonly  class="form-control" id="autoSizingInputGroup"  formControlName="roomName">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group row content">
-               
-                <div class="col-lg-6">
-                    <label>ชื่อใช้งาน</label>
-                    <div>
-                        <input type="text" class="form-control input-inline" formControlName="userUsername" required />
+                <div class="form-group row content">
+                    <div class="col-lg-6">
+                        <label>ชื่อผู้ใช้งาน</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userUsername"
+                                required />
+                        </div>
                     </div>
-
-                </div>
-                <div class="col-lg-6">
-                    <label>รหัสผู้ใช้งาน</label>
-                    <div>
-                        <input type="text" class="form-control input-inline"formControlName="userPassword" required />
+                    <div class="col-lg-6">
+                        <label>รหัสผู้ใช้งาน</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userPassword"
+                                required />
+                        </div>
                     </div>
-
                 </div>
-            </div>
-            <div class="form-group row content">
+                <div class="form-group row content">
 
-                <div class="col-lg-4">
-                    <label>คำนำหน้า</label>
-                    <div>
-                        <input type="text" class="form-control input-inline"formControlName="userTitle" required />
+                    <div class="col-lg-4">
+                        <label>คำนำหน้า</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userTitle" required />
+                        </div>
+
                     </div>
+                    <div class="col-lg-4">
+                        <label>ชื่อ</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userName" required />
+                        </div>
 
-                </div>
-                <div class="col-lg-4">
-                    <label>ชื่อ</label>
-                    <div>
-                        <input type="text" class="form-control input-inline"formControlName="userName" required />
                     </div>
+                    <div class="col-lg-4">
+                        <label>นามสกุล</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userLassname"
+                                required />
+                        </div>
 
-                </div>
-                <div class="col-lg-4">
-                    <label>นามสกุล</label>
-                    <div>
-                        <input type="text" class="form-control input-inline"formControlName="userLassname" required />
-                    </div>
-
-                </div>
-            
-            </div>
-            <div class="form-group row content">
-
-                <div class="col-lg-4">
-                    <label>เลขบัตรประชาชน</label>
-                    <div>
-                        <input type="text" class="form-control input-inline" formControlName="userCardId" required />
                     </div>
 
                 </div>
-                
-                <div class="col-lg-4">
-                    <label>วัน/เดือน/ปีเกิด</label>
-                    <div>
-                        <input type="text" class="form-control input-inline" formControlName="userBirthday" required />
+                <div class="form-group row content">
+
+                    <div class="col-lg-4">
+                        <label>เลขบัตรประชาชน</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userCardId"
+                                required />
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label>วัน/เดือน/ปีเกิด</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userBirthday"
+                                required />
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <label>เพศ</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userGender"
+                                required />
+                        </div>
+
                     </div>
 
                 </div>
-                <div class="col-lg-4">
-                    <label>เพศ</label>
-                    <div>
-                        <input type="text" class="form-control input-inline"formControlName="userGender" required />
+                <div class="form-group row content">
+                    <div class="col-lg-4">
+                        <label>เบอร์โทร</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userPhone" required />
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <label>อีเมล</label>
+                        <div>
+                            <input type="text" class="form-control input-inline" formControlName="userEmail" required />
+                        </div>
+
                     </div>
 
+                </div><br>
+                <div class="form-group row content">
+                    <div class="col-lg-4 ">
+                        <label>ที่อยู่</label>
+                        <div>
+                            <textarea type="text" class="form-control input-inline "
+                                formControlName="userAddress"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>รหัสไปรษณีย์</label>
+                        <input type="tel" class="form-control" id="autoSizingInputGroup" (change)="userZipCode($event)"
+                             formControlName="zipCode">
+                    </div>
+                    <div class="col-lg-4">
+                        <div>จังหวัด</div>
+                        <input type="text" class="form-control input-inline" formControlName="provinceNameTh" required />
+                    </div>
                 </div>
-            
-            </div>
-            <div class="form-group row content"> 
-                <div class="col-lg-4">
-                    <label>เบอร์โทร</label>
-                    <div>
-                        <input type="text" class="form-control input-inline"formControlName="userPhone" required />
+                <div class="form-group row content">
+                    <div class="col-lg-4">
+                        <div>อำเภอ</div>
+                        <input type="text" class="form-control input-inline" formControlName="amphurNameTh" required />
                     </div>
-
-                </div> 
-                <div class="col-lg-4">
-                    <label>อีเมล</label>
-                    <div>
-                        <input type="text" class="form-control input-inline"formControlName="userEmail" required />
+                    <div class="col-lg-4">
+                        <div>ตำบล</div>
+                        <input type="text" class="form-control input-inline" formControlName="districtNameTh" required />
                     </div>
-
-                </div>  
-                           
-            </div><br>
-            <div class="form-group row content">
-                <div class="col-lg-3 ">
-                    <label>ที่อยู่</label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="userAddress" required />
-                    </div>
-
                 </div>
-                <div class="col-lg-3">
-                    <label>ตำบล</label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="districtNameTh"required />
-                    </div>
-
+                <br>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
+                    <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>&nbsp;
                 </div>
-                <div class="col-lg-3">
-                    <label>อำเภอ</label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="amphurNameTh" required />
-                    </div>
-
-                </div>
-                <div class="col-lg-3">
-                    <label>จังหวัด</label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="provinceNameTh"required />
-                    </div>
-
-                </div>
-            </div>
-            <div class="form-group row content">
-                <div class="col-lg-3">
-                    <label>รหัสไปรษณีย์</label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="zipCode" required />
-                    </div>
-
-                </div>
-
-            </div>
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
-                <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>&nbsp;
-            </div>
-        </form>
+            </form>
         </div>
     </div>
-    
+
 </div>

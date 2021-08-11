@@ -40,7 +40,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+   
   ]
 })
 export class AdminModule { }

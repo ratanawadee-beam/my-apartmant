@@ -1,13 +1,15 @@
-<div class="container col-12 ">
+<div class="container col-12">
   <div class="d-flex align-items-center pt-2 pb-1 mb-2 border-bottom ">
     <h3>จัดการข้อมูลห้องพัก</h3>
   </div>
-  <div>
-    <button type="button" class="btn btn-primary " (click)="Next()">เพิ่มข้อมูลห้องพัก</button>
+  <form class="form pt-2 pb-1 mb-2">
+    <div class="clearfix">
+    <button type="button" class="btn btn-primary float-right " routerLink="../regisroom">เพิ่มข้อมูลห้องพัก</button><br>
   </div>
+</form>
   <br>
-  <table class="table text-center table  ">
-    <thead>
+  <table class="table text-center table-hover">
+    <thead class="table " >
       <tr>
         <th scope="col">เลขห้อง</th>
         <th scope="col">ประเภทห้อง</th>
@@ -18,7 +20,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of listRoom">
-        <td>{{data.roomName}}</td>
+        <th scope="row">{{data.roomName}}</th>
         <td>{{data.roomTypename}}</td>
         <td>{{data.roomStatvs}}</td>
         <td>{{data.roomPrice}}</td>
@@ -31,10 +33,6 @@
                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
             </svg> แก้ไข</button> </td>
       </tr>
-
-
-
-
     </tbody>
   </table>
   <nav aria-label="Page navigation example">

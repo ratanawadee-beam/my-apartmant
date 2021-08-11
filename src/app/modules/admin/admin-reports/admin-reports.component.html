@@ -1,87 +1,105 @@
 <div class="container col-12">
-<div class="d-flex justify-content-between flex-wrap  pt-3 pb-2 mb-3 border-bottom">
-  <h3>ข้อมูลการชำระเงิน</h3>
-</div>
-<form class="form-inline ">
-  <input class="form-control mr-sm-2" placeholder="ค้นหา" aria-label="Search">
-  <button class="nav-link btn btn-success" type="submit" routerLink="">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-    </svg> ค้นหา</button>
-</form>
-<br>
-<table class="table text-center table-bordered ">
-  <thead class=" table-info">
-    <tr>
-      <th scope="col">เลขห้อง</th>
-      <th scope="col">เลขใบเเจ้งหนี้</th>
-      <th scope="col">ชื่อ</th>
-      <th scope="col">นามสกุล</th>
-      <th scope="col">กำหนดจ่าย</th>
-      <th scope="col">ยอดชำระ</th>
-      <th scope="col">สลิปการโอน</th>
-      <th scope="col">วันเวลาที่อัปโหลด</th>
-      <th scope="col">สถานะ</th>
+  <div class="d-flex justify-content-between flex-wrap  pt-3 pb-2 mb-3 border-bottom">
+    <h3>ข้อมูลการชำระเงิน</h3>
+  </div>
+  <div class="row justify-content-end m-0">
+    <div class="col-md-auto col-sm-2">
+      <input class="form-control" placeholder="ค้นหา" aria-label="Search">
+    </div>
+    <div class="col-md-auto col-sm-6">
+      <button class="nav-link btn btn-success" type="submit" routerLink="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+          viewBox="0 0 16 16">
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </svg> ค้นหา</button>
+    </div>
+  </div>
+  <br>
+  <table class="table text-center table table-hover ">
+    <thead class=" table-info">
+      <tr>
+        <th scope="col">เลขห้อง</th>
+        <th scope="col">เลขใบเเจ้งหนี้</th>
+        <th scope="col">ชื่อ</th>
+        <th scope="col">นามสกุล</th>
+        <th scope="col">กำหนดจ่าย</th>
+        <th scope="col">ยอดชำระ</th>
+        <th scope="col">สลิปการโอน</th>
+        <th scope="col">วันเวลาที่อัปโหลด</th>
+        <th scope="col">สถานะ</th>
 
 
-    </tr>
-  </thead>
-  <tbody class="text-center">
-    <tr>
-      <td>A101</td>
-      <td>1234526</td>
-      <td>รัตนาวดี</td>
-      <td>ศรีคำ</td>
-      <td>5/7/2564</td>
-      <td>2500</td>
-      <td class=""><a href="#">ไฟล์รูป</a></td>
-      <td>2021-06-28 13.42 </td>
-      <td><button type="button" class="btn btn-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
-        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
-        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
-      </svg>&nbsp;ชำระ</button>&nbsp;
-        <button type="button" class="btn btn-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-        </svg>&nbsp;ค้างชำระ</button>
-      </td>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr>
+        <td>A101</td>
+        <td>1234526</td>
+        <td>รัตนาวดี</td>
+        <td>ศรีคำ</td>
+        <td>5/7/2564</td>
+        <td>2500</td>
+        <td class=""><a href="#">ไฟล์รูป</a></td>
+        <td>2021-06-28 13.42 </td>
+        <td><button type="button" class="btn btn-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+              <path
+                d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+              <path
+                d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+            </svg>&nbsp;ชำระ</button>&nbsp;
+          <button type="button" class="btn btn-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+              <path
+                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+            </svg>&nbsp;ค้างชำระ</button>
+        </td>
 
 
 
-    </tr>
-    <tr>
-      <td>A102</td>
-      <td>1234526</td>
-      <td>1</td>
-      <td>1</td>
-      <td>5/7/2564</td>
-      <td>2500</td>
-      <td class=""><a href="#">ไฟล์รูป</a></td>
-      <td>2021-06-28 13.42 </td>
-      <td><button type="button" class="btn btn-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
-        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
-        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
-      </svg>&nbsp;ชำระ</button>&nbsp;
-        <button type="button" class="btn btn-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-        </svg>&nbsp;ค้างชำระ</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </tr>
+      <tr>
+        <td>A102</td>
+        <td>1234526</td>
+        <td>1</td>
+        <td>1</td>
+        <td>5/7/2564</td>
+        <td>2500</td>
+        <td class=""><a href="#">ไฟล์รูป</a></td>
+        <td>2021-06-28 13.42 </td>
+        <td><button type="button" class="btn btn-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+              <path
+                d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+              <path
+                d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+            </svg>&nbsp;ชำระ</button>&nbsp;
+          <button type="button" class="btn btn-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+              <path
+                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+            </svg>&nbsp;ค้างชำระ</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>

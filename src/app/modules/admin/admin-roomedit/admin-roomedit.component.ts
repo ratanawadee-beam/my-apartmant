@@ -10,6 +10,8 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
 })
 export class AdminRoomeditComponent implements OnInit {
   roomId: any
+  roomTypename: any = ['แอร์', 'พัดลม'];
+  roomStatvs: any = ['ว่าง', 'ไม่ว่าง'];
   roomeditForm = new FormGroup({
     roomId: new FormControl(''),
     roomName: new FormControl(''),
@@ -25,20 +27,18 @@ export class AdminRoomeditComponent implements OnInit {
     private router: Router
      )    { }
  
-
   ngOnInit(): void {
     this.roomId = this._Activatedroute.snapshot.paramMap.get("id");
-    
     console.log('!!!!!!!!!!this.roomId!!!!!!!!!!!!!!', this.roomId)
-    this.getRoomByroomId(this.roomId);
-    
+    this.getRoomByroomId(this.roomId); 
   }
+
   getRoomByroomId(roomId: any) {
     this.sharedsService.getRoomByroomId(roomId).subscribe((res) => {
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!', res)
+      console.log('!!!!!!!!!!! res editroom !!!!!!!!!!!!!', res)
       this.roomeditForm.patchValue({
         roomId:roomId,
-        roomName: res.roomName,
+        roomName:res.roomName,
         roomTypename: res.roomTypename,
         roomStatvs: res.roomStatvs,
         roomWater: res.roomWater,
@@ -65,7 +65,7 @@ export class AdminRoomeditComponent implements OnInit {
       "roomPrice": this.roomeditForm.value.roomPrice,
   
     }
-    this.sharedsService.saveRoom(body).subscribe(
+    this.sharedsService.updateRoom(body).subscribe(
       (error) => console.log(error),
     );
     this.router.navigate(['admin/room']);
