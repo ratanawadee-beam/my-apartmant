@@ -19,29 +19,30 @@ export class AdminManageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUserData();
+    // this.getUserData();
     this.faceData();
   }
 
-  getUserData() {
-    this.userService.getUser().subscribe((res) => {
-      console.log('!!!!!!!!!!res usrData !!!!!!!!!!!!!!', res)
-      this.listUser = res;
-    },
-      (error) => {
-        console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
-      }
-    );
-  }
+  // getUserData() {
+  //   this.userService.getUser().subscribe((res) => {
+  //     console.log('!!!!!!!!!!res userData !!!!!!!!!!!!!!', res)
+  //     this.listUser = res;
+  //   },
+  //     (error) => {
+  //       console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
+  //     }
+  //   );
+  // }
   faceData() {
-    this.sharedsService.getRent().subscribe(
+    this.sharedsService.getRent().subscribe(   
       (res) => {
-        console.log(res)
+        console.log('!!!!!! Rent Data !!!!!!',res)
         this.listRent = res;
       },
       (error) => {
-        console.log(error);
+        console.log('!!!!!! Rent Data !!!!!!',error);
       }
     );
   }
+  
 }

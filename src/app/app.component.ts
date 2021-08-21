@@ -15,6 +15,7 @@ import { HomeService } from './shared/service/home.service';
 export class AppComponent implements OnInit {
 
   public userType: string | undefined;
+  public taxInfo: any;
   idleState = 'Not started.';
   isLogin: Boolean = false;
   timedOut = false;
@@ -39,18 +40,33 @@ export class AppComponent implements OnInit {
       //   this.userType = 'home'
       // }
     });
+    homeService.$taxInfo.subscribe(data => {
+      console.log('LOGGGG >>> :: taxInfo ::', data);
+      this.taxInfo = data;
+      // if (data === 'admin') {
+      //   this.userType = data;
+      // } else if (data === 'user') {
+      //   this.userType = data;
+      // } else {
+      //   this.userType = 'home'
+      // }
+    });
   }
 
   ngOnInit(): void {
-
-    this.homeService.$userType = of('home');
+    this.homeService.$userType = of(sessionStorage.getItem('user_role'));
+  }
+  logIn(){
+    this.router.navigate(['home/login']);
   }
   logOut() {
     const userType = 'home';
+    sessionStorage.setItem('user_role', 'home');
     this.homeService.$userType = of(userType);
     this.router.navigate([`${userType}`]);
-
+    window.location.reload();
   }
+
   initRolePermission() {
     const user_role = sessionStorage.getItem('user_role');
     const role: string = (user_role != null && user_role != undefined) ? user_role : '';

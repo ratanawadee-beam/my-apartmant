@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
@@ -11,29 +11,39 @@ import { UserService } from 'src/app/shared/service/user.service';
   styleUrls: ['./admin-edituser.component.css']
 })
 export class AdminEdituserComponent implements OnInit {
-  userId: any
-  edituserForm = new FormGroup({
-    roomName: new FormControl(''),
-    userUsername: new FormControl(''),
-    userPassword: new FormControl(''),
-    userTitle: new FormControl(''),
-    userName: new FormControl(''),
-    userLassname: new FormControl(''),
-    userCardId: new FormControl(''),
-    userBirthday: new FormControl(''),
-    userGender: new FormControl(''),
-    userPhone: new FormControl(''),
-    userEmail: new FormControl(''),
-    userAddress: new FormControl(''),
-    zipCode: new FormControl(''),
-    districtNameTh: new FormControl(''),
-    provinceNameTh: new FormControl(''),
-    amphurNameTh: new FormControl(''),
-    userId: new FormControl(''),
-    roleId: new FormControl(''),
+
+  Provinces: any;
+  Amphurs: any;
+  Districts: any;
+  userId: any;
+  // roomId: any;
+  edituserForm = this.edituser.group({
+    roomId: [''],
+    roomName: ['', Validators.required],
+    userUsername: [''],
+    userPassword: [''],
+    userTitle: ['', Validators.required],
+    userName: ['', Validators.required],
+    userLassname: ['', Validators.required],
+    userIdcard: ['', Validators.required],
+    userBirthday: [''],
+    userPhone: [''],
+    userGender: ['', Validators.required],
+    userAddress: ['', Validators.required],
+    Provinceid: ['', Validators.required],
+    Amphurid: ['', Validators.required],
+    Districtid: ['', Validators.required],
+    userEmail: ['', Validators.required],
+    zipCode: ['', Validators.required],
+    district: [{ value: '', disabled: true },],
+    amphur: [{ value: '', disabled: true },],
+    province: [{ value: '', disabled: true },],
+    userId: [0],
+    roleId: [''],
   });
 
   constructor(
+    private edituser: FormBuilder,
     private _Activatedroute: ActivatedRoute,
     private userService: UserService,
     private sharedsService: SharedsService,
@@ -42,40 +52,48 @@ export class AdminEdituserComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this._Activatedroute.snapshot.paramMap.get("id");
     this.getUserById(this.userId);
-    
+    this.initDropdown();
+  }
 
+  initDropdown() {
+    this.userService.getDistrictAll().subscribe(res => { this.Districts = res; this.Districts });
+    this.userService.getDistrictAll().subscribe(res => { this.Amphurs = res; this.Amphurs; });
+    this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; this.Provinces })
   }
 
   getUserById(userId: any) {
     this.userService.getUserById(userId).subscribe((res) => {
       console.log('!!!!!!!!!!!!res data!!!!!!!!!!!!', res)
       this.edituserForm.patchValue({
+        userId: userId,
+        roleId: res.roleId,
+        roomId: res.roomId,
         roomName: res.roomName,
         userUsername: res.userUsername,
         userPassword: res.userPassword,
         userTitle: res.userTitle,
         userName: res.userName,
         userLassname: res.userLasname,
-        userCardId: res.userIdcard,
+        userIdcard: res.userIdcard,
         userBirthday: res.userBirthday,
         userGender: res.userGender,
         userPhone: res.userPhone,
         userEmail: res.userEmail,
         userAddress: res.userAddress,
         zipCode: res.zipCode,
-        districtNameTh: res.districtNameTh,
-        provinceNameTh: res.provinceNameTh,
-        amphurNameTh: res.amphurNameTh,
-        userId: userId,
-        roleId: res.roleId,
+        amphur: res.amphur,
+        district: res.district,
+        province: res.province,
       });
+      this.userZipCode(res.zipCode);
+
     },
       (error) => {
         console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
       }
+
     );
   }
-
 
   save() {
     console.log(this.edituserForm.value.userId,
@@ -87,7 +105,7 @@ export class AdminEdituserComponent implements OnInit {
       "userEmail": this.edituserForm.value.userEmail,
       "userGender": this.edituserForm.value.userGender,
       "userId": this.edituserForm.value.userId,
-      "userIdcard": this.edituserForm.value.userCardId,
+      "userIdcard": this.edituserForm.value.userIdcard,
       "userLasname": this.edituserForm.value.userLassname,
       "userName": this.edituserForm.value.userName,
       "userPassword": this.edituserForm.value.userPassword,
@@ -96,9 +114,6 @@ export class AdminEdituserComponent implements OnInit {
       "userUsername": this.edituserForm.value.userUsername,
       "zipCode": this.edituserForm.value.zipCode,
       "roomName": this.edituserForm.value.roomName,
-      "districtNameTh": this.edituserForm.value.districtNameTh,
-      "provinceNameTh": this.edituserForm.value.provinceNameTh,
-      "amphurNameTh": this.edituserForm.value.amphurNameTh,
     }
     this.userService.upDateUser(body).subscribe(
       (error) => console.log(error),
@@ -111,19 +126,19 @@ export class AdminEdituserComponent implements OnInit {
 
   //zipCode
   userZipCode(event: any) {
-    const zipCode = event.target.value;
+    const zipCode = event;
     console.log('zipCode' + zipCode)
     this.userService.getDistricByZipCode(zipCode).subscribe(
       res => {
         console.log(res)
         if (res) {
-          this.edituserForm.patchValue(
-            {
-              district: res.districtNameTh,
-              amphur: res.amphur.amphurNameTh,
-              province: res.province.provinceNameTh
-            }
+          this.edituserForm.patchValue({
+            district: res.districtNameTh,
+            amphur: res.amphur.amphurNameTh,
+            province: res.province.provinceNameTh
+          }
           )
+          console.log('!!! res zip code !!!', this.edituserForm.value)
         }
       },
       error => {
@@ -138,5 +153,34 @@ export class AdminEdituserComponent implements OnInit {
     );
   }
 
+  // loadUserZipCode(zipCode: any) {
+  //   console.log('zipCode' + zipCode)
+  //   this.userService.getDistricByZipCode(zipCode).subscribe(
+  //     res => {
+  //       if (res) {
+  //         this.edituserForm.patchValue(
+  //           {
+  //             district: res.districtNameTh,
+  //             amphur: res.amphur.amphurNameTh,
+  //             province: res.province.provinceNameTh
+  //           }
+  //         )
+  //       }
+  //     },
+  //     error => {
+  //       this.edituserForm.patchValue(
+  //         {
+  //           district: '',
+  //           amphur: '',
+  //           province: ''
+  //         }
+  //       )
+  //     }
+  //   );
+  // }
+
+
 
 }
+
+

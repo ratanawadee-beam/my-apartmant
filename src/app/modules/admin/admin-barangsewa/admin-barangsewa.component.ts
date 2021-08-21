@@ -22,14 +22,15 @@ export class AdminBarangsewaComponent implements OnInit {
   }
 
   faceData() {
-    this.sharedsService.getRent().subscribe(
+    this.sharedsService.getRent().subscribe(   
       (res) => {
-        console.log(res)
+        console.log('!!!!!! Rent Data !!!!!!',res)
         this.listRent = res;
       },
       (error) => {
-        console.log(error);
+        console.log('!!!!!! Rent Data !!!!!!',error);
       }
     );
   }
+  
 }

@@ -28,16 +28,67 @@ export class HomeLoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
-    }
-    const userType = 'admin';
-    this.homeService.$userType = of(userType);
-    this.router.navigate([`${userType}`]);
 
-    // const userType = 'user';
-    // this.homeService.$userType = of(userType);
-    // this.router.navigate([`${userType}`]);
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return; 
+    }
+
+    //call login 
+    this.homeService.loginByUsernamePassword(this.loginForm.value).subscribe((res) => {
+      this.homeService.$taxInfo = of(res);
+      sessionStorage.setItem('user_role', this.getRole(res.roleId));
+      sessionStorage.setItem('user_id', res.userId), {}
+
+      // this.router.navigate(['home']).then(() => {
+      //   window.location.reload()
+      // });
+    },
+      (error) => {
+        // Swal.fire(
+        //   'Login Fail!',
+        //   'Username or Password Incorrect!',
+        //   'question'
+        // )
+        alert('error!! :-)')
+      });
+
+  }
+
+  getRole(roleId: any) {
+    let role = '';
+    switch (roleId) {
+      case '1':
+        role = 'admin';
+        this.router.navigate(['admin/admin']).then(() => {
+          // window.location.reload()
+          const userType = 'admin';
+          this.homeService.$userType = of(userType);
+          this.router.navigate([`${userType}`]);
+        });
+
+        break;
+      case '2':
+        role = 'user';
+        this.router.navigate(['user/home']).then(() => {
+          // window.location.reload()
+
+          const userType = 'user';
+          this.homeService.$userType = of(userType);
+          this.router.navigate([`${userType}`]);
+        });
+        break;
+
+      default:
+        // Swal.fire(
+        //   'Login Fail!',
+        //   'Role is Not Mapping in System!'
+        // )
+        alert('ERROR!! :-)')
+        break;
+    }
+    alert(role)
+    return role;
   }
 
   get f() { return this.loginForm.controls; }

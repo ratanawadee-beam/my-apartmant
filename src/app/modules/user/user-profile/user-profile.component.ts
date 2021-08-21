@@ -15,7 +15,6 @@ export class UserProfileComponent implements OnInit {
   Provinces: any;
   Amphurs: any;
   Districts: any;
-  userId: any
 
   profileuserForm = this.profileuser.group({
     roomId: [''],
@@ -64,8 +63,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // this.userId = this._Activatedroute.snapshot.paramMap.get("id");
-    // const userId = sessionStorage.getItem('user_id');
-    this.getUserById(this.userId);
+    const userId = sessionStorage.getItem('user_id');
+    console.log('Log User  id', userId);
+    this.getUserById(userId);
     this.initDropdown();
   }
 
@@ -76,6 +76,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getUserById(userId: any) {
+    console.log('!!user Id!!', userId);
     this.userService.getUserById(userId).subscribe((res) => {
       console.log('!!!!!!!!!!!!res data!!!!!!!!!!!!', res)
       this.profileuserForm.patchValue({

@@ -32,6 +32,13 @@ export class AdminInformationComponent implements OnInit {
   save(): any {
     if (this.checkValid()) {
       // console.log('LOG >>> :if: ');
+
+
+      const email = sessionStorage.getItem('user_id');
+      const phone = sessionStorage.getItem('phone');
+      let user = email?.split('@', 1)
+      let text = 'user :' + user + ' ' + 'pass :' + phone
+      // service  email, '????' , text
       this.router.navigate(['admin/manage']);
     } else {
       // console.log('LOG >>> :else: ');

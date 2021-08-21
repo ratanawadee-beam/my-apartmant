@@ -21,6 +21,7 @@ export class AdminRegisterComponent implements OnInit {
   roomId: any;
   userId: any;
   listRoom: any;
+  listRent: any;
   roomPrice: RoomInterface[] = [];
   roomWater: RoomInterface[] = [];
   roomLight: RoomInterface[] = [];
@@ -62,16 +63,10 @@ export class AdminRegisterComponent implements OnInit {
   ) { }
 
   registerForm = this.fb.group({
-
-    rentId: [0],
-    rentStart: ['', Validators.required],
-    rentEnd: ['', Validators.required],
-    rentInsurance: ['', Validators.required],
-    rentTotalprice: ['', Validators.required],
-    rentOther: [''],
     userId: [0],
     userTitle: ['', Validators.required],
     userName: ['', Validators.required],
+    userUserName: ['', Validators.required],
     userLasname: ['', Validators.required],
     userBirthday: [''],
     userIdcard: ['', Validators.required],
@@ -86,61 +81,19 @@ export class AdminRegisterComponent implements OnInit {
     district: [{ value: '', disabled: true },],
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
+    roleId: ['2'],
+    rentId: [0],
+    rentStart: ['', Validators.required],
+    rentEnd: ['', Validators.required],
+    rentInsurance: ['', Validators.required],
+    rentTotalprice: ['', Validators.required],
+    rentOther: [''],
     roomId: [0],
     roomName: ['', Validators.required],
     roomTypename: ['', Validators.required],
     roomPrice: ['', Validators.required],
     roomLight: [''],
     roomWater: [''],
-
-    user: {
-      userId: [0],
-      userUsername: ['', Validators.required],
-      userPassword: ['', Validators.required],
-      userTitle: ['', Validators.required],
-      userName: ['', Validators.required],
-      userLasname: ['', Validators.required],
-      userBirthday: [''],
-      userIdcard: ['', Validators.required],
-      userPhone: [''],
-      userGender: ['', Validators.required],
-      userAddress: ['', Validators.required],
-      Provinceid: ['', Validators.required],
-      Amphurid: ['', Validators.required],
-      Districtid: ['', Validators.required],
-      userEmail: ['', Validators.required],
-      zipCode: ['', Validators.required],
-      district: [{ value: '', disabled: true },],
-      amphur: [{ value: '', disabled: true },],
-      province: [{ value: '', disabled: true },],
-      role: ['1'],
-
-      rent: {
-        rentId: [0],
-        rentStart: ['', Validators.required],
-        rentEnd: ['', Validators.required],
-        rentInsurance: ['', Validators.required],
-        rentTotalprice: ['', Validators.required],
-        rentOther: [''],
-        roomLight: [''],
-        roomWater: [''],
-        userId: [0],
-        roomId: [0],
-        user: [0],
-        room: [0],
-      },
-      invoice: [0],
-      roleId: ['1'],
-    },
-
-    room: {
-      roomId: [0],
-      roomName: ['', Validators.required],
-      roomTypename: ['', Validators.required],
-      roomPrice: ['', Validators.required],
-      roomStatvs: ['', Validators.required],
-    }
-
   })
 
 
@@ -154,11 +107,41 @@ export class AdminRegisterComponent implements OnInit {
 
 
   Next() {
-    this.userService.saveUser(this.registerForm.value).subscribe(
+    let bady = {
+      "roleId": this.registerForm.value.roleId,
+      "userAddress": this.registerForm.value.userAddress,
+      "userBirthday": this.registerForm.value.userBirthday,
+      "userEmail": this.registerForm.value.userEmail,
+      "userGender": this.registerForm.value.userGender,
+      "userId": this.registerForm.value.userId,
+      "userIdcard": this.registerForm.value.userIdcard,
+      "userLasname": this.registerForm.value.userLasname,
+      "userName": this.registerForm.value.userName,
+      "userPassword": this.registerForm.value.userPassword,
+      "userPhone": this.registerForm.value.userPhone,
+      "userTitle": this.registerForm.value.userTitle,
+      "userUserName": this.registerForm.value.userUserName,
+      "zipCode": this.registerForm.value.zipCode,
+    }
+    let body = {
+      "rentEnd": this.registerForm.value.rentEnd,
+      "rentId": this.registerForm.value.rentId,
+      "rentInsurance": this.registerForm.value.rentInsurance,
+      "rentOther": this.registerForm.value.rentOther,
+      "rentStart": this.registerForm.value.rentStart,
+      "rentTotalprice": this.registerForm.value.rentTotalprice,
+      "roomId": this.registerForm.value.roomId,
+      "userId": this.registerForm.value.userId,
+    }
+    this.userService.saveUser(bady).subscribe(
+      (error) => console.log(error),
+    );
+    this.sharedsService.seveRent(body).subscribe(
       (error) => console.log(error),
     );
     this.router.navigate(['admin/information']);
   }
+
   // usersave() {
   //   this.router.navigate(['admin/us']);
   // }
@@ -250,12 +233,22 @@ export class AdminRegisterComponent implements OnInit {
     let x = this.roomWater;
     return this.roomWater = x.filter(i => String(i.roomName).indexOf(event) !== -1);
   }
-  
+
   selectLight(event: any) {
     console.log('!! selectPrice !!', event);
     this.roomLight = this.listRoom;
     let x = this.roomLight;
     return this.roomLight = x.filter(i => String(i.roomName).indexOf(event) !== -1);
   }
-
+  getRentAll() {
+    this.sharedsService.getRent().subscribe(
+      (res) => {
+        console.log('!!!!!!!!!!!!! Room Data !!!!!!!!!!!', res)
+        this.listRent = res;
+      },
+      (error) => {
+        console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
+      }
+    );
+  }
 }

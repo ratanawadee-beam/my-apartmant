@@ -37,14 +37,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of listUser" >
-        <td scope="row">{{data.roomName}}</td>
-        <td>{{data.userName}}</td>
-        <td>{{data.userLasname}}</td>
-        <td>{{data.userPhone}}</td>
-        <td>{{data.userEmail}} </td>
-        <td *ngIf="data.userName !== 'Admin'">
-          <button type="button" class="btn btn-danger  " routerLink="">
+      <tr *ngFor="let data of listRent" >
+        <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomName}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.user.userName}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.user.userLasname}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.user.userEmail}} </td>
+        <td *ngIf="data.user.roleId != '1'">
+          <button type="button" class="btn btn-danger " routerLink="">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
               viewBox="0 0 16 16">
               <path

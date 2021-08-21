@@ -3,15 +3,15 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" onsubmit="event.preventDefault()" class="box">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  class="box">
                     <h1>Login</h1>
                     <p class="text-muted"> Please enter your login and password!</p>
                     <input type="text" formControlName="username" class="form-control" placeholder="username"
-                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                    [ngClass]="{ 'is-invalid': submitted && f.username?.errors }">
                     <input type="password" class="form-control" formControlName="password" placeholder="Password"
-                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"> 
+                    [ngClass]="{ 'is-invalid': submitted && f.password?.errors }"> 
                     <a class="forgot text-muted" href="#">Forgot password?</a>
-                    <input type="submit" name="" value="Login" href="#">
+                    <input type="submit" name="" value="Login" >
                 </form>
             </div>
         </div>

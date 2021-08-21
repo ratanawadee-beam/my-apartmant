@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedsService } from 'src/app/shared/service/shareds.service';
 
 @Component({
   selector: 'app-admin-rental',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-rental.component.css']
 })
 export class AdminRentalComponent implements OnInit {
-
-  constructor() { }
+  listRent: any;
+  constructor(
+    private sharedsService: SharedsService,
+  ) { }
 
   ngOnInit(): void {
-  }
+    this.faceData();
 
+  }
+  faceData() {
+    this.sharedsService.getRent().subscribe(
+      (res) => {
+        console.log('!!!!!! Rental Data !!!!!!', res)
+        this.listRent = res;
+      },
+      (error) => {
+        console.log('!!!!!! Rental Data !!!!!!', error);
+      }
+    );
+  }
 }

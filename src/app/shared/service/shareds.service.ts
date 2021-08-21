@@ -29,6 +29,7 @@ export class SharedsService {
       'Content-Type': 'application/json',
     }),
   };
+
   // room
   public saveRoom(body: any) {
     console.log('API >> saveRoom', body);
@@ -46,18 +47,19 @@ export class SharedsService {
   }
 
   // rent
-  public seveRent(body: any) {
+ 
+  public seveRent(body: any) { 
     console.log('API >> saveRent', body);
     return this.http.post<any>(this.API_URL + '/rent/save', body, this.httpOption);
   }
-  public updateRent(body: any) {
-    console.log('API >> saveRent', body);
+  public updateRent (body: any) {
+    console.log('API >> updateRent', body);
     return this.http.post<any>(this.API_URL + '/rent/update', body, this.httpOption);
   }
   public getRent() {
     return this.http.get<any>(this.API_URL + '/rent');
   }
-  public getRentByRentId(rentid: any) {
+  public getRentByrentId(rentid: any) {
     return this.http.get<any>(this.API_URL + '/rent/' + `${rentid}`);
   }
 

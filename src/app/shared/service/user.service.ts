@@ -29,18 +29,17 @@ export class UserService {
     }),
   };
 
-  public saveUser(body: any) {
-    console.log('API >> saveUser', body);
-
-    return this.http.post<any>(this.API_URL + '/user/save', body, this.httpOption);
-  }
+ 
 
   public upDateUser(body: any) {
     console.log('API >> saveUser', body);
-
     return this.http.post<any>(this.API_URL + '/user/update', body, this.httpOption);
+   
   }
-
+  public saveUser(body: any) {
+    console.log('API >> saveUser', body);
+    return this.http.post<any>(this.API_URL + '/user/save', body, this.httpOption);
+  }
   public getUser() {
     return this.http.get<any>(this.API_URL + '/user');
   }
