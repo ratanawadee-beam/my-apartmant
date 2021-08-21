@@ -9,6 +9,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { UserAlertComponent } from './user-alert/user-alert.component';
 import { UserPaymentComponent } from './user-payment/user-payment.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsercontactComponent } from './usercontact/usercontact.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserProfileComponent,
     UserContractComponent,
     UserAlertComponent,
-    UserPaymentComponent
+    UserPaymentComponent,
+    UsercontactComponent
   ],
   imports: [
     CommonModule,
