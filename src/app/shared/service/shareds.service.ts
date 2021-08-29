@@ -47,12 +47,12 @@ export class SharedsService {
   }
 
   // rent
- 
-  public seveRent(body: any) { 
+
+  public seveRent(body: any) {
     console.log('API >> saveRent', body);
     return this.http.post<any>(this.API_URL + '/rent/save', body, this.httpOption);
   }
-  public updateRent (body: any) {
+  public updateRent(body: any) {
     console.log('API >> updateRent', body);
     return this.http.post<any>(this.API_URL + '/rent/update', body, this.httpOption);
   }
@@ -62,5 +62,23 @@ export class SharedsService {
   public getRentByrentId(rentid: any) {
     return this.http.get<any>(this.API_URL + '/rent/' + `${rentid}`);
   }
+
+  //invoiceDE
+
+  public saveInvoicedetail(body: any) {
+    console.log('LOG API saveinvoice', body);
+    return this.http.post<any>(this.API_URL + '/invoicedetail/save', body, this.httpOption);
+  }
+  public updateInvoicedetail(body: any) {
+    console.log('API >> updateinvoi', body);
+    return this.http.post<any>(this.API_URL + '/invoicedetail/update', body, this.httpOption);
+  }
+  public getAllInvoicedetail() {
+    return this.http.get<any>(this.API_URL + '/invoicedetail');
+  }
+  public getInvoicedetailBydeId(deid: any) {
+    return this.http.get<any>(this.API_URL + '/invoicedetail/' + `${deid}`);
+  }
+
 
 }

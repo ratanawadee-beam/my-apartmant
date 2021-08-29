@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeContactComponent } from './home-contact/home-contact.component';
 import { HomeLoginComponent } from './home-login/home-login.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { HomePage2Component } from './home-page2/home-page2.component';
 import { TestComponent } from './test/test.component';
 
 
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'test',
     component: TestComponent
+  },
+  {
+    path: 'page2',
+    component: HomePage2Component
+  },
+  {
+    path: 'contract',
+    component: HomeContactComponent
   },
   
 ];

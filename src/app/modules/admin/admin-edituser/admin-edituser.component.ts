@@ -16,7 +16,8 @@ export class AdminEdituserComponent implements OnInit {
   Amphurs: any;
   Districts: any;
   userId: any;
-  // roomId: any;
+  roomId: any;
+  
   edituserForm = this.edituser.group({
     roomId: [''],
     roomName: ['', Validators.required],
@@ -85,8 +86,8 @@ export class AdminEdituserComponent implements OnInit {
         district: res.district,
         province: res.province,
       });
-      this.userZipCode(res.zipCode);
-
+      this.loadUserZipCode(res.zipCode);
+     
     },
       (error) => {
         console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
@@ -123,10 +124,11 @@ export class AdminEdituserComponent implements OnInit {
   back() {
     this.router.navigate(['admin/manage']);
   }
+  //room
 
   //zipCode
-  userZipCode(event: any) {
-    const zipCode = event;
+  changeUserZipCode(event: any) {
+    const zipCode = event.target.value;
     console.log('zipCode' + zipCode)
     this.userService.getDistricByZipCode(zipCode).subscribe(
       res => {
@@ -153,31 +155,31 @@ export class AdminEdituserComponent implements OnInit {
     );
   }
 
-  // loadUserZipCode(zipCode: any) {
-  //   console.log('zipCode' + zipCode)
-  //   this.userService.getDistricByZipCode(zipCode).subscribe(
-  //     res => {
-  //       if (res) {
-  //         this.edituserForm.patchValue(
-  //           {
-  //             district: res.districtNameTh,
-  //             amphur: res.amphur.amphurNameTh,
-  //             province: res.province.provinceNameTh
-  //           }
-  //         )
-  //       }
-  //     },
-  //     error => {
-  //       this.edituserForm.patchValue(
-  //         {
-  //           district: '',
-  //           amphur: '',
-  //           province: ''
-  //         }
-  //       )
-  //     }
-  //   );
-  // }
+  loadUserZipCode(zipCode: any) {
+    console.log('zipCode' + zipCode)
+    this.userService.getDistricByZipCode(zipCode).subscribe(
+      res => {
+        if (res) {
+          this.edituserForm.patchValue(
+            {
+              district: res.districtNameTh,
+              amphur: res.amphur.amphurNameTh,
+              province: res.province.provinceNameTh
+            }
+          )
+        }
+      },
+      error => {
+        this.edituserForm.patchValue(
+          {
+            district: '',
+            amphur: '',
+            province: ''
+          }
+        )
+      }
+    );
+  }
 
 
 

@@ -1,42 +1,32 @@
-<nav id="navbar-example2" class="navbar navbar-light bg-light">
+<nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" href="#fat">@fat</a>
+      <a class="nav-link" href="#scrollspyHeading1">First</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#mdo">@mdo</a>
+      <a class="nav-link" href="#scrollspyHeading2">Second</a>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#one">one</a>
-        <a class="dropdown-item" href="#two">two</a>
-        <div role="separator" class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#three">three</a>
-      </div>
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+        <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+      </ul>
     </li>
   </ul>
 </nav>
-<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-  <h4 id="fat">@fat</h4>
-  <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
-  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-2bpPp2_qPr_AAaE1xJc8-FcDmMrl1GWh9uis0XSIDF6nMNRvn1I7kowoeQzEd9XduT4&usqp=CAU"
-  role="img">
-  <h4 id="mdo">@mdo</h4>
-  <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-2bpPp2_qPr_AAaE1xJc8-FcDmMrl1GWh9uis0XSIDF6nMNRvn1I7kowoeQzEd9XduT4&usqp=CAU"
-        role="img">
-  <h4 id="one">one</h4>
-  <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
-  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-2bpPp2_qPr_AAaE1xJc8-FcDmMrl1GWh9uis0XSIDF6nMNRvn1I7kowoeQzEd9XduT4&usqp=CAU"
-  role="img">
-  <h4 id="two">two</h4>
-  <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
-  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-2bpPp2_qPr_AAaE1xJc8-FcDmMrl1GWh9uis0XSIDF6nMNRvn1I7kowoeQzEd9XduT4&usqp=CAU"
-  role="img">
-  <h4 id="three">three</h4>
-  <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
-  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-2bpPp2_qPr_AAaE1xJc8-FcDmMrl1GWh9uis0XSIDF6nMNRvn1I7kowoeQzEd9XduT4&usqp=CAU"
-  role="img">
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+  <h4 id="scrollspyHeading1">First heading</h4>
+  <p>...</p>
+  <h4 id="scrollspyHeading2">Second heading</h4>
+  <p>...</p>
+  <h4 id="scrollspyHeading3">Third heading</h4>
+  <p>...</p>
+  <h4 id="scrollspyHeading4">Fourth heading</h4>
+  <p>...</p>
+  <h4 id="scrollspyHeading5">Fifth heading</h4>
+  <p>...</p>
 </div>

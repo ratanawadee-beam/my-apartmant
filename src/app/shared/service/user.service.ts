@@ -33,8 +33,7 @@ export class UserService {
 
   public upDateUser(body: any) {
     console.log('API >> saveUser', body);
-    return this.http.post<any>(this.API_URL + '/user/update', body, this.httpOption);
-   
+    return this.http.post<any>(this.API_URL + '/user/update', body, this.httpOption); 
   }
   public saveUser(body: any) {
     console.log('API >> saveUser', body);

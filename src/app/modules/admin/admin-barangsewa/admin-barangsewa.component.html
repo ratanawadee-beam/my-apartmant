@@ -34,16 +34,16 @@
     </thead>
     <tbody class="text-center">
       <tr *ngFor="let data of listRent" >
-        <td scope="row">{{data.room.roomName}}</td>
-        <td>{{data.user.userName}}</td>
-        <td>{{data.user.userLasname}}</td>
-        <td>{{data.user.userPhone}}</td>
-        <td>{{data.rentStart}}</td>
-        <td>{{data.rentEnd}}</td>
-        <td>
+        <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomName}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.user.userName}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.user.userLasname}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.rentStart}}</td>
+        <td *ngIf="data.user.roleId != '1'">{{data.rentEnd}}</td>
+        <td *ngIf="data.user.roleId != '1'">
           <!-- <p class=" badge badge-pill badge-success ">ทำสัญญาเรียบร้อย</p> -->
         </td>
-        <td><button type="button" class="btn btn-danger  " routerLink="">
+        <td *ngIf="data.user.roleId != '1'"><button type="button" class="btn btn-danger  " routerLink="">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
               viewBox="0 0 16 16">
               <path

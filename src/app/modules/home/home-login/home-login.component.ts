@@ -41,7 +41,7 @@ export class HomeLoginComponent implements OnInit {
       sessionStorage.setItem('user_id', res.userId), {}
 
       // this.router.navigate(['home']).then(() => {
-      //   window.location.reload()
+        // window.location.reload()
       // });
     },
       (error) => {

@@ -11,8 +11,15 @@ const endpoint = environment.apiEndPoint;
   providedIn: 'root'
 })
 export class AdminService {
+  private API_URL = environment.apiEndPoint;
 
   constructor(private http: HttpClient) { }
+
+  httpOption = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
   getAllUsers(): Observable<any> {
     return this.http.get(endpoint + '/user', httpOptions);
@@ -29,6 +36,23 @@ export class AdminService {
         responseType: 'text'
       }
     );
+  }
+  
+   //invoice
+
+   public saveInvoice(body: any) {
+    console.log('LOG API saveinvoice', body);
+    return this.http.post<any>(this.API_URL + '/invoice/save', body, this.httpOption);
+  }
+  public updateinvoice(body: any) {
+    console.log('API >> updateinvoi', body);
+    return this.http.post<any>(this.API_URL + '/invoice/update', body, this.httpOption);
+  }
+  public getAllInvoice() {
+    return this.http.get<any>(this.API_URL + '/invoice');
+  }
+  public getInvoiceByInvoiceId(invoiceId: any) {
+    return this.http.get<any>(this.API_URL + '/invoice/'.concat(invoiceId), httpOptions);
   }
   
 }

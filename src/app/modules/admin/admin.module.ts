@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminBarangsewaeditComponent } from './admin-barangsewaedit/admin-barangsewaedit.component';
 import { AdminInformationComponent } from './admin-information/admin-information.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AdminRegisinvoiceComponent,
     AdminBarangsewaeditComponent,
     AdminInformationComponent,
+    AdminPaymentComponent,
   ],
   imports: [
     CommonModule,

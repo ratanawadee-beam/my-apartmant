@@ -1,0 +1,22 @@
+
+input[type=submit] {
+    background-color: #4cbb19;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+input[type=submit]:hover {
+    background-color: #7ae47f;
+  }
+  
+.item span {
+    font-style: normal;
+}
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f4511e;
+}

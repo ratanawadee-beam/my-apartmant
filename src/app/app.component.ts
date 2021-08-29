@@ -54,18 +54,33 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.homeService.$userType = of(sessionStorage.getItem('user_role'));
+    let user_role = sessionStorage.getItem('user_role')
+    if (user_role == 'admin' || user_role == 'user' || user_role == 'home') {
+      this.homeService.$userType = of('user_role');
+    } else {
+      this.homeService.$userType = of('home');
+    }
+
   }
-  logIn(){
+  home(){
+    this.router.navigate(['home']);
+  }
+  // sec(){
+  //   this.router.navigate(['home/section1']);
+  // }
+  logIn() {
     this.router.navigate(['home/login']);
   }
   logOut() {
-    const userType = 'home';
-    sessionStorage.setItem('user_role', 'home');
-    this.homeService.$userType = of(userType);
-    this.router.navigate([`${userType}`]);
-    window.location.reload();
+    this.router.navigate(['home']).then(() => {
+      const userType = 'home';
+      sessionStorage.clear()
+      this.homeService.$userType = of(userType);
+      this.router.navigate(['home']);
+      window.location.reload();
+    });
   }
+
 
   initRolePermission() {
     const user_role = sessionStorage.getItem('user_role');

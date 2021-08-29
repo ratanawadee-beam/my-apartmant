@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminService } from 'src/app/shared/service/admin.service';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 
 @Component({
@@ -10,6 +12,8 @@ export class AdminRentalComponent implements OnInit {
   listRent: any;
   constructor(
     private sharedsService: SharedsService,
+    private router: Router,
+    
   ) { }
 
   ngOnInit(): void {
@@ -17,14 +21,20 @@ export class AdminRentalComponent implements OnInit {
 
   }
   faceData() {
-    this.sharedsService.getRent().subscribe(
+    this.sharedsService.getRent().subscribe(   
       (res) => {
-        console.log('!!!!!! Rental Data !!!!!!', res)
+        console.log('!!!!!! Rent Data !!!!!!',res)
         this.listRent = res;
       },
       (error) => {
-        console.log('!!!!!! Rental Data !!!!!!', error);
+        console.log('!!!!!! Rent Data !!!!!!',error);
       }
     );
   }
+
+  gotoRegis(data: any) {
+    debugger
+    this.router.navigate(['admin/regisinvoice/',data.rentId]);
+  }
+
 }

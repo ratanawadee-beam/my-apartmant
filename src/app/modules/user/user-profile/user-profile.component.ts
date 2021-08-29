@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
@@ -58,6 +58,7 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private profileuser: FormBuilder,
     private userService: UserService,
+    private router: Router,
     private _Activatedroute: ActivatedRoute,
   ) { }
 
@@ -100,7 +101,7 @@ export class UserProfileComponent implements OnInit {
         district: res.district,
         province: res.province,
       });
-      this.userZipCode(res.zipCode);
+      this.loadUserZipCode(res.zipCode);
 
     },
       (error) => {
@@ -110,8 +111,9 @@ export class UserProfileComponent implements OnInit {
     );
   }
   //zipCode
-  userZipCode(event: any) {
-    const zipCode = event;
+   //zipCode
+   changeUserZipCode(event: any) {
+    const zipCode = event.target.value;
     console.log('zipCode' + zipCode)
     this.userService.getDistricByZipCode(zipCode).subscribe(
       res => {
@@ -137,6 +139,57 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
-  save() { }
-  edit() { }
+
+  loadUserZipCode(zipCode: any) {
+    console.log('zipCode' + zipCode)
+    this.userService.getDistricByZipCode(zipCode).subscribe(
+      res => {
+        if (res) {
+          this.profileuserForm.patchValue(
+            {
+              district: res.districtNameTh,
+              amphur: res.amphur.amphurNameTh,
+              province: res.province.provinceNameTh
+            }
+          )
+        }
+      },
+      error => {
+        this.profileuserForm.patchValue(
+          {
+            district: '',
+            amphur: '',
+            province: ''
+          }
+        )
+      }
+    );
+  }
+
+  save() {
+    console.log(this.profileuserForm.value.userId,
+      this.profileuserForm.value.userUsername);
+    let body = {
+      "roleId": this.profileuserForm.value.roleId,
+      "userAddress": this.profileuserForm.value.userAddress,
+      "userBirthday": this.profileuserForm.value.userBirthday,
+      "userEmail": this.profileuserForm.value.userEmail,
+      "userGender": this.profileuserForm.value.userGender,
+      "userId": this.profileuserForm.value.userId,
+      "userIdcard": this.profileuserForm.value.userIdcard,
+      "userLasname": this.profileuserForm.value.userLassname,
+      "userName": this.profileuserForm.value.userName,
+      "userPassword": this.profileuserForm.value.userPassword,
+      "userPhone": this.profileuserForm.value.userPhone,
+      "userTitle": this.profileuserForm.value.userTitle,
+      "userUsername": this.profileuserForm.value.userUsername,
+      "zipCode": this.profileuserForm.value.zipCode,
+      "roomName": this.profileuserForm.value.roomName,
+    }
+    this.userService.upDateUser(body).subscribe(
+      (error) => console.log(error),
+    );
+    this.router.navigate(['user/profile']);
+  }
+ 
 }
