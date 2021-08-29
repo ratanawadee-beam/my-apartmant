@@ -28,31 +28,21 @@ export class HomeLoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.loginForm.invalid) {
-      return; 
+      return;
     }
-
     //call login 
     this.homeService.loginByUsernamePassword(this.loginForm.value).subscribe((res) => {
+      console.log(res.roleId);
       this.homeService.$taxInfo = of(res);
-      sessionStorage.setItem('user_role', this.getRole(res.roleId));
-      sessionStorage.setItem('user_id', res.userId), {}
-
-      // this.router.navigate(['home']).then(() => {
-        // window.location.reload()
-      // });
+      localStorage.setItem('taxInfo', JSON.stringify(res));
+      this.homeService.$userType = of(res.roleId);
+      this.router.navigate([`${res.roleId}`]);
     },
       (error) => {
-        // Swal.fire(
-        //   'Login Fail!',
-        //   'Username or Password Incorrect!',
-        //   'question'
-        // )
         alert('error!! :-)')
       });
-
   }
 
   getRole(roleId: any) {
