@@ -81,7 +81,7 @@ export class AdminRegisterComponent implements OnInit {
     district: [{ value: '', disabled: true },],
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
-    roleId: ['2'],
+    roleId: ['user'],
     rentId: [0],
     rentStart: ['', Validators.required],
     rentEnd: ['', Validators.required],

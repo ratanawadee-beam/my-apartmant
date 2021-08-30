@@ -34,6 +34,7 @@ export class HomeLoginComponent implements OnInit {
     }
     //call login 
     this.homeService.loginByUsernamePassword(this.loginForm.value).subscribe((res) => {
+      sessionStorage.setItem('user_role', this.getRole(res.roleId));
       console.log(res.roleId);
       this.homeService.$taxInfo = of(res);
       localStorage.setItem('taxInfo', JSON.stringify(res));

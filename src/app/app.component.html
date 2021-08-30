@@ -142,33 +142,12 @@
             </li>
         </ul>
 
-
         <ul *ngIf="isLogin" class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" routerLink="#" data-bs-toggle="modal" data-bs-target="#exampleModal">ออกจากระบบ</a>
             </li>
         </ul>
-
-        <!-- modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">คุณต้องการออกจากระบบ</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ต้องการออกจากระบบ ใช่ หรือ ไม่ ?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">ยกเลิก</button>
-                        <button type="button" class="btn btn-danger" (click)="logOut()">ออกจากระบบ</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- modal -->
+        
     </nav>
 
     <div class="bottom-2">

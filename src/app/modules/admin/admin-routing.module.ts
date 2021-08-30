@@ -82,7 +82,7 @@ const routes: Routes = [
     component: AdminRegisinvoiceComponent
   },
   {
-    path: 'regisinvoice/:invoiceId',
+    path: 'regisinvoice/:rentId',
     component: AdminRegisinvoiceComponent
   },
   {

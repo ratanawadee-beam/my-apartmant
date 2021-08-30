@@ -33,7 +33,6 @@ export class AdminRentalComponent implements OnInit {
   }
 
   gotoRegis(data: any) {
-    debugger
     this.router.navigate(['admin/regisinvoice/',data.rentId]);
   }
 
