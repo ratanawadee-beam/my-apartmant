@@ -154,7 +154,7 @@
                 <div class="col-lg-2">
                     <label>ราคาห้อง<span class="text-danger">*</span></label>
                     <div class="form-group form-control input-inline">
-                        <option *ngFor="let data of roomPrice" class="form-control input-inline" [value]="data.roomPrice">{{data.roomPrice}}</option>
+                        <option *ngFor="let data of roomPrice" [value]="data.roomPrice">{{data.roomPrice}}</option>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -176,13 +176,13 @@
                 <div class="col-lg-3">
                     <label>ค่าน้ำตั้งต้น</label>
                     <div class="form-group form-control input-inline" >
-                        <option  *ngFor="let data of roomWater" class="form-control input-inline" [value]="data.roomWater">{{data.roomWater}}</option>
+                        <option  *ngFor="let data of roomWater"  [value]="data.roomWater">{{data.roomWater}}</option>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <label>ค่าไฟตั้งต้น</label>
                     <div class="form-group form-control input-inline">
-                        <option *ngFor="let data of roomLight" class="form-control input-inline" [value]="data.roomLight">{{data.roomLight}}</option>
+                        <option *ngFor="let data of roomLight" [value]="data.roomLight">{{data.roomLight}}</option>
                     </div>
                 </div>
 
