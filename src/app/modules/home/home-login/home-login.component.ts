@@ -59,7 +59,7 @@ export class HomeLoginComponent implements OnInit {
         });
 
         break;
-      case '2':
+      case 'user':
         role = 'user';
         this.router.navigate(['user/home']).then(() => {
           // window.location.reload()

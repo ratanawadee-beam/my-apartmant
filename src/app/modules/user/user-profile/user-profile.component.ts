@@ -35,7 +35,7 @@ export class UserProfileComponent implements OnInit {
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
     userId: [0],
-    roleId: ['2'],
+    roleId: ['user'],
   });
   // profileuserForm = new FormGroup({
   //   roomName: new FormControl(''),

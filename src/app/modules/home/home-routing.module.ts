@@ -4,6 +4,7 @@ import { HomeContactComponent } from './home-contact/home-contact.component';
 import { HomeLoginComponent } from './home-login/home-login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomePage2Component } from './home-page2/home-page2.component';
+import { HomePage3Component } from './home-page3/home-page3.component';
 import { TestComponent } from './test/test.component';
 
 
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'page2',
     component: HomePage2Component
+  },
+  {
+    path: 'page3',
+    component: HomePage3Component
   },
   {
     path: 'contract',
