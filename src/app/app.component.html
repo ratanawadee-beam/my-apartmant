@@ -1,7 +1,7 @@
 <div *ngIf="userType === 'home'">
 
     <body data-spy="scroll" data-target=".navbar" data-offset="50">
-        <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-light font-weight-bold ">
+        <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-dark font-weight-bold ">
             <a class="navbar-brand" (click)="home()">หน้าเเรก</a>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -101,7 +101,7 @@
 
 <div *ngIf="userType === 'user'">
 
-    <nav class="navbar navbar-expand-lg navbar-light font-weight-bold ">
+    <nav class="navbar navbar-expand-lg navbar-dark font-weight-bold ">
         <a class="navbar-brand" routerLink="user">หน้าเเรก</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -156,7 +156,7 @@
 </div>
 
 <div *ngIf="userType === 'admin'">
-    <nav class="navbar navbar-expand-lg navbar-light font-weight-bold ">
+    <nav class="navbar navbar-expand-lg navbar-dark font-weight-bold ">
         <a class=" navbar-brand " routerLink="admin">หน้าเเรก</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

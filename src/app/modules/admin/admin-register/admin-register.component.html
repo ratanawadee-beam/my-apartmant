@@ -142,11 +142,11 @@
                 <div class="col-lg-2">
                     <label>เลขห้อง<span class="text-danger">*</span></label>
                     <div class="form-group">
-                        <select id="inputState" class="form-control" formControlName="roomName"
+                        <select id="inputState" class="form-control" formControlName="roomId"
                             (ngModelChange)="selectPrice($event)" (ngModelChange)="selectWater($event)"
                             (ngModelChange)="selectLight($event)">
                             <option value="" disabled>--เลขห้อง--</option>
-                            <option *ngFor="let data of roomName" [value]="data.roomName">{{data.roomName}}</option>
+                            <option *ngFor="let data of roomId" [value]="data.roomId">{{data.roomId}}</option>
                         </select>
                     </div>
                 </div>

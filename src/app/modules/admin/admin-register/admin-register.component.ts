@@ -18,14 +18,13 @@ export class AdminRegisterComponent implements OnInit {
   Provinces: any;
   Amphurs: any;
   Districts: any;
-  roomId: any;
   userId: any;
   listRoom: any;
   listRent: any;
   roomPrice: RoomInterface[] = [];
   roomWater: RoomInterface[] = [];
   roomLight: RoomInterface[] = [];
-  roomName: RoomInterface[] = [];
+  roomId: RoomInterface[] = [];
   // registerForm = new FormGroup({
   //   userTitle: new FormControl(''),
   //   userName: new FormControl(''),
@@ -88,8 +87,7 @@ export class AdminRegisterComponent implements OnInit {
     rentInsurance: ['', Validators.required],
     rentTotalprice: ['', Validators.required],
     rentOther: [''],
-    roomId: [0],
-    roomName: ['', Validators.required],
+    roomId: ['', Validators.required],
     roomTypename: ['', Validators.required],
     roomPrice: ['', Validators.required],
     roomLight: [''],
@@ -215,30 +213,30 @@ export class AdminRegisterComponent implements OnInit {
 
   selectType(event: any) {
     console.log('!! selectType !!', event);
-    this.roomName = this.listRoom;
-    let x = this.roomName;
-    return this.roomName = x.filter(i => String(i.roomTypename).indexOf(event) !== -1);
+    this.roomId = this.listRoom;
+    let x = this.roomId;
+    return this.roomId = x.filter(i => String(i.roomTypename).indexOf(event) !== -1);
   }
 
   selectPrice(event: any) {
     console.log('!! selectPrice !!', event);
     this.roomPrice = this.listRoom;
     let x = this.roomPrice;
-    return this.roomPrice = x.filter(i => String(i.roomName).indexOf(event) !== -1);
+    return this.roomPrice = x.filter(i => String(i.roomId).indexOf(event) !== -1);
   }
 
   selectWater(event: any) {
     console.log('!! selectPrice !!', event);
     this.roomWater = this.listRoom;
     let x = this.roomWater;
-    return this.roomWater = x.filter(i => String(i.roomName).indexOf(event) !== -1);
+    return this.roomWater = x.filter(i => String(i.roomId).indexOf(event) !== -1);
   }
 
   selectLight(event: any) {
     console.log('!! selectPrice !!', event);
     this.roomLight = this.listRoom;
     let x = this.roomLight;
-    return this.roomLight = x.filter(i => String(i.roomName).indexOf(event) !== -1);
+    return this.roomLight = x.filter(i => String(i.roomId).indexOf(event) !== -1);
   }
   getRentAll() {
     this.sharedsService.getRent().subscribe(

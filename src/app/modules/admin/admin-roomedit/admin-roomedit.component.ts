@@ -14,7 +14,6 @@ export class AdminRoomeditComponent implements OnInit {
   roomStatvs: any = ['ว่าง', 'ไม่ว่าง'];
   roomeditForm = new FormGroup({
     roomId: new FormControl(''),
-    roomName: new FormControl(''),
     roomTypename: new FormControl(''),
     roomStatvs: new FormControl(''),
     roomWater: new FormControl(''),
@@ -38,7 +37,6 @@ export class AdminRoomeditComponent implements OnInit {
       console.log('!!!!!!!!!!! res editroom !!!!!!!!!!!!!', res)
       this.roomeditForm.patchValue({
         roomId:roomId,
-        roomName:res.roomName,
         roomTypename: res.roomTypename,
         roomStatvs: res.roomStatvs,
         roomWater: res.roomWater,
@@ -57,7 +55,6 @@ export class AdminRoomeditComponent implements OnInit {
       this.roomeditForm.value.roomName);
     let body = {
       "roomId": this.roomeditForm.value.roomId,
-      "roomName": this.roomeditForm.value.roomName,
       "roomTypename": this.roomeditForm.value.roomTypename,
       "roomStatvs": this.roomeditForm.value.roomStatvs,
       "roomWater": this.roomeditForm.value. roomWater,

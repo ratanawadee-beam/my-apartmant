@@ -22,8 +22,7 @@ export class AdminRegisroomComponent implements OnInit {
   ) { }
 
   regisroomForm = this.fb.group({
-    roomId: [0],
-    roomName: ['', Validators.required],
+    roomId: ['', Validators.required],
     roomTypename: ['', Validators.required],
     roomStatvs: ['', Validators.required],
     roomWater: [''],
