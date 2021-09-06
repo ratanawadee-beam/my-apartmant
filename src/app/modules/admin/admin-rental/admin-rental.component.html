@@ -1,73 +1,77 @@
-<div class="container col-12">
+<div class="container p-4" style="background-color: hsl(0, 0%, 92%); min-height: 591px;">
     <div class="d-flex justify-content-between flex-wrap  pt-3 pb-2 mb-3 border-bottom">
         <h3>ใบเเจ้งหนี้</h3>
     </div>
-    <div class="row justify-content-end m-0">
-        <div class="col-md-auto col-sm-2">
-            <input class="form-control" placeholder="ค้นหา" aria-label="Search">
-        </div>
-        <div class="col-md-auto col-sm-6">
-            <button class="nav-link btn btn-success" type="submit" routerLink="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                </svg> ค้นหา</button>
+    <div class="con-dataqueue">
+        <div class="card shadow topbar static-top">
+            <div class="card-body text-dark">
+                <div class="row justify-content-end m-0">
+                    <div class="col-md-auto col-sm-2">
+                        <input class="form-control" placeholder="ค้นหา" aria-label="Search">
+                    </div>
+                    <div class="col-md-auto col-sm-6">
+                        <button class="nav-link btn btn-success" type="submit" routerLink="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg> ค้นหา</button>
+                    </div>
+                </div>
+                <br>
+                <table class="table table-hover ">
+                    <thead class="table-info text-center ">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">เลขห้อง</th>
+                            <th scope="col">ชื่อ-สกุล</th>
+                            <th scope="col">อีเมล</th>
+                            <th scope="col">สถานะ</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of listRent">
+                            <td class="text-center" *ngIf="data.user.roleId != '1'">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </td>
+                            <td class="text-center" scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
+                            <td *ngIf="data.user.roleId != '1'">{{data.user.userName}} {{data.user.userLasname}}</td>
+                            <td *ngIf="data.user.roleId != '1'">{{data.user.userEmail}}</td>
+                            <td class="text-center"*ngIf="data.user.roleId != '1'">
+                                <!-- <p class="badge badge-pill badge-success">จ่ายเเล้ว</p> -->
+                            </td>
+                            <!-- [routerLink]="['../regisinvoice']" -->
+                            <td class="text-center"*ngIf="data.user.roleId != '1'">
+                                <button type="button" class="btn btn-primary" (click)="gotoRegis(data)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+                                        <path
+                                            d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z" />
+                                    </svg> บันทึกใบแจ้งหนี้
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
-    <br>
-    <table class="table text-center  table-hover ">
-        <thead class=" table-info">
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">เลขห้อง</th>
-                <th scope="col">ชื่อ</th>
-                <th scope="col">นามสกุล</th>
-                <th scope="col">อีเมล</th>
-                <th scope="col">สถานะ</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            <tr *ngFor="let data of listRent">
-                <td *ngIf="data.user.roleId != '1'">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </td>
-                <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
-                <td *ngIf="data.user.roleId != '1'">{{data.user.userName}}</td>
-                <td *ngIf="data.user.roleId != '1'">{{data.user.userLasname}}</td>
-                <td *ngIf="data.user.roleId != '1'">{{data.user.userEmail}}</td>
-                <td *ngIf="data.user.roleId != '1'">
-                    <!-- <p class="badge badge-pill badge-success">จ่ายเเล้ว</p> -->
-                </td>
-                <!-- [routerLink]="['../regisinvoice']" -->
-                <td *ngIf="data.user.roleId != '1'">
-                    <button type="button" class="btn btn-primary" (click)="gotoRegis(data)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
-                            <path
-                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
-                            <path
-                                d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z" />
-                        </svg> บันทึกใบแจ้งหนี้
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
 </div>

@@ -1,47 +1,51 @@
-<div class="container col-12">
+<div class="container p-4" style="background-color: hsl(0, 0%, 92%); min-height: 591px;">
   <div class="d-flex justify-content-between flex-wrap  pt-3 pb-2 mb-3 border-bottom">
     <h3>รายงาน</h3>
   </div>
-  <div class="row justify-content-end m-0">
-    <div class="col-md-auto col-sm-2">
-      <input class="form-control" placeholder="ค้นหา" aria-label="Search">
-    </div>
-    <div class="col-md-auto col-sm-6">
-      <button class="nav-link btn btn-success" type="submit" routerLink="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-          viewBox="0 0 16 16">
-          <path
-            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-        </svg> ค้นหา</button>
+  <div class="con-dataqueue">
+    <div class="card shadow topbar static-top">
+      <div class="card-body text-dark">
+        <div class="row justify-content-end m-0">
+          <div class="col-md-auto col-sm-2">
+            <input class="form-control" placeholder="ค้นหา" aria-label="Search">
+          </div>
+          <div class="col-md-auto col-sm-6">
+            <button class="nav-link btn btn-success" type="submit" routerLink="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg> ค้นหา</button>
+          </div>
+        </div>
+        <br>
+        <table class="table text-center table-hover">
+          <thead class=" table-info">
+            <tr>
+              <th scope="col">เลขห้อง</th>
+              <th scope="col">ชื่อ-สกุล</th>
+              <th scope="col">เบอร์ติดต่อ</th>
+              <th scope="col">วันที่ออกใบแจ้งหนี้</th>
+              <th scope="col">วันที่กำหนดจ่าย</th>
+              <th scope="col">สถานะ</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+          <tbody class="text-center">
+            <tr *ngFor="let data of listInvoice">
+              <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.user.userName}} {{data.user.userLasname}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.invoiceStart}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.invoiceEnd}}</td>
+              <td *ngIf="data.user.roleId != '1'">
+                <p class=" badge badge-pill badge-success ">ชำระเเล้ว</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-  <br>
-  <table class="table text-center table-hover">
-    <thead class=" table-info">
-      <tr>
-        <th scope="col">เลขห้อง</th>
-        <th scope="col">ชื่อ</th>
-        <th scope="col">นามสกุล</th>
-        <th scope="col">เบอร์ติดต่อ</th>
-        <th scope="col">วันที่ออกใบแจ้งหนี้</th>
-        <th scope="col">วันที่กำหนดจ่าย</th>
-        <th scope="col">สถานะ</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-
-    <tbody class="text-center">
-      <tr *ngFor="let data of listInvoice">
-        <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.user.userName}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.user.userLasname}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.invoiceStart}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.invoiceEnd}}</td>
-        <td *ngIf="data.user.roleId != '1'">
-          <p class=" badge badge-pill badge-success ">ชำระเเล้ว</p>
-        </td>  
-      </tr>
-    </tbody>
-  </table>
 </div>

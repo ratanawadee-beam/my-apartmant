@@ -1,5 +1,4 @@
-<div class="container">
-    <br>
+<div class="container p-4" style="background-color: hsl(0, 0%, 92%); min-height: 591px;">
     <div class="box-card mb-4 ">
         <div class="form-group row">
             <div class="col-12">
@@ -15,73 +14,75 @@
         </div>
 
         <!-- formeditroom -->
-        <form [formGroup]="roomeditForm" class="card-body shadow-lg " autocomplete="off">
+        <div class="container bg-white shadow-lg col-9 ">
+            <form [formGroup]="roomeditForm" class="card-body " autocomplete="off">
+                <div class="form-group row content">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-3">
+                        <label>เลขห้อง<span class="text-danger">*</span></label>
+                        <div class="form-group ">
+                            <input type="text" class="form-control input-inline " formControlName="roomId" required />
+                        </div>
 
-            <br>
-            <div class="form-group row content">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-3">
-                    <label>เลขห้อง<span class="text-danger">*</span></label>
-                    <div class="form-group ">
-                        <input type="text" class="form-control input-inline " formControlName="roomId" required />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label>ประเภทห้อง<span class="text-danger">*</span></label>
+                        <div>
+                            <select id="inputState" class="form-control input-inline form-select"
+                                formControlName="roomTypename">
+                                <option value="" disabled>เลือกประเภทห้อง</option>
+                                <option *ngFor="let prf of roomTypename" [ngValue]="prf">{{ prf }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <label>สถานะห้อง<span class="text-danger">*</span></label>
+                        <div>
+                            <select id="inputState" class="form-control input-inline form-select"
+                                formControlName="roomStatvs">
+                                <option value="" disabled>เลือกสถานะห้อง</option>
+                                <option *ngFor="let prf of roomStatvs" [ngValue]="prf">{{ prf }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row content">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-3">
+                        <label>ค่าน้ำตั้งต้น<span class="text-danger">*</span></label>
+                        <div>
+                            <input type="text" class="form-control input-inline " formControlName="roomWater"
+                                required />
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <label>ค่าไฟตั้งต้น<span class="text-danger">*</span></label>
+                        <div>
+                            <input type="text" class="form-control input-inline " formControlName="roomLight"
+                                required />
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <label>ราคาห้อง<span class="text-danger">*</span></label>
+                        <div>
+                            <input type="text" class="form-control input-inline  " formControlName="roomPrice"
+                                required />
+                        </div>
+
                     </div>
 
                 </div>
+                <br>
 
-                <div class="col-lg-3">
-                    <label>ประเภทห้อง<span class="text-danger">*</span></label>
-                    <div>
-                        <select id="inputState" class="form-control input-inline form-select"
-                            formControlName="roomTypename">
-                            <option value="" disabled>เลือกประเภทห้อง</option>
-                            <option *ngFor="let prf of roomTypename" [ngValue]="prf">{{ prf }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <label>สถานะห้อง<span class="text-danger">*</span></label>
-                    <div>
-                        <select id="inputState" class="form-control input-inline form-select"
-                            formControlName="roomStatvs">
-                            <option value="" disabled>เลือกสถานะห้อง</option>
-                            <option *ngFor="let prf of roomStatvs" [ngValue]="prf">{{ prf }}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row content">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-3">
-                    <label>ค่าน้ำตั้งต้น<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="roomWater" required />
-                    </div>
-
-                </div>
-                <div class="col-lg-3">
-                    <label>ค่าไฟตั้งต้น<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline " formControlName="roomLight" required />
-                    </div>
-
-                </div>
-                <div class="col-lg-3">
-                    <label>ราคาห้อง<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control input-inline  " formControlName="roomPrice" required />
-                    </div>
-
-                </div>
-
-            </div>
-            <br>
-
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
-                <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>
-            </div><br>
-
-        </form>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
+                    <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>
+                </div><br>
+            </form>
+        </div>
     </div>
 
 </div>

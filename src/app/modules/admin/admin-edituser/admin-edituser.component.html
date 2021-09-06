@@ -1,15 +1,12 @@
-<div class="container ">
-    <!-- fromedituser -->
-    <br>
+<div class="container p-4" style="background-color: hsl(0, 0%, 100%); min-height: 591px;">
     <div class="box-card mb-4 ">
-        <div class="form-group row">
-            <div class="col-12">
-                <div class="row heading">
-                    <div class="col-12">
-                        <h3><strong>เเก้ไขข้อมูลผู้เช่า</strong></h3>
-                    </div>
-                    <div class="col-12 px-3">
-                        <div class="border-bottom"></div>
+        <div class="container text-white shadow-lg col-9 " style="background-color: hsl(226, 55%, 51%); min-height: 50px;">
+            <div class="form-group row">
+                <div class="col-12">
+                    <div class="row heading">
+                        <div class="col-12">
+                            <h3><strong>เเก้ไขข้อมูลผู้เช่า</strong></h3>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -20,7 +17,8 @@
                     <div class="col-lg-3">
                         <label>เลขห้อง</label>
                         <div>
-                            <input type="tel"readonly class="form-control" id="autoSizingInputGroup"  formControlName="roomName">
+                            <input type="tel" readonly class="form-control" id="autoSizingInputGroup"
+                                formControlName="roomName">
                         </div>
                     </div>
                 </div>
@@ -115,38 +113,41 @@
                             <textarea type="text" class="form-control input-inline "
                                 formControlName="userAddress"></textarea>
                         </div>
-                    </div> 
-                     <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-4">
                         <div>ตำบล</div>
                         <select id="inputState" class="form-control" formControlName="district">
                             <option value="" disabled>--ตำบล--</option>
-                            <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtNameTh">{{ dsNT.districtNameTh }}
+                            <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtNameTh">{{
+                                dsNT.districtNameTh }}
                             </option>
                         </select>
                     </div>
-                     <div class="col-lg-4">
-                        <div >อำเภอ</div>
+                    <div class="col-lg-4">
+                        <div>อำเภอ</div>
                         <select id="inputState" class="form-control" formControlName="amphur">
                             <option value="" disabled>--อำเภอ--</option>
-                            <option *ngFor="let amp of Amphurs" [ngValue]="amp.amphur.amphurNameTh">{{ amp.amphur.amphurNameTh }}
+                            <option *ngFor="let amp of Amphurs" [ngValue]="amp.amphur.amphurNameTh">{{
+                                amp.amphur.amphurNameTh }}
                             </option>
                         </select>
                     </div>
-                    
+
                 </div>
                 <div class="form-group row content">
-                   <div class="col-lg-4">
-                        <div >จังหวัด</div>
+                    <div class="col-lg-4">
+                        <div>จังหวัด</div>
                         <select id="inputState" class="form-control" formControlName="province">
                             <option value="" disabled>--จังหวัด--</option>
-                            <option *ngFor="let pro of Provinces" [ngValue]="pro.provinceNameTh">{{ pro.provinceNameTh }}
+                            <option *ngFor="let pro of Provinces" [ngValue]="pro.provinceNameTh">{{ pro.provinceNameTh
+                                }}
                             </option>
                         </select>
                     </div>
-                  <div class="col-lg-4">
+                    <div class="col-lg-4">
                         <label>รหัสไปรษณีย์</label>
-                        <input type="tel" class="form-control" id="autoSizingInputGroup" (change)="changeUserZipCode($event)"
-                             formControlName="zipCode">
+                        <input type="tel" class="form-control" id="autoSizingInputGroup"
+                            (change)="changeUserZipCode($event)" formControlName="zipCode">
                     </div>
                 </div>
                 <br>

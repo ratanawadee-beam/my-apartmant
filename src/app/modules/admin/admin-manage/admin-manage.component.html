@@ -1,70 +1,69 @@
-<div class="container col-12 ">
+<div class="container p-4" style="background-color: hsl(0, 0%, 92%); min-height: 591px;">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h3>จัดการข้อมูลผู้เช่า</h3>
   </div>
 
-
-  <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap pt-5 pb-2 mb-3 ">
-    <form class="form-inline ">
-      <input class="form-control mr-sm-2" placeholder="ค้นหา" aria-label="Search">
-      <button class="nav-link btn btn-success" type="submit" routerLink="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-          viewBox="0 0 16 16">
-          <path
-            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-        </svg> ค้นหา</button>
-    </form>
-    <button type="button" class="btn btn-primary " routerLink="../register">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill"
-        viewBox="0 0 16 16">
-        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-        <path fill-rule="evenodd"
-          d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-      </svg> เพิ่มข้อมูลผู้เช่า</button>
-  </div>
-  <br>
-
-  <table class="table text-center table-hover ">
-    <thead>
-      <tr>
-        <th scope="col ">เลขห้อง</th>
-        <th scope="col">ชื่อ</th>
-        <th scope="col">นามสกุล</th>
-        <th scope="col">เบอร์ติดต่อ</th>
-        <th scope="col">อีเมล์</th>
-        <th scope="col"></th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of listRent" >
-        <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.user.userName}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.user.userLasname}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
-        <td *ngIf="data.user.roleId != '1'">{{data.user.userEmail}} </td>
-        <td *ngIf="data.user.roleId != '1'">
-          <button type="button" class="btn btn-danger " routerLink="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
-              viewBox="0 0 16 16">
-              <path
-                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-              <path fill-rule="evenodd"
-                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-            </svg> ลบ
-          </button>&nbsp;
-          <button type="button" class="btn btn-warning " (click)="gotoedit(data)" >
+  <div class="con-dataqueue">
+    <div class="card shadow topbar static-top">
+      <div class="card-body text-dark">
+        <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap pt-5 pb-2 mb-3 ">
+          <form class="form-inline"> 
+            <input class="form-control mr-sm-2" placeholder="ค้นหา" aria-label="Search">
+            <button class="nav-link btn btn-success" type="submit" routerLink="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg> ค้นหา</button>
+          </form>
+          <button type="button" class="btn btn-primary " routerLink="../register">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+              class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
               <path fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-            </svg>เเก้ไข</button>
+                d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+            </svg> เพิ่มข้อมูลผู้เช่า</button>
+        </div>
+        <br>
+
+        <table class="table table-hover ">
+          <thead class="table-info text-center">
+            <tr>
+              <th scope="col">เลขห้อง</th>
+              <th scope="col">ชื่อ-สกุล</th>
+              <th scope="col">เบอร์ติดต่อ</th>
+              <th scope="col">อีเมล์</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of listRent">
+              <td class="text-center" scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.user.userName}} {{data.user.userLasname}}</td>
+              <td class="text-center" *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.user.userEmail}} </td>
+              <td *ngIf="data.user.roleId != '1'">
+                <button type="button" class="btn btn-danger " routerLink="">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                  </svg> ลบ
+                </button>&nbsp;
+                <button type="button" class="btn btn-warning " (click)="gotoedit(data)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path
+                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd"
+                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                  </svg>เเก้ไข</button>
 
 
 
-          <!-- <button class="btn p-0" title="ยกเลิก">
+                <!-- <button class="btn p-0" title="ยกเลิก">
             <span class="fa-stack fa-1x">
               <i class="fas fa-circle fa-stack-2x {{ data.isPaying? 'icon-cr-gray':'icon-cr-red' }} "></i>
               <i class="fas fa-trash fa-stack-1x fa-inverse" style="font-size: 16px;" [hidden]="data.isPaying"></i>
@@ -112,23 +111,24 @@
             </span>
           </button> -->
 
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
-
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
 </div>
