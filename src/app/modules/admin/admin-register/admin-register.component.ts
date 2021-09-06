@@ -105,7 +105,7 @@ export class AdminRegisterComponent implements OnInit {
 
 
   Next() {
-    let bady = {
+    let bodySaveUser = {
       "roleId": this.registerForm.value.roleId,
       "userAddress": this.registerForm.value.userAddress,
       "userBirthday": this.registerForm.value.userBirthday,
@@ -121,20 +121,22 @@ export class AdminRegisterComponent implements OnInit {
       "userUserName": this.registerForm.value.userUserName,
       "zipCode": this.registerForm.value.zipCode,
     }
-    let body = {
-      "rentEnd": this.registerForm.value.rentEnd,
-      "rentId": this.registerForm.value.rentId,
-      "rentInsurance": this.registerForm.value.rentInsurance,
-      "rentOther": this.registerForm.value.rentOther,
-      "rentStart": this.registerForm.value.rentStart,
-      "rentTotalprice": this.registerForm.value.rentTotalprice,
-      "roomId": this.registerForm.value.roomId,
-      "userId": this.registerForm.value.userId,
-    }
-    this.userService.saveUser(bady).subscribe(
-      (error) => console.log(error),
-    );
-    this.sharedsService.seveRent(body).subscribe(
+    this.userService.saveUser(bodySaveUser).subscribe(res => {
+      console.log('LOG saveUser >>>::', res.userId);
+      let bodySeveRent = {
+        "rentEnd": this.registerForm.value.rentEnd,
+        "rentId": this.registerForm.value.rentId,
+        "rentInsurance": this.registerForm.value.rentInsurance,
+        "rentOther": this.registerForm.value.rentOther,
+        "rentStart": this.registerForm.value.rentStart,
+        "rentTotalprice": this.registerForm.value.rentTotalprice,
+        "roomId": this.registerForm.value.roomId,
+        "userId": res.userId,
+      }
+      this.sharedsService.seveRent(bodySeveRent).subscribe(
+        (error) => console.log(error),
+      );
+    },
       (error) => console.log(error),
     );
     this.router.navigate(['admin/information']);

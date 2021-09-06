@@ -8,6 +8,7 @@ import { AdminInformationComponent } from './admin-information/admin-information
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminRegisinvoiceComponent } from './admin-regisinvoice/admin-regisinvoice.component';
 import { AdminRegisroomComponent } from './admin-regisroom/admin-regisroom.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
@@ -90,7 +91,7 @@ const routes: Routes = [
     component: AdminBarangsewaeditComponent
   },
   {
-    path: 'barangsewaedit/:id',
+    path: 'barangsewaedit/:Id',
     component: AdminBarangsewaeditComponent
   },
   {
@@ -100,6 +101,10 @@ const routes: Routes = [
   {
     path: 'payments',
     component: AdminPaymentComponent
+  },
+  {
+    path: 'profile',
+    component: AdminProfileComponent
   },
 ];
 

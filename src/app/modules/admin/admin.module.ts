@@ -18,6 +18,7 @@ import { AdminBarangsewaeditComponent } from './admin-barangsewaedit/admin-baran
 import { AdminInformationComponent } from './admin-information/admin-information.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
     AdminBarangsewaeditComponent,
     AdminInformationComponent,
     AdminPaymentComponent,
+    AdminProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -47,7 +47,7 @@ export class AdminBarangsewaeditComponent implements OnInit {
   barangForm = this.editberan.group({
     rentId: [0],
     userId: [''],
-    roomId: [''],
+    roomId: ['', Validators.required],
     userTitle: ['', Validators.required],
     userName: ['', Validators.required],
     userLasname: ['', Validators.required],
@@ -86,9 +86,13 @@ export class AdminBarangsewaeditComponent implements OnInit {
   ngOnInit(): void {
     this.rentId = this._Activatedroute.snapshot.paramMap.get("id");
     console.log('!!!!!!!!!!this.rent!!!!!!!!!!!!!!', this.rentId)
-    this.getRentByRentId(this.rentId);
-    this.initDropdown();
 
+    this.initDropdown();
+    this._Activatedroute.params.subscribe((params) => {
+      this.rentId = params.Id;
+    }
+    );
+    this.getRentByRentId(this.rentId);
   }
 
   initDropdown() {

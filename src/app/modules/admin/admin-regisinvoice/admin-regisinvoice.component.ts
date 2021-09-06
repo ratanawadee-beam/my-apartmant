@@ -19,10 +19,9 @@ export class AdminRegisinvoiceComponent implements OnInit {
   invoiceForm = this.invoice.group({
     invoiceId: [''],
     rentId: [0],
-    roomId: [''],
+    roomId: ['', Validators.required],
     userId: [''],
     deId: ['', Validators.required],
-    roomName: ['', Validators.required],
     userName: ['', Validators.required],
     deStartdate: ['', Validators.required],
     deEnddate: ['', Validators.required],

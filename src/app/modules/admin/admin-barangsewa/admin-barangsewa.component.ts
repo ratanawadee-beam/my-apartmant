@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
 
@@ -13,6 +14,7 @@ export class AdminBarangsewaComponent implements OnInit {
  
   constructor(
     private sharedsService: SharedsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,9 @@ export class AdminBarangsewaComponent implements OnInit {
         console.log('!!!!!! Rent Data !!!!!!',error);
       }
     );
+  }
+  gotoedits(data: any){
+    this.router.navigate(['admin/barangsewaedit/',data.rentId]);
   }
   
 }

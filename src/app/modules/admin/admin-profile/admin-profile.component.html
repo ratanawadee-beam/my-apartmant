@@ -1,0 +1,142 @@
+<div class="bg-img">
+    <div class="container col-md-7">
+            <form [formGroup]="profileuserForm" class="card-body " autocomplete="off">
+                <h5 class="text-center">บัญชีของฉัน</h5><br>
+                <div class="form-group row content">
+                    <div class="col-lg-9"></div>
+                    <div class="col-lg-3">
+                        <img src="https://scontent.fnak1-1.fna.fbcdn.net/v/t1.6435-1/p240x240/208650762_2988071434804553_7573366994741115255_n.jpg?_nc_cat=108&ccb=1-4&_nc_sid=7206a8&_nc_eui2=AeEC1EjA_PCw53CUSDIfxTPwo3YeI8rtUYyjdh4jyu1RjK9OtNHkctmSXrGT3Y0Pc1EVAZz7_t1hLd0YScJfTZk7&_nc_ohc=pu03oDfOEw0AX8dVf14&tn=lbT6KG_LY8qTopYu&_nc_ht=scontent.fnak1-1.fna&oh=8fbb79a8e5c2ce3c3dab389ee35466ee&oe=6138ECFA"
+                            class="rounded-circle" width="150" height="150">
+                    </div>
+                </div>
+                <div class="form-group row content ">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">ชื่อผู้ใช้งาน</label>
+                    <div>
+                        <input type="text" readonly class=" form-control-plaintext" id="staticEmail"
+                            formControlName="userUsername" required />
+                    </div>
+                    <label for="staticEmail" class="col-sm-2 col-form-label">รหัสผ่าน</label>
+                    <div>
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                            formControlName="userPassword" required />
+                    </div>
+                </div>
+                <div class="form-group row content">
+                    <div class="col-lg-4">
+                        <label>คำนำหน้า</label>
+                        <div class="form-group">
+                            <select id="inputState" class="form-control input-inline " formControlName="userTitle">
+                                <option value="" disabled>--เลือกคำนำหน้า--</option>
+                                <option *ngFor="let prf of  userTitle" [ngValue]="prf">{{ prf }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>ชื่อ</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-inline" formControlName="userName" required />
+                        </div>
+    
+                    </div>
+                    <div class="col-lg-4">
+                        <label>นามสกุล</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-inline" formControlName="userLassname" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row content">
+                    <div class="col-lg-4">
+                        <label>เลขบัตรประชาชน</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-inline" formControlName="userIdcard" required />
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>วัน/เดือน/ปีเกิด</label>
+                        <div class="form-group">
+                            <input type="date" name="dob" id="dob" class="form-control" formControlName="userBirthday">
+                            <span id="error_dob" class="text-danger" type="date"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>เพศ</label>
+                        <div class="form-group">
+                            <select id="inputState" class="form-control input-inline " formControlName="userGender">
+                                <option value="" disabled>--เลือกเพศ--</option>
+                                <option *ngFor="let prf of userGender" [ngValue]="prf">{{ prf }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row content">
+                    <div class="col-lg-4">
+                        <label>เบอร์โทร</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-inline" formControlName="userPhone" required />
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>อีเมล</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-inline" formControlName="userEmail" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row content">
+                    <div class="col-lg-4">
+                        <label>ที่อยู่</label>
+                        <div class="form-group">
+                            <textarea  type="text" class="form-control input-inline "
+                                formControlName="userAddress"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>ตำบล</label>
+                        <div class="form-group">
+                            <select id="inputState" class="form-control" formControlName="district">
+                                <option value="" disabled>--ตำบล--</option>
+                                <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtNameTh">{{
+                                    dsNT.districtNameTh }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>อำเภอ</label>
+                        <div class="form-group">
+                            <select id="inputState" class="form-control" formControlName="amphur">
+                                <option value="" disabled>--อำเภอ--</option>
+                                <option *ngFor="let amp of Amphurs" [ngValue]="amp.amphur.amphurNameTh">{{
+                                    amp.amphur.amphurNameTh }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row content">
+                    <div class="col-lg-4">
+                        <label>จังหวัด</label>
+                        <div class="form-group">
+                            <select id="inputState" class="form-control" formControlName="province">
+                                <option value="" disabled>--จังหวัด--</option>
+                                <option *ngFor="let pro of Provinces" [ngValue]="pro.provinceNameTh">{{ pro.provinceNameTh
+                                    }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>รหัสไปรษณีย์</label>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="autoSizingInputGroup"
+                                (change)="changeUserZipCode($event)" formControlName="zipCode">
+                        </div>
+                    </div>
+                </div><br>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>
+                </div>
+            </form> 
+    </div>
+    </div>

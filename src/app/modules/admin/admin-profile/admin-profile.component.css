@@ -1,0 +1,12 @@
+
+
+.container {
+    border-radius: 4px;
+    background-color: hsla(0, 0%, 100%, 0.992);
+    padding: 20px;
+  }
+  .bg-img {
+    border-radius: 4px;
+    background-color: hsl(209, 100%, 84%);
+    padding: 20px;
+  }

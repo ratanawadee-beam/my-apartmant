@@ -30,5 +30,7 @@ export class AdminRoomComponent implements OnInit {
   // Next(){
   //   this.router.navigate(['admin/regisroom']);
   // }
-
+gotoedit(data: any){
+  this.router.navigate(['admin/roomedit',data.roomId]);
+}
 }
