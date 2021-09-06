@@ -86,7 +86,7 @@ export class AdminBarangsewaeditComponent implements OnInit {
   ngOnInit(): void {
     this.rentId = this._Activatedroute.snapshot.paramMap.get("id");
     console.log('!!!!!!!!!!this.rent!!!!!!!!!!!!!!', this.rentId)
-
+    
     this.initDropdown();
     this._Activatedroute.params.subscribe((params) => {
       this.rentId = params.Id;

@@ -11,7 +11,7 @@ import { UserService } from 'src/app/shared/service/user.service';
 export class AdminProfileComponent implements OnInit {
   userTitle: any = ['นาย', 'นาง', 'นางสาว'];
   userGender: any = ['ชาย', 'หญิง'];
-
+  userId: any;
   Provinces: any;
   Amphurs: any;
   Districts: any;
@@ -35,7 +35,7 @@ export class AdminProfileComponent implements OnInit {
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
     userId: [0],
-    roleId: ['1'],
+    roleId: ['admin'],
   });
   // profileuserForm = new FormGroup({
   //   roomName: new FormControl(''),
@@ -64,8 +64,12 @@ export class AdminProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // this.userId = this._Activatedroute.snapshot.paramMap.get("id");
-    const userId = sessionStorage.getItem('user_id');
-    console.log('Log  User  id', userId);
+    // this._Activatedroute.params.subscribe((params) => {
+    //   this.userId = params.Id;
+    // }
+    // );
+    const userId = localStorage.getItem('user_id');
+    console.log('Log  Useradmin  id >>>::', userId);
     this.getUserById(userId);
     this.initDropdown();
   }
@@ -77,7 +81,6 @@ export class AdminProfileComponent implements OnInit {
   }
 
   getUserById(userId: any) {
-    console.log('!!user Id!!', userId);
     this.userService.getUserById(userId).subscribe((res) => {
       console.log('!!!!!!!!!!!!res data!!!!!!!!!!!!', res)
       this.profileuserForm.patchValue({
@@ -102,10 +105,9 @@ export class AdminProfileComponent implements OnInit {
         province: res.province,
       });
       this.loadUserZipCode(res.zipCode);
-
     },
       (error) => {
-        console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
+        console.log('!!!!!!!!!!!!!! Error admin profile !!!!!!!!!!', error);
       }
 
     );

@@ -28,12 +28,7 @@ input[type=submit]:hover {
   padding: 20px;
 }
 .bg-img {
-    /* The image used */
-    background-image: url("https://3.bp.blogspot.com/-e2YUWDtNCqA/WBsF2NM4V5I/AAAAAAAACeM/3xwDvU0i1roTWp0ryvLkeZc9Y60XfTwlQCEw/s640/001.jpg"); 
-    min-height: 300px;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
+  border-radius: 4px;
+  background-color: hsl(209, 100%, 84%);
+  padding: 20px;
+}
