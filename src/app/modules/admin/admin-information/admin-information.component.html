@@ -1,15 +1,22 @@
-<div class="container col-12 "><br>
-    <div class="text-center">
-        <h3>เอกสารสัญญา</h3>
-    </div>
-    <div class="container col-7 ">
-        <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>
-    </div><br>
-    <form [formGroup]="informForm" class=" text-center ">
-        <input type="checkbox" formControlName='checkFlag' name="checkFlag" aria-label="Checkbox for following text input">&nbsp;
-        <label class="form-check-label" for="exampleCheck1">ท่านตกลงยอมรับข้อสัญญานี้</label>
-    </form><br>
-    <div style="text-align: center;">
-        <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
+<div class="container p-4" style="background-color: #DEF2F1; min-height: 591px;">
+    <div class="con-dataqueue">
+        <div class="card shadow topbar static-top">
+            <div class="card-body text-dark">
+                    <div class="text-center">
+                        <h3>เอกสารสัญญา</h3>
+                    </div>
+                    <div class="container col-7 ">
+                        <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>
+                    </div><br>
+                    <form [formGroup]="informForm" class=" text-center ">
+                        <input type="checkbox" formControlName='checkFlag' name="checkFlag"
+                            aria-label="Checkbox for following text input">&nbsp;
+                        <label class="form-check-label" for="exampleCheck1">ท่านตกลงยอมรับข้อสัญญานี้</label>
+                    </form><br>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>&nbsp;
+                    </div>      
+            </div>
+        </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HomeService } from 'src/app/shared/service/home.service';
 import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { UserService } from 'src/app/shared/service/user.service';
   styleUrls: ['./admin-profile.component.css']
 })
 export class AdminProfileComponent implements OnInit {
+
   userTitle: any = ['นาย', 'นาง', 'นางสาว'];
   userGender: any = ['ชาย', 'หญิง'];
   userId: any;
@@ -58,20 +60,21 @@ export class AdminProfileComponent implements OnInit {
   constructor(
     private profileuser: FormBuilder,
     private userService: UserService,
+    private homeService: HomeService,
     private router: Router,
     private _Activatedroute: ActivatedRoute,
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit(): void {
-    // this.userId = this._Activatedroute.snapshot.paramMap.get("id");
-    // this._Activatedroute.params.subscribe((params) => {
-    //   this.userId = params.Id;
-    // }
-    // );
-    const userId = localStorage.getItem('user_id');
-    console.log('Log  Useradmin  id >>>::', userId);
-    this.getUserById(userId);
+    //ไม่ต้อวยิง api อีก
+    const tax: any = localStorage.getItem('taxInfo');
+    let taxInfo = JSON.parse(tax);
+    console.log('Log  Useradmin  id >>>::', taxInfo);
+    this.setDataForm(taxInfo); 
     this.initDropdown();
+
   }
 
   initDropdown() {
@@ -80,41 +83,34 @@ export class AdminProfileComponent implements OnInit {
     this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; this.Provinces })
   }
 
-  getUserById(userId: any) {
-    this.userService.getUserById(userId).subscribe((res) => {
-      console.log('!!!!!!!!!!!!res data!!!!!!!!!!!!', res)
+  setDataForm(taxInfo: any) {
+    console.log('LOG taxInfo', taxInfo)
       this.profileuserForm.patchValue({
-        userId: res.userId,
-        roleId: res.roleId,
-        roomId: res.roomId,
-        roomName: res.roomName,
-        userUsername: res.userUsername,
-        userPassword: res.userPassword,
-        userTitle: res.userTitle,
-        userName: res.userName,
-        userLassname: res.userLasname,
-        userIdcard: res.userIdcard,
-        userBirthday: res.userBirthday,
-        userGender: res.userGender,
-        userPhone: res.userPhone,
-        userEmail: res.userEmail,
-        userAddress: res.userAddress,
-        zipCode: res.zipCode,
-        amphur: res.amphur,
-        district: res.district,
-        province: res.province,
+        userId: taxInfo.userId,
+        roleId: taxInfo.roleId,
+        roomId: taxInfo.roomId,
+        roomName: taxInfo.roomName,
+        userUsername: taxInfo.userUsername,
+        userPassword: taxInfo.userPassword,
+        userTitle: taxInfo.userTitle,
+        userName: taxInfo.userName,
+        userLassname: taxInfo.userLasname,
+        userIdcard: taxInfo.userIdcard,
+        userBirthday: taxInfo.userBirthday,
+        userGender: taxInfo.userGender,
+        userPhone: taxInfo.userPhone,
+        userEmail: taxInfo.userEmail,
+        userAddress: taxInfo.userAddress,
+        zipCode: taxInfo.zipCode,
+        amphur: taxInfo.amphur,
+        district: taxInfo.district,
+        province: taxInfo.province,
       });
-      this.loadUserZipCode(res.zipCode);
-    },
-      (error) => {
-        console.log('!!!!!!!!!!!!!! Error admin profile !!!!!!!!!!', error);
-      }
-
-    );
+      this.loadUserZipCode(taxInfo.zipCode);
   }
+
   //zipCode
-   //zipCode
-   changeUserZipCode(event: any) {
+  changeUserZipCode(event: any) {
     const zipCode = event.target.value;
     console.log('zipCode' + zipCode)
     this.userService.getDistricByZipCode(zipCode).subscribe(
@@ -193,5 +189,5 @@ export class AdminProfileComponent implements OnInit {
     );
     this.router.navigate(['user/profile']);
   }
- 
+
 }

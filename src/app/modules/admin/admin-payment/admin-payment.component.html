@@ -1,4 +1,4 @@
-<div class="container p-4" style="background-color: hsl(0, 0%, 92%); min-height: 591px;">
+<div class="container p-4" style="background-color: #DEF2F1; min-height: 591px;">
   <div class="d-flex justify-content-between flex-wrap  pt-3 pb-2 mb-3 border-bottom">
     <h3>จัดการข้อมูลการชำระเงิน</h3>
   </div>
@@ -32,11 +32,11 @@
             </tr>
           </thead>
           <tbody class="text-center">
-            <tr>
-              <td>A101</td>
-              <td>1234526</td>
-              <td>รัตนาวดี ศรีคำ</td>
-              <td>2500</td>
+            <tr *ngFor="let data of listpayment">
+              <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.invoiceId}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.user.userName}} {{data.user.userLasname}}</td>
+              <td *ngIf="data.user.roleId != '1'">{{data.payTotal}}</td>
               <td class=""><a href="#">ไฟล์รูป</a></td>
               <td> <button type="button" class="btn btn-sm text-white" data-bs-toggle="modal"
                   data-bs-target="#SelectModal" style="background-color: rgb(0, 137, 191);">

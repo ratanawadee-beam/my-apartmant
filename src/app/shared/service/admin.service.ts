@@ -37,15 +37,15 @@ export class AdminService {
       }
     );
   }
-  
-   //invoice
 
-   public saveInvoice(body: any) {
+  //invoice
+
+  public saveInvoice(body: any) {
     console.log('LOG API saveinvoice', body);
     return this.http.post<any>(this.API_URL + '/invoice/save', body, this.httpOption);
   }
   public updateinvoice(body: any) {
-    console.log('API >> updateinvoi', body);
+    console.log('API >> updateinvoice', body);
     return this.http.post<any>(this.API_URL + '/invoice/update', body, this.httpOption);
   }
   public getAllInvoice() {
@@ -54,6 +54,23 @@ export class AdminService {
   public getInvoiceByInvoiceId(invoiceId: any) {
     return this.http.get<any>(this.API_URL + '/invoice/'.concat(invoiceId), httpOptions);
   }
-  
+
+  //payment
+
+  public getAllPayment() {
+    return this.http.get<any>(this.API_URL + '/payments');
+  }
+ public savePayment(body: any) {
+    console.log('LOG API savepayments >>::', body);
+    return this.http.post<any>(this.API_URL + '/payment/save', body, this.httpOption);
+  }
+  public updatePayment(body: any) {
+    console.log('Log API updatepayments >>::', body);
+    return this.http.post<any>(this.API_URL + '/payment/update', body, this.httpOption);
+  }
+  public getPaymentBypayId(payId: any) {
+    return this.http.get<any>(this.API_URL + '/payment/'.concat(payId), httpOptions);
+  }
+
 }
 

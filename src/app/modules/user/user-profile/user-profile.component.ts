@@ -63,10 +63,10 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.userId = this._Activatedroute.snapshot.paramMap.get("id");
-    const userId = sessionStorage.getItem('user_id');
-    console.log('Log User  id', userId);
-    this.getUserById(userId);
+    const tax: any = localStorage.getItem('taxInfo');
+    let taxInfo = JSON.parse(tax);
+    console.log('Log  Useradmin  id >>>::', taxInfo);
+    this.setDataForm(taxInfo); 
     this.initDropdown();
   }
 
@@ -76,41 +76,31 @@ export class UserProfileComponent implements OnInit {
     this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; this.Provinces })
   }
 
-  getUserById(userId: any) {
-    console.log('!!user Id!!', userId);
-    this.userService.getUserById(userId).subscribe((res) => {
-      console.log('!!!!!!!!!!!!res data!!!!!!!!!!!!', res)
+  setDataForm(taxInfo: any) {
+    console.log('LOG taxInfo', taxInfo)
       this.profileuserForm.patchValue({
-        userId: res.userId,
-        roleId: res.roleId,
-        roomId: res.roomId,
-        roomName: res.roomName,
-        userUsername: res.userUsername,
-        userPassword: res.userPassword,
-        userTitle: res.userTitle,
-        userName: res.userName,
-        userLassname: res.userLasname,
-        userIdcard: res.userIdcard,
-        userBirthday: res.userBirthday,
-        userGender: res.userGender,
-        userPhone: res.userPhone,
-        userEmail: res.userEmail,
-        userAddress: res.userAddress,
-        zipCode: res.zipCode,
-        amphur: res.amphur,
-        district: res.district,
-        province: res.province,
+        userId: taxInfo.userId,
+        roleId: taxInfo.roleId,
+        roomId: taxInfo.roomId,
+        roomName: taxInfo.roomName,
+        userUsername: taxInfo.userUsername,
+        userPassword: taxInfo.userPassword,
+        userTitle: taxInfo.userTitle,
+        userName: taxInfo.userName,
+        userLassname: taxInfo.userLasname,
+        userIdcard: taxInfo.userIdcard,
+        userBirthday: taxInfo.userBirthday,
+        userGender: taxInfo.userGender,
+        userPhone: taxInfo.userPhone,
+        userEmail: taxInfo.userEmail,
+        userAddress: taxInfo.userAddress,
+        zipCode: taxInfo.zipCode,
+        amphur: taxInfo.amphur,
+        district: taxInfo.district,
+        province: taxInfo.province,
       });
-      this.loadUserZipCode(res.zipCode);
-
-    },
-      (error) => {
-        console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
-      }
-
-    );
+      this.loadUserZipCode(taxInfo.zipCode);
   }
-  //zipCode
    //zipCode
    changeUserZipCode(event: any) {
     const zipCode = event.target.value;

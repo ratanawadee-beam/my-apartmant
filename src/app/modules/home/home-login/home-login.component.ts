@@ -35,16 +35,12 @@ export class HomeLoginComponent implements OnInit {
     //call login 
     this.homeService.loginByUsernamePassword(this.loginForm.value).subscribe((res) => {
 
-      
       console.log(res.roleId);
       this.homeService.$taxInfo = of(res);
-
       localStorage.setItem('taxInfo', JSON.stringify(res));
-      localStorage.setItem('user_role', this.getRole(res.roleId));
-      localStorage.setItem('user_id', res.userId),{}
-      
       this.homeService.$userType = of(res.roleId);
       this.router.navigate([`${res.roleId}`]);
+      
     },
       (error) => {
         alert('error!! :-)')

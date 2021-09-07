@@ -24,11 +24,11 @@ input[type=submit]:hover {
 
 .container {
   border-radius: 4px;
-  background-color: hsla(0, 7%, 97%, 0.992);
+  background-color: hsla(0, 0%, 100%, 0.992);
   padding: 20px;
 }
 .bg-img {
   border-radius: 4px;
-  background-color: hsl(209, 100%, 84%);
+  background-color: #DEF2F1;
   padding: 20px;
 }
