@@ -173,16 +173,16 @@
                 </div>
             </div>
             <div class="form-group row content">
-                <div class="col-lg-3">
-                    <label>ค่าน้ำตั้งต้น</label>
-                    <div class="form-group form-control input-inline" >
-                        <option  *ngFor="let data of roomWater"  [value]="data.roomWater">{{data.roomWater}}</option>
+                <div class="col-lg-2">
+                    <label>ค่าน้ำต่อหน่วย</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-inline " formControlName="rentWa" required />
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <label>ค่าไฟตั้งต้น</label>
-                    <div class="form-group form-control input-inline">
-                        <option *ngFor="let data of roomLight" [value]="data.roomLight">{{data.roomLight}}</option>
+                <div class="col-lg-2">
+                    <label>ค่าไฟต่อหน่วย</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-inline " formControlName="rentLi" required />
                     </div>
                 </div>
 
@@ -202,8 +202,7 @@
                 <div class="col-lg-2">
                     <label>รวมค่าใช้จ่าย</label>
                     <div class="form-group">
-                        <input type="text" class="form-control input-inline " formControlName="rentTotalprice"
-                            required />
+                        <input type="text" class="form-control input-inline " formControlName="rentTotalprice" required />
                     </div>
                 </div>
             </div><br>

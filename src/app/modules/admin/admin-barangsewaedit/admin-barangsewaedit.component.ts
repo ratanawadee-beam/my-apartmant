@@ -66,8 +66,8 @@ export class AdminBarangsewaeditComponent implements OnInit {
     roomPrice: ['', Validators.required],
     rentStart: ['', Validators.required],
     rentEnd: ['', Validators.required],
-    roomLight: ['', Validators.required],
-    roomWater: ['', Validators.required],
+    rentLi: ['', Validators.required],
+    rentWa: ['', Validators.required],
     rentInsurance: ['', Validators.required],
     rentOther: [''],
     rentTotalprice: ['', Validators.required],
@@ -86,7 +86,7 @@ export class AdminBarangsewaeditComponent implements OnInit {
   ngOnInit(): void {
     this.rentId = this._Activatedroute.snapshot.paramMap.get("id");
     console.log('!!!!!!!!!!this.rent!!!!!!!!!!!!!!', this.rentId)
-    
+
     this.initDropdown();
     this._Activatedroute.params.subscribe((params) => {
       this.rentId = params.Id;
@@ -127,8 +127,8 @@ export class AdminBarangsewaeditComponent implements OnInit {
         roomPrice: listData.room.roomPrice,
         rentStart: listData.rentStart,
         rentEnd: listData.rentEnd,
-        roomLight: listData.room.roomLight,
-        roomWater: listData.room.roomWater,
+        rentWa: listData.rentWa,
+        rentLi: listData.rentLi,
         rentInsurance: listData.rentInsurance,
         rentOther: listData.rentOther,
         rentTotalprice: listData.rentTotalprice,
@@ -150,6 +150,8 @@ export class AdminBarangsewaeditComponent implements OnInit {
       "rentOther": this.barangForm.value.rentOther,
       "rentStart": this.barangForm.value.rentStart,
       "rentTotalprice": this.barangForm.value.rentTotalprice,
+      "rentWa": this.barangForm.value.rentWa,
+      "rentLi": this.barangForm.value.rentLi,
       "roomId": this.barangForm.value.roomId,
       "userId": this.barangForm.value.userId,
     }
