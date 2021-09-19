@@ -12,9 +12,9 @@ export class UserService {
   public _registerData: any;
 
   constructor(private http: HttpClient) { }
-  
+
   apiURL = 'http://localhost:8090/apartmant-api';
-    
+
   get gregisterData(): any {
     return this._registerData;
   }
@@ -29,11 +29,11 @@ export class UserService {
     }),
   };
 
- 
+
 
   public upDateUser(body: any) {
     console.log('API >> saveUser', body);
-    return this.http.post<any>(this.API_URL + '/user/update', body, this.httpOption); 
+    return this.http.post<any>(this.API_URL + '/user/update', body, this.httpOption);
   }
   public saveUser(body: any) {
     console.log('API >> saveUser', body);
@@ -42,9 +42,16 @@ export class UserService {
   public getUser() {
     return this.http.get<any>(this.API_URL + '/user');
   }
-
   public getUserById(userid: any) {
     return this.http.get<any>(this.API_URL + '/user/' + `${userid}`);
+  }
+  deleteUserByUserId(userId: any): Observable<any> {
+    return this.http.delete(this.API_URL + '/user/'.concat(userId),
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        responseType: 'text'
+      }
+    );
   }
   getAmphurAll(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/amphur')

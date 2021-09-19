@@ -16,10 +16,8 @@ export class AdminEdituserComponent implements OnInit {
   Amphurs: any;
   Districts: any;
   userId: any;
-  roomId: any;
-  
+
   edituserForm = this.edituser.group({
-    roomId: [''],
     roomName: ['', Validators.required],
     userUsername: [''],
     userPassword: [''],
@@ -68,7 +66,6 @@ export class AdminEdituserComponent implements OnInit {
       this.edituserForm.patchValue({
         userId: userId,
         roleId: res.roleId,
-        roomId: res.roomId,
         roomName: res.roomName,
         userUsername: res.userUsername,
         userPassword: res.userPassword,
@@ -95,7 +92,7 @@ export class AdminEdituserComponent implements OnInit {
 
     );
   }
-
+ 
   save() {
     console.log(this.edituserForm.value.userId,
       this.edituserForm.value.userUsername);
@@ -124,8 +121,7 @@ export class AdminEdituserComponent implements OnInit {
   back() {
     this.router.navigate(['admin/manage']);
   }
-  //room
-
+ 
   //zipCode
   changeUserZipCode(event: any) {
     const zipCode = event.target.value;

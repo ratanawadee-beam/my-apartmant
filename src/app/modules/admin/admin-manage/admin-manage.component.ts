@@ -35,6 +35,7 @@ export class AdminManageComponent implements OnInit {
   //     }
   //   );
   // }
+
   faceData() {
     this.sharedsService.getRent().subscribe(   
       (res) => {
@@ -48,5 +49,16 @@ export class AdminManageComponent implements OnInit {
   }
   gotoedit(data: any){
     this.router.navigate(['admin/edituser', data.userId]);
+  }
+  deleteUser(item: any) {
+    this.userService.deleteUserByUserId(item.userId).subscribe(
+      (res) => {
+        console.log(res);
+        setTimeout(function () {window.location.reload(); }, 2 * 1000);
+      },
+      (error) => {
+        console.log('delete User error : ', error);
+      }
+    );
   }
 }
