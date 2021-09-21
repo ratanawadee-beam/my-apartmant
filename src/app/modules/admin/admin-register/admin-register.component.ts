@@ -62,7 +62,7 @@ export class AdminRegisterComponent implements OnInit {
   ) { }
 
   registerForm = this.fb.group({
-    userId: [0],
+    userId: ['', Validators.required],
     userTitle: ['', Validators.required],
     userName: ['', Validators.required],
     userUserName: ['', Validators.required],
@@ -145,7 +145,7 @@ export class AdminRegisterComponent implements OnInit {
     );
     this.router.navigate(['admin/information']);
   }
-
+  
   // usersave() {
   //   this.router.navigate(['admin/us']);
   // }
@@ -156,6 +156,7 @@ export class AdminRegisterComponent implements OnInit {
   // this.sharedsService.sregisterData(this.registerForm.value.username);
   //   this.router.navigate(['admin/information']);
   // }
+
   back() {
     this.router.navigate(['admin/manage']);
   }

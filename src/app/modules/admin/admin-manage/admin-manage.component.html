@@ -29,7 +29,7 @@
         <table class="table table-hover ">
           <thead class="table-info text-center">
             <tr>
-              <th scope="col">เลขห้อง</th>
+              <th scope="col">รหัสผู้เช่า</th>
               <th scope="col">ชื่อ-สกุล</th>
               <th scope="col">เบอร์ติดต่อ</th>
               <th scope="col">อีเมล์</th>
@@ -37,12 +37,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of listRent">
-              <td class="text-center" scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
-              <td *ngIf="data.user.roleId != '1'">{{data.user.userName}} {{data.user.userLasname}}</td>
-              <td class="text-center" *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
-              <td *ngIf="data.user.roleId != '1'">{{data.user.userEmail}} </td>
-              <td *ngIf="data.user.roleId != '1'">
+            <tr *ngFor="let data of listUser">
+              <td *ngIf="data.roleId != 'admin'"  class="text-center">{{data.userId}}</td>
+              <td *ngIf="data.roleId != 'admin'">{{data.userName}} {{data.userLasname}}</td>
+              <td class="text-center" *ngIf="data.roleId != 'admin'">{{data.userPhone}}</td>
+              <td *ngIf="data.roleId != 'admin'">{{data.userEmail}}</td>
+              <td *ngIf="data.roleId != 'admin'">
                 <button type="button" class="btn btn-danger" (click)="deleteUser(data)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                     viewBox="0 0 16 16">
@@ -60,8 +60,6 @@
                     <path fill-rule="evenodd"
                       d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                   </svg>เเก้ไข</button>
-
-
 
                 <!-- <button class="btn p-0" title="ยกเลิก">
             <span class="fa-stack fa-1x">

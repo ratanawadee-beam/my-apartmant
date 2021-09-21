@@ -59,8 +59,16 @@ export class SharedsService {
   public getRent() {
     return this.http.get<any>(this.API_URL + '/rent');
   }
-  public getRentByrentId(rentid: any) {
-    return this.http.get<any>(this.API_URL + '/rent/' + `${rentid}`);
+  public getRentByrentId(rentId: any) {
+    return this.http.get<any>(this.API_URL + '/rent/' + `${rentId}`);
+  }
+  deleteRentByRentId(rentId: any): Observable<any> {
+    return this.http.delete(this.API_URL + '/rent/'.concat(rentId),
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        responseType: 'text'
+      }
+    );
   }
 
   //invoiceDE

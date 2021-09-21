@@ -32,18 +32,18 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let data of listRent">
-                            <td class="text-center" *ngIf="data.user.roleId != '1'">
+                            <td class="text-center" *ngIf="data.user.roleId != 'admin'">
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </td>
-                            <td class="text-center" scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
-                            <td *ngIf="data.user.roleId != '1'">{{data.user.userName}} {{data.user.userLasname}}</td>
-                            <td *ngIf="data.user.roleId != '1'">{{data.user.userEmail}}</td>
-                            <td class="text-center"*ngIf="data.user.roleId != '1'">
+                            <td class="text-center" scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
+                            <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
+                            <td *ngIf="data.user.roleId != '1admin'">{{data.user.userEmail}}</td>
+                            <td class="text-center"*ngIf="data.user.roleId != 'admin'">
                                 <!-- <p class="badge badge-pill badge-success">จ่ายเเล้ว</p> -->
                             </td>
                             <!-- [routerLink]="['../regisinvoice']" -->
-                            <td class="text-center"*ngIf="data.user.roleId != '1'">
+                            <td class="text-center"*ngIf="data.user.roleId != 'admin'">
                                 <button type="button" class="btn btn-primary" (click)="gotoRegis(data)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-receipt-cutoff" viewBox="0 0 16 16">

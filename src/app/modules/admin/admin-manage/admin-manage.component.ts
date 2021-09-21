@@ -21,35 +21,40 @@ export class AdminManageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getUserData();
-    this.faceData();
+    this.getUserData();
+    // this.faceData();
   }
 
-  // getUserData() {
-  //   this.userService.getUser().subscribe((res) => {
-  //     console.log('!!!!!!!!!!res userData !!!!!!!!!!!!!!', res)
-  //     this.listUser = res;
-  //   },
+  getUserData() {
+    this.userService.getUser().subscribe(
+      (res) => {
+      console.log('!!!!!!!!!!res userData !!!!!!!!!!!!!!', res)
+      this.listUser = res;
+    },
+      (error) => {
+        console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
+      }
+    );
+  }
+
+  // faceData() {
+  //   this.sharedsService.getRent().subscribe(   
+  //     (res) => {
+  //       console.log('!!!!!! Rent Data !!!!!!',res)
+  //       this.listRent = res;
+  //     },
   //     (error) => {
-  //       console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
+  //       console.log('!!!!!! Error Rent Data !!!!!!',error);
   //     }
   //   );
   // }
 
-  faceData() {
-    this.sharedsService.getRent().subscribe(   
-      (res) => {
-        console.log('!!!!!! Rent Data !!!!!!',res)
-        this.listRent = res;
-      },
-      (error) => {
-        console.log('!!!!!! Rent Data !!!!!!',error);
-      }
-    );
-  }
+  //edit user
   gotoedit(data: any){
     this.router.navigate(['admin/edituser', data.userId]);
   }
+
+//deleteuser
   deleteUser(item: any) {
     this.userService.deleteUserByUserId(item.userId).subscribe(
       (res) => {

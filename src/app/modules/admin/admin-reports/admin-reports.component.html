@@ -7,7 +7,7 @@
       <div class="card-body text-dark">
         <div class="row justify-content-end m-0">
           <div class="col-md-auto col-sm-2">
-            <input class="form-control" placeholder="ค้นหา" aria-label="Search">
+            <input class="form-control" type="date" id="date" name="date">
           </div>
           <div class="col-md-auto col-sm-6">
             <button class="nav-link btn btn-success" type="submit" routerLink="">
@@ -15,7 +15,7 @@
                 viewBox="0 0 16 16">
                 <path
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-              </svg> ค้นหา</button>
+              </svg>ค้นหา</button>
           </div>
         </div>
         <br>
@@ -27,21 +27,17 @@
               <th scope="col">เบอร์ติดต่อ</th>
               <th scope="col">วันที่ออกใบแจ้งหนี้</th>
               <th scope="col">วันที่กำหนดจ่าย</th>
-              <th scope="col">สถานะ</th>
               <th scope="col"></th>
             </tr>
           </thead>
 
           <tbody class="text-center">
             <tr *ngFor="let data of listInvoice">
-              <td scope="row" *ngIf="data.user.roleId != '1'">{{data.room.roomId}}</td>
-              <td *ngIf="data.user.roleId != '1'">{{data.user.userName}} {{data.user.userLasname}}</td>
-              <td *ngIf="data.user.roleId != '1'">{{data.user.userPhone}}</td>
-              <td *ngIf="data.user.roleId != '1'">{{data.invoiceStart}}</td>
-              <td *ngIf="data.user.roleId != '1'">{{data.invoiceEnd}}</td>
-              <td *ngIf="data.user.roleId != '1'">
-                <p class=" badge badge-pill badge-success ">ชำระเเล้ว</p>
-              </td>
+              <td scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
+              <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
+              <td *ngIf="data.user.roleId != 'admin'">{{data.user.userPhone}}</td>
+              <td *ngIf="data.user.roleId != 'admin'">{{data.invoiceStart}}</td>
+              <td *ngIf="data.user.roleId != 'admin'">{{data.invoiceEnd}}</td>
             </tr>
           </tbody>
         </table>
