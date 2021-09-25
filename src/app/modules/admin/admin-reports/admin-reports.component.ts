@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/service/admin.service';
 
 @Component({
@@ -7,10 +8,11 @@ import { AdminService } from 'src/app/shared/service/admin.service';
   styleUrls: ['./admin-reports.component.css']
 })
 export class AdminReportsComponent implements OnInit {
-  
+
   listInvoice: any;
   constructor(
     private adminService: AdminService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -18,15 +20,17 @@ export class AdminReportsComponent implements OnInit {
   }
 
   invoiceData() {
-    this.adminService.getAllInvoice().subscribe(   
+    this.adminService.getAllInvoice().subscribe(
       (res) => {
-        console.log('!!!!!! Rent Data !!!!!!',res)
+        console.log('Log invoice Data :: ', res)
         this.listInvoice = res;
       },
       (error) => {
-        console.log('!!!!!! Rent Data !!!!!!',error);
+        console.log('Error invoice Data :: ', error);
       }
     );
   }
-
+  gotoBill(){
+    this.router.navigate(['admin/bill']);
+   }
 }

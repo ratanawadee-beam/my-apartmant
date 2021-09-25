@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
 })
 export class AdminRegisroomComponent implements OnInit {
 
+  submitted = false;
   roomTypename: any = ['แอร์', 'พัดลม'];
   roomStatvs: any = ['ว่าง', 'ไม่ว่าง'];
 
@@ -34,10 +36,40 @@ export class AdminRegisroomComponent implements OnInit {
   }
 
   roomsave() {
-    this.sharedsService.saveRoom(this.regisroomForm.value).subscribe(
-      (error) => console.log(error),
-    );
-    this.router.navigate(['admin/room']);
+    this.submitted = true;
+    if (this.regisroomForm.invalid) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'กรุณากรอกข้อมูลให้ถูกต้อง',
+        text: '',
+      })
+      return;
+    } else {
+      Swal.fire({
+        title: 'ยืนยันการทำรายการ',
+        text: "ต้องการบันทึกห้องพักหรือไม่ ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#198754',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ยืนยัน',
+        cancelButtonText: 'ปิด'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.sharedsService.saveRoom(this.regisroomForm.value).subscribe(res => {
+            console.log('create Room res : ', res)
+          });
+          Swal.fire({
+            icon: 'success',
+            title: 'บันทึกข้อมูลสำเร็จ',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['admin/regisroom']);
+            }
+          })
+        }
+      })
+    }
   }
 
   back() {

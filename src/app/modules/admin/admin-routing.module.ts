@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminAlertComponent } from './admin-alert/admin-alert.component';
 import { AdminBarangsewaComponent } from './admin-barangsewa/admin-barangsewa.component';
 import { AdminBarangsewaeditComponent } from './admin-barangsewaedit/admin-barangsewaedit.component';
+import { AdminBillComponent } from './admin-bill/admin-bill.component';
 import { AdminEdituserComponent } from './admin-edituser/admin-edituser.component';
 import { AdminInformationComponent } from './admin-information/admin-information.component';
 import { AdminManageComponent } from './admin-manage/admin-manage.component';
@@ -105,6 +106,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: AdminProfileComponent
+  },
+  {
+    path: 'bill',
+    component: AdminBillComponent
   },
 ];
 

@@ -7,7 +7,9 @@ import { AdminService } from 'src/app/shared/service/admin.service';
   styleUrls: ['./admin-payment.component.css']
 })
 export class AdminPaymentComponent implements OnInit {
+
   listpayment: any;
+  
   constructor(
     private adminService: AdminService,
   ) { }
@@ -15,6 +17,7 @@ export class AdminPaymentComponent implements OnInit {
   ngOnInit(): void {
     this.paymant();
   }
+  
   paymant(){
     this.adminService.getAllInvoice().subscribe(   
       (res) => {

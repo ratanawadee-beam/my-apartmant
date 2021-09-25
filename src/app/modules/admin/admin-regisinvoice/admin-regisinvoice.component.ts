@@ -11,32 +11,42 @@ import { UserService } from 'src/app/shared/service/user.service';
   styleUrls: ['./admin-regisinvoice.component.css']
 })
 export class AdminRegisinvoiceComponent implements OnInit {
+
+  public tmMoney: number = 0;
+
+  cartDrugs = new Array();
+
   rentId: any;
   roomId: any;
   userId: any;
   invoiceId: any;
 
   invoiceForm = this.invoice.group({
-    invoiceId: [''],
+    inId: [0],
     rentId: [0],
     roomId: ['', Validators.required],
+    roomTypename: ['', Validators.required],
     userId: [''],
     deId: ['', Validators.required],
     userName: ['', Validators.required],
-    deStartdate: ['', Validators.required],
-    deEnddate: ['', Validators.required],
     roomPrice: ['', Validators.required],
     roomWater: ['', Validators.required],
-    deWaNew: ['', Validators.required],
-    deTotalunitWa: [''],
-    deTotalWa: ['', Validators.required],
     roomLight: ['', Validators.required],
-    deLiNew: ['', Validators.required],
-    deTotalunitLi: [''],
-    deTotalLi: ['', Validators.required],
+
+    deWaold: ['', Validators.required],
+    deLiold: ['', Validators.required],
+    deWanew: ['', Validators.required],
+    deLinew: ['', Validators.required],
+    TotalunitWa: [''],
+    TotalunitLi: [''],
+    TotalWa: ['', Validators.required],
+    TotalLi: ['', Validators.required],
     deTotal: ['', Validators.required],
-    deUnpaid: ['', Validators.required],
+    inStart: ['', Validators.required],
+    inEnd: ['', Validators.required],
   });
+
+  
   constructor(
     private router: Router,
     private invoice: FormBuilder,
@@ -58,6 +68,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
         rentId: rentId,
         userId: listData.userId,
         roomId: listData.roomId,
+        roomTypename: listData.room.roomTypename,
         roomName: listData.room.roomName,
         userName: listData.user.userName,
         roomPrice: listData.room.roomPrice,
@@ -84,6 +95,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
 
   save() {
     console.log(this.invoiceForm.value);
+
     let bady = {
       "deEnddate": this.invoiceForm.value.deEnddate,
       "deId": this.invoiceForm.value.deId,
@@ -97,15 +109,40 @@ export class AdminRegisinvoiceComponent implements OnInit {
       "deUnpaid": this.invoiceForm.value.deUnpaid,
       "deWaNew": this.invoiceForm.value.deWaNew,
       "rentId": this.invoiceForm.value.rentId,
+      "invoiceId": this.invoiceForm.value.invoiceId,
     }
+    console.log(bady);
+
     this.sharedsService.saveInvoicedetail(bady).subscribe(
-      (error) => console.log(error),
+      (error) => console.log('error'),
     );
     this.router.navigate(['admin/rental']);
+
   }
 
   back() {
     this.router.navigate(['admin/rental']);
   }
+
+  // removeDrugCount(drug: any) {
+  //   let item = this.cartDrugs.findIndex(i => i.key == drug.key);
+  //   if (drug.drugCount > 1) {
+  //     drug.drugCount = drug.drugCount - 1;
+  //     drug.drugTotalPrice = drug.drugPrice * drug.drugCount;
+  //   }
+  //   this.cartDrugs[item] = drug;
+  //   this.tmMoney = this.getTotalPrice();
+  //   console.log('removeDrugCount key ->', drug.key)
+  //   console.log('removeDrugCount ->', this.cartDrugs)
+  //   debugger
+  // }
+
+  // getTotalPrice() {
+  //   let tmMoney = 0;
+  //   this.cartDrugs.map((a: any) => {
+  //     tmMoney += (a.drugPrice * a.drugCount)
+  //   })
+  //   return tmMoney;
+  // }
 
 }

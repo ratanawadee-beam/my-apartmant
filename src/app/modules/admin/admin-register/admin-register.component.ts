@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RoomInterface } from 'src/app/shared/interface/sharedInterface';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-register',
@@ -21,36 +22,16 @@ export class AdminRegisterComponent implements OnInit {
   userId: any;
   listRoom: any;
   listRent: any;
+
   roomPrice: RoomInterface[] = [];
   roomWater: RoomInterface[] = [];
   roomLight: RoomInterface[] = [];
   roomId: RoomInterface[] = [];
-  // registerForm = new FormGroup({
-  //   userTitle: new FormControl(''),
-  //   userName: new FormControl(''),
-  //   userLassname: new FormControl(''),
-  //   userCardid: new FormControl(''),
-  //   userBirthday: new FormControl(''),
-  //   userGender: new FormControl(''),
-  //   userPhone: new FormControl(''),
-  //   userEmail: new FormControl(''),
-  //   userAddress: new FormControl(''),
-  //   // userOld: new FormControl(''),
-  //   Provinceid: new FormControl(''),
-  //   Amphurid: new FormControl(''),
-  //   Districtid: new FormControl(''),
-  //   zipcode: new FormControl(''),
-  //   roomId: new FormControl(''),
-  //   roomTypename: new FormControl(''),
-  //   roomPrice: new FormControl(''),
-  //   rentStart: new FormControl(''),
-  //   rentEnd: new FormControl(''),
-  //   rentWa: new FormControl(''),
-  //   rentLi: new FormControl(''),
-  //   rentInsurance: new FormControl(''),
-  //   rentOther: new FormControl(''),
-  //   rentTotalprice: new FormControl(''),
-  // });
+
+  submitted = false;
+
+  cartUser = new Array();
+  cartRegisrent = new Array();
 
   constructor(
     private userService: UserService,
@@ -65,16 +46,12 @@ export class AdminRegisterComponent implements OnInit {
     userId: ['', Validators.required],
     userTitle: ['', Validators.required],
     userName: ['', Validators.required],
-    userUserName: ['', Validators.required],
     userLasname: ['', Validators.required],
     userBirthday: [''],
     userIdcard: ['', Validators.required],
     userPhone: [''],
     userGender: ['', Validators.required],
     userAddress: ['', Validators.required],
-    Provinceid: ['', Validators.required],
-    Amphurid: ['', Validators.required],
-    Districtid: ['', Validators.required],
     userEmail: ['', Validators.required],
     zipCode: ['', Validators.required],
     district: [{ value: '', disabled: true },],
@@ -92,9 +69,8 @@ export class AdminRegisterComponent implements OnInit {
     roomId: ['', Validators.required],
     roomTypename: ['', Validators.required],
     roomPrice: ['', Validators.required],
-    roomLight: [''],
-    roomWater: [''],
   })
+
 
 
   ngOnInit(): void {
@@ -104,9 +80,64 @@ export class AdminRegisterComponent implements OnInit {
     this.getRoomAll();
   }
 
+  // Next() {
+  //   this.submitted = true;
+  //   if (this.registerForm.invalid) {
+  //     Swal.fire({
+  //       icon: 'warning',
+  //       title: 'กรุณากรอกข้อมูลให้ถูกต้อง',
+  //       text: '',
+  //     })
+  //     return;
+  //   } else {
+  //     Swal.fire({
+  //       title: 'ยืนยันการทำรายการ',
+  //       text: "ต้องการบันทึกห้องพักหรือไม่ ?",
+  //       icon: 'warning',
+  //       showCancelButton: true,
+  //       confirmButtonColor: '#198754',
+  //       cancelButtonColor: '#d33',
+  //       confirmButtonText: 'ยืนยัน',
+  //       cancelButtonText: 'ปิด'
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         this.userService.saveUser(this.registerForm.value).subscribe(res => {
+  //           debugger
+  //           console.log('LOG saveUser >>>::', res)
+  //           if (res) {
+  //             // add service save bil detail here
+  //             this.cartUser.forEach(data => {
+  //               data['rentId'] = 0;
+  //               data['userId'] = res.userId,
+  //                 // this.cartDrugsForUpdate
+  //                 this.cartRegisrent.push(data);
+  //             });
+  //             console.log('LOG cartRegisrent >>>:: ', this.cartRegisrent)
+
+  //             //for save detail
+  //             this.sharedsService.seveRent(this.registerForm).subscribe(response => {
+  //               debugger
+  //               console.log('LOG saveRent >>>::', response)
+  //             })
+  //           }
+  //         });
+  //         Swal.fire({
+  //           icon: 'success',
+  //           title: 'บันทึกข้อมูลสำเร็จ',
+  //           text: '',
+  //         }).then((result) => {
+  //           if (result.isConfirmed) {
+  //             this.router.navigate(['admin/information']);
+  //           }
+  //         })
+  //       }
+  //     })
+  //   }
+  // }
 
 
   Next() {
+    this.submitted = true;
     let bodySaveUser = {
       "roleId": this.registerForm.value.roleId,
       "userAddress": this.registerForm.value.userAddress,
@@ -145,7 +176,7 @@ export class AdminRegisterComponent implements OnInit {
     );
     this.router.navigate(['admin/information']);
   }
-  
+
   // usersave() {
   //   this.router.navigate(['admin/us']);
   // }

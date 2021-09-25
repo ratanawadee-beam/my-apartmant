@@ -34,7 +34,7 @@
           <tbody class="text-center">
             <tr *ngFor="let data of listpayment">
               <td scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
-              <td *ngIf="data.user.roleId != 'admin'">{{data.invoiceId}}</td>
+              <td *ngIf="data.user.roleId != 'admin'">{{data.inId}}</td>
               <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
               <td *ngIf="data.user.roleId != 'admin'">{{data.payTotal}}</td>
               <td class=""><a href="#">ไฟล์รูป</a></td>
