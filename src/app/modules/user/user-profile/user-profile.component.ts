@@ -18,7 +18,6 @@ export class UserProfileComponent implements OnInit {
 
   profileuserForm = this.profileuser.group({
     roomId: [''],
-    roomName: ['', Validators.required],
     userUsername: [''],
     userPassword: [''],
     userTitle: ['', Validators.required],
@@ -82,7 +81,6 @@ export class UserProfileComponent implements OnInit {
         userId: taxInfo.userId,
         roleId: taxInfo.roleId,
         roomId: taxInfo.roomId,
-        roomName: taxInfo.roomName,
         userUsername: taxInfo.userUsername,
         userPassword: taxInfo.userPassword,
         userTitle: taxInfo.userTitle,

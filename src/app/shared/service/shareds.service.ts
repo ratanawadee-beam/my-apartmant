@@ -88,5 +88,20 @@ export class SharedsService {
     return this.http.get<any>(this.API_URL + '/invoicedetail/' + `${deid}`);
   }
 
+  //contact
+  public saveContact(body: any) {
+    console.log('LOG API savecontact', body);
+    return this.http.post<any>(this.API_URL + '/contact/save', body, this.httpOption);
+  }
+  public updateContact(body: any) {
+    console.log('API >> updatecontact', body);
+    return this.http.post<any>(this.API_URL + '/contact/update', body, this.httpOption);
+  }
+  public getAllcontact() {
+    return this.http.get<any>(this.API_URL + '/contact');
+  }
+  public getAllBycontactId(conid: any) {
+    return this.http.get<any>(this.API_URL + '/contact/' + `${conid}`);
+  }
 
 }

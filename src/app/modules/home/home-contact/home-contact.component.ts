@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SharedsService } from 'src/app/shared/service/shareds.service';
 
 @Component({
   selector: 'app-home-contact',
@@ -6,10 +9,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-contact.component.css']
 })
 export class HomeContactComponent implements OnInit {
+  
+  contactFormhome = this.homeContact.group({
+    roomId: [''],
+    userId: [''],
+    userName: ['', Validators.required],
+    userPhone: [''],
+    conId: [0],
+    conName: [''],
+    conPhone: [''],
+    conText: [''],
+  })
 
-  constructor() { }
+  
+  constructor(
+    private homeContact: FormBuilder,
+    private shardsService: SharedsService,
+    private router: Router,
+    
+  ) { }
 
   ngOnInit(): void {
+  }
+  save(){
+    let contact = {
+      "conId": this.contactFormhome.value.conId,
+      "conName": this.contactFormhome.value.conName,
+      "conPhone": this.contactFormhome.value.conPhone,
+      "conText": this.contactFormhome.value.conText,
+      "roomId": this.contactFormhome.value.roomId,
+      "userId": this.contactFormhome.value.userId,
+    }
+    this.shardsService.saveContact(contact).subscribe(
+      (error) => console.log(error),
+    );
+    this.router.navigate(['home/contact']);
   }
 
 }

@@ -4,23 +4,22 @@
         <h5>กรอกข้อมูลติดต่อ</h5>
     </div><br>
 
-    <form action="action_page.php">
-  
+    <form [formGroup]="contactForm" action="action_page.php"  autocomplete="off">
       <label for="fname">ชื่อ-นามสกุล</label>
-      <input type="text" id="fname" name="firstname" placeholder="กรอกชื่อ-นามสกุล">
+      <input type="text" id="fname" name="firstname" placeholder="กรอกชื่อ-นามสกุล"  formControlName="userName">
   
       <label for="lname">เลขห้อง</label>
-      <input type="text" id="lname" name="lastname" placeholder="กรอกเลขห้อง">
+      <input type="text" id="lname" name="lastname" placeholder="กรอกเลขห้อง"  formControlName="roomId">
   
       <label for="country">เบอร์โทร</label>
-      <input type="text" id="lname" name="lastname" placeholder="กรอกเบอร์โทร">
+      <input type="text" id="lname" name="lastname" placeholder="กรอกเบอร์โทร"  formControlName="userPhone">
   
       <label for="subject">รายละเอียด</label>  
-      <textarea id="subject" name="subject" placeholder="กรอกรายละเอียดสอบถาม" style="height:200px">     
+      <textarea id="subject" name="subject" placeholder="กรอกรายละเอียดสอบถาม" style="height:200px"  formControlName="conText">     
       </textarea>
       <input type="file" class="form-control-file border" name="file"><br>
       <div style="text-align: center;">
-        <input type="submit" value="ส่งข้อความ">
+        <input type="submit" value="ส่งข้อความ"  (click)="save()">
     </div>      
     </form>
   </div>
