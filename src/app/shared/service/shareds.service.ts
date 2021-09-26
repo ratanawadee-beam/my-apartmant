@@ -10,11 +10,20 @@ export class SharedsService {
 
   private API_URL = environment.apiEndPoint;
   public _registerData: any;
+  public _rentId!: number;
 
 
   constructor(private http: HttpClient) { }
   // Define API URL
   apiURL = 'http://localhost:8090/apartmant-api';
+
+  get rentId(): number {
+    return this._rentId;
+  }
+
+  set rentId(value: number) {
+    this._rentId = value;
+  }
 
   get gregisterData(): any {
     return this._registerData;
@@ -62,6 +71,19 @@ export class SharedsService {
   public getRentByrentId(rentId: any) {
     return this.http.get<any>(this.API_URL + '/rent/' + `${rentId}`);
   }
+  public getRentByUserId(userId: any) {
+    return this.http.get<any>(this.API_URL + '/rent/' + `by-userId${userId}`);
+  }
+  public generateBilldrugReport(rentId: any) {
+    return this.http.get<any>(this.API_URL + '/report/' + `generateBilldrugReport?rentId=${rentId}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: 'response' as 'body',
+      responseType: 'blob' as 'json'
+    });
+  }
+
   deleteRentByRentId(rentId: any): Observable<any> {
     return this.http.delete(this.API_URL + '/rent/'.concat(rentId),
       {

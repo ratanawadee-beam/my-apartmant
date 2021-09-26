@@ -21,9 +21,18 @@ export class AdminInformationComponent implements OnInit {
 
   ngOnInit(): void {
     // this.registerData = this.sharedsService.gregisterData();
-    this.pdfSrc = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
-    let url = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
-    window.open(url, "_blank");
+
+    const rentId: any = localStorage.getItem('rentId');
+    console.log('report===>', rentId)
+    this.sharedsService.generateBilldrugReport(rentId).subscribe(data => {
+      console.log('report===>', data.url)
+      if (data) {
+        // let pdf = window.URL.createObjectURL(new Blob([data.url], { type: 'application/pdf' }))
+        this.pdfSrc = data.url;
+        let url = data.url;
+        window.open(url, "_blank");
+      }
+    });
     this.informForm = new FormGroup({
       checkFlag: new FormControl(['', Validators.required]),
     });

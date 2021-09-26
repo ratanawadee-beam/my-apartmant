@@ -170,13 +170,27 @@ export class AdminRegisterComponent implements OnInit {
         "roomId": this.registerForm.value.roomId,
         "userId": res.userId,
       }
-      this.sharedsService.seveRent(bodySeveRent).subscribe(
+      this.sharedsService.seveRent(bodySeveRent).subscribe(res => {
+        console.log('LOG seveRent >>>::', res);
+        this.sharedsService.getRentByUserId(res.userId).subscribe(res => {
+          console.log('LOG getRentByUserId >>>::', res[0]);
+          this.sharedsService.generateBilldrugReport(res[0].rentId).subscribe(data => {
+            console.log('report===>', data.url)
+            if (data) {
+              let url = data.url;
+              window.open(url, "_blank");
+              this.router.navigate(['admin/manage']);
+            }
+          });
+        },
+          (error) => console.log(error),
+        );
+      },
         (error) => console.log(error),
       );
     },
       (error) => console.log(error),
     );
-    this.router.navigate(['admin/information']);
   }
 
   // usersave() {

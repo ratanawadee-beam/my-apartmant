@@ -49,7 +49,7 @@ export class AdminManageComponent implements OnInit {
   //   );
   // }
 
-  //edit user
+//edit user
   gotoedit(data: any){
     this.router.navigate(['admin/edituser', data.userId]);
   }

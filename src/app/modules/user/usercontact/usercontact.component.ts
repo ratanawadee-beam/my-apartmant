@@ -33,6 +33,7 @@ export class UsercontactComponent implements OnInit {
     let taxInfo = JSON.parse(tax);
     console.log('Log  Usercontact  id >>>::', taxInfo);
     this.getcontact(taxInfo);
+    
   }
 
   getcontact(taxInfo: any) {
@@ -45,6 +46,7 @@ export class UsercontactComponent implements OnInit {
         roomId: taxInfo.roomId,
     })
   }
+
 
   save(){
     let contact = {
