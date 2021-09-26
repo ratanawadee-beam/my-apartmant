@@ -11,11 +11,11 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
 export class AdminRoomeditComponent implements OnInit {
   roomId: any
   roomTypename: any = ['แอร์', 'พัดลม'];
-  roomStatvs: any = ['ว่าง', 'ไม่ว่าง'];
+  roomStatus: any = ['ว่าง', 'ไม่ว่าง'];
   roomeditForm = new FormGroup({
     roomId: new FormControl(''),
     roomTypename: new FormControl(''),
-    roomStatvs: new FormControl(''),
+    roomStatus: new FormControl(''),
     roomWater: new FormControl(''),
     roomLight: new FormControl(''),
     roomPrice: new FormControl(''),
@@ -38,7 +38,7 @@ export class AdminRoomeditComponent implements OnInit {
       this.roomeditForm.patchValue({
         roomId:roomId,
         roomTypename: res.roomTypename,
-        roomStatvs: res.roomStatvs,
+        roomStatus: res.roomStatus,
         roomWater: res.roomWater,
         roomLight: res.roomLight,
         roomPrice: res.roomPrice,
@@ -56,7 +56,7 @@ export class AdminRoomeditComponent implements OnInit {
     let body = {
       "roomId": this.roomeditForm.value.roomId,
       "roomTypename": this.roomeditForm.value.roomTypename,
-      "roomStatvs": this.roomeditForm.value.roomStatvs,
+      "roomStatus": this.roomeditForm.value.roomStatus,
       "roomWater": this.roomeditForm.value. roomWater,
       "roomLight": this.roomeditForm.value.roomLight,
       "roomPrice": this.roomeditForm.value.roomPrice,

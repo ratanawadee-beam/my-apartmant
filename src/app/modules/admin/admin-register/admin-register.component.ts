@@ -16,6 +16,7 @@ export class AdminRegisterComponent implements OnInit {
   userTitle: any = ['นาย', 'นาง', 'นางสาว'];
   userGender: any = ['ชาย', 'หญิง'];
   roomTypename: any = ['แอร์', 'พัดลม'];
+  roomStatus: any = ['ว่าง', 'ไม่ว่าง'];
   Provinces: any;
   Amphurs: any;
   Districts: any;
@@ -27,6 +28,7 @@ export class AdminRegisterComponent implements OnInit {
   roomWater: RoomInterface[] = [];
   roomLight: RoomInterface[] = [];
   roomId: RoomInterface[] = [];
+  listRoomStatus: RoomInterface[] = [];
 
   submitted = false;
 
@@ -241,7 +243,10 @@ export class AdminRegisterComponent implements OnInit {
     this.sharedsService.getRoom().subscribe(
       (res) => {
         console.log('!!!!!!!!!!!!! Room Data !!!!!!!!!!!', res)
+
         this.listRoom = res;
+        this.selectStatus('1');
+        console.log('!!!!!!!!!!!!! Room this.listRoom !!!!!!!!!!!', this.listRoomStatus)
       },
       (error) => {
         console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
@@ -251,15 +256,21 @@ export class AdminRegisterComponent implements OnInit {
 
   selectType(event: any) {
     console.log('!! selectType !!', event);
-    this.roomId = this.listRoom;
+    this.roomId = this.listRoomStatus;
     let x = this.roomId;
     return this.roomId = x.filter(i => String(i.roomTypename).indexOf(event) !== -1);
   }
 
+  selectStatus(data: any) {
+    this.listRoomStatus = this.listRoom;
+    let x = this.listRoomStatus;
+    return this.listRoomStatus = x.filter(i => String(i.roomStatus).indexOf(data) !== -1);
+  }
+
   selectPrice(event: any) {
     console.log('!! selectPrice !!', event);
-    this.roomPrice = this.listRoom;
-    let x = this.roomPrice;
+    this.listRoomStatus = this.listRoom;
+    let x = this.listRoomStatus;
     return this.roomPrice = x.filter(i => String(i.roomId).indexOf(event) !== -1);
   }
 

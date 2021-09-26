@@ -15,8 +15,6 @@ export class UsercontactComponent implements OnInit {
   contactForm = this.userContact.group({
     roomId: [''],
     userId: [''],
-    userName: ['', Validators.required],
-    userPhone: [''],
     conId: [0],
     conName: [''],
     conPhone: [''],
@@ -41,9 +39,9 @@ export class UsercontactComponent implements OnInit {
     console.log('LOG taxInfo contact >>:: ', taxInfo)
       this.contactForm.patchValue({
         userId: taxInfo.userId,
-        userName: taxInfo.userName,
+        conName: taxInfo.userName,
         userLassname: taxInfo.userLasname,
-        userPhone: taxInfo.userPhone,
+        conPhone: taxInfo.userPhone,
         roomId: taxInfo.roomId,
     })
   }

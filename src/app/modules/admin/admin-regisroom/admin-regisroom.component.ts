@@ -14,7 +14,7 @@ export class AdminRegisroomComponent implements OnInit {
 
   submitted = false;
   roomTypename: any = ['แอร์', 'พัดลม'];
-  roomStatvs: any = ['ว่าง', 'ไม่ว่าง'];
+  roomStatus: any = ['1', '2'];
 
   constructor(
     private sharedsService: SharedsService,
@@ -26,7 +26,7 @@ export class AdminRegisroomComponent implements OnInit {
   regisroomForm = this.fb.group({
     roomId: ['', Validators.required],
     roomTypename: ['', Validators.required],
-    roomStatvs: ['', Validators.required],
+    roomStatus: ['', Validators.required],
     roomWater: [''],
     roomLight: [''],
     roomPrice: ['', Validators.required],

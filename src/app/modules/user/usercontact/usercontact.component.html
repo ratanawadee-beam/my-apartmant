@@ -6,13 +6,13 @@
 
     <form [formGroup]="contactForm" action="action_page.php"  autocomplete="off">
       <label for="fname">ชื่อ-นามสกุล</label>
-      <input type="text" id="fname" name="firstname" placeholder="กรอกชื่อ-นามสกุล"  formControlName="userName">
+      <input type="text" id="fname" name="firstname" placeholder="กรอกชื่อ-นามสกุล"  formControlName="conName">
   
       <label for="lname">เลขห้อง</label>
       <input type="text" id="lname" name="lastname" placeholder="กรอกเลขห้อง"  formControlName="roomId">
   
       <label for="country">เบอร์โทร</label>
-      <input type="text" id="lname" name="lastname" placeholder="กรอกเบอร์โทร"  formControlName="userPhone">
+      <input type="text" id="lname" name="lastname" placeholder="กรอกเบอร์โทร"  formControlName="conPhone">
   
       <label for="subject">รายละเอียด</label>  
       <textarea id="subject" name="subject" placeholder="กรอกรายละเอียดสอบถาม" style="height:200px"  formControlName="conText">     

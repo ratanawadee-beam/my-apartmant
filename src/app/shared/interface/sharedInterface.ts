@@ -5,5 +5,5 @@ export interface RoomInterface {
     roomPrice: Number;
     roomLight: string;
     roomWater: string;
-    roomStatvs: string;
+    roomStatus: string;
 }

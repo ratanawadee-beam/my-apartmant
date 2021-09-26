@@ -19,7 +19,7 @@ export class AdminPaymentComponent implements OnInit {
   }
   
   paymant(){
-    this.adminService.getAllInvoice().subscribe(   
+    this.adminService.getAllPayment().subscribe(   
       (res) => {
         console.log('Log Paymentall >>::',res)
         this.listpayment = res;
