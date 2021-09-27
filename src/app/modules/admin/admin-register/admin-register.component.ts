@@ -155,6 +155,7 @@ export class AdminRegisterComponent implements OnInit {
       "userTitle": this.registerForm.value.userTitle,
       "userUserName": this.registerForm.value.userUserName,
       "zipCode": this.registerForm.value.zipCode,
+      "roomId": this.registerForm.value.roomId,
     }
     this.userService.saveUser(bodySaveUser).subscribe(res => {
       console.log('LOG saveUser >>>::', res.userId);

@@ -35,12 +35,11 @@ export class UsercontactComponent implements OnInit {
     console.log('Log  User  id >>>::', taxInfo);
     this.setDataForm(taxInfo);
     this.userId = this._Activatedroute.snapshot.paramMap.get("id");
-    this.getcontact(this.userId)
+    // this.getcontact(this.userId)
   }
 
   setDataForm(taxInfo: any) {
     console.log('LOG taxInfo', taxInfo)
-    debugger
     this.contactForm.patchValue({
       userId: taxInfo.userId,
       roleId: taxInfo.roleId,
@@ -51,29 +50,27 @@ export class UsercontactComponent implements OnInit {
     });
   }
 
-  getcontact(userId: any) {
-    this.sharedsService.getRentByUserId(userId).subscribe((res) => {
-      console.log('LOG show invoice', res);
-      debugger
-      let taxInfo = res;
-      this.contactForm.patchValue({
-        rentId: taxInfo.rent.rentId,
-        userId: taxInfo.rent.userId,
-        roomId: taxInfo.rent.roomId,
-        roomTypename: taxInfo.rent.room.roomTypename,
-        userName: taxInfo.rent.user.userName,
-        userLasname: taxInfo.rent.user.userLasname,
-        totalRoom: taxInfo.rent.room.roomPrice,
-        deWaold: taxInfo.rent.room.roomWater,
-        deLiold: taxInfo.rent.room.roomLight,
-      });
-    },
-      (error) => {
-        console.log('!!!!! Error invoce !!!!!', error);
-      }
-    );
-
-  }
+  // getcontact(userId: any) {
+  //   this.sharedsService.getRentByUserId(userId).subscribe((res) => {
+  //     console.log('LOG show invoice', res[0]);
+  //     let listData = res[0];
+  //     this.contactForm.patchValue({
+  //       rentId: listData.rent.rentId,
+  //       userId: listData.rent.userId,
+  //       roomId: listData.rent.roomId,
+  //       roomTypename: listData.rent.room.roomTypename,
+  //       userName: listData.rent.user.userName,
+  //       userLasname: listData.rent.user.userLasname,
+  //       totalRoom: listData.rent.room.roomPrice,
+  //       deWaold: listData.rent.room.roomWater,
+  //       deLiold: listData.rent.room.roomLight,
+  //     });
+  //   },
+  //     (error) => {
+  //       console.log('!!!!! Error invoce !!!!!', error);
+  //     }
+  //   );
+  // }
 
 
   save() {
@@ -85,7 +82,11 @@ export class UsercontactComponent implements OnInit {
       "roomId": this.contactForm.value.roomId,
       "userId": this.contactForm.value.userId,
     }
-    this.sharedsService.saveContact(contact).subscribe(
+    this.sharedsService.saveContact(contact).subscribe(res => {
+      if (res) {
+        window.location.reload()
+      }
+    },
       (error) => console.log(error),
     );
     this.router.navigate(['user/contact']);

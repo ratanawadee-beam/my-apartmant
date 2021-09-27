@@ -110,13 +110,13 @@ export class AdminRegisinvoiceComponent implements OnInit {
         "deTotal": this.invoiceForm.value.deTotal,
         "inStart": this.invoiceForm.value.inStart,
         "inEnd": this.invoiceForm.value.inEnd,
-        "inId": res.inId,
+        "rentId": this.invoiceForm.value.rentId,
       }
       this.sharedsService.saveInvoicedetail(saveindeteil).subscribe(res => {
         console.log('LOG saveinvoice:: >>>::', res);
         let savepayment = {
           "payId": this.invoiceForm.value.payId,
-          "payDate": this.invoiceForm.value.payDate,
+          "inStart": this.invoiceForm.value.payDate,
           "payTotal": this.invoiceForm.value.payTotal,
           "inId": res.inId,
         }
