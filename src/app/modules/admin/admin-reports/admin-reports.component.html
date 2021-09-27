@@ -39,8 +39,8 @@
                 <td scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
                 <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
                 <td *ngIf="data.user.roleId != 'admin'">{{data.user.userPhone}}</td>
-                <td *ngIf="data.user.roleId != 'admin'">{{data.invoiceStart}}</td>
-                <td *ngIf="data.user.roleId != 'admin'">{{data.invoiceEnd}}</td>
+                <td *ngIf="data.user.roleId != 'admin'">{{data.inStart}}</td>
+                <td *ngIf="data.user.roleId != 'admin'">{{data.inEnd}}</td>
                 <td *ngIf="data.user.roleId != 'admin'">
                   <button type="button" class="btn btn-primary" (click)="gotoBill()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

@@ -23,14 +23,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>2/07/2564</td>
-                <td>กรกฎาคม</td>
+              <tr *ngFor="let data of listInvoice">
+                <th scope="row">{{data.invoice.inId}}</th>
+                <td>{{data.inStart}}</td>
+                <td>{{data.inEnd}}</td>
                 <td>
                     <button class="btn-primary btn" type="button">รายละเอียด</button>
                 </td>
               </tr>         
             </tbody>
           </table>
-</div>
+</div>c 

@@ -31,6 +31,7 @@ export class HomeService {
       this._$userType.next(data);
     });
   }
+  
   public get $taxInfo(): Observable<any> {
     return this._$taxInfo.asObservable();
   }

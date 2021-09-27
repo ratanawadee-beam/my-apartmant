@@ -23,34 +23,34 @@ export class AdminRegisinvoiceComponent implements OnInit {
 
   invoiceForm = this.invoice.group({
     inId: [0],
-    rentId: [0],
-    roomId: ['', Validators.required],
+    rentId: [''],
+    roomId: [''],
     roomTypename: ['', Validators.required],
     userId: [''],
-    deId: ['', Validators.required],
     userName: ['', Validators.required],
-    roomPrice: ['', Validators.required],
-    roomWater: ['', Validators.required],
-    roomLight: ['', Validators.required],
+    // userLasname: ['', Validators.required],
 
+    deId: [0],
     deWaold: ['', Validators.required],
     deLiold: ['', Validators.required],
     deWanew: ['', Validators.required],
     deLinew: ['', Validators.required],
-    TotalunitWa: [''],
-    TotalunitLi: [''],
-    TotalWa: ['', Validators.required],
-    TotalLi: ['', Validators.required],
+    totalunitWa: [''],
+    totalunitLi: [''],
+    totalRoom: ['', Validators.required],
+    totalWa: ['', Validators.required],
+    totalLi: ['', Validators.required],
     deTotal: ['', Validators.required],
     inStart: ['', Validators.required],
     inEnd: ['', Validators.required],
   });
 
-  
+
   constructor(
     private router: Router,
     private invoice: FormBuilder,
     private sharedsService: SharedsService,
+    private adminService: AdminService,
     private _Activatedroute: ActivatedRoute,
   ) { }
 
@@ -69,21 +69,11 @@ export class AdminRegisinvoiceComponent implements OnInit {
         userId: listData.userId,
         roomId: listData.roomId,
         roomTypename: listData.room.roomTypename,
-        roomName: listData.room.roomName,
         userName: listData.user.userName,
-        roomPrice: listData.room.roomPrice,
-        roomWater: listData.room.roomWater,
-        roomLight: listData.room.roomLight,
-        // deId: listData.deId,
-        // deWaNew: listData.deWaNew,
-        // deTotalunitWa: listData.deTotalunitWa,
-        // deTotalWa: listData.deTotalWa,
-        // deLiNew: listData.deLiNew,
-        // deTotalunitLi: listData.deTotalunitLi,
-        // deTotalLi: listData.deTotalLi,
-        // deTotal: listData.deTotal,
-        // invoiceStart: res.invoiceStart,
-        // invoiceEnd: res.invoiceEnd,
+        userLasname: listData.user.userLasname,
+        totalRoom: listData.room.roomPrice,
+        deWaold: listData.room.roomWater,
+        deLiold: listData.room.roomLight,
       });
     },
       (error) => {
@@ -94,30 +84,51 @@ export class AdminRegisinvoiceComponent implements OnInit {
 
 
   save() {
-    console.log(this.invoiceForm.value);
-
-    let bady = {
-      "deEnddate": this.invoiceForm.value.deEnddate,
-      "deId": this.invoiceForm.value.deId,
-      "deLiNew": this.invoiceForm.value.deLiNew,
-      "deStartdate": this.invoiceForm.value.deStartdate,
-      "deTotal": this.invoiceForm.value.deTotal,
-      "deTotalLi": this.invoiceForm.value.deTotalLi,
-      "deTotalWa": this.invoiceForm.value.deTotalWa,
-      "deTotalunitLi": this.invoiceForm.value.deTotalunitLi,
-      "deTotalunitWa": this.invoiceForm.value.deTotalunitWa,
-      "deUnpaid": this.invoiceForm.value.deUnpaid,
-      "deWaNew": this.invoiceForm.value.deWaNew,
+    console.log(' Log Saveinvoicedetail >>>::', this.invoiceForm.value);
+    let saveinvoice = {
+      "inId": this.invoiceForm.value.inId,
+      "inStart": this.invoiceForm.value.inStart,
+      "inEnd": this.invoiceForm.value.inEnd,
+      "inStetus": this.invoiceForm.value.inStetus,
       "rentId": this.invoiceForm.value.rentId,
-      "invoiceId": this.invoiceForm.value.invoiceId,
+      "roomId": this.invoiceForm.value.roomId,
+      "userId": this.invoiceForm.value.userId,
     }
-    console.log(bady);
-
-    this.sharedsService.saveInvoicedetail(bady).subscribe(
+    this.adminService.saveInvoice(saveinvoice).subscribe(res => {
+      console.log('Log saveinvoice >>::', res.inId);
+      let saveindeteil = {
+        "deId": this.invoiceForm.value.deId,
+        "deWaold": this.invoiceForm.value.deWaold,
+        "deLiold": this.invoiceForm.value.deLiold,
+        "deLinew": this.invoiceForm.value.deLinew,
+        "deWanew": this.invoiceForm.value.deWanew,
+        "totalunitLi": this.invoiceForm.value.totalunitLi,
+        "totalunitWa": this.invoiceForm.value.totalunitWa,
+        "totalRoom": this.invoiceForm.value.totalRoom,
+        "totalLi": this.invoiceForm.value.totalLi,
+        "totalWa": this.invoiceForm.value.totalWa,
+        "deTotal": this.invoiceForm.value.deTotal,
+        "inStart": this.invoiceForm.value.inStart,
+        "inEnd": this.invoiceForm.value.inEnd,
+        "inId": res.inId,
+      }
+      this.sharedsService.saveInvoicedetail(saveindeteil).subscribe(res => {
+        console.log('LOG saveinvoice:: >>>::', res);
+        let savepayment = {
+          "payId": this.invoiceForm.value.payId,
+          "payDate": this.invoiceForm.value.payDate,
+          "payTotal": this.invoiceForm.value.payTotal,
+          "inId": res.inId,
+        }
+        this.adminService.savePayment(savepayment).subscribe(res => {
+          console.log('LOG savePayment >>::',res);
+        })
+      }
+      )
+    },
       (error) => console.log('error'),
     );
     this.router.navigate(['admin/rental']);
-
   }
 
   back() {

@@ -34,9 +34,11 @@ export class AdminBarangsewaComponent implements OnInit {
       }
     );
   }
+  
   gotoedits(data: any){
     this.router.navigate(['admin/barangsewaedit/',data.rentId]);
   }
+
   //delete
   deleteRent(item: any){
     this.sharedsService.deleteRentByRentId(item.rentId).subscribe(

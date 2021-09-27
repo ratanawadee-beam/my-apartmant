@@ -40,7 +40,7 @@ export class HomeLoginComponent implements OnInit {
       localStorage.setItem('taxInfo', JSON.stringify(res));
       this.homeService.$userType = of(res.roleId);
       this.router.navigate([`${res.roleId}`]);
-      
+
     },
       (error) => {
         alert('error!! :-)')

@@ -37,7 +37,7 @@
                         <label>สถานะห้อง<span class="text-danger">*</span></label>
                         <div>
                             <select id="inputState" class="form-control input-inline form-select"
-                                formControlName="roomStatvs">
+                                formControlName="roomStatus">
                                 <option value="" disabled>เลือกสถานะห้อง</option>
                                 <option *ngFor="let prf of roomStatus" [ngValue]="prf">{{ prf }}</option>
                             </select>

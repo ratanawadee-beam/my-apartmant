@@ -173,7 +173,7 @@ export class AdminRegisterComponent implements OnInit {
       this.sharedsService.seveRent(bodySeveRent).subscribe(res => {
         console.log('LOG seveRent >>>::', res);
         this.sharedsService.getRentByUserId(res.userId).subscribe(res => {
-          console.log('LOG getRentByUserId >>>::', res[0]);
+          console.log('LOG getRentByUserId >>>::', res);
           this.sharedsService.generateBilldrugReport(res[0].rentId).subscribe(data => {
             console.log('report===>', data.url)
             if (data) {
@@ -191,6 +191,7 @@ export class AdminRegisterComponent implements OnInit {
     },
       (error) => console.log(error),
     );
+    this.router.navigate(['admin/manage']);
   }
 
   // usersave() {

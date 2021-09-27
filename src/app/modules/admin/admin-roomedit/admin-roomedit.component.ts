@@ -11,7 +11,8 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
 export class AdminRoomeditComponent implements OnInit {
   roomId: any
   roomTypename: any = ['แอร์', 'พัดลม'];
-  roomStatus: any = ['ว่าง', 'ไม่ว่าง'];
+  roomStatus: any = ['1', '2'];
+
   roomeditForm = new FormGroup({
     roomId: new FormControl(''),
     roomTypename: new FormControl(''),
