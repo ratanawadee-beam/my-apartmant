@@ -25,19 +25,19 @@ export class AdminRoomeditComponent implements OnInit {
     private _Activatedroute: ActivatedRoute,
     private sharedsService: SharedsService,
     private router: Router
-     )    { }
- 
+  ) { }
+
   ngOnInit(): void {
     this.roomId = this._Activatedroute.snapshot.paramMap.get("id");
     console.log('!!!!!!!!!!this.roomId!!!!!!!!!!!!!!', this.roomId)
-    this.getRoomByroomId(this.roomId); 
+    this.getRoomByroomId(this.roomId);
   }
 
   getRoomByroomId(roomId: any) {
     this.sharedsService.getRoomByroomId(roomId).subscribe((res) => {
       console.log('!!!!!!!!!!! res editroom !!!!!!!!!!!!!', res)
       this.roomeditForm.patchValue({
-        roomId:roomId,
+        roomId: roomId,
         roomTypename: res.roomTypename,
         roomStatus: res.roomStatus,
         roomWater: res.roomWater,
@@ -50,7 +50,7 @@ export class AdminRoomeditComponent implements OnInit {
       }
     );
   }
- 
+
   save() {
     console.log(this.roomeditForm.value.roomId,
       this.roomeditForm.value.roomName);
@@ -58,17 +58,16 @@ export class AdminRoomeditComponent implements OnInit {
       "roomId": this.roomeditForm.value.roomId,
       "roomTypename": this.roomeditForm.value.roomTypename,
       "roomStatus": this.roomeditForm.value.roomStatus,
-      "roomWater": this.roomeditForm.value. roomWater,
+      "roomWater": this.roomeditForm.value.roomWater,
       "roomLight": this.roomeditForm.value.roomLight,
       "roomPrice": this.roomeditForm.value.roomPrice,
-  
     }
     this.sharedsService.updateRoom(body).subscribe(
       (error) => console.log(error),
     );
     this.router.navigate(['admin/room']);
   }
-  back(){
+  back() {
     this.router.navigate(['admin/room']);
   }
 }

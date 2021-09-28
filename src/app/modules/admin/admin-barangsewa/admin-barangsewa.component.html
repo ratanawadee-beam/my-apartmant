@@ -28,7 +28,6 @@
               <th scope="col">เบอร์ติดต่อ</th>
               <th scope="col">วันที่ทำสัญญา</th>
               <th scope="col">วันที่สิ้นสุดสัญญา</th>
-              <th scope="col">สถานะ</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -39,9 +38,6 @@
               <td class="text-center" *ngIf="data.user.roleId != 'admin'">{{data.user.userPhone}}</td>
               <td class="text-center"*ngIf="data.user.roleId != 'admin'">{{data.rentStart}}</td>
               <td class="text-center"*ngIf="data.user.roleId != 'admin'">{{data.rentEnd}}</td>
-              <td class="text-center"*ngIf="data.user.roleId != 'admin'">
-                <!-- <p class=" badge badge-pill badge-success ">ทำสัญญาเรียบร้อย</p> -->
-              </td>
               <td class=" text-center"*ngIf="data.user.roleId != 'admin'"><button type="button" class="btn btn-danger" (click)="deleteRent(data)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                     viewBox="0 0 16 16">

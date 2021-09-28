@@ -41,9 +41,9 @@
               <td> <button type="button" class="btn btn-sm text-white" data-bs-toggle="modal"
                   data-bs-target="#SelectModal" style="background-color: rgb(148, 178, 190);">
                   ดูรายละเอียด</button></td>
-              <td><button type="button" class="btn btn-sm text-white"  style="background-color: rgb(0, 191, 0);">ชำระแล้ว</button>&nbsp;
-                <button type="button" class="btn btn-danger btn-sm">ยังชำระ</button>
-              </td>
+                  <td></td>
+              <!-- <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.invoice.inStatus}}</td> -->
+              <!-- </td> -->
             </tr>
           </tbody>
         </table>

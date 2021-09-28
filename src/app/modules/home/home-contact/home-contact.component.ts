@@ -24,7 +24,7 @@ export class HomeContactComponent implements OnInit {
   
   constructor(
     private homeContact: FormBuilder,
-    private shardsService: SharedsService,
+    private sharedsService: SharedsService,
     private router: Router,
     
   ) { }
@@ -40,7 +40,11 @@ export class HomeContactComponent implements OnInit {
       "roomId": this.contactFormhome.value.roomId,
       "userId": this.contactFormhome.value.userId,
     }
-    this.shardsService.saveContact(contact).subscribe(
+    this.sharedsService.saveContact(contact).subscribe(res => {
+      if (res) {
+        window.location.reload()
+      }
+    },
       (error) => console.log(error),
     );
     this.router.navigate(['home/contact']);

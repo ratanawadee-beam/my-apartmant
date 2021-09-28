@@ -23,6 +23,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
 
   invoiceForm = this.invoice.group({
     inId: [0],
+    payId: [0],
     rentId: [''],
     roomId: [''],
     roomTypename: ['', Validators.required],
@@ -89,7 +90,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
       "inId": this.invoiceForm.value.inId,
       "inStart": this.invoiceForm.value.inStart,
       "inEnd": this.invoiceForm.value.inEnd,
-      "inStetus": this.invoiceForm.value.inStetus,
+      "inStetus": "1",
       "rentId": this.invoiceForm.value.rentId,
       "roomId": this.invoiceForm.value.roomId,
       "userId": this.invoiceForm.value.userId,
@@ -110,21 +111,34 @@ export class AdminRegisinvoiceComponent implements OnInit {
         "deTotal": this.invoiceForm.value.deTotal,
         "inStart": this.invoiceForm.value.inStart,
         "inEnd": this.invoiceForm.value.inEnd,
-        "rentId": this.invoiceForm.value.rentId,
+        "inId": res.inId,
       }
-      this.sharedsService.saveInvoicedetail(saveindeteil).subscribe(res => {
-        console.log('LOG saveinvoice:: >>>::', res);
+      this.sharedsService.saveInvoicedetail(saveindeteil).subscribe(resInde => {
+        console.log('LOG saveinvoice:: >>>::', resInde);
         let savepayment = {
           "payId": this.invoiceForm.value.payId,
-          "inStart": this.invoiceForm.value.payDate,
-          "payTotal": this.invoiceForm.value.payTotal,
+          "payDate": this.invoiceForm.value.payDate,
+          "payTotal": this.invoiceForm.value.deTotal,
           "inId": res.inId,
         }
-        this.adminService.savePayment(savepayment).subscribe(res => {
-          console.log('LOG savePayment >>::',res);
-        })
-      }
-      )
+        this.adminService.savePayment(savepayment).subscribe(respayment => {
+          console.log('LOG savePayment >>::',respayment);
+          let updateRoom = {
+            "roomId": res.roomId,
+            "roomWater": this.invoiceForm.value.deWanew,
+            "roomLight": this.invoiceForm.value.deLinew,
+          }
+          this.sharedsService.updateLightAndWater(updateRoom).subscribe(resRoom =>{
+            console.log('LoG updateRoom >>::',resRoom);          
+          },
+          (error) => console.log('error'),
+          );
+        },
+        (error) => console.log('error'),
+        );
+      },
+      (error) => console.log('error'),
+      );
     },
       (error) => console.log('error'),
     );

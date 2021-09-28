@@ -54,6 +54,11 @@ export class SharedsService {
   public getRoomByroomId(roomid: any) {
     return this.http.get<any>(this.API_URL + '/room/' + `${roomid}`);
   }
+  public updateLightAndWater(body: any) {
+    console.log(' LOG API updateLightAndWater', body);
+    return this.http.post<any>(this.API_URL + '/room/updateLightAndWater', body, this.httpOption);
+
+  }
 
   // rent
 
