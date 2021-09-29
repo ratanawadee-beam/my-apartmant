@@ -22,27 +22,24 @@
             </div>
           </div>
           <br>
-          <table class="table text-center table-hover">
-            <thead class=" table-info">
+          <table class="table table-hover">
+            <thead class=" table-info text-center">
               <tr>
+                <th scope="col">ลำดับ</th>
                 <th scope="col">เลขห้อง</th>
                 <th scope="col">ชื่อ-สกุล</th>
                 <th scope="col">เบอร์ติดต่อ</th>
-                <th scope="col">วันที่ออกใบแจ้งหนี้</th>
-                <th scope="col">วันที่กำหนดจ่าย</th>
                 <th scope="col"></th>
               </tr>
             </thead>
-
-            <tbody class="text-center">
-              <tr *ngFor="let data of listInvoice">
-                <td scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
+            <tbody>
+              <tr *ngFor="let data of listRent ; let i = index">
+                <td class="text-center" *ngIf="data.user.roleId != 'admin'">{{i+1}}</td>
+                <td class="text-center" scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
                 <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
-                <td *ngIf="data.user.roleId != 'admin'">{{data.user.userPhone}}</td>
-                <td *ngIf="data.user.roleId != 'admin'">{{data.inStart}}</td>
-                <td *ngIf="data.user.roleId != 'admin'">{{data.inEnd}}</td>
-                <td *ngIf="data.user.roleId != 'admin'">
-                  <button type="button" class="btn btn-primary" (click)="gotoBill()">
+                <td class="text-center" *ngIf="data.user.roleId != 'admin'">{{data.user.userPhone}}</td>
+                <td class="text-center" *ngIf="data.user.roleId != 'admin'">
+                  <button type="button" class="btn btn-primary" (click)="gotoBill(data)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-chat-text" viewBox="0 0 16 16">
                       <path
@@ -58,3 +55,4 @@
       </div>
     </div>
   </div>
+</div>

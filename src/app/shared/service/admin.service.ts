@@ -54,6 +54,9 @@ export class AdminService {
   public getInvoiceByInvoiceId(invoiceId: any) {
     return this.http.get<any>(this.API_URL + '/invoice/'.concat(invoiceId), httpOptions);
   }
+  public geyinvoiceByuserId(userId: any){
+    return this.http.get<any>(this.API_URL + '/invoice/' + `by-userId${userId}`)
+  }
 
   //payment
 

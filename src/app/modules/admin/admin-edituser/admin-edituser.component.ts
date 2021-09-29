@@ -50,6 +50,7 @@ export class AdminEdituserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this._Activatedroute.snapshot.paramMap.get("id");
+    
     this.getUserById(this.userId);
     this.initDropdown();
   }

@@ -71,7 +71,6 @@ export class AdminBarangsewaeditComponent implements OnInit {
     rentInsurance: ['', Validators.required],
     rentOther: [''],
     rentTotalprice: ['', Validators.required],
-
   });
 
   constructor(

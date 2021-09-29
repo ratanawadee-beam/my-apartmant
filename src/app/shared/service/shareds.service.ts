@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SharedsService {
+  getUserById(userId: any) {
+    throw new Error('Method not implemented.');
+  }
 
   private API_URL = environment.apiEndPoint;
   public _registerData: any;

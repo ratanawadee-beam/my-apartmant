@@ -19,48 +19,32 @@ export class UserPaymentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.userId = this._Activatedroute.snapshot.paramMap.get("id");
-    this.paymant();
+    this.invoiceData(this.userId);
     // this.invoiceData() ;
   }
 
-  paymant() {
-    this.adminService.getAllPayment().subscribe(
-      (res) => {
-        console.log('Log payment Data >>::', res);
-        this.adminService.getAllInvoice().subscribe(
-          (res) => {
-            console.log('Log invoice Data :: ', res)
-            this.sharedsService.getRent().subscribe(res => {
-              console.log('LOG showRent >>>::', res);
-              this.sharedsService.getRentByUserId(res.userId).subscribe(res => {
-                console.log('LOG getRentByUserId >>>::', res);
-                this.listInvoice = res;
-              },
-                (error) => console.log(error),
-              );
-            },
-              (error) => console.log(error),
-            );
-          },
-          (error) => {
-            console.log('Error invoice Data :: ', error);
-          }
-        );
-      }
-    );
-
-  }
-
-  // invoiceData() {
-  //   this.adminService.getAllInvoice().subscribe(
-  //     (res) => {
-  //       console.log('Log invoice Data :: ', res)
-  //       this.listInvoice = res;
-  //     },
+  // paymant(userId: any) {
+  //   this.adminService.geyinvoiceByuserId(userId).subscribe(res => {
+  //     console.log('LOG showinvo >>>::', res);
+  //   },
   //     (error) => {
   //       console.log('Error invoice Data :: ', error);
   //     }
   //   );
+
   // }
+
+  invoiceData(userId: any) {
+    this.adminService.geyinvoiceByuserId(userId).subscribe(
+      (res) => {
+        console.log('Log invoice Data :: ', res)
+        this.listInvoice = res;
+      },
+      (error) => {
+        console.log('Error invoice Data :: ', error);
+      }
+    );
+  }
 }

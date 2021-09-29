@@ -100,6 +100,10 @@ const routes: Routes = [
     component: AdminInformationComponent
   },
   {
+    path: 'information/:id',
+    component: AdminInformationComponent
+  },
+  {
     path: 'payments',
     component: AdminPaymentComponent
   },
