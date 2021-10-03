@@ -39,7 +39,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
     totalunitWa: [''],
     totalunitLi: [''],
     totalRoom: ['', Validators.required],
-    totalWa: ['', Validators.required],
+    totalWa: ['150', Validators.required],
     totalLi: ['', Validators.required],
     deTotal: ['', Validators.required],
     inStart: ['', Validators.required],
@@ -90,11 +90,12 @@ export class AdminRegisinvoiceComponent implements OnInit {
       "inId": this.invoiceForm.value.inId,
       "inStart": this.invoiceForm.value.inStart,
       "inEnd": this.invoiceForm.value.inEnd,
-      "inStetus": "1",
+      "inStatus": "1",
       "rentId": this.invoiceForm.value.rentId,
       "roomId": this.invoiceForm.value.roomId,
       "userId": this.invoiceForm.value.userId,
     }
+    console.log('Log saveinvoice 1111 >>::', saveinvoice);
     this.adminService.saveInvoice(saveinvoice).subscribe(res => {
       console.log('Log saveinvoice >>::', res.inId);
       let saveindeteil = {
@@ -122,22 +123,22 @@ export class AdminRegisinvoiceComponent implements OnInit {
           "inId": res.inId,
         }
         this.adminService.savePayment(savepayment).subscribe(respayment => {
-          console.log('LOG savePayment >>::',respayment);
+          console.log('LOG savePayment >>::', respayment);
           let updateRoom = {
             "roomId": res.roomId,
             "roomWater": this.invoiceForm.value.deWanew,
             "roomLight": this.invoiceForm.value.deLinew,
           }
-          this.sharedsService.updateLightAndWater(updateRoom).subscribe(resRoom =>{
-            console.log('LoG updateRoom >>::',resRoom);          
+          this.sharedsService.updateLightAndWater(updateRoom).subscribe(resRoom => {
+            console.log('LoG updateRoom >>::', resRoom);
           },
-          (error) => console.log('error'),
+            (error) => console.log('error'),
           );
         },
-        (error) => console.log('error'),
+          (error) => console.log('error'),
         );
       },
-      (error) => console.log('error'),
+        (error) => console.log('error'),
       );
     },
       (error) => console.log('error'),
@@ -149,6 +150,55 @@ export class AdminRegisinvoiceComponent implements OnInit {
     this.router.navigate(['admin/rental']);
   }
 
+  waterBill() {
+    let waterold = Number(this.invoiceForm.value.deWaold);
+    let waterNew = Number(this.invoiceForm.value.deWanew);
+    let totalunitWa;
+    let totalWa;
+    if (waterNew >= waterold) {
+      this.invoiceForm.controls.totalunitWa.patchValue(waterNew - waterold);
+      totalunitWa = Number(this.invoiceForm.value.totalunitWa);
+      totalWa = totalunitWa * 25;
+      if (totalWa > 150) {
+        this.invoiceForm.controls.totalWa.patchValue(totalWa);
+      } else {
+        this.invoiceForm.controls.totalWa.patchValue('150');
+      }
+    } else {
+      this.invoiceForm.controls.totalunitWa.patchValue(null);
+      this.invoiceForm.controls.totalWa.patchValue('150');
+    }
+    this.totalAmount();
+  }
+
+  deLiBill() {
+    let deLiold = Number(this.invoiceForm.value.deLiold);
+    let deLinew = Number(this.invoiceForm.value.deLinew);
+    let totalunitLi;
+    let totalLi;
+    if (deLinew >= deLiold) {
+      this.invoiceForm.controls.totalunitLi.patchValue(deLinew - deLiold);
+      totalunitLi = Number(this.invoiceForm.value.totalunitLi);
+      totalLi = totalunitLi * 8;
+      this.invoiceForm.controls.totalLi.patchValue(totalLi);
+    } else {
+      this.invoiceForm.controls.totalunitLi.patchValue(null);
+      this.invoiceForm.controls.totalLi.patchValue(null);
+    }
+    this.totalAmount();
+  }
+
+  totalAmount() {
+    let totalWa = Number(this.invoiceForm.value.totalWa);
+    let totalLi = Number(this.invoiceForm.value.totalLi);
+    let deTotal
+    if (totalWa > 0 || totalLi > 0) {
+      deTotal = totalWa + totalLi;
+      this.invoiceForm.controls.deTotal.patchValue(deTotal);
+    } else {
+      this.invoiceForm.controls.deTotal.patchValue(null);
+    }
+  }
   // removeDrugCount(drug: any) {
   //   let item = this.cartDrugs.findIndex(i => i.key == drug.key);
   //   if (drug.drugCount > 1) {

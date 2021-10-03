@@ -9,7 +9,7 @@
                     <form [formGroup]="invoiceForm" class="card-body " autocomplete="off">
 
                         <div class="form-group row content">
-                            
+
                             <div class="col-lg-4">
                                 <label>เลขห้อง</label>
                                 <div>
@@ -59,23 +59,22 @@
                             <div class="col-lg-3">
                                 <label>มิสเตอร์น้ำครั้งก่อน</label>
                                 <div>
-                                    <input type="text" class="form-control input-inline " formControlName="deWaold"
-                                        required />
+                                    <input type="text" class="form-control input-inline " (blur)=waterBill();
+                                        formControlName="deWaold" required />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <label>มิสเตอร์น้ำล่าสุด</label>
                                 <div>
-                                    <input type="text" class="form-control input-inline " formControlName="deWanew"
-                                        required />
+                                    <input type="text" class="form-control input-inline " (blur)=waterBill();
+                                        formControlName="deWanew" required />
                                 </div>
-
                             </div>
                             <div class="col-lg-3">
                                 <label>จำนวนน้ำที่ใช้</label>
                                 <div>
-                                    <input type="text" class="form-control input-inline "
-                                        formControlName="totalunitWa" required />
+                                    <input type="text" class="form-control input-inline " formControlName="totalunitWa"
+                                        required />
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -90,24 +89,22 @@
                             <div class="col-lg-3">
                                 <label>มิสเตอร์ไฟครั้งก่อน</label>
                                 <div>
-                                    <input type="text" class="form-control input-inline " formControlName="deLiold"
-                                     required />
+                                    <input type="text" class="form-control input-inline " (blur)=deLiBill();
+                                        formControlName="deLiold" required />
                                 </div>
-
                             </div>
                             <div class="col-lg-3">
                                 <label>มิสเตอร์ไฟล่าสุด</label>
                                 <div>
-                                    <input type="text"class="form-control input-inline" formControlName="deLinew"
-                                   required />
+                                    <input type="text" class="form-control input-inline" (blur)=deLiBill();
+                                        formControlName="deLinew" required />
                                 </div>
-
                             </div>
                             <div class="col-lg-3">
                                 <label>จำนวนไฟที่ใช้</label>
                                 <div>
-                                    <input type="text" class="form-control input-inline "
-                                        formControlName="totalunitLi" required />
+                                    <input type="text" class="form-control input-inline " formControlName="totalunitLi"
+                                        required />
                                 </div>
                             </div>
 
@@ -134,7 +131,7 @@
                         <div style="text-align: center;">
                             <button type="button" class="btn btn-info btn-lg" (click)="back()">ย้อนกลับ</button>&nbsp;
                             <button type="button" class="btn btn-info btn-lg" (click)="save()">บันทึก</button>
-                            
+
                         </div>
                     </form>
                 </div>
