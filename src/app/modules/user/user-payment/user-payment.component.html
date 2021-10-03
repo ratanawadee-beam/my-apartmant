@@ -1,36 +1,43 @@
 <div class="container shadow-lg ">
-    <br>
-        <div class="box-card mb-4  heading border-bottom">
-            <div class="col-11">
-                <h5><strong>ประวัติการชำระ</strong></h5>
-            </div>
-        </div>
-        <div class="row justify-content-end m-0">
-            <div class="col-md-auto col-sm-2">
-              <p>ชื่อผู้เช่า : </p>
-              <p>เลขห้อง : </p>
-            </div>
-           
-          </div><br>
+  <br>
+  <div class="box-card mb-4 heading border-bottom">
+    <div class="col-11">
+      <h5><strong>ประวัติการชำระ</strong></h5>
+    </div>
+  </div>
+  <form [formGroup]="paymentForm" class="card-body " autocomplete="off">
+    <div class="row justify-content-end">
+      <label  class="col-form-label">ชื่อผู้ใช้งาน : </label>
+      <div>
+        <input type="text" readonly class=" form-control-plaintext" formControlName="userName" required />
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <label class="col-form-label">เลขห้อง : </label>
+      <div>
+        <input type="text" readonly class=" form-control-plaintext" formControlName="roomId" required />
+      </div>
+    </div>
+  </form>
 
-        <table class="table text-center">
-            <thead>
-              <tr>
-                <th scope="col">ลำดับ</th>
-                <th scope="col">วันที่ชำระ</th>
-                <th scope="col">เดือน</th>
-                <th scope="col">รายละเอียด</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let data of listInvoice">
-                <th scope="row">{{data.inId}}</th>
-                <td>{{data.inStart}}</td>
-                <td>{{data.inEnd}}</td>
-                <td>
-                    <button class="btn-primary btn" type="button">รายละเอียด</button>
-                </td>
-              </tr>         
-            </tbody>
-          </table>
-</div>c 
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">ลำดับ</th>
+        <th scope="col">วันที่ชำระ</th>
+        <th scope="col">เดือน</th>
+        <th scope="col">รายละเอียด</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listInvoice; let i = index">
+        <th scope="row" *ngIf="data.inStatus == '2'">{{i+1}}</th>
+        <td *ngIf="data.inStatus == '2'"></td>
+        <td *ngIf="data.inStatus == '2'">{{data.inStart}}</td>
+        <td *ngIf="data.inStatus == '2'">
+          <button class="btn-primary btn" type="button">รายละเอียด</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

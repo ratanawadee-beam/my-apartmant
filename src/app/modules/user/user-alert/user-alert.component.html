@@ -14,26 +14,15 @@
     </div>
     <div class="box-card mb-4 ">
         <div class="alert alert-dark" role="alert">
-            This is a dark alert—check it out!
+          <tbody>
+            <tr *ngFor="let data of listInvoice; let i = index">
+              <th scope="row" *ngIf="data.inStatus == '1'">{{i+1}}</th>
+              <td *ngIf="data.inStatus == '1'"></td>
+              <td *ngIf="data.inStatus == '1'">{{data.inStart}}</td>
+              <td *ngIf="data.inStatus == '1'">
+                <button class="btn-primary btn" type="button">รายละเอียด</button>
+              </td>
+            </tr>
+          </tbody>
           </div>
-          <div class="alert alert-dark" role="alert">
-            This is a dark alert—check it out!
-          </div>
-          <div class="alert alert-dark" role="alert">
-            This is a dark alert—check it out!
-          </div>
-          <div class="alert alert-dark" role="alert">
-            This is a dark alert—check it out!
-          </div>
-          <div class="alert alert-dark" role="alert">
-            This is a dark alert—check it out!
-          </div>
-          <div class="alert alert-dark" role="alert">
-            This is a dark alert—check it out!
-          </div>
-          <div class="alert alert-dark" role="alert">
-            This is a dark alert—check it out!
-          </div>
-     
-     </div>
  </div>
