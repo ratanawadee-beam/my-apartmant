@@ -63,8 +63,8 @@ export class AdminProfileComponent implements OnInit {
     private homeService: HomeService,
     private router: Router,
     private _Activatedroute: ActivatedRoute,
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {
@@ -72,7 +72,7 @@ export class AdminProfileComponent implements OnInit {
     const tax: any = localStorage.getItem('taxInfo');
     let taxInfo = JSON.parse(tax);
     console.log('Log  Useradmin  id >>>::', taxInfo);
-    this.setDataForm(taxInfo); 
+    this.setDataForm(taxInfo);
     this.initDropdown();
 
   }
@@ -85,28 +85,28 @@ export class AdminProfileComponent implements OnInit {
 
   setDataForm(taxInfo: any) {
     console.log('LOG taxInfo', taxInfo)
-      this.profileuserForm.patchValue({
-        userId: taxInfo.userId,
-        roleId: taxInfo.roleId,
-        roomId: taxInfo.roomId,
-        roomName: taxInfo.roomName,
-        userUsername: taxInfo.userUsername,
-        userPassword: taxInfo.userPassword,
-        userTitle: taxInfo.userTitle,
-        userName: taxInfo.userName,
-        userLassname: taxInfo.userLasname,
-        userIdcard: taxInfo.userIdcard,
-        userBirthday: taxInfo.userBirthday,
-        userGender: taxInfo.userGender,
-        userPhone: taxInfo.userPhone,
-        userEmail: taxInfo.userEmail,
-        userAddress: taxInfo.userAddress,
-        zipCode: taxInfo.zipCode,
-        amphur: taxInfo.amphur,
-        district: taxInfo.district,
-        province: taxInfo.province,
-      });
-      this.loadUserZipCode(taxInfo.zipCode);
+    this.profileuserForm.patchValue({
+      userId: taxInfo.userId,
+      roleId: taxInfo.roleId,
+      roomId: taxInfo.roomId,
+      roomName: taxInfo.roomName,
+      userUsername: taxInfo.userUsername,
+      userPassword: taxInfo.userPassword,
+      userTitle: taxInfo.userTitle,
+      userName: taxInfo.userName,
+      userLassname: taxInfo.userLasname,
+      userIdcard: taxInfo.userIdcard,
+      userBirthday: taxInfo.userBirthday,
+      userGender: taxInfo.userGender,
+      userPhone: taxInfo.userPhone,
+      userEmail: taxInfo.userEmail,
+      userAddress: taxInfo.userAddress,
+      zipCode: taxInfo.zipCode,
+      amphur: taxInfo.amphur,
+      district: taxInfo.district,
+      province: taxInfo.province,
+    });
+    this.loadUserZipCode(taxInfo.zipCode);
   }
 
   //zipCode
@@ -184,9 +184,11 @@ export class AdminProfileComponent implements OnInit {
       "zipCode": this.profileuserForm.value.zipCode,
       "roomName": this.profileuserForm.value.roomName,
     }
-    this.userService.upDateUser(body).subscribe(
+    this.userService.upDateUser(body).subscribe(res => {
+    },
       (error) => console.log(error),
     );
+    
     this.router.navigate(['user/profile']);
   }
 

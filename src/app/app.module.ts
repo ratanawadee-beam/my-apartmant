@@ -20,12 +20,15 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    // NgZorroAntdModule
+    // NgZorroAntdModule
     // NgxPermissionsModule.forRoot(),
     // NgIdleKeepaliveModule.forRoot()
   ],
   exports: [
-    PdfViewerModule
+    PdfViewerModule,
+    // NzButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

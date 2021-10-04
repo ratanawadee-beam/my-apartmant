@@ -156,18 +156,12 @@ export class AdminBarangsewaeditComponent implements OnInit {
     }
     this.sharedsService.updateRent(body).subscribe(res => {
       console.log('LOG seveRent >>>::', res);
-      this.sharedsService.generateBilldrugReport(res.rentId).subscribe(data => {
-        console.log('report===>', data.url)
-        if (data) {
-          let url = data.url;
-          window.open(url, "_blank");
-          this.router.navigate(['admin/barangsewa']);
-        }
-      });
+      if (res) {
+        window.location.reload()
+      }
     },
       (error) => console.log(error),
     );
-    this.router.navigate(['admin/barangsewa']);
   }
 
   back() {

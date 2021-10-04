@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/shared/service/admin.service';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
+// import { NzTableComponent } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-user-payment',
@@ -13,9 +14,9 @@ export class UserPaymentComponent implements OnInit {
 
   userId: any;
   taxInfo: any;
-  listInvoice: any;
+  displayList: any;
 
-  
+
   paymentForm = this.paymentUser.group({
     roomId: [''],
     userUsername: [''],
@@ -56,7 +57,7 @@ export class UserPaymentComponent implements OnInit {
     this.adminService.geyinvoiceByuserId(userId).subscribe(
       (res) => {
         console.log('Log invoice Data :: ', res)
-        this.listInvoice = res;
+        this.displayList = res;
       },
       (error) => {
         console.log('Error invoice Data :: ', error);
@@ -66,25 +67,25 @@ export class UserPaymentComponent implements OnInit {
 
   setDataForm(taxInfo: any) {
     console.log('LOG taxInfo', taxInfo)
-      this.paymentForm.patchValue({
-        userId: taxInfo.userId,
-        roleId: taxInfo.roleId,
-        roomId: taxInfo.roomId,
-        userUsername: taxInfo.userUsername,
-        userPassword: taxInfo.userPassword,
-        userTitle: taxInfo.userTitle,
-        userName: taxInfo.userName,
-        userLassname: taxInfo.userLasname,
-        userIdcard: taxInfo.userIdcard,
-        userBirthday: taxInfo.userBirthday,
-        userGender: taxInfo.userGender,
-        userPhone: taxInfo.userPhone,
-        userEmail: taxInfo.userEmail,
-        userAddress: taxInfo.userAddress,
-        zipCode: taxInfo.zipCode,
-        amphur: taxInfo.amphur,
-        district: taxInfo.district,
-        province: taxInfo.province,
-      });
+    this.paymentForm.patchValue({
+      userId: taxInfo.userId,
+      roleId: taxInfo.roleId,
+      roomId: taxInfo.roomId,
+      userUsername: taxInfo.userUsername,
+      userPassword: taxInfo.userPassword,
+      userTitle: taxInfo.userTitle,
+      userName: taxInfo.userName,
+      userLassname: taxInfo.userLasname,
+      userIdcard: taxInfo.userIdcard,
+      userBirthday: taxInfo.userBirthday,
+      userGender: taxInfo.userGender,
+      userPhone: taxInfo.userPhone,
+      userEmail: taxInfo.userEmail,
+      userAddress: taxInfo.userAddress,
+      zipCode: taxInfo.zipCode,
+      amphur: taxInfo.amphur,
+      district: taxInfo.district,
+      province: taxInfo.province,
+    });
   }
 }

@@ -7,7 +7,7 @@
   </div>
   <form [formGroup]="paymentForm" class="card-body " autocomplete="off">
     <div class="row justify-content-end">
-      <label  class="col-form-label">ชื่อผู้ใช้งาน : </label>
+      <label class="col-form-label">ชื่อผู้ใช้งาน : </label>
       <div>
         <input type="text" readonly class=" form-control-plaintext" formControlName="userName" required />
       </div>
@@ -23,15 +23,13 @@
   <table class="table text-center">
     <thead>
       <tr>
-        <th scope="col">ลำดับ</th>
         <th scope="col">วันที่ชำระ</th>
         <th scope="col">เดือน</th>
         <th scope="col">รายละเอียด</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of listInvoice; let i = index">
-        <th scope="row" *ngIf="data.inStatus == '2'">{{i+1}}</th>
+      <tr *ngFor="let data of displayList;">
         <td *ngIf="data.inStatus == '2'"></td>
         <td *ngIf="data.inStatus == '2'">{{data.inStart}}</td>
         <td *ngIf="data.inStatus == '2'">
@@ -40,4 +38,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+  

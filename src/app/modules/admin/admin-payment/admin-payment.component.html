@@ -44,11 +44,20 @@
                 {{data.invoice.rent.user.userLasname}}</td>
               <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.payTotal}}</td>
               <td class=""><a href="#">ไฟล์รูป</a></td>
-              <td> <button type="button" class="btn btn-sm text-white" data-bs-toggle="modal"
-                  data-bs-target="#SelectModal" style="background-color: rgb(148, 178, 190);">
+              <td> <button type="button" class="btn btn-sm text-white btn-info" data-bs-toggle="modal"
+                  data-bs-target="#SelectModal">
                   ดูรายละเอียด</button></td>
-              <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.invoice.inStatus == '1'?
-                'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว') }}</td>
+              <td class="" *ngIf="data.invoice.rent.user.role.roleId != 'admin'">
+
+                <button *ngIf="data.invoice.inStatus == '1'" type="button" class="btn btn-sm text-white btn-success "
+                  data-bs-toggle="modal" data-bs-target="#SelectModal">
+                  {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
+                  }}</button>
+                <button *ngIf="data.invoice.inStatus == '2'" type="button" class="btn btn-sm text-white btn-info "
+                  data-bs-toggle="modal" data-bs-target="#SelectModal">
+                  {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
+                  }}</button>
+              </td>
             </tr>
           </tbody>
         </table>

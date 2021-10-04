@@ -58,6 +58,16 @@ export class AdminService {
     return this.http.get<any>(this.API_URL + '/invoice/' + `by-userId${userId}`)
   }
 
+  public generateBillPayment(inId: any) {
+    return this.http.get<any>(this.API_URL + '/report/' + `generateBillPayment?inId=${inId}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: 'response' as 'body',
+      responseType: 'blob' as 'json'
+    });
+  }
+
   //payment
 
   public getAllPayment() {

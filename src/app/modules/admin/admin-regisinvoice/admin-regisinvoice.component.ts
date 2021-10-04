@@ -131,6 +131,15 @@ export class AdminRegisinvoiceComponent implements OnInit {
           }
           this.sharedsService.updateLightAndWater(updateRoom).subscribe(resRoom => {
             console.log('LoG updateRoom >>::', resRoom);
+              this.adminService.generateBillPayment(res.inId).subscribe(data => {
+                console.log('report===>', data.url)
+                if (data) {
+                  let url = data.url;
+                  window.open(url, "_blank");
+                  this.router.navigate(['admin/rental']);
+                }
+              });
+            
           },
             (error) => console.log('error'),
           );

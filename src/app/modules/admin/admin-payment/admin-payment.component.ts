@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/shared/service/admin.service';
+import { SharedsService } from 'src/app/shared/service/shareds.service';
 
 @Component({
   selector: 'app-admin-payment',
@@ -14,6 +15,7 @@ export class AdminPaymentComponent implements OnInit {
   tableSizes = [3, 6, 9, 12];
 
   listpayment: any;
+  inId: any;
   
   constructor(
     private adminService: AdminService,
@@ -35,8 +37,18 @@ export class AdminPaymentComponent implements OnInit {
     );
   }
 
+  // show() {
+  //   this.adminService.generateBillPayment(this.inId).subscribe(data => {
+  //     console.log('report===>', data.url)
+  //     if (data) {
+  //       let url = data.url;
+  //       window.open(url, "_blank");
+  //     }
+  //   });
+  // }
    pageChanged(event: any) {
     this.page = event;
     this.paymant();
   }
+
 }

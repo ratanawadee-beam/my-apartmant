@@ -78,6 +78,7 @@ export class AdminInformationComponent implements OnInit {
   listInvoice: any;
   userId: any;
   pdfSrc: any;
+  inId: any;
 
   inforForm = this.report.group({
     userId: [0],
@@ -133,12 +134,20 @@ export class AdminInformationComponent implements OnInit {
     );
   }
 
-  gotoReport(){
 
-}
 
   back() {
     this.router.navigate(['admin/reports']);
+  }
+
+  gotoReport() {
+    // this.adminService.generateBillPayment(this.inId).subscribe(data => {
+    //   console.log('report===>', data.url)
+    //   if (data) {
+    //     let url = data.url;
+    //     window.open(url, "_blank");
+    //   }
+    // });
   }
 
   pageChanged(event: any) {

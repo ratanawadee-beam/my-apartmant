@@ -157,7 +157,7 @@
                     <label>เลขห้อง<span class="text-danger">*</span></label>
                     <div class="form-group">
                         <select id="inputState" class="form-control" formControlName="roomId"
-                            (ngModelChange)="selectPrice($event);selectLight($event);selectWater($event)" >
+                            (ngModelChange)="selectPrice($event);selectLight($event);selectWater($event)">
                             <option value="" disabled>--เลขห้อง--</option>
                             <option *ngFor="let data of roomId" [value]="data.roomId">{{data.roomId}}</option>
                         </select>
@@ -167,7 +167,7 @@
                 <div class="col-lg-2">
                     <label>ราคาห้อง<span class="text-danger">*</span></label>
                     <div class="form-group form-control input-inline">
-                        <option *ngFor="let data of roomPrice"  [value]="data.roomPrice" >{{data.roomPrice}}</option>
+                        <option *ngFor="let data of roomPrice" [value]="data.roomPrice">{{data.roomPrice}}</option>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -203,21 +203,21 @@
                     <label>ค่าประกันห้อง</label>
                     <div class="form-group">
                         <input type="text" class="form-control input-inline " (blur)=totalAmount();
-                        formControlName="rentInsurance" required />
+                            formControlName="rentInsurance" required />
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>ค่าส่วนกลาง</label>
                     <div class="form-group">
-                        <input type="text" class="form-control input-inline "  (blur)=totalAmount();
-                         formControlName="rentOther" required />
+                        <input type="text" class="form-control input-inline " (blur)=totalAmount();
+                            formControlName="rentOther" required />
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <label>รวมค่าใช้จ่าย</label>
                     <div class="form-group">
                         <input type="text" class="form-control input-inline " (blur)=totalAmount();
-                         formControlName="rentTotalprice" required />
+                            formControlName="rentTotalprice" required />
                     </div>
                 </div>
             </div><br>

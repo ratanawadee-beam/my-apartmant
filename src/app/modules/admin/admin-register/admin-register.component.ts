@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class AdminRegisterComponent implements OnInit {
 
   pdfSrc: any;
-  
+
   userTitle: any = ['นาย', 'นาง', 'นางสาว'];
   userGender: any = ['ชาย', 'หญิง'];
   roomTypename: any = ['แอร์', 'พัดลม'];
@@ -228,7 +228,9 @@ export class AdminRegisterComponent implements OnInit {
     console.log('!! selectPrice !!', event);
     this.listRoomStatus = this.listRoom;
     let x = this.listRoomStatus;
-    return this.roomPrice = x.filter(i => String(i.roomId).indexOf(event) !== -1);
+    this.roomPrice = x.filter(i => String(i.roomId).indexOf(event) !== -1)
+    this.registerForm.controls.roomPrice.patchValue(this.roomPrice[0].roomPrice);
+    return this.roomPrice;
   }
 
   selectWater(event: any) {
@@ -258,9 +260,9 @@ export class AdminRegisterComponent implements OnInit {
 
   totalAmount() {
     let roomPrice = Number(this.registerForm.value.roomPrice);
-    console.log('test',roomPrice);
+    console.log('test', this.registerForm.value);
     let rentInsurance = Number(this.registerForm.value.rentInsurance);
-    console.log('test',rentInsurance);
+    console.log('test', rentInsurance);
     let rentOther = Number(this.registerForm.value.rentOther);
     let rentTotalprice
     if (roomPrice > 0 || rentInsurance > 0 || rentOther > 0) {
