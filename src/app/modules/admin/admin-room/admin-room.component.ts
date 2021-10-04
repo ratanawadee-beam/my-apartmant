@@ -7,6 +7,13 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
   styleUrls: ['./admin-room.component.css']
 })
 export class AdminRoomComponent implements OnInit {
+
+  page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizes = [3, 6, 9, 12];
+
+
   listRoom: any;
   constructor(
     private sharedsService: SharedsService,
@@ -17,6 +24,7 @@ export class AdminRoomComponent implements OnInit {
     this.getRoomData();
     
   }
+
   getRoomData() {
     this.sharedsService.getRoom().subscribe((res) => {
       console.log('!!!!!!!!!!!!! Room Data !!!!!!!!!!!', res)
@@ -32,5 +40,10 @@ export class AdminRoomComponent implements OnInit {
   // }
 gotoedit(data: any){
   this.router.navigate(['admin/roomedit',data.roomId]);
+}
+
+pageChanged(event: any) {
+  this.page = event;
+  this.getRoomData();
 }
 }

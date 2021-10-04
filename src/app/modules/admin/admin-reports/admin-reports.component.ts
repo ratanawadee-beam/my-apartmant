@@ -9,6 +9,12 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
   styleUrls: ['./admin-reports.component.css']
 })
 export class AdminReportsComponent implements OnInit {
+  
+  page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizes = [3, 6, 9, 12];
+
 
   listRent: any;
   listInvoice: any;
@@ -50,4 +56,9 @@ export class AdminReportsComponent implements OnInit {
   gotoBill(data: any){
     this.router.navigate(['admin/information/',data.userId]);
    }
+
+   pageChanged(event: any) {
+    this.page = event;
+    this.faceData();
+  }
 }

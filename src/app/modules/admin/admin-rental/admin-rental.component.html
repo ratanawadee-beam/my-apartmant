@@ -29,7 +29,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let data of listRent">
+                        <tr *ngFor="let data of listRent | paginate: {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          }">
                             <td class="text-center" scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
                             <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
                             <td *ngIf="data.user.roleId != '1admin'">{{data.user.userEmail}}</td>
@@ -48,19 +52,9 @@
                     </tbody>
                 </table>
 
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="d-flex justify-content-center pb-0 mb-0">
+                    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                  </div>
             </div>
         </div>
     </div>

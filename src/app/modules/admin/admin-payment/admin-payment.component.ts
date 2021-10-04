@@ -8,6 +8,11 @@ import { AdminService } from 'src/app/shared/service/admin.service';
 })
 export class AdminPaymentComponent implements OnInit {
 
+  page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizes = [3, 6, 9, 12];
+
   listpayment: any;
   
   constructor(
@@ -29,5 +34,9 @@ export class AdminPaymentComponent implements OnInit {
       }
     );
   }
- 
+
+   pageChanged(event: any) {
+    this.page = event;
+    this.paymant();
+  }
 }

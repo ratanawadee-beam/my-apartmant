@@ -9,6 +9,12 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
   styleUrls: ['./admin-rental.component.css']
 })
 export class AdminRentalComponent implements OnInit {
+  
+  page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizes = [3, 6, 9, 12];
+
   listRent: any;
   constructor(
     private sharedsService: SharedsService,
@@ -36,4 +42,8 @@ export class AdminRentalComponent implements OnInit {
     this.router.navigate(['admin/regisinvoice/',data.rentId]);
   }
 
+  pageChanged(event: any) {
+    this.page = event;
+    this.faceData();
+  }
 }

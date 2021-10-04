@@ -71,7 +71,10 @@ export class AdminRegisroomComponent implements OnInit {
       })
     }
   }
-
+  reset(){
+    setTimeout(function () {window.location.reload(); }, 1 * 1000);
+    this.router.navigate(['admin/regisroom']);
+  }
   back() {
     this.router.navigate(['admin/room']);
   }

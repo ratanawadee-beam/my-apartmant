@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="row heading">
                     <div class="col-12">
-                        <h3><strong>เเก้ไขข้อมูลห้องพัก</strong></h3>
+                        <h4>เเก้ไขข้อมูลห้องพัก</h4>
                     </div>
                     <div class="col-12 px-3">
                         <div class="border-bottom"></div>
@@ -39,7 +39,7 @@
                             <select id="inputState" class="form-control input-inline form-select"
                                 formControlName="roomStatus">
                                 <option value="" disabled>เลือกสถานะห้อง</option>
-                                <option *ngFor="let prf of roomStatus" [ngValue]="prf">{{ prf }}</option>
+                                <option *ngFor="let prf of roomStatus" [ngValue]="prf">{{prf == '1'? 'ว่าง': 'ไม่ว่าง'}}</option>
                             </select>
                         </div>
                     </div>

@@ -10,6 +10,11 @@ import { UserService } from 'src/app/shared/service/user.service';
 })
 export class AdminBarangsewaComponent implements OnInit {
 
+  page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizes = [3, 6, 9, 12];
+
   listRent: any;
  
   constructor(
@@ -52,4 +57,8 @@ export class AdminBarangsewaComponent implements OnInit {
     );
   }
   
+  pageChanged(event: any) {
+    this.page = event;
+    this.faceData();
+  }
 }

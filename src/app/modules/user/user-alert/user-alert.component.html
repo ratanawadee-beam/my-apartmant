@@ -1,28 +1,23 @@
 <div class="container"><br>
-    <div class="form-group row">
+  <div class="form-group row">
+    <div class="col-12">
+      <div class="row heading">
         <div class="col-12">
-            <div class="row heading">
-                <div class="col-12">
-                    <h3><strong>เเจ้งเตือน</strong></h3>
-                </div>
-                <div class="col-12 px-3">
-                    <div class="border-bottom"></div>
-                </div>
-
-            </div>
+          <h5><strong>เเจ้งเตือน</strong></h5>
         </div>
+        <div class="col-12 px-3">
+          <div class="border-bottom"></div>
+        </div>
+      </div>
     </div>
-    <div class="box-card mb-4 ">
-        <div class="alert alert-dark" role="alert">
-          <tbody>
-            <tr *ngFor="let data of listInvoice; let i = index">
-              <th scope="row" *ngIf="data.inStatus == '1'">{{i+1}}</th>
-              <td *ngIf="data.inStatus == '1'"></td>
-              <td *ngIf="data.inStatus == '1'">{{data.inStart}}</td>
-              <td *ngIf="data.inStatus == '1'">
-                <button class="btn-primary btn" type="button">รายละเอียด</button>
-              </td>
-            </tr>
-          </tbody>
-          </div>
- </div>
+  </div>
+  <div class="box-card mb-4 ">
+    <div *ngFor="let data of listInvoice">
+      <div class="alert alert-dark" role="alert" *ngIf="data.inStatus == '1'">
+        <h6>บิลชำระค่าเช่า : </h6>  {{data.inStart}}
+        <button class="btn-primary btn" type="button">รายละเอียด</button>
+      </div>
+    </div>
+
+  </div>
+</div>

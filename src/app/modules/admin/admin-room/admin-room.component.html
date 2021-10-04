@@ -23,10 +23,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of listRoom">
+            <tr *ngFor="let data of listRoom | paginate: {
+              itemsPerPage: tableSize,
+              currentPage: page,
+              totalItems: count
+            }">
               <td scope="row">{{data.roomId}}</td>
               <td>{{data.roomTypename}}</td>
-              <td>{{data.roomStatus}}</td>
+              <td>{{data.roomStatus == '1'?'ว่าง':'ไม่ว่าง'}}</td>
               <td>{{data.roomPrice}}</td>
               <td><button type="button" class="btn btn-warning" (click)="gotoedit(data)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -39,7 +43,10 @@
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation example">
+        <div class="d-flex justify-content-center pb-0 mb-0">
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      </div>
+        <!-- <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
             <li class="page-item disabled">
               <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -51,7 +58,7 @@
               <a class="page-link" href="#">Next</a>
             </li>
           </ul>
-        </nav>
+        </nav> -->
       </div>
     </div>
   </div>

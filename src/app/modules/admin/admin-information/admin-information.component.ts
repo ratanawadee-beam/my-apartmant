@@ -70,6 +70,11 @@ import { UserService } from 'src/app/shared/service/user.service';
 
 export class AdminInformationComponent implements OnInit {
 
+  page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizes = [3, 6, 9, 12];
+
   listInvoice: any;
   userId: any;
   pdfSrc: any;
@@ -134,5 +139,10 @@ export class AdminInformationComponent implements OnInit {
 
   back() {
     this.router.navigate(['admin/reports']);
+  }
+
+  pageChanged(event: any) {
+    this.page = event;
+    this.getinvoice(this.userId);
   }
 }

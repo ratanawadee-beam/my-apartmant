@@ -117,8 +117,10 @@ export class AdminEdituserComponent implements OnInit {
     this.userService.upDateUser(body).subscribe(
       (error) => console.log(error),
     );
+    setTimeout(function () {window.location.reload(); }, 2 * 1000);
     this.router.navigate(['admin/manage']);
   }
+  
   back() {
     this.router.navigate(['admin/manage']);
   }

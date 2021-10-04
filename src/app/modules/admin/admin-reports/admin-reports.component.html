@@ -33,7 +33,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of listRent ; let i = index">
+              <tr *ngFor="let data of listRent | paginate: {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              }; let i = index ">
                 <td class="text-center" *ngIf="data.user.roleId != 'admin'">{{i+1}}</td>
                 <td class="text-center" scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
                 <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
@@ -51,6 +55,9 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="d-flex justify-content-center pb-0 mb-0">
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
         </div>
       </div>
     </div>

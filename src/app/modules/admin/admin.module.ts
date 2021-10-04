@@ -20,6 +20,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminBillComponent } from './admin-bill/admin-bill.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -47,7 +48,7 @@ import { AdminBillComponent } from './admin-bill/admin-bill.component';
     AdminRoutingModule,
     ReactiveFormsModule,
     PdfViewerModule,
-   
+    NgxPaginationModule,
   ]
 })
 export class AdminModule { }

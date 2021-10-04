@@ -79,7 +79,11 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr *ngFor="let data of listInvoice; let i = index">
+                            <tr *ngFor="let data of listInvoice | paginate: {
+                                itemsPerPage: tableSize,
+                                currentPage: page,
+                                totalItems: count
+                              }; let i = index">
                                 <td scope="row" *ngIf="data.user.role.roleId != 'admin'">
                                     {{i+1}}</td>
                                 <td *ngIf="data.user.role.roleId != 'admin'">{{data.inId}}</td>
@@ -102,6 +106,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="d-flex justify-content-center pb-0 mb-0">
+                    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                  </div>          
             </div>
         </div>
     </div>

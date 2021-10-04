@@ -10,6 +10,12 @@ import { UserService } from 'src/app/shared/service/user.service';
   styleUrls: ['./admin-manage.component.css']
 })
 export class AdminManageComponent implements OnInit {
+
+  page = 1;
+  count = 0;
+  tableSize = 6;
+  tableSizes = [3, 6, 9, 12];
+
   data: any;
   listRent: any;
   listUser: any;
@@ -65,5 +71,10 @@ export class AdminManageComponent implements OnInit {
         console.log('delete User error : ', error);
       }
     );
+  }
+
+  pageChanged(event: any) {
+    this.page = event;
+    this.getUserData();
   }
 }

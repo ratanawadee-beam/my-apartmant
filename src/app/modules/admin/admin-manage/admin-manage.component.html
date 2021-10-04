@@ -7,7 +7,7 @@
     <div class="card shadow topbar static-top">
       <div class="card-body text-dark">
         <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap pt-5 pb-2 mb-3 ">
-          <form class="form-inline"> 
+          <form class="form-inline">
             <input class="form-control mr-sm-2" placeholder="ค้นหา" aria-label="Search">
             <button class="nav-link btn btn-success" type="submit" routerLink="">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -37,8 +37,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of listUser">
-              <td *ngIf="data.roleId != 'admin'"  class="text-center">{{data.userId}}</td>
+            <tr *ngFor="let data of listUser | paginate: {
+              itemsPerPage: tableSize,
+              currentPage: page,
+              totalItems: count
+            }">
+              <td *ngIf="data.roleId != 'admin'" class="text-center">{{data.userId}}</td>
               <td *ngIf="data.roleId != 'admin'">{{data.userName}} {{data.userLasname}}</td>
               <td class="text-center" *ngIf="data.roleId != 'admin'">{{data.userPhone}}</td>
               <td *ngIf="data.roleId != 'admin'">{{data.userEmail}}</td>
@@ -113,19 +117,9 @@
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
+        <div class="d-flex justify-content-center pb-0 mb-0">
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
       </div>
     </div>
   </div>
