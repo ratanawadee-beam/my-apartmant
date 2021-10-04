@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class AdminRegisterComponent implements OnInit {
 
+  pdfSrc: any;
+  
   userTitle: any = ['นาย', 'นาง', 'นางสาว'];
   userGender: any = ['ชาย', 'หญิง'];
   roomTypename: any = ['แอร์', 'พัดลม'];
@@ -23,6 +25,7 @@ export class AdminRegisterComponent implements OnInit {
   userId: any;
   listRoom: any;
   listRent: any;
+  rentId: any;
 
   roomPrice: RoomInterface[] = [];
   roomWater: RoomInterface[] = [];
@@ -81,62 +84,6 @@ export class AdminRegisterComponent implements OnInit {
     this.userService.getDistrictAll().subscribe(res => { this.Districts = res; });
     this.getRoomAll();
   }
-
-  // Next() {
-  //   this.submitted = true;
-  //   if (this.registerForm.invalid) {
-  //     Swal.fire({
-  //       icon: 'warning',
-  //       title: 'กรุณากรอกข้อมูลให้ถูกต้อง',
-  //       text: '',
-  //     })
-  //     return;
-  //   } else {
-  //     Swal.fire({
-  //       title: 'ยืนยันการทำรายการ',
-  //       text: "ต้องการบันทึกห้องพักหรือไม่ ?",
-  //       icon: 'warning',
-  //       showCancelButton: true,
-  //       confirmButtonColor: '#198754',
-  //       cancelButtonColor: '#d33',
-  //       confirmButtonText: 'ยืนยัน',
-  //       cancelButtonText: 'ปิด'
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         this.userService.saveUser(this.registerForm.value).subscribe(res => {
-  //           debugger
-  //           console.log('LOG saveUser >>>::', res)
-  //           if (res) {
-  //             // add service save bil detail here
-  //             this.cartUser.forEach(data => {
-  //               data['rentId'] = 0;
-  //               data['userId'] = res.userId,
-  //                 // this.cartDrugsForUpdate
-  //                 this.cartRegisrent.push(data);
-  //             });
-  //             console.log('LOG cartRegisrent >>>:: ', this.cartRegisrent)
-
-  //             //for save detail
-  //             this.sharedsService.seveRent(this.registerForm).subscribe(response => {
-  //               debugger
-  //               console.log('LOG saveRent >>>::', response)
-  //             })
-  //           }
-  //         });
-  //         Swal.fire({
-  //           icon: 'success',
-  //           title: 'บันทึกข้อมูลสำเร็จ',
-  //           text: '',
-  //         }).then((result) => {
-  //           if (result.isConfirmed) {
-  //             this.router.navigate(['admin/information']);
-  //           }
-  //         })
-  //       }
-  //     })
-  //   }
-  // }
-
 
   Next() {
     this.submitted = true;
@@ -307,5 +254,20 @@ export class AdminRegisterComponent implements OnInit {
         console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
       }
     );
+  }
+
+  totalAmount() {
+    let roomPrice = Number(this.registerForm.value.roomPrice);
+    console.log('test',roomPrice);
+    let rentInsurance = Number(this.registerForm.value.rentInsurance);
+    console.log('test',rentInsurance);
+    let rentOther = Number(this.registerForm.value.rentOther);
+    let rentTotalprice
+    if (roomPrice > 0 || rentInsurance > 0 || rentOther > 0) {
+      rentTotalprice = rentOther + roomPrice + rentInsurance;
+      this.registerForm.controls.rentTotalprice.patchValue(rentTotalprice);
+    } else {
+      this.registerForm.controls.rentTotalprice.patchValue(null);
+    }
   }
 }

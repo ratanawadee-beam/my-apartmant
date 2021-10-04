@@ -154,7 +154,17 @@ export class AdminBarangsewaeditComponent implements OnInit {
       "roomId": this.barangForm.value.roomId,
       "userId": this.barangForm.value.userId,
     }
-    this.sharedsService.updateRent(body).subscribe(
+    this.sharedsService.updateRent(body).subscribe(res => {
+      console.log('LOG seveRent >>>::', res);
+      this.sharedsService.generateBilldrugReport(res.rentId).subscribe(data => {
+        console.log('report===>', data.url)
+        if (data) {
+          let url = data.url;
+          window.open(url, "_blank");
+          this.router.navigate(['admin/barangsewa']);
+        }
+      });
+    },
       (error) => console.log(error),
     );
     this.router.navigate(['admin/barangsewa']);
@@ -191,6 +201,15 @@ export class AdminBarangsewaeditComponent implements OnInit {
         )
       }
     );
+  }
+  pint() {
+    this.sharedsService.generateBilldrugReport(this.rentId).subscribe(data => {
+      console.log('report===>', data.url)
+      if (data) {
+        let url = data.url;
+        window.open(url, "_blank");
+      }
+    });
   }
 
 

@@ -191,9 +191,10 @@ export class AdminRegisinvoiceComponent implements OnInit {
   totalAmount() {
     let totalWa = Number(this.invoiceForm.value.totalWa);
     let totalLi = Number(this.invoiceForm.value.totalLi);
+    let totalRoom = Number(this.invoiceForm.value.totalRoom);
     let deTotal
-    if (totalWa > 0 || totalLi > 0) {
-      deTotal = totalWa + totalLi;
+    if (totalWa > 0 || totalLi > 0 || totalRoom > 0) {
+      deTotal = totalRoom + totalWa + totalLi;
       this.invoiceForm.controls.deTotal.patchValue(deTotal);
     } else {
       this.invoiceForm.controls.deTotal.patchValue(null);
