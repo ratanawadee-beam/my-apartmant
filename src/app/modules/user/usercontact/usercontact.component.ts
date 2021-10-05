@@ -12,13 +12,16 @@ import { UserService } from 'src/app/shared/service/user.service';
 export class UsercontactComponent implements OnInit {
   userId: any;
   listData: any;
+  conCategory: any = ['1','2'] ;
 
   contactForm = this.userContact.group({
     roomId: [''],
     userId: [''],
     conId: [0],
     conName: [''],
+    conLastname: [''],
     conPhone: [''],
+    conCategory: [''],
     conText: [''],
   })
 
@@ -45,7 +48,7 @@ export class UsercontactComponent implements OnInit {
       roleId: taxInfo.roleId,
       roomId: taxInfo.roomId,
       conName: taxInfo.userName,
-      userLassname: taxInfo.userLasname,
+      conLastname: taxInfo.userLasname,
       conPhone: taxInfo.userPhone,
     });
   }
@@ -77,7 +80,9 @@ export class UsercontactComponent implements OnInit {
     let contact = {
       "conId": this.contactForm.value.conId,
       "conName": this.contactForm.value.conName,
+      "conLastname": this.contactForm.value.conLastname,
       "conPhone": this.contactForm.value.conPhone,
+      "conCategory": this.contactForm.value.conCategory,
       "conText": this.contactForm.value.conText,
       "roomId": this.contactForm.value.roomId,
       "userId": this.contactForm.value.userId,
