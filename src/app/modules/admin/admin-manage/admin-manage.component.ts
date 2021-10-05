@@ -34,9 +34,9 @@ export class AdminManageComponent implements OnInit {
   getUserData() {
     this.userService.getUser().subscribe(
       (res) => {
-      console.log('!!!!!!!!!!res userData !!!!!!!!!!!!!!', res)
-      this.listUser = res;
-    },
+        console.log('!!!!!!!!!!res userData !!!!!!!!!!!!!!', res)
+        this.listUser = res;
+      },
       (error) => {
         console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
       }
@@ -55,23 +55,28 @@ export class AdminManageComponent implements OnInit {
   //   );
   // }
 
-//edit user
-  gotoedit(data: any){
+  //edit user
+  gotoedit(data: any) {
     this.router.navigate(['admin/edituser', data.userId]);
   }
 
-//deleteuser
-  deleteUser(item: any) {
-    this.userService.deleteUserByUserId(item.userId).subscribe(
-      (res) => {
-        console.log(res);
-        setTimeout(function () {window.location.reload(); }, 2 * 1000);
-      },
-      (error) => {
-        console.log('delete User error : ', error);
-      }
-    );
-  }
+  //deleteuser
+  // deleteUser(item: any) {
+  //   this.userService.deleteUserByUserId(item.userId).subscribe(res => {
+  //     console.log(res);
+  //     this.sharedsService.deleteRentByRentId(item.rentId).subscribe(res => {
+  //       console.log(res);
+  //     },
+  //       (error) => {
+  //         console.log('delete User error : ', error);
+  //       }
+  //     )
+  //   },
+  //     (error) => {
+  //       console.log('delete User error : ', error);
+  //     }
+  //   );
+  // }
 
   pageChanged(event: any) {
     this.page = event;
