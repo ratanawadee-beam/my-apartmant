@@ -19,17 +19,6 @@
       <input type="text" name="room" placeholder="กรอกเลขห้อง" formControlName="roomId">
       <label for="country">เบอร์โทร</label>
       <input type="text" name="phone" placeholder="กรอกเบอร์โทร" formControlName="conPhone">
-
-      <div class="form-group row content">
-        <div class="col-lg-12">
-          <label for="country">ประเภทการติดต่อ</label>
-          <select id="inputState" formControlName="conCategory">
-            <option value="" disabled>--เลือกประเภทการติดต่อ--</option>
-            <option *ngFor="let prf of conCategory" [ngValue]="prf">{{prf == '1'? 'เเจ้งซ่อม': 'ชำระเงิน'}}</option>
-          </select>
-        </div>
-      </div>
-
       <label for="subject">รายละเอียด</label>
       <textarea id="subject" name="subject" placeholder="กรอกรายละเอียดสอบถาม" style="height:200px"
         formControlName="conText">

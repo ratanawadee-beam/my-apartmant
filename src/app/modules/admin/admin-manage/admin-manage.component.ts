@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-manage',
@@ -61,22 +62,32 @@ export class AdminManageComponent implements OnInit {
   }
 
   //deleteuser
-  // deleteUser(item: any) {
-  //   this.userService.deleteUserByUserId(item.userId).subscribe(res => {
-  //     console.log(res);
-  //     this.sharedsService.deleteRentByRentId(item.rentId).subscribe(res => {
-  //       console.log(res);
-  //     },
-  //       (error) => {
-  //         console.log('delete User error : ', error);
-  //       }
-  //     )
-  //   },
-  //     (error) => {
-  //       console.log('delete User error : ', error);
-  //     }
-  //   );
-  // }
+  delete(item: any) {
+    this.userService.deleteUserByUserId(item.userId).subscribe(res => {
+      console.log(res);
+      Swal.fire({
+        title: 'ลบข้อมูลผู้ใช้งาน?',
+        text: "คุณต้องการลบข้อมูลผู้ใช้งานใช่หรือไม่!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ตกลง'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+    },
+      (error) => {
+        console.log('delete User error : ', error);
+      }
+    );
+  }
 
   pageChanged(event: any) {
     this.page = event;

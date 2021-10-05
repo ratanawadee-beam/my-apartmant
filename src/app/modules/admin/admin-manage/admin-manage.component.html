@@ -47,7 +47,7 @@
               <td class="text-center" *ngIf="data.roleId != 'admin'">{{data.userPhone}}</td>
               <td *ngIf="data.roleId != 'admin'">{{data.userEmail}}</td>
               <td *ngIf="data.roleId != 'admin'">
-                <button type="button" class="btn btn-danger" >
+                <button type="button" class="btn btn-danger" (click)="delete(data)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                     viewBox="0 0 16 16">
                     <path

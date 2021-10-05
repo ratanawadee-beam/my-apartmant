@@ -39,22 +39,22 @@ export class UserAlertComponent implements OnInit {
     );
   }
 
-  gotoBill(userId: any){
-    this.adminService.getinvoiceByuserId(userId).subscribe((res) => {
-      this.inId = res[0].inId;
-      this.adminService.generateBillPayment(this.inId).subscribe(data => {
+  gotoBill(data: any){
+    console.log('test',data);
+    // this.adminService.getinvoiceByuserId(userId).subscribe((res) => {  
+    //   this.inId = res[0].inId;  
+      this.adminService.generateBillPayment(data.inId).subscribe(data => {
         console.log('report===>', data.url)
         if (data) {
           let url = data.url;
           window.open(url, "_blank");
         }
       });
-    },
-      (error) => {
-        console.log('!!!!! Error invoce !!!!!', error);
-      }
-    );
- 
+    // },
+    //   (error) => {
+    //     console.log('!!!!! Error invoce !!!!!', error);
+    //   }
+    // );
   }
   
   async chooseFile() {
@@ -73,7 +73,7 @@ export class UserAlertComponent implements OnInit {
           icon: 'success',
           title: 'แนปสลิปเสร็จสิ้น',
           showConfirmButton: false,
-          timer: 1000
+          timer: 1000 
         })
       }
       reader.readAsDataURL(file)
