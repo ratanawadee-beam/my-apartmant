@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-contract',

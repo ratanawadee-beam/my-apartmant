@@ -129,6 +129,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
             "roomWater": this.invoiceForm.value.deWanew,
             "roomLight": this.invoiceForm.value.deLinew,
           }
+
           this.sharedsService.updateLightAndWater(updateRoom).subscribe(resRoom => {
             console.log('LoG updateRoom >>::', resRoom);
               this.adminService.generateBillPayment(res.inId).subscribe(data => {
@@ -139,7 +140,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
                   this.router.navigate(['admin/rental']);
                 }
               });
-            
+
           },
             (error) => console.log('error'),
           );

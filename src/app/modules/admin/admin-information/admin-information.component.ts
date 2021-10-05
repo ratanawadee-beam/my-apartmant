@@ -124,7 +124,7 @@ export class AdminInformationComponent implements OnInit {
     );
   }
   getinvoice(userid: any){
-    this.adminService.geyinvoiceByuserId(userid).subscribe((res) => {
+    this.adminService.getinvoiceByuserId(userid).subscribe((res) => {
       console.log('Log invoiceUserid >>::', res);
         this.listInvoice = res;   
     },

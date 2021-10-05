@@ -54,7 +54,7 @@ export class UserPaymentComponent implements OnInit {
   }
 
   invoiceData(userId: any) {
-    this.adminService.geyinvoiceByuserId(userId).subscribe(
+    this.adminService.getinvoiceByuserId(userId).subscribe(
       (res) => {
         console.log('Log invoice Data :: ', res)
         this.displayList = res;

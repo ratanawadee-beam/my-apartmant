@@ -54,7 +54,7 @@ export class AdminService {
   public getInvoiceByInvoiceId(invoiceId: any) {
     return this.http.get<any>(this.API_URL + '/invoice/'.concat(invoiceId), httpOptions);
   }
-  public geyinvoiceByuserId(userId: any){
+  public getinvoiceByuserId(userId: any){
     return this.http.get<any>(this.API_URL + '/invoice/' + `by-userId${userId}`)
   }
 
@@ -65,6 +65,14 @@ export class AdminService {
       }),
       observe: 'response' as 'body',
       responseType: 'blob' as 'json'
+    });
+  }
+
+  public sendEmailPayment(inId: any){
+     return this.http.get<any>(this.API_URL + '/send-email/' +`payment?inId=${inId}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
     });
   }
 
