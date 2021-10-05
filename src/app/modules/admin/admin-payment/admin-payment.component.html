@@ -48,15 +48,12 @@
                   data-bs-target="#SelectModal">
                   ดูรายละเอียด</button></td>
               <td class="" *ngIf="data.invoice.rent.user.role.roleId != 'admin'">
-
-                <button *ngIf="data.invoice.inStatus == '1'" type="button" class="btn btn-sm text-white btn-success "
-                  data-bs-toggle="modal" data-bs-target="#SelectModal">
-                  {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
-                  }}</button>
-                <button *ngIf="data.invoice.inStatus == '2'" type="button" class="btn btn-sm text-white btn-info "
-                  data-bs-toggle="modal" data-bs-target="#SelectModal">
-                  {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
-                  }}</button>
+                <span  *ngIf="data.invoice.inStatus == '3'" class="badge badge-pill badge-success"> {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
+                }}</span>
+                <a  *ngIf="data.invoice.inStatus == '2'" href="#"  class="badge badge-pill badge-warning"> {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
+                }}</a>
+                <a *ngIf="data.invoice.inStatus == '1'" class="badge badge-pill badge-danger">{{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
+                }}</a>
               </td>
             </tr>
           </tbody>
