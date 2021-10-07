@@ -65,7 +65,6 @@ export class AdminRoomeditComponent implements OnInit {
     this.sharedsService.updateRoom(body).subscribe(
       (error) => console.log(error),
     );
-    setTimeout(function () {window.location.reload(); }, 2 * 1000);
     this.router.navigate(['admin/room']);
   }
   back() {

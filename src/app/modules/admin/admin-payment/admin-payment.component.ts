@@ -37,15 +37,16 @@ export class AdminPaymentComponent implements OnInit {
     );
   }
 
-  // show() {
-  //   this.adminService.generateBillPayment(this.inId).subscribe(data => {
-  //     console.log('report===>', data.url)
-  //     if (data) {
-  //       let url = data.url;
-  //       window.open(url, "_blank");
-  //     }
-  //   });
-  // }
+  gotobill(data: any) {
+    this.adminService.generateBillPayment(data.invoice.inId).subscribe(data => {
+      console.log('report===>', data.url)
+      if (data) {
+        let url = data.url;
+        window.open(url, "_blank");
+      }
+    });
+  }
+
    pageChanged(event: any) {
     this.page = event;
     this.paymant();

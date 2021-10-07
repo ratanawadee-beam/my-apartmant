@@ -44,8 +44,8 @@
                 {{data.invoice.rent.user.userLasname}}</td>
               <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.payTotal}}</td>
               <td class=""><a href="#">ไฟล์รูป</a></td>
-              <td> <button type="button" class="btn btn-sm text-white btn-info" data-bs-toggle="modal"
-                  data-bs-target="#SelectModal">
+              <td > <button type="button" class="btn btn-sm text-white btn-info" data-bs-toggle="modal"
+                  data-bs-target="#SelectModal" (click)="gotobill(data)">
                   ดูรายละเอียด</button></td>
               <td class="" *ngIf="data.invoice.rent.user.role.roleId != 'admin'">
                 <span  *ngIf="data.invoice.inStatus == '3'" class="badge badge-pill badge-success"> {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')

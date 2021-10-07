@@ -92,7 +92,7 @@
                                 <td *ngIf="data.user.role.roleId != 'admin'">{{data.inStart}}</td>
                                 <td *ngIf="data.user.role.roleId != 'admin'">{{data.inStatus == '1'? 'ค้างชำระ':(data.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว') }}</td>
                                 <td>
-                                <button type="button" class="btn btn-primary" (click)="gotoReport()">
+                                <button type="button" class="btn btn-primary" (click)="gotoReport(data)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-file-pdf" viewBox="0 0 16 16">
                                         <path

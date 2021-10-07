@@ -8,18 +8,20 @@
   <table class="table text-center">
     <thead>
       <tr>
-        <th scope="col">เรื่อง</th>
+        <th scope="col"></th>
+        <th scope="col">ยอดชำระ</th>
         <th scope="col">วันที่ออกใบเเจ้งหนี้</th>
         <th scope="col">วันที่กำหนดจ่าย</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of listInvoice">
-        <td *ngIf="data.inStatus == '1'">บิลชำระค่าเช่า</td>
-        <td *ngIf="data.inStatus == '1'">{{data.inStart}}</td>
-        <td *ngIf="data.inStatus == '1'">{{data.inEnd}}</td>
-        <td *ngIf="data.inStatus == '1'">
+      <tr *ngFor="let data of listpayment">
+        <td *ngIf="data.invoice.inStatus == '1'">บิลชำระค่าเช่า {{data.payTotal}}</td>
+        <td *ngIf="data.invoice.inStatus == '1'">{{data.payTotal}}</td>
+        <td *ngIf="data.invoice.inStatus == '1'">{{ data.invoice.inStart | date: 'longDate'}}</td>
+        <td *ngIf="data.invoice.inStatus == '1'">{{ data.invoice.inEnd | date: 'longDate'}}</td>
+        <td *ngIf="data.invoice.inStatus == '1'">
           <button class="btn-primary btn " type="button" (click)="gotoBill(data)">บิลชำระเงิน</button> &nbsp;
           <button class="btn btn-secondary " type="button" (click)="chooseFile()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-arrow-up" viewBox="0 0 16 16">

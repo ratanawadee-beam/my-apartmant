@@ -14,6 +14,8 @@ export class UserAlertComponent implements OnInit {
   listInvoice: any;
   inId: any;
   pdfSrc: any;
+  listpayment: any;
+ 
 
   constructor(
     private adminService: AdminService,
@@ -25,6 +27,7 @@ export class UserAlertComponent implements OnInit {
     this.taxInfo = JSON.parse(tax);
     console.log(this.taxInfo);
     this.invoiceData(this.taxInfo.userId);
+    this.paymant();
   }
 
   invoiceData(userId: any) {
@@ -38,6 +41,19 @@ export class UserAlertComponent implements OnInit {
       }
     );
   }
+
+  paymant(){
+    this.adminService.getAllPayment().subscribe(   
+      (res) => {
+        console.log('Log Paymentall >>::',res)
+        this.listpayment = res;
+      },
+      (error) => {
+        console.log('error Paymentall >>::',error);
+      }
+    );
+  }
+
 
   gotoBill(data: any){
     console.log('test',data);

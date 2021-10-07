@@ -140,14 +140,14 @@ export class AdminInformationComponent implements OnInit {
     this.router.navigate(['admin/reports']);
   }
 
-  gotoReport() {
-    // this.adminService.generateBillPayment(this.inId).subscribe(data => {
-    //   console.log('report===>', data.url)
-    //   if (data) {
-    //     let url = data.url;
-    //     window.open(url, "_blank");
-    //   }
-    // });
+  gotoReport(data: any) {
+    this.adminService.generateBillPayment(data.inId).subscribe(data => {
+      console.log('report===>', data.url)
+      if (data) {
+        let url = data.url;
+        window.open(url, "_blank");
+      }
+    });
   }
 
   pageChanged(event: any) {

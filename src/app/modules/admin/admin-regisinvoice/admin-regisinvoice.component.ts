@@ -95,7 +95,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
       "roomId": this.invoiceForm.value.roomId,
       "userId": this.invoiceForm.value.userId,
     }
-    console.log('Log saveinvoice 1111 >>::', saveinvoice);
+    console.log('Log saveinvoice >>::', saveinvoice);
     this.adminService.saveInvoice(saveinvoice).subscribe(res => {
       console.log('Log saveinvoice >>::', res.inId);
       let saveindeteil = {

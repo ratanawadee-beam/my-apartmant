@@ -50,7 +50,7 @@
 </div>
 <br>
 <!-- Container (Contact Section) -->
-<form [formGroup]="contactFormhome" action="action_page.php"  autocomplete="off">
+<form [formGroup]="contactFormhome" action="action_page.php" autocomplete="off">
   <div id="section4" class="container-fluid ">
     <h2 class="text-center">ติดต่อสอบถาม</h2><br>
     <div class="row">
@@ -74,28 +74,37 @@
             </path>
           </svg> Beamlove3477@gmail.com</p>
         <img
-          src="https://scontent.xx.fbcdn.net/v/t1.15752-9/p206x206/236523683_578725446463653_1520896163141515718_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=aee45a&_nc_eui2=AeEn_kC0zrg7IEfGqrMIEpooRyZ0uWPWrZlHJnS5Y9atmUe5ZxoB4cEMCgAOy6lvPEHpKafsNQzLVSs4Ckw1b-Yl&_nc_ohc=cHwgeFTyX40AX_VooV3&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=964e1d145c18b4d65d1147226984a3ed&oe=6147F38D "
+          src="https://scontent.xx.fbcdn.net/v/t1.15752-9/p206x206/236523683_578725446463653_1520896163141515718_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=aee45a&_nc_eui2=AeEn_kC0zrg7IEfGqrMIEpooRyZ0uWPWrZlHJnS5Y9atmUe5ZxoB4cEMCgAOy6lvPEHpKafsNQzLVSs4Ckw1b-Yl&_nc_ohc=x1aAsuxqBB0AX9-d0qW&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=8089bb3b6fa2f8f9b901b632938343cb&oe=6183470D "
           width="150" height="150">
       </div>
       <div class="col-sm-7">
         <div class="row">
           <div class="col-sm-6 form-group">
-            <input class="form-control " id="name" name="name" placeholder="ชื่อ-สกกุล" type="text"formControlName="conName" required />
+            <input class="form-control " id="name" name="name" placeholder="ชื่อ-สกกุล" type="text"
+              formControlName="conName" required />
           </div>
           <div class="col-sm-6 ">
-            <input class="form-control" id="phone" name="phone" placeholder="เบอร์ติดต่อ" type="phone"formControlName="conPhone" required>
+            <input class="form-control" id="phone" name="phone" placeholder="เบอร์ติดต่อ" type="phone"
+              formControlName="conPhone" required>
           </div>
         </div>
-        <textarea class="form-control" id="comments" name="comments" placeholder="รายละเอียด"formControlName="conText" rows="5"></textarea><br>
+        <textarea class="form-control" id="comments" name="comments" placeholder="รายละเอียด" formControlName="conText"
+          rows="5"></textarea><br>
         <div class="row text-center">
           <div class="col-sm-12 ">
-            <input type="submit" value="ส่งข้อความ"(click)="save()">
+            <input type="submit" value="ส่งข้อความ" (click)="save()">
           </div>
         </div>
       </div>
     </div>
   </div>
 </form>
+<!--Google map-->
+
+    <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+      <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+        style="border:0" allowfullscreen></iframe>
+    </div>
 
 <footer class="container-fluid text-center">
   <p>Apartment © Brand 2021</p>
