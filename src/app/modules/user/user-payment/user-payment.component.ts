@@ -51,6 +51,7 @@ export class UserPaymentComponent implements OnInit {
     console.log(this.taxInfo);
     this.invoiceData(this.taxInfo.userId);
     this.setDataForm(this.taxInfo)
+    
   }
 
   invoiceData(userId: any) {
@@ -58,7 +59,7 @@ export class UserPaymentComponent implements OnInit {
       (res) => {
         console.log('Log invoice Data :: ', res)
         this.displayList = res;
-      },
+      },  
       (error) => {
         console.log('Error invoice Data :: ', error);
       }
@@ -87,5 +88,22 @@ export class UserPaymentComponent implements OnInit {
       district: taxInfo.district,
       province: taxInfo.province,
     });
+  }
+  gotoBill(data: any){
+    console.log('test',data);
+    // this.adminService.getinvoiceByuserId(userId).subscribe((res) => {  
+    //   this.inId = res[0].inId;  
+      this.adminService.generateBillPayment(data.inId).subscribe(data => {
+        console.log('report===>', data.url)
+        if (data) {
+          let url = data.url;
+          window.open(url, "_blank");
+        }
+      });
+    // },
+    //   (error) => {
+    //     console.log('!!!!! Error invoce !!!!!', error);
+    //   }
+    // );
   }
 }

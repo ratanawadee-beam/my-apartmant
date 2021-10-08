@@ -25,6 +25,7 @@
   <table class="table text-center">
     <thead>
       <tr>
+        <th scope="col"></th>
         <th scope="col">วันที่ออกใบเเจ้งหนี้</th>
         <th scope="col">วันที่กำหนดจ่าย</th>
         <th scope="col">สถานะการชำระ</th>
@@ -33,6 +34,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of displayList;">
+        <td *ngIf="data.inStatus == '3'"> <strong>บิลชำระค่าเช่าห้อง</strong> ยอดชำระ : {{data.inTotal}} บาท</td>
         <td *ngIf="data.inStatus == '3'">{{data.inStart}}</td>
         <td *ngIf="data.inStatus == '3'">{{data.inEnd}}</td>
         <td *ngIf="data.inStatus == '3'">
@@ -40,7 +42,7 @@
           }}</span>
         </td>
         <td *ngIf="data.inStatus == '3'">
-          <button class="btn-primary btn" type="button">รายละเอียด</button>
+          <button class="btn-primary btn" type="button" (click)="gotoBill(data)">รายละเอียด</button>
         </td>
       </tr>
     </tbody>

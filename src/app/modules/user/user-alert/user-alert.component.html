@@ -9,21 +9,19 @@
     <thead>
       <tr>
         <th scope="col"></th>
-        <th scope="col">ยอดชำระ</th>
         <th scope="col">วันที่ออกใบเเจ้งหนี้</th>
         <th scope="col">วันที่กำหนดจ่าย</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of listpayment">
-        <td *ngIf="data.invoice.inStatus == '1'">บิลชำระค่าเช่า {{data.payTotal}}</td>
-        <td *ngIf="data.invoice.inStatus == '1'">{{data.payTotal}}</td>
-        <td *ngIf="data.invoice.inStatus == '1'">{{ data.invoice.inStart | date: 'longDate'}}</td>
-        <td *ngIf="data.invoice.inStatus == '1'">{{ data.invoice.inEnd | date: 'longDate'}}</td>
-        <td *ngIf="data.invoice.inStatus == '1'">
+      <tr *ngFor="let data of listInvoice">
+        <td *ngIf="data.inStatus == '1'"> <strong>บิลชำระค่าเช่าห้อง</strong> ยอดชำระ : {{data.inTotal}} บาท</td>
+        <td *ngIf="data.inStatus == '1'">{{ data.inStart | date: 'longDate'}}</td>
+        <td *ngIf="data.inStatus == '1'">{{ data.inEnd | date: 'longDate'}}</td>
+        <td *ngIf="data.inStatus == '1'">
           <button class="btn-primary btn " type="button" (click)="gotoBill(data)">บิลชำระเงิน</button> &nbsp;
-          <button class="btn btn-secondary " type="button" (click)="chooseFile()">
+          <button class="btn btn-secondary " type="button"  (click)="gotoupload(data)">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z"/>
               <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 

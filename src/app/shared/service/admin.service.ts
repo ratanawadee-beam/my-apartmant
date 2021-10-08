@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+// var FormData = require('form-data');
+// var fs = require('fs');
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 const endpoint = environment.apiEndPoint;
 
@@ -54,7 +55,7 @@ export class AdminService {
   public getInvoiceByInvoiceId(invoiceId: any) {
     return this.http.get<any>(this.API_URL + '/invoice/'.concat(invoiceId), httpOptions);
   }
-  public getinvoiceByuserId(userId: any){
+  public getinvoiceByuserId(userId: any) {
     return this.http.get<any>(this.API_URL + '/invoice/' + `by-userId${userId}`)
   }
 
@@ -68,20 +69,24 @@ export class AdminService {
     });
   }
 
-  public sendEmailPayment(inId: any){
-     return this.http.get<any>(this.API_URL + '/send-email/' +`payment?inId=${inId}`, {
+  public sendEmailPayment(inId: any) {
+    return this.http.get<any>(this.API_URL + '/send-email/' + `payment?inId=${inId}`, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
     });
   }
 
-  //payment
+  uploadFile(param: any, inId: any): Observable<any> {
+    var from = new FormData();
+    from.append('multipartFile', param);
+    return this.http.post<any>(this.API_URL + `/uploadFile?inId=${inId}`, from)
+  }
 
   public getAllPayment() {
     return this.http.get<any>(this.API_URL + '/payments');
   }
- public savePayment(body: any) {
+  public savePayment(body: any) {
     console.log('LOG API savepayments >>::', body);
     return this.http.post<any>(this.API_URL + '/payment/save', body, this.httpOption);
   }
@@ -92,6 +97,7 @@ export class AdminService {
   public getPaymentBypayId(payId: any) {
     return this.http.get<any>(this.API_URL + '/payment/'.concat(payId), httpOptions);
   }
+
 
 }
 

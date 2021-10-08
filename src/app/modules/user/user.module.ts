@@ -10,6 +10,7 @@ import { UserAlertComponent } from './user-alert/user-alert.component';
 import { UserPaymentComponent } from './user-payment/user-payment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UsercontactComponent } from './usercontact/usercontact.component';
+import { UserUploadComponent } from './user-upload/user-upload.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UsercontactComponent } from './usercontact/usercontact.component';
     UserContractComponent,
     UserAlertComponent,
     UserPaymentComponent,
-    UsercontactComponent
+    UsercontactComponent,
+    UserUploadComponent
   ],
   imports: [
     CommonModule,

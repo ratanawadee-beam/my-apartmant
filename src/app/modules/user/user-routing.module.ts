@@ -5,6 +5,7 @@ import { UserContractComponent } from './user-contract/user-contract.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { UserPaymentComponent } from './user-payment/user-payment.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserUploadComponent } from './user-upload/user-upload.component';
 import { UsercontactComponent } from './usercontact/usercontact.component';
 
 const routes: Routes = [
@@ -35,6 +36,14 @@ const routes: Routes = [
   {
     path: 'contact',
     component: UsercontactComponent
+  },
+  {
+    path: 'upload',
+    component: UserUploadComponent
+  },
+  {
+    path: 'upload/:id',
+    component: UserUploadComponent
   },
 ];
 

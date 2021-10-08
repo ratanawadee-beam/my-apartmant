@@ -26,7 +26,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
     payId: [0],
     rentId: [''],
     roomId: [''],
-    roomTypename: ['', Validators.required],
+    roomTypenames: ['', Validators.required],
     userId: [''],
     userName: ['', Validators.required],
     // userLasname: ['', Validators.required],
@@ -69,7 +69,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
         rentId: rentId,
         userId: listData.userId,
         roomId: listData.roomId,
-        roomTypename: listData.room.roomTypename,
+        roomTypenames: listData.room.roomTypename,
         userName: listData.user.userName,
         userLasname: listData.user.userLasname,
         totalRoom: listData.room.roomPrice,
@@ -91,6 +91,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
       "inStart": this.invoiceForm.value.inStart,
       "inEnd": this.invoiceForm.value.inEnd,
       "inStatus": "1",
+      "inTotal": this.invoiceForm.value.deTotal,
       "rentId": this.invoiceForm.value.rentId,
       "roomId": this.invoiceForm.value.roomId,
       "userId": this.invoiceForm.value.userId,
@@ -128,6 +129,7 @@ export class AdminRegisinvoiceComponent implements OnInit {
             "roomId": res.roomId,
             "roomWater": this.invoiceForm.value.deWanew,
             "roomLight": this.invoiceForm.value.deLinew,
+            "roomTypename": this.invoiceForm.value.roomTypenames,
           }
 
           this.sharedsService.updateLightAndWater(updateRoom).subscribe(resRoom => {

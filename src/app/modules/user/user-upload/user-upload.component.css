@@ -1,0 +1,35 @@
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #4cbb19;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #7ae47f;
+  }
+  
+  .container {
+    border-radius: 4px;
+    background-color: hsla(0, 0%, 100%, 0.992);
+    padding: 20px;
+  }
+  .bg-img {
+    border-radius: 4px;
+    background-color: #DEF2F1;
+    padding: 20px;
+  }
+  

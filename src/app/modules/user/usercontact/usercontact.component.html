@@ -23,9 +23,9 @@
       <textarea id="subject" name="subject" placeholder="กรอกรายละเอียดสอบถาม" style="height:200px"
         formControlName="conText">
       </textarea>
-      <input type="file" class="form-control-file border" name="file"><br>
+      <input type="file" (change)="showPreviewImage($event)">
       <div style="text-align: center;">
-        <input type="submit" value="ส่งข้อความ" (click)="save()">
+        <input type="submit" value="ส่งข้อความ" (click)="upload()">
       </div>
     </form>
   </div>

@@ -1,0 +1,26 @@
+<div class="bg-img">
+    <div class="container col-md-5">
+      <div class="text-center">
+        <h5>อัพหลักฐานการโอนเงิน</h5>
+      </div><br>
+  
+      <form [formGroup]="contactForm" action="action_page.php" autocomplete="off">
+        <label for="fname">ชื่อ-นามสกุล</label>
+        <div class="form-group row content">
+          <div class="col-lg-6">
+            <input type="text" name="firstname" placeholder="กรอกชื่อ-นามสกุล" formControlName="conName">
+          </div>
+          <div class="col-6">
+            <input type="text" name="lastname" placeholder="กรอกชื่อ-นามสกุล" formControlName="conLastname">
+          </div>
+        </div>
+  
+        <label for="lname">เลขห้อง</label>
+        <input type="text" name="room" placeholder="กรอกเลขห้อง" formControlName="roomId">
+        <input type="file" (change)="showPreviewImage($event)">
+        <div style="text-align: center;">
+          <input type="submit" value="ส่งข้อความ" (click)="upload()">
+        </div>
+      </form>
+    </div>
+  </div>

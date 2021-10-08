@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdminService } from 'src/app/shared/service/admin.service';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
 
@@ -12,7 +13,9 @@ import { UserService } from 'src/app/shared/service/user.service';
 export class UsercontactComponent implements OnInit {
   userId: any;
   listData: any;
-  conCategory: any = ['1','2'] ;
+  conCategory: any = ['1', '2'];
+  localUrl: any;
+  BASE64_MARKER = ';base64,';
 
   contactForm = this.userContact.group({
     roomId: [''],
@@ -28,6 +31,7 @@ export class UsercontactComponent implements OnInit {
   constructor(
     private userContact: FormBuilder,
     private sharedsService: SharedsService,
+    private adminService: AdminService,
     private router: Router,
     private _Activatedroute: ActivatedRoute,
   ) { }
@@ -96,6 +100,24 @@ export class UsercontactComponent implements OnInit {
     );
     this.router.navigate(['user/contact']);
   }
+//อัพไฟล์รูป
+
+  showPreviewImage(file: any) {
+    this.localUrl = file.target.files;
+  }
+
+  upload() {
+    if (this.localUrl) {
+      console.log(this.localUrl);
+      const file: File | null = this.localUrl.item(0);
+      console.log(file);
+      this.adminService.uploadFile(file, '74').subscribe(data => {
+        console.log('report===>', data)
+      });
+    }
+
+  }
+
 
 }
 
