@@ -155,7 +155,6 @@ export class AdminRegisinvoiceComponent implements OnInit {
     },
       (error) => console.log('error'),
     );
-    this.router.navigate(['admin/rental']);
   }
 
   back() {

@@ -5,21 +5,8 @@
   <div class="con-dataqueue">
     <div class="card shadow topbar static-top">
       <div class="card-body text-dark">
-        <div class="row justify-content-end m-0">
-          <div class="col-md-auto col-sm-2">
-            <input class="form-control" placeholder="ค้นหา" aria-label="Search">
-          </div>
-          <div class="col-md-auto col-sm-6">
-            <button class="nav-link btn btn-success" type="submit" routerLink="">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                viewBox="0 0 16 16">
-                <path
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-              </svg> ค้นหา</button>
-          </div>
-        </div>
         <br>
-        <table class="table text-center table table-hover ">
+        <table  [formGroup]="paymentForm" class="table text-center table table-hover ">
           <thead class=" table-info">
             <tr>
               <th scope="col">เลขห้อง</th>
@@ -43,14 +30,14 @@
               <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.invoice.rent.user.userName}}
                 {{data.invoice.rent.user.userLasname}}</td>
               <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.payTotal}}</td>
-              <td class=""><a href="#">ไฟล์รูป</a></td>
-              <td > <button type="button" class="btn btn-sm text-white btn-info" data-bs-toggle="modal"
+              <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'" class=""><a  *ngIf="data.invoice.inStatus != '1'"(click)="gotodowload(data)">ไฟล์สลิป</a></td>
+              <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'"> <button type="button" class="btn btn-sm text-white btn-info" data-bs-toggle="modal"
                   data-bs-target="#SelectModal" (click)="gotobill(data)">
                   ดูรายละเอียด</button></td>
               <td class="" *ngIf="data.invoice.rent.user.role.roleId != 'admin'">
                 <span  *ngIf="data.invoice.inStatus == '3'" class="badge badge-pill badge-success"> {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
                 }}</span>
-                <a  *ngIf="data.invoice.inStatus == '2'" href="#"  class="badge badge-pill badge-warning"> {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
+                <a  *ngIf="data.invoice.inStatus == '2'" (click)="updateStatus(data)"  class="badge badge-pill badge-warning"> {{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
                 }}</a>
                 <a *ngIf="data.invoice.inStatus == '1'" class="badge badge-pill badge-danger">{{data.invoice.inStatus == '1'? 'ค้างชำระ':(data.invoice.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว')
                 }}</a>

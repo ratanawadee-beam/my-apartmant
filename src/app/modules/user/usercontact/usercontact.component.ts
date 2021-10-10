@@ -12,6 +12,7 @@ import { UserService } from 'src/app/shared/service/user.service';
 })
 export class UsercontactComponent implements OnInit {
   userId: any;
+  conId: any;
   listData: any;
   conCategory: any = ['1', '2'];
   localUrl: any;
@@ -24,7 +25,7 @@ export class UsercontactComponent implements OnInit {
     conName: [''],
     conLastname: [''],
     conPhone: [''],
-    conCategory: [''],
+    conFilename: [''],
     conText: [''],
   })
 
@@ -86,15 +87,17 @@ export class UsercontactComponent implements OnInit {
       "conName": this.contactForm.value.conName,
       "conLastname": this.contactForm.value.conLastname,
       "conPhone": this.contactForm.value.conPhone,
-      "conCategory": this.contactForm.value.conCategory,
+      "conFilename": this.contactForm.value.conFilename,
+      "conCategory": "1",
       "conText": this.contactForm.value.conText,
       "roomId": this.contactForm.value.roomId,
       "userId": this.contactForm.value.userId,
     }
+    console.log('test',contact);
+    
     this.sharedsService.saveContact(contact).subscribe(res => {
-      if (res) {
-        window.location.reload()
-      }
+      console.log('test conId',contact);
+      // setTimeout(function () { window.location.reload(); }, 2 * 1000);
     },
       (error) => console.log(error),
     );
@@ -104,6 +107,8 @@ export class UsercontactComponent implements OnInit {
 
   showPreviewImage(file: any) {
     this.localUrl = file.target.files;
+    // this.contactForm.controls.conFilename.patchValue(file.target.files);
+  
   }
 
   upload() {
@@ -111,11 +116,10 @@ export class UsercontactComponent implements OnInit {
       console.log(this.localUrl);
       const file: File | null = this.localUrl.item(0);
       console.log(file);
-      this.adminService.uploadFile(file, '74').subscribe(data => {
+      this.sharedsService.uploadFiles(file, this.conId).subscribe(data => {
         console.log('report===>', data)
       });
     }
-
   }
 
 

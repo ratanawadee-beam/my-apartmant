@@ -19,9 +19,11 @@ export class AdminRegisterComponent implements OnInit {
   userGender: any = ['ชาย', 'หญิง'];
   roomTypename: any = ['แอร์', 'พัดลม'];
   roomStatus: any = ['ว่าง', 'ไม่ว่าง'];
+
   Provinces: any;
   Amphurs: any;
   Districts: any;
+
   userId: any;
   listRoom: any;
   listRent: any;
@@ -59,9 +61,11 @@ export class AdminRegisterComponent implements OnInit {
     userAddress: ['', Validators.required],
     userEmail: ['', Validators.required],
     zipCode: ['', Validators.required],
-    district: [{ value: '', disabled: true },],
+
+    districtId: [{ value: '', disabled: true },],
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
+
     roleId: ['user'],
     rentId: [0],
     rentStart: ['', Validators.required],
@@ -79,9 +83,11 @@ export class AdminRegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.registerForm.controls['districtId'].disable();
+
     this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; })
     this.userService.getAmphurAll().subscribe(res => { this.Amphurs = res; });
-    this.userService.getDistrictAll().subscribe(res => { this.Districts = res; });
+    // this.userService.getDistrictAll().subscribe(res => { this.Districts = res; });
     this.getRoomAll();
   }
 
@@ -102,6 +108,7 @@ export class AdminRegisterComponent implements OnInit {
       "userTitle": this.registerForm.value.userTitle,
       "userUserName": this.registerForm.value.userUserName,
       "zipCode": this.registerForm.value.zipCode,
+      "districtId": this.registerForm.value.districtId,
       "roomId": this.registerForm.value.roomId,
     }
     this.userService.saveUser(bodySaveUser).subscribe(res => {
@@ -125,7 +132,7 @@ export class AdminRegisterComponent implements OnInit {
           if (data) {
             let url = data.url;
             window.open(url, "_blank");
-            this.router.navigate(['admin/manage']);
+            this.router.navigate(['admin/barangsewa']);
           }
         });
       },
@@ -148,19 +155,20 @@ export class AdminRegisterComponent implements OnInit {
   // }
 
   back() {
-    this.router.navigate(['admin/manage']);
+    this.router.navigate(['admin/barangsewa']);
   }
 
-  userZipCode(event: any) {
+  changeUserZipCode(event: any) {
     const zipCode = event.target.value;
-    console.log('zipCode' + zipCode)
-    this.userService.getDistricByZipCode(zipCode).subscribe(
-      res => {
+    console.log('zipCode' + zipCode);
+    this.registerForm.controls['districtId'].enable();
+    this.userService.getAllDistrict(zipCode).subscribe(res => { this.Districts = res; console.log('data :', res) });
+    this.userService.getDistricByZipCode(zipCode).subscribe(res => {
         console.log(res)
         if (res) {
           this.registerForm.patchValue(
             {
-              district: res.districtNameTh,
+              // district: res.districtNameTh,
               amphur: res.amphur.amphurNameTh,
               province: res.province.provinceNameTh
             }
@@ -177,7 +185,34 @@ export class AdminRegisterComponent implements OnInit {
         )
       }
     );
+    
   }
+  // userZipCode(event: any) {
+  //   const zipCode = event.target.value;
+  //   console.log('zipCode' + zipCode)
+  //   this.userService.getDistricByZipCode(zipCode).subscribe(res => {
+  //       console.log(res)
+  //       if (res) {
+  //         this.registerForm.patchValue(
+  //           {
+  //             district: res.districtNameTh,
+  //             amphur: res.amphur.amphurNameTh,
+  //             province: res.province.provinceNameTh
+  //           }
+  //         )
+  //       }
+  //     },
+  //     error => {
+  //       this.registerForm.patchValue(
+  //         {
+  //           district: '',
+  //           amphur: '',
+  //           province: ''
+  //         }
+  //       )
+  //     }
+  //   );
+  // }
 
   get userf() { return this.registerForm.controls; }
 

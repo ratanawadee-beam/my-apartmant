@@ -64,8 +64,8 @@ export class UserAlertComponent implements OnInit {
     // );
   }
 
-  gotoupload(data: any){
-    this.router.navigate(['user/upload',data.inId]);
+  gotoupload(data: any) {
+    this.router.navigate(['user/upload', data.inId]);
   }
   // async chooseFile(e: any, data: any) {
   //   this.selectData = data;

@@ -60,7 +60,10 @@ export class SharedsService {
   public updateLightAndWater(body: any) {
     console.log(' LOG API updateLightAndWater', body);
     return this.http.post<any>(this.API_URL + '/room/updateLightAndWater', body, this.httpOption);
-
+  }
+  public updateStatus(body: any) {
+    console.log(' LOG API updateStatus', body);
+    return this.http.post<any>(this.API_URL + '/room/updateStatus', body, this.httpOption);
   }
 
   // rent
@@ -118,6 +121,16 @@ export class SharedsService {
     return this.http.get<any>(this.API_URL + '/invoicedetail/' + `${deid}`);
   }
 
+  
+deleteinvoicedetailByDeId(deId: any): Observable<any> {
+    return this.http.delete(this.API_URL + '/invoicedetail/'.concat(deId),
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        responseType: 'text'
+      }
+    );
+  }
+
   //contact
   public saveContact(body: any) {
     console.log('LOG API savecontact', body);
@@ -133,5 +146,22 @@ export class SharedsService {
   public getAllBycontactId(conid: any) {
     return this.http.get<any>(this.API_URL + '/contact/' + `${conid}`);
   }
+
+  uploadFiles(param: any, conId: any): Observable<any> {
+    var from = new FormData();
+    from.append('multipartFile', param);
+    return this.http.post<any>(this.API_URL + `/uploadFiles?conId=${conId}`, from)
+  }
+  public downLoadFiles(conId: any) {
+    return this.http.get<any>(this.API_URL + `/downLoadFiles?conId=${conId}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: 'response' as 'body',
+      responseType: 'blob' as 'json'
+    });
+  }
+  
+
 
 }

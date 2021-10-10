@@ -40,9 +40,10 @@ export class UserUploadComponent implements OnInit {
     let taxInfo = JSON.parse(tax);
     console.log('Log  User  id >>>::', taxInfo);
     this.setDataForm(taxInfo);
-    this.userId = this._Activatedroute.snapshot.paramMap.get("id");
+    // this.userId = this._Activatedroute.snapshot.paramMap.get("id");
+
     this.inId = this._Activatedroute.snapshot.paramMap.get("id");
-   
+    console.log('test inId', this.inId);
   }
 
   setDataForm(taxInfo: any) {
@@ -68,16 +69,19 @@ export class UserUploadComponent implements OnInit {
       console.log(this.localUrl);
       const file: File | null = this.localUrl.item(0);
       console.log(file);
-      this.adminService.uploadFile(file, this.inId).subscribe(data => {
+      this.adminService.uploadFile(file, Number(this.inId)).subscribe(data => {
         console.log('report===>', data)
-        if (data) {
-          window.location.reload()
-        }
-      });
-      
+        this.router.navigate(['user/alertuser']);
+      },
+        error => {
+          if (error.status == 200) {
+            this.router.navigate(['user/alertuser']);
+          }
+        });
+
     }
-   
-    this.router.navigate(['user/alertuser']);
+
+
   }
 
 }

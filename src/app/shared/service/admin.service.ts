@@ -58,7 +58,16 @@ export class AdminService {
   public getinvoiceByuserId(userId: any) {
     return this.http.get<any>(this.API_URL + '/invoice/' + `by-userId${userId}`)
   }
+  deleteinvoiceByInId(inId: any): Observable<any> {
+    return this.http.delete(this.API_URL + '/invoice/'.concat(inId),
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        responseType: 'text'
+      }
+    );
+  }
 
+  //payment
   public generateBillPayment(inId: any) {
     return this.http.get<any>(this.API_URL + '/report/' + `generateBillPayment?inId=${inId}`, {
       headers: new HttpHeaders({
@@ -82,6 +91,17 @@ export class AdminService {
     from.append('multipartFile', param);
     return this.http.post<any>(this.API_URL + `/uploadFile?inId=${inId}`, from)
   }
+  
+  public downLoadFile(inId: any) {
+    return this.http.get<any>(this.API_URL + `/downLoadFile?inId=${inId}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: 'response' as 'body',
+      responseType: 'blob' as 'json'
+    });
+  }
+  
 
   public getAllPayment() {
     return this.http.get<any>(this.API_URL + '/payments');
@@ -97,7 +117,15 @@ export class AdminService {
   public getPaymentBypayId(payId: any) {
     return this.http.get<any>(this.API_URL + '/payment/'.concat(payId), httpOptions);
   }
-
+  deletepaymentBypayId(payId: any): Observable<any> {
+    return this.http.delete(this.API_URL + '/payment/'.concat(payId),
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        responseType: 'text'
+      }
+    );
+  }
+  
 
 }
 

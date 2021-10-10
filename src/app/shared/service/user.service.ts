@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
 @Injectable({
   providedIn: 'root'
 })
@@ -53,6 +55,8 @@ export class UserService {
       }
     );
   }
+
+
   getAmphurAll(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/amphur')
   }
@@ -62,8 +66,16 @@ export class UserService {
   getProvinceAll(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/province')
   }
+
+  getDistrictByDistrictId(DistrictId: any) {
+    return this.http.get<any>(this.API_URL + '/district/'.concat(DistrictId), httpOptions);
+  }
+  getAllDistrict(zipCode: any): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/district/zipCode?zipCode=' + zipCode)
+  }
   getDistricByZipCode(zipCode: any): Observable<any> {
     return this.http.get<any>(this.apiURL + '/district/by-zip-code?zipCode=' + zipCode)
   }
-
 }
+
+

@@ -62,6 +62,7 @@ export class AdminRoomeditComponent implements OnInit {
       "roomLight": this.roomeditForm.value.roomLight,
       "roomPrice": this.roomeditForm.value.roomPrice,
     }
+    setTimeout(function () { window.location.reload(); }, 2 * 1000);
     this.sharedsService.updateRoom(body).subscribe(
       (error) => console.log(error),
     );

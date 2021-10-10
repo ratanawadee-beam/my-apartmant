@@ -9,14 +9,15 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
   styleUrls: ['./admin-reports.component.css']
 })
 export class AdminReportsComponent implements OnInit {
-  
+
   page = 1;
   count = 0;
   tableSize = 5;
   tableSizes = [3, 6, 9, 12];
 
 
-  listRent: any;
+  listRent: any[] = [];
+  listRoomStatus: any;
   listInvoice: any;
 
   constructor(
@@ -30,13 +31,14 @@ export class AdminReportsComponent implements OnInit {
     this.faceData();
   }
   faceData() {
-    this.sharedsService.getRent().subscribe(   
+    this.sharedsService.getRent().subscribe(
       (res) => {
-        console.log('!!!!!! Rent Data !!!!!!',res)
+        console.log('!!!!!! Rent Data !!!!!!', res)
         this.listRent = res;
+        this.listRoomStatus = res;
       },
       (error) => {
-        console.log('!!!!!! Rent Data !!!!!!',error);
+        console.log('!!!!!! Rent Data !!!!!!', error);
       }
     );
   }
@@ -52,13 +54,21 @@ export class AdminReportsComponent implements OnInit {
       }
     );
   }
-  
-  gotoBill(data: any){
-    this.router.navigate(['admin/information/',data.userId]);
-   }
 
-   pageChanged(event: any) {
+  gotoBill(data: any) {
+    this.router.navigate(['admin/information/', data.userId]);
+  }
+
+  pageChanged(event: any) {
     this.page = event;
     this.faceData();
+  }
+
+  selectType(event: any) {
+
+    console.log('!! selectType !!', event);
+    this.listRent = this.listRoomStatus;
+    let x = this.listRent;
+    return this.listRent = x.filter(i => String(i.room.roomId).indexOf('A002') !== -1);
   }
 }

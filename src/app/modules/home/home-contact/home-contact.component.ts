@@ -37,7 +37,7 @@ export class HomeContactComponent implements OnInit {
       "conName": this.contactFormhome.value.conName,
       "conLastname": this.contactFormhome.value.conLastname,
       "conPhone": this.contactFormhome.value.conPhone,
-      "conCategory": "3",
+      "conCategory": "1",
       "conText": this.contactFormhome.value.conText,
       "roomId": this.contactFormhome.value.roomId,
       "userId": this.contactFormhome.value.userId,

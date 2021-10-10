@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HomeService } from './shared/service/home.service';
+import { SharedsService } from './shared/service/shareds.service';
 // import { NgxPermissionsService } from 'ngx-permissions';
 // import { DEFAULT_INTERRUPTSOURCES, Idle } from '@ng-idle/core';
 // import { Keepalive } from '@ng-idle/keepalive';
@@ -21,10 +22,12 @@ export class AppComponent implements OnInit {
   timedOut = false;
   lastPing?: Date = undefined;
   title = 'my-apartmant';
-
+  room: number = 0;
+  listRent: any[] = [];
   constructor(
     private homeService: HomeService,
     private router: Router,
+    private sharedsService: SharedsService
   ) {
     homeService.$taxInfo.subscribe(data => {
       console.log('LOGGGG >>> :: taxInfo !!! ::', data);
@@ -67,6 +70,22 @@ export class AppComponent implements OnInit {
         this.homeService.$taxInfo = of(userType);
       }
     }
+    this.getRoomData()
+  }
+
+  getRoomData() {
+    this.sharedsService.getRoom().subscribe((res) => {
+      console.log('!!!!!!!!!!!!! Room Data !!!!!!!!!!!', res)
+      this.listRent = res;
+      let x = this.listRent;
+      this.listRent = x.filter(i => String(i.roomStatus).indexOf('1') !== -1);
+      this.room = this.listRent.length
+      console.log('!!!!!!!!!!!!! Room this.listRent !!!!!!!!!!!', this.listRent)
+    },
+      (error) => {
+        console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
+      }
+    );
   }
 
   home() {

@@ -100,23 +100,14 @@
                             <div class="col-lg-3">
                                 <label>ตำบล</label>
                                 <div class="form-group">
-                                    <select id="inputState" class="form-control" formControlName="district">
-                                        <option value="" disabled>--ตำบล--</option>
-                                        <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtNameTh">{{
-                                            dsNT.districtNameTh }}
-                                        </option>
-                                    </select>
+                                    <input type="text" class="form-control" id="validationCustom02"
+                                    value="" formControlName="districtinput" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <label>อำเภอ</label>
                                 <div class="form-group">
-                                    <select id="inputState" class="form-control" formControlName="amphur">
-                                        <option value="" disabled>--อำเภอ--</option>
-                                        <option *ngFor="let amp of Amphurs" [ngValue]="amp.amphur.amphurNameTh">{{
-                                            amp.amphur.amphurNameTh }}
-                                        </option>
-                                    </select>
+                                    <input type="text" class="form-control" id="validationCustom02" value="" formControlName="amphurinput" readonly>
                                 </div>
                             </div>
                         </div>
@@ -124,19 +115,14 @@
                             <div class="col-lg-3">
                                 <label>จังหวัด</label>
                                 <div class="form-group">
-                                    <select id="inputState" class="form-control" formControlName="province">
-                                        <option value="" disabled>--จังหวัด--</option>
-                                        <option *ngFor="let pro of Provinces" [ngValue]="pro.provinceNameTh">{{
-                                            pro.provinceNameTh }}
-                                        </option>
-                                    </select>
+                                    <input type="text" class="form-control" id="validationCustom02"
+                                    value="" formControlName="provinceinput" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <label>รหัสไปรษณีย์</label>
                                 <div class="form-group">
-                                    <input type="tel" readonly class="form-control" id="autoSizingInputGroup"
-                                        (change)="userZipCode($event)" formControlName="zipCode">
+                                    <input type="tel" readonly class="form-control" id="autoSizingInputGroup" formControlName="zipCode">
                                 </div>
                             </div>
                         </div>

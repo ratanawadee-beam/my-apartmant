@@ -56,7 +56,7 @@
                             placeholder="เลขบัตรประชาชน" pattern="\d{13}" formControlName="userIdcard" required />
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <label>วัน/เดือน/ปีเกิด<span class="text-danger">*</span></label>
                     <div class="form-group">
                         <input type="date" name="dob" id="dob" class="form-control" formControlName="userBirthday">
@@ -101,9 +101,9 @@
                 <div class="col-lg-3">
                     <label>ตำบล</label>
                     <div class="form-group">
-                        <select id="inputState" class="form-control" formControlName="district">
+                        <select id="inputState" class="form-control" formControlName="districtId">
                             <option value="" disabled>--ตำบล--</option>
-                            <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtNameTh">
+                            <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtId">
                                 {{dsNT.districtNameTh}}
                             </option>
                         </select>
@@ -136,7 +136,7 @@
                 <div class="col-lg-3">
                     <label>รหัสไปรษณีย์</label>
                     <div class="form-group">
-                        <input type="tel" class="form-control" id="autoSizingInputGroup" (change)="userZipCode($event)"
+                        <input type="tel" class="form-control" id="autoSizingInputGroup" (change)="changeUserZipCode($event)"
                             formControlName="zipCode">
                     </div>
                 </div>

@@ -13,6 +13,7 @@ export class AdminBarangsewaeditComponent implements OnInit {
   Provinces: any;
   Amphurs: any;
   Districts: any;
+
   rentId: any;
   roomId: any
   // barangForm = new FormGroup({
@@ -58,10 +59,15 @@ export class AdminBarangsewaeditComponent implements OnInit {
     userGender: ['', Validators.required],
     userAddress: ['', Validators.required],
     zipCode: ['', Validators.required],
-    district: [{ value: '', disabled: true },],
+
+    districtId: [{ value: '', disabled: true },],
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
-    roomName: ['', Validators.required],
+
+    districtinput: [''],
+    amphurinput: [''],
+    provinceinput: [''],
+
     roomTypename: ['', Validators.required],
     roomPrice: ['', Validators.required],
     rentStart: ['', Validators.required],
@@ -95,13 +101,15 @@ export class AdminBarangsewaeditComponent implements OnInit {
   }
 
   initDropdown() {
-    this.userService.getDistrictAll().subscribe(res => { this.Districts = res; this.Districts });
-    this.userService.getDistrictAll().subscribe(res => { this.Amphurs = res; this.Amphurs; });
+    this.barangForm.controls['districtId'].disable();
+    // this.userService.getDistrictAll().subscribe(res => { this.Districts = res; this.Districts });
+    this.userService.getAmphurAll().subscribe(res => { this.Amphurs = res; this.Amphurs; });
     this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; this.Provinces })
   }
 
   getRentByRentId(rentId: any) {
     this.sharedsService.getRentByrentId(rentId).subscribe((res) => {
+      this.userService.getAllDistrict(res.zipCode).subscribe(res => { this.Districts = res; console.log('data :', res) });
       console.log('!!!!!!!! res editrent !!!!!!!!!!', res[0])
       let listData = res[0];
       this.barangForm.patchValue({
@@ -117,11 +125,12 @@ export class AdminBarangsewaeditComponent implements OnInit {
         userPhone: listData.user.userPhone,
         userEmail: listData.user.userEmail,
         userAddress: listData.user.userAddress,
-        district: listData.district,
-        province: listData.province,
-        amphur: listData.amphur,
+
+        // districtId: listData.district,
+        // province: listData.province,
+        // amphur: listData.amphur,
+
         zipCode: listData.user.zipCode,
-        roomName: listData.room.roomName,
         roomTypename: listData.room.roomTypename,
         roomPrice: listData.room.roomPrice,
         rentStart: listData.rentStart,
@@ -131,8 +140,12 @@ export class AdminBarangsewaeditComponent implements OnInit {
         rentInsurance: listData.rentInsurance,
         rentOther: listData.rentOther,
         rentTotalprice: listData.rentTotalprice,
+
+        districtinput: listData.district,
+        amphurinput: listData.amphur,
+        provinceinput: listData.province,
       });
-      this.userZipCode(listData.user.zipCode);
+      this.userZipCode(listData.user.districtId);
     },
       (error) => {
         console.log('!!!!! Error rent !!!!!', error);
@@ -170,16 +183,19 @@ export class AdminBarangsewaeditComponent implements OnInit {
 
   //zipCode
   userZipCode(event: any) {
-    const zipCode = event;
-    console.log('zipCode' + zipCode)
-    this.userService.getDistricByZipCode(zipCode).subscribe(
-      res => {
-        console.log(res)
+    const DistrictId = event;
+    console.log('zipCode' + DistrictId)
+    this.userService.getDistrictByDistrictId(DistrictId).subscribe(res => {
         if (res) {
           this.barangForm.patchValue({
-            district: res.districtNameTh,
+            districtId: res.districtId,
             amphur: res.amphur.amphurNameTh,
-            province: res.province.provinceNameTh
+            province: res.province.provinceNameTh,
+
+            districtinput: res.districtNameTh,
+            amphurinput: res.amphur.amphurNameTh,
+            provinceinput: res.province.provinceNameTh,
+
           }
           )
           console.log(' !!! res zip code !!! ', this.barangForm.value)
@@ -196,6 +212,7 @@ export class AdminBarangsewaeditComponent implements OnInit {
       }
     );
   }
+
   pint() {
     this.sharedsService.generateBilldrugReport(this.rentId).subscribe(data => {
       console.log('report===>', data.url)

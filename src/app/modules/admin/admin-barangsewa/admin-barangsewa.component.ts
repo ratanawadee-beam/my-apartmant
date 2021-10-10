@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/shared/service/admin.service';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
 
@@ -16,9 +17,10 @@ export class AdminBarangsewaComponent implements OnInit {
   tableSizes = [3, 6, 9, 12];
 
   listRent: any;
- 
+
   constructor(
     private sharedsService: SharedsService,
+    private adminService: AdminService,
     private router: Router
   ) { }
 
@@ -29,36 +31,52 @@ export class AdminBarangsewaComponent implements OnInit {
   }
 
   faceData() {
-    this.sharedsService.getRent().subscribe(   
+    this.sharedsService.getRent().subscribe(
       (res) => {
-        console.log('!!!!!! Rent Data !!!!!!',res)
+        console.log('!!!!!! Rent Data !!!!!!', res)
         this.listRent = res;
       },
       (error) => {
-        console.log('!!!!!! Rent Data !!!!!!',error);
+        console.log('!!!!!! Rent Data !!!!!!', error);
       }
     );
   }
-  
-  gotoedits(data: any){
-    this.router.navigate(['admin/barangsewaedit/',data.rentId]);
+
+  gotoedits(data: any) {
+    this.router.navigate(['admin/barangsewaedit/', data.rentId]);
   }
 
   //delete
-  deleteRent(item: any){
-    this.sharedsService.deleteRentByRentId(item.rentId).subscribe(
-      (res) => {
-        console.log(res);
-        setTimeout(function () {window.location.reload(); }, 2 * 1000);
-      },
+  deleteRent(item: any) {
+    
+    this.sharedsService.deleteRentByRentId(item.rentId).subscribe((res) => {
+      console.log('LoG deleteRent', res);
+      let saveinvoice = {
+        roomId: item.roomId,
+        roomLight: item.roomLight,
+        roomPrice: item.roomPrice,
+        roomStatus: "1",
+        roomTypename: item.roomTypename,
+        roomWater: item.roomWater,
+      }
+      this.sharedsService.updateStatus(saveinvoice).subscribe((res) => {
+        console.log('LoG updateStatus', res);
+      }
+      )
+      setTimeout(function () { window.location.reload(); }, 2 * 1000);
+    },
       (error) => {
         console.log('delete Rent error : ', error);
       }
     );
   }
-  
+
   pageChanged(event: any) {
     this.page = event;
     this.faceData();
   }
 }
+function Room(Room: any) {
+  throw new Error('Function not implemented.');
+}
+

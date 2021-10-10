@@ -82,6 +82,7 @@ export class AdminManageComponent implements OnInit {
           )
         }
       })
+      setTimeout(function () { window.location.reload(); }, 2 * 1000);
     },
       (error) => {
         console.log('delete User error : ', error);

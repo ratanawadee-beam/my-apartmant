@@ -20,7 +20,6 @@ export class AdminProfileComponent implements OnInit {
 
   profileuserForm = this.profileuser.group({
     roomId: [''],
-    roomName: ['', Validators.required],
     userUsername: [''],
     userPassword: [''],
     userTitle: ['', Validators.required],
@@ -33,9 +32,15 @@ export class AdminProfileComponent implements OnInit {
     userAddress: ['', Validators.required],
     userEmail: ['', Validators.required],
     zipCode: ['', Validators.required],
-    district: [{ value: '', disabled: true },],
+
+    districtId: [{ value: '', disabled: true },],
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
+
+    districtinput: [''],
+    amphurinput: [''],
+    provinceinput: [''],
+
     userId: [0],
     roleId: ['admin'],
   });
@@ -75,21 +80,22 @@ export class AdminProfileComponent implements OnInit {
     this.setDataForm(taxInfo);
     this.initDropdown();
 
+    this.profileuserForm.controls['districtId'].disable();
   }
 
   initDropdown() {
-    this.userService.getDistrictAll().subscribe(res => { this.Districts = res; this.Districts });
-    this.userService.getDistrictAll().subscribe(res => { this.Amphurs = res; this.Amphurs; });
-    this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; this.Provinces })
+ // this.userService.getDistrictAll().subscribe(res => { this.Districts = res; this.Districts });
+ this.userService.getAmphurAll().subscribe(res => { this.Amphurs = res; this.Amphurs; });
+ this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; this.Provinces })
   }
 
   setDataForm(taxInfo: any) {
     console.log('LOG taxInfo', taxInfo)
+    this.userService.getAllDistrict(taxInfo.zipCode).subscribe(res => { this.Districts = res; console.log('data :', res) });
     this.profileuserForm.patchValue({
       userId: taxInfo.userId,
       roleId: taxInfo.roleId,
       roomId: taxInfo.roomId,
-      roomName: taxInfo.roomName,
       userUsername: taxInfo.userUsername,
       userPassword: taxInfo.userPassword,
       userTitle: taxInfo.userTitle,
@@ -102,28 +108,32 @@ export class AdminProfileComponent implements OnInit {
       userEmail: taxInfo.userEmail,
       userAddress: taxInfo.userAddress,
       zipCode: taxInfo.zipCode,
-      amphur: taxInfo.amphur,
-      district: taxInfo.district,
-      province: taxInfo.province,
+      districtinput: taxInfo.district,
+      amphurinput: taxInfo.amphur,
+      provinceinput: taxInfo.province,
+
+      // amphur: taxInfo.amphur,
+      // district: taxInfo.district,
+      // province: taxInfo.province,
     });
-    this.loadUserZipCode(taxInfo.zipCode);
+    this.loadUserZipCode(taxInfo.districtId);
+
   }
 
   //zipCode
   changeUserZipCode(event: any) {
     const zipCode = event.target.value;
     console.log('zipCode' + zipCode)
-    this.userService.getDistricByZipCode(zipCode).subscribe(
-      res => {
+    this.userService.getAllDistrict(zipCode).subscribe(res => { this.Districts = res; console.log('data :', res) });
+    this.userService.getDistricByZipCode(zipCode).subscribe(res => {
         console.log(res)
         if (res) {
           this.profileuserForm.patchValue({
-            district: res.districtNameTh,
             amphur: res.amphur.amphurNameTh,
             province: res.province.provinceNameTh
           }
           )
-          console.log('!!! res zip code !!!', this.profileuserForm.value)
+          console.log('!!! res zip codess !!!', this.profileuserForm.value)
         }
       },
       error => {
@@ -138,18 +148,27 @@ export class AdminProfileComponent implements OnInit {
     );
   }
 
-  loadUserZipCode(zipCode: any) {
-    console.log('zipCode' + zipCode)
-    this.userService.getDistricByZipCode(zipCode).subscribe(
+  loadUserZipCode(event: any) {
+    const DistrictId = event;
+    console.log('zipCode' + DistrictId)
+    this.profileuserForm.controls['districtId'].enable();
+    this.userService.getDistrictByDistrictId(DistrictId).subscribe(
       res => {
         if (res) {
           this.profileuserForm.patchValue(
             {
-              district: res.districtNameTh,
+              districtId: res.districtId,
               amphur: res.amphur.amphurNameTh,
-              province: res.province.provinceNameTh
+              province: res.province.provinceNameTh,
+  
+              districtinput: res.districtNameTh,
+              amphurinput: res.amphur.amphurNameTh,
+              provinceinput: res.province.provinceNameTh,
+  
             }
           )
+          console.log(' !!! res zip code222 !!! ', this.profileuserForm.value)
+          
         }
       },
       error => {
@@ -182,13 +201,16 @@ export class AdminProfileComponent implements OnInit {
       "userTitle": this.profileuserForm.value.userTitle,
       "userUsername": this.profileuserForm.value.userUsername,
       "zipCode": this.profileuserForm.value.zipCode,
-      "roomName": this.profileuserForm.value.roomName,
+      "districtId": this.profileuserForm.value.districtId,
+      "roomId": this.profileuserForm.value.roomName,
     }
     this.userService.upDateUser(body).subscribe(res => {
+console.log('tserrrr',body);
+
     },
       (error) => console.log(error),
     );
-    
+
     this.router.navigate(['user/profile']);
   }
 
