@@ -57,6 +57,7 @@ export class AdminEdituserComponent implements OnInit {
     this.userId = this._Activatedroute.snapshot.paramMap.get("id");
     
     this.getUserById(this.userId);
+    
     this.initDropdown();
 
     this.edituserForm.controls['districtId'].disable();
@@ -157,7 +158,7 @@ export class AdminEdituserComponent implements OnInit {
             province: res.province.provinceNameTh
           }
           )
-          console.log('!!! res zip code !!!', this.edituserForm.value)
+          console.log('!!! res zip code uu!!!', this.edituserForm.value)
         }
       },
       error => {
@@ -191,7 +192,7 @@ export class AdminEdituserComponent implements OnInit {
   
             }
           )
-          console.log(' !!! res zip code !!! ', this.edituserForm.value)
+          console.log(' !!! res zip code sss !!! ', this.edituserForm.value)
           
         }
       },

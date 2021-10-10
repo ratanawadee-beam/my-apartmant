@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/service/admin.service';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
@@ -15,8 +16,13 @@ export class AdminRentalComponent implements OnInit {
   tableSize = 5;
   tableSizes = [3, 6, 9, 12];
 
-  listRent: any;
+  listRent2: any;
+  listRent: any[] = [];
+  rentForm = this.formBuilder.group({
+    name: [''],
+  });
   constructor(
+    private formBuilder: FormBuilder,
     private sharedsService: SharedsService,
     private router: Router,
     
@@ -31,6 +37,7 @@ export class AdminRentalComponent implements OnInit {
       (res) => {
         console.log('!!!!!! Rent Data !!!!!!',res)
         this.listRent = res;
+        this.listRent2 = res;
       },
       (error) => {
         console.log('!!!!!! Rent Data !!!!!!',error);
@@ -45,5 +52,13 @@ export class AdminRentalComponent implements OnInit {
   pageChanged(event: any) {
     this.page = event;
     this.faceData();
+  }
+    
+  SearchRoom() {
+
+    console.log('!! selectType !!', event);
+    this.listRent = this.listRent2;
+    let x = this.listRent;
+    return this.listRent = x.filter(i => String(i.room.roomId).indexOf(this.rentForm.value.name) !== -1);
   }
 }

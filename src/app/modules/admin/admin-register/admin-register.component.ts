@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RoomInterface } from 'src/app/shared/interface/sharedInterface';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
@@ -46,11 +46,12 @@ export class AdminRegisterComponent implements OnInit {
     private router: Router,
     // private form: FormBuilder,
     private fb: FormBuilder,
+    private _Activatedroute: ActivatedRoute,
 
   ) { }
 
   registerForm = this.fb.group({
-    userId: ['', Validators.required],
+    userId: [''],
     userTitle: ['', Validators.required],
     userName: ['', Validators.required],
     userLasname: ['', Validators.required],
@@ -65,6 +66,10 @@ export class AdminRegisterComponent implements OnInit {
     districtId: [{ value: '', disabled: true },],
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
+
+    districtinput: [''],
+    amphurinput: [''],
+    provinceinput: [''],
 
     roleId: ['user'],
     rentId: [0],
@@ -89,6 +94,17 @@ export class AdminRegisterComponent implements OnInit {
     this.userService.getAmphurAll().subscribe(res => { this.Amphurs = res; });
     // this.userService.getDistrictAll().subscribe(res => { this.Districts = res; });
     this.getRoomAll();
+    this.userId = this._Activatedroute.snapshot.paramMap.get("id");
+    this.getUserById(this.userId);
+
+    this.initDropdown();
+
+  }
+  initDropdown() {
+
+    // this.userService.getDistrictAll().subscribe(res => { this.Districts = res; this.Districts });
+    this.userService.getAmphurAll().subscribe(res => { this.Amphurs = res; this.Amphurs; });
+    this.userService.getProvinceAll().subscribe(res => { this.Provinces = res; this.Provinces })
   }
 
   Next() {
@@ -143,16 +159,44 @@ export class AdminRegisterComponent implements OnInit {
     );
   }
 
-  // usersave() {
-  //   this.router.navigate(['admin/us']);
-  // }
-  // this.sharedsService.saveUser(this.registerForm.value).subscribe(
-  //   (error) => console.log(error),
-  //   );
-  // console.log(this.registerForm.value.username);
-  // this.sharedsService.sregisterData(this.registerForm.value.username);
-  //   this.router.navigate(['admin/information']);
-  // }
+  //ต่อสัญญาส่งเลข id มา
+  getUserById(userId: any) {
+    this.userService.getUserById(userId).subscribe((res) => {
+      this.userService.getAllDistrict(res.zipCode).subscribe(res => { this.Districts = res; console.log('data :', res) });
+      console.log('!!!!!!!!!!!!res data!!!!!!!!!!!!', res)
+      this.registerForm.patchValue({
+        userId: userId,
+        roleId: res.roleId,
+        userUsername: res.userUsername,
+        userPassword: res.userPassword,
+        userTitle: res.userTitle,
+        userName: res.userName,
+        userLasname: res.userLasname,
+        userIdcard: res.userIdcard,
+        userBirthday: res.userBirthday,
+        userGender: res.userGender,
+        userPhone: res.userPhone,
+        userEmail: res.userEmail,
+        userAddress: res.userAddress,
+        zipCode: res.zipCode,
+
+        districtinput: res.district,
+        amphurinput: res.amphur,
+        provinceinput: res.province,
+
+        // amphur: res.amphur,
+        // district: res.district,
+        // province: res.province,
+      });
+      this.loadUserZipCode(res.districtId);
+    },
+      (error) => {
+        console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
+      }
+
+    );
+  }
+
 
   back() {
     this.router.navigate(['admin/barangsewa']);
@@ -164,15 +208,50 @@ export class AdminRegisterComponent implements OnInit {
     this.registerForm.controls['districtId'].enable();
     this.userService.getAllDistrict(zipCode).subscribe(res => { this.Districts = res; console.log('data :', res) });
     this.userService.getDistricByZipCode(zipCode).subscribe(res => {
-        console.log(res)
+      console.log(res)
+      if (res) {
+        this.registerForm.patchValue(
+          {
+            // district: res.districtNameTh,
+            amphur: res.amphur.amphurNameTh,
+            province: res.province.provinceNameTh
+          }
+        )
+      }
+    },
+      error => {
+        this.registerForm.patchValue(
+          {
+            district: '',
+            amphur: '',
+            province: ''
+          }
+        )
+      }
+    );
+
+  }
+  loadUserZipCode(event: any) {
+    const DistrictId = event;
+    console.log('zipCode' + DistrictId)
+    this.registerForm.controls['districtId'].enable();
+    this.userService.getDistrictByDistrictId(DistrictId).subscribe(
+      res => {
         if (res) {
           this.registerForm.patchValue(
             {
-              // district: res.districtNameTh,
+              districtId: res.districtId,
               amphur: res.amphur.amphurNameTh,
-              province: res.province.provinceNameTh
+              province: res.province.provinceNameTh,
+
+              districtinput: res.districtNameTh,
+              amphurinput: res.amphur.amphurNameTh,
+              provinceinput: res.province.provinceNameTh,
+
             }
           )
+          console.log(' !!! res zip code sss !!! ', this.registerForm.value)
+
         }
       },
       error => {
@@ -185,34 +264,7 @@ export class AdminRegisterComponent implements OnInit {
         )
       }
     );
-    
   }
-  // userZipCode(event: any) {
-  //   const zipCode = event.target.value;
-  //   console.log('zipCode' + zipCode)
-  //   this.userService.getDistricByZipCode(zipCode).subscribe(res => {
-  //       console.log(res)
-  //       if (res) {
-  //         this.registerForm.patchValue(
-  //           {
-  //             district: res.districtNameTh,
-  //             amphur: res.amphur.amphurNameTh,
-  //             province: res.province.provinceNameTh
-  //           }
-  //         )
-  //       }
-  //     },
-  //     error => {
-  //       this.registerForm.patchValue(
-  //         {
-  //           district: '',
-  //           amphur: '',
-  //           province: ''
-  //         }
-  //       )
-  //     }
-  //   );
-  // }
 
   get userf() { return this.registerForm.controls; }
 

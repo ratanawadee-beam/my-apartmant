@@ -36,6 +36,10 @@ const routes: Routes = [
     component: AdminRegisterComponent
   },
   {
+    path: 'register/:id',
+    component: AdminRegisterComponent
+  },
+  {
     path: 'room',
     component: AdminRoomComponent
   },
@@ -109,6 +113,10 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    component: AdminProfileComponent
+  },
+  {
+    path: 'profile/:id',
     component: AdminProfileComponent
   },
   {

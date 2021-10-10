@@ -82,17 +82,21 @@
                     <div class="col-lg-4">
                         <label>ตำบล</label>
                         <div class="form-group">
-                            <select id="inputState" class="form-control input-inline " formControlName="districtId">
-                                <option value="" disabled>--ตำบล--</option>
-                                <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtId">  {{ dsNT.districtNameTh }}</option>
+                            <select id="inputState" class="form-control" formControlName="districtId">
+                                <option value="" >--ตำบล--</option>
+                                <option *ngFor="let dsNT of Districts" [ngValue]="dsNT.districtId">
+                                    {{ dsNT.districtNameTh }}
+                                </option>
                             </select>
                         </div>
                     </div>
+
+
                     <div class="col-lg-4">
                         <label>อำเภอ</label>
                         <div class="form-group">
                             <select id="inputState" class="form-control" formControlName="amphur">
-                                <option value="" disabled>--อำเภอ--</option>
+                                <option value="" >--อำเภอ--</option>
                                 <option *ngFor="let amp of Amphurs" [ngValue]="amp.amphurNameTh">{{
                                     amp.amphurNameTh }}
                                 </option>
@@ -105,7 +109,7 @@
                         <label>จังหวัด</label>
                         <div class="form-group">
                             <select id="inputState" class="form-control" formControlName="province">
-                                <option value="" disabled>--จังหวัด--</option>
+                                <option value="" >--จังหวัด--</option>
                                 <option *ngFor="let pro of Provinces" [ngValue]="pro.provinceNameTh">{{ pro.provinceNameTh
                                     }}
                                 </option>

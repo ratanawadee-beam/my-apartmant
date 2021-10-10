@@ -6,12 +6,12 @@
   <div class="con-dataqueue">
     <div class="card shadow topbar static-top">
       <div class="card-body text-dark">
-        <div class="row justify-content-end m-0">
+        <div class="row justify-content-end m-0" [formGroup]="userForm">
           <div class="col-md-auto col-sm-2">
-            <input class="form-control" placeholder="ค้นหา" aria-label="Search">
+            <input class="form-control" placeholder="ค้นหา" formControlName="name" aria-label="Search">
           </div>
           <div class="col-md-auto col-sm-6">
-            <button class="nav-link btn btn-success" type="submit" routerLink="">
+            <button class="nav-link btn btn-success" type="submit"(click)="SearchUser()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                 viewBox="0 0 16 16">
                 <path
@@ -29,6 +29,7 @@
               <th scope="col">เบอร์ติดต่อ</th>
               <th scope="col">อีเมล์</th>
               <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -41,6 +42,10 @@
               <td *ngIf="data.roleId != 'admin'">{{data.userName}} {{data.userLasname}}</td>
               <td class="text-center" *ngIf="data.roleId != 'admin'">{{data.userPhone}}</td>
               <td *ngIf="data.roleId != 'admin'">{{data.userEmail}}</td>
+              <td *ngIf="data.roleId != 'admin'">
+                <a *ngIf="data.roomId == '1'" (click)="gotoRegist(data)" class="badge badge-pill badge-danger">{{data.roomId == '1'? 'ยกเลิกสัญาเเล้ว': 'มีสัญญาอยู่'}}</a>
+                <a *ngIf="data.roomId != '1'"class="badge badge-pill badge-success">{{data.roomId == '1'? 'ยกเลิกสัญาเเล้ว': 'มีสัญญาอยู่'}}</a>
+              </td>
               <td *ngIf="data.roleId != 'admin'">
                 <button type="button" class="btn btn-danger" (click)="delete(data)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
 import { UserService } from 'src/app/shared/service/user.service';
@@ -19,9 +20,16 @@ export class AdminManageComponent implements OnInit {
 
   data: any;
   listRent: any;
-  listUser: any;
+  userId: any;
   listDatauser = [{}];
+
+  listuser2: any;
+  listUser: any[] = [];
+  userForm = this.formBuilder.group({
+    name: [''],
+  });
   constructor(
+    private formBuilder: FormBuilder,
     private userService: UserService,
     private sharedsService: SharedsService,
     private router: Router,
@@ -37,6 +45,8 @@ export class AdminManageComponent implements OnInit {
       (res) => {
         console.log('!!!!!!!!!!res userData !!!!!!!!!!!!!!', res)
         this.listUser = res;
+        this.listuser2 = res;
+        
       },
       (error) => {
         console.log('!!!!!!!!!!!!!!error!!!!!!!!!!', error);
@@ -93,5 +103,16 @@ export class AdminManageComponent implements OnInit {
   pageChanged(event: any) {
     this.page = event;
     this.getUserData();
+  }
+  
+  SearchUser(){
+    console.log('!! selectType !!', event);
+    this.listUser = this.listuser2;
+    let x = this.listUser;
+    return this.listUser = x.filter(i => String(i.userIdcard).indexOf(this.userForm.value.name) !== -1);
+  }
+
+  gotoRegist(data: any){
+    this.router.navigate(['admin/register', data.userId]);
   }
 }

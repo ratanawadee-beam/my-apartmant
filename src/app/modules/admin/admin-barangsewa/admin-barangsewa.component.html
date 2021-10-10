@@ -1,19 +1,21 @@
 <div class="container p-4" style="background-color: #DEF2F1; min-height: 591px;">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom text-dark">
+  <div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom text-dark">
     <h3>จัดการข้อมูลสัญญาเช่า</h3>
   </div>
   <div class="con-dataqueue">
     <div class="card shadow topbar static-top">
       <div class="card-body text-dark">
-        <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap pt-5 pb-2 mb-3 ">
+        <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap pt-5 pb-2 mb-3 " [formGroup]="rentForm">
           <form class="form-inline">
-            <input class="form-control mr-sm-2" placeholder="ค้นหา" aria-label="Search">
-            <button class="nav-link btn btn-success" type="submit" routerLink="">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+            <input class="form-control mr-sm-2" formControlName="name" placeholder="ค้นหา" aria-label="Search">
+            <button class="nav-link btn btn-success" (click)="SearchRoom()">
+              <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                 viewBox="0 0 16 16">
                 <path
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-              </svg> ค้นหา</button>
+              </svg> ค้นหา
+            </button>
           </form>
           <button type="button" class="btn btn-primary " routerLink="../register">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -23,7 +25,7 @@
                 d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
             </svg> เพิ่มข้อมูลสัญญาเช่า</button>
         </div>
-      
+
         <br>
 
         <table class="table table-hover">
@@ -46,9 +48,10 @@
               <td class="text-center" scope="row" *ngIf="data.user.roleId != 'admin'">{{data.room.roomId}}</td>
               <td *ngIf="data.user.roleId != 'admin'">{{data.user.userName}} {{data.user.userLasname}}</td>
               <td class="text-center" *ngIf="data.user.roleId != 'admin'">{{data.user.userPhone}}</td>
-              <td class="text-center"*ngIf="data.user.roleId != 'admin'">{{data.rentStart}}</td>
-              <td class="text-center"*ngIf="data.user.roleId != 'admin'">{{data.rentEnd}}</td>
-              <td class=" text-center"*ngIf="data.user.roleId != 'admin'"><button type="button" class="btn btn-danger" (click)="deleteRent(data)">
+              <td class="text-center" *ngIf="data.user.roleId != 'admin'">{{data.rentStart}}</td>
+              <td class="text-center" *ngIf="data.user.roleId != 'admin'">{{data.rentEnd}}</td>
+              <td class=" text-center" *ngIf="data.user.roleId != 'admin'"><button type="button" class="btn btn-danger"
+                  (click)="deleteRent(data)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                     viewBox="0 0 16 16">
                     <path

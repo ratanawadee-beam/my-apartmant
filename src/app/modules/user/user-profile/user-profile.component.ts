@@ -31,7 +31,7 @@ export class UserProfileComponent implements OnInit {
     userEmail: ['', Validators.required],
     zipCode: ['', Validators.required],
 
-    districtId: [{ value: '', disabled: true },],
+    districtId: [{ value: '', },],
     amphur: [{ value: '', disabled: true },],
     province: [{ value: '', disabled: true },],
 
@@ -74,7 +74,6 @@ export class UserProfileComponent implements OnInit {
     this.setDataForm(taxInfo); 
     this.initDropdown();
 
-    this.profileuserForm.controls['districtId'].disable();
   }
 
   initDropdown() {
@@ -148,7 +147,6 @@ export class UserProfileComponent implements OnInit {
   loadUserZipCode(event: any) {
     const DistrictId = event;
     console.log('zipCode' + DistrictId)
-    this.profileuserForm.controls['districtId'].enable();
     this.userService.getDistrictByDistrictId(DistrictId).subscribe(
       res => {
         if (res) {
@@ -203,10 +201,11 @@ export class UserProfileComponent implements OnInit {
       "roomId": this.profileuserForm.value.roomId,
       "districtId": this.profileuserForm.value.districtId,
     }
+    localStorage.setItem('taxInfo', JSON.stringify(body));
     this.userService.upDateUser(body).subscribe(
       (error) => console.log(error),
     );
-    this.router.navigate(['user/profile']);
+    setTimeout(function () {window.location.reload(); }, 1 * 1000);
   }
  
 }
