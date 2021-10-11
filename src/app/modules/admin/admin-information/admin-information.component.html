@@ -89,7 +89,7 @@
                                 <td *ngIf="data.user.role.roleId != 'admin'">{{data.inId}}</td>
                                 <td *ngIf="data.user.role.roleId != 'admin'">
                                     {{data.user.userName}} {{data.user.userLasname}}</td>
-                                <td *ngIf="data.user.role.roleId != 'admin'">{{data.inStart}}</td>
+                                <td *ngIf="data.user.role.roleId != 'admin'">{{data.inStart | date: 'longDate'}}</td>
                                 <td *ngIf="data.user.role.roleId != 'admin'">{{data.inStatus == '1'? 'ค้างชำระ':(data.inStatus == '2'? 'รอยืนยัน': 'ชำระเเล้ว') }}</td>
                                 <td>
                                 <button type="button" class="btn btn-primary" (click)="gotoReport(data)">

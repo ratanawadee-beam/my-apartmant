@@ -32,3 +32,8 @@ input[type=submit]:hover {
   background-color: #DEF2F1;
   padding: 20px;
 }
+.panel-footer .btn:hover {
+  border: 1px solid #f4511e;
+  background-color: #fff !important;
+  color: #f4511e;
+}
