@@ -12,6 +12,7 @@
         <th scope="col">เบอร์โทร</th>
         <th scope="col">รายละเอียด</th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +20,8 @@
         <td>{{data.roomId }} : {{data.conName}} {{data.conLastname}}</td>
         <td>{{ data.conPhone}}</td>
         <td>{{ data.conText}}</td>
-        <td>
+        <td (click)="selectData(data)">
+          <a class="text-decoration-underline" *ngIf="data.conFilename != '1'">{{data.conFilename == '1'? '-': 'ดูรูปภาพ'}}</a><td>
           <a  *ngIf="data.conCategory == '1'" class="badge badge-pill badge-warning" (click)="updateStatus(data)"> {{data.conCategory == '1'? 'ยังไม่อ่าน': 'อ่านแล้ว'
           }}</a>
           <span  *ngIf="data.conCategory == '2'" class="badge badge-pill badge-success"> {{data.conCategory == '1'? 'ยังไม่อ่าน': 'อ่านแล้ว'}}</span>

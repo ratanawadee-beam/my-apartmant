@@ -91,6 +91,13 @@ export class AdminService {
     from.append('multipartFile', param);
     return this.http.post<any>(this.API_URL + `/uploadFile?inId=${inId}`, from)
   }
+
+  uploadFile2(param: any, data1: any): Observable<any> {
+    var from = new FormData();
+    from.append('multipartFile', param);
+    from.append('request', JSON.stringify(data1));
+    return this.http.post<any>(this.API_URL + `/uploadFile2`, from)
+  }
   
   public downLoadFile(inId: any) {
     return this.http.get<any>(this.API_URL + `/downLoadFile?inId=${inId}`, {
@@ -101,6 +108,17 @@ export class AdminService {
       responseType: 'blob' as 'json'
     });
   }
+
+  public downLoadFile2(conId: any) {
+    return this.http.get<any>(this.API_URL + `/downLoadFile2?conId=${conId}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: 'response' as 'body',
+      responseType: 'blob' as 'json'
+    });
+  }
+  
   
 
   public getAllPayment() {

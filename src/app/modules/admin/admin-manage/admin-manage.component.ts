@@ -109,7 +109,7 @@ export class AdminManageComponent implements OnInit {
     console.log('!! selectType !!', event);
     this.listUser = this.listuser2;
     let x = this.listUser;
-    return this.listUser = x.filter(i => String(i.userIdcard).indexOf(this.userForm.value.name) !== -1);
+    return this.listUser = x.filter(i => String(i.userIdcard+i.userId+i.userName+" "+i.userLasname).indexOf(this.userForm.value.name) !== -1);
   }
 
   gotoRegist(data: any){

@@ -30,7 +30,7 @@
               <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.invoice.rent.user.userName}}
                 {{data.invoice.rent.user.userLasname}}</td>
               <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'">{{data.payTotal}}</td>
-              <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'" class=""><a  *ngIf="data.invoice.inStatus != '1'"(click)="gotodowload(data)">ไฟล์สลิป</a></td>
+              <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'"><a  class="text-decoration-underline" *ngIf="data.invoice.inStatus != '1'"(click)="gotodowload(data)">ไฟล์สลิป</a></td>
               <td *ngIf="data.invoice.rent.user.role.roleId != 'admin'"> <button type="button" class="btn btn-sm text-white btn-info" data-bs-toggle="modal"
                   data-bs-target="#SelectModal" (click)="gotobill(data)">
                   ดูรายละเอียด</button></td>

@@ -75,7 +75,7 @@ export class AdminReportsComponent implements OnInit {
     console.log('!! selectType !!', event);
     this.listRent = this.listRent2;
     let x = this.listRent;
-    return this.listRent = x.filter(i => String(i.room.roomId).indexOf(this.rentForm.value.name) !== -1);
+    return this.listRent = x.filter(i => String(i.room.roomId+i.user.userIdcard+i.user.userId+i.user.userName+" "+i.user.userLasname).indexOf(this.rentForm.value.name) !== -1);
   }
 
 }

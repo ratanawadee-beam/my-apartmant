@@ -1,6 +1,8 @@
+import { AUTO_STYLE } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-alert',
@@ -9,8 +11,9 @@ import { SharedsService } from 'src/app/shared/service/shareds.service';
 })
 export class AdminAlertComponent implements OnInit {
   listcontact: any;
+  imagePathSelected: any;
 
-  
+
   contactForm = new FormGroup({
     inStatus: new FormControl(''),
   })
@@ -19,7 +22,7 @@ export class AdminAlertComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this. contactData();
+    this.contactData();
   }
 
   contactData() {
@@ -34,8 +37,8 @@ export class AdminAlertComponent implements OnInit {
     );
   }
 
-  updateStatus(data: any){
-    console.log('data contactData',data);
+  updateStatus(data: any) {
+    console.log('data contactData', data);
     let savecontact = {
       conId: data.conId,
       conName: data.conName,
@@ -47,13 +50,23 @@ export class AdminAlertComponent implements OnInit {
       userId: data.userId,
     }
     this.sharedsService.updateContact(savecontact).subscribe(res => {
-      console.log('test' ,res);
+      console.log('test', res);
       if (res) {
         window.location.reload()
       }
     },
-    (error) => console.log('error',error),
+      (error) => console.log('error', error),
     );
   }
 
+  selectData(data: any) {
+    Swal.fire({
+      title: '',
+      text: '',
+      imageUrl: 'http://localhost:8090/apartmant-api/downLoadFile2?conId='+ data.conId,
+      imageWidth: AUTO_STYLE,
+      imageHeight: AUTO_STYLE,
+      imageAlt: 'Custom image',
+    })
+  }
 }

@@ -87,16 +87,22 @@ export class UsercontactComponent implements OnInit {
       "conName": this.contactForm.value.conName,
       "conLastname": this.contactForm.value.conLastname,
       "conPhone": this.contactForm.value.conPhone,
-      "conFilename": this.contactForm.value.conFilename,
+      "conFilename": "1",
       "conCategory": "1",
       "conText": this.contactForm.value.conText,
       "roomId": this.contactForm.value.roomId,
       "userId": this.contactForm.value.userId,
     }
-    console.log('test',contact);
-    
     this.sharedsService.saveContact(contact).subscribe(res => {
       console.log('test conId',contact);
+    if (this.localUrl) {
+      console.log(this.localUrl);
+      const file: File | null = this.localUrl.item(0);
+      console.log(file);
+      this.sharedsService.uploadFiles(file, this.conId).subscribe(data => {
+        console.log('report===>', data)
+      });
+    }  
       // setTimeout(function () { window.location.reload(); }, 2 * 1000);
     },
       (error) => console.log(error),
@@ -111,15 +117,47 @@ export class UsercontactComponent implements OnInit {
   
   }
 
+  // upload() {
+  //   if (this.localUrl) {
+  //     console.log(this.localUrl);
+  //     const file: File | null = this.localUrl.item(0);
+  //     console.log(file);
+  //     this.sharedsService.uploadFiles(file, this.conId).subscribe(data => {
+  //       console.log('report===>', data)
+  //     });
+  //   }
+  // }
+
   upload() {
     if (this.localUrl) {
       console.log(this.localUrl);
       const file: File | null = this.localUrl.item(0);
       console.log(file);
-      this.sharedsService.uploadFiles(file, this.conId).subscribe(data => {
+      let contact = {
+        "conId": this.contactForm.value.conId,
+        "conName": this.contactForm.value.conName,
+        "conLastname": this.contactForm.value.conLastname,
+        "conPhone": this.contactForm.value.conPhone,
+        "conFilename": this.contactForm.value.conFilename,
+        "conCategory": "1",
+        "conText": this.contactForm.value.conText,
+        "roomId": this.contactForm.value.roomId,
+        "userId": this.contactForm.value.userId,
+      }
+      console.log('contact : ', contact)
+      this.adminService.uploadFile2(file, contact).subscribe(data => {
         console.log('report===>', data)
-      });
+        this.router.navigate(['user/alertuser']);
+      },
+        error => {
+          if (error.status == 200) {
+            this.router.navigate(['user/alertuser']);
+          }
+        });
+
     }
+
+
   }
 
 

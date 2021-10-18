@@ -1,8 +1,10 @@
+import { AUTO_STYLE } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/service/admin.service';
 import { SharedsService } from 'src/app/shared/service/shareds.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-payment',
@@ -62,13 +64,21 @@ export class AdminPaymentComponent implements OnInit {
   }
   //โชว์สลิป
   gotodowload(data: any) {
-    this.adminService.downLoadFile(data.invoice.inId).subscribe(data => {
-      console.log('report===>', data.url)
-      if (data) {
-        let url = data.url;
-        window.open(url, "_blank");
-      }
-    });
+    Swal.fire({
+      title: '',
+      text: 'หลักฐานการชำระเงิน',
+      imageUrl: 'http://localhost:8090/apartmant-api/downLoadFile?inId='+ data.inId,
+      imageWidth: AUTO_STYLE,
+      imageHeight: AUTO_STYLE,
+      imageAlt: 'Custom image',
+    })
+    // this.adminService.downLoadFile(data.invoice.inId).subscribe(data => {
+    //   console.log('report===>', data.url)
+    //   if (data) {
+    //     let url = data.url;
+    //     window.open(url, "_blank");
+    //   }
+    // });
   }
   //อัพเดทสถานะ
   updateStatus(data: any) {
